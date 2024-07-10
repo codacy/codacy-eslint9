@@ -20,6 +20,9 @@ RUN npm start -w doc-generator \
 RUN mv workspaces/codacy/src/tsconfig.src.json /tsconfig.json  \
     && ln -s /app/node_modules /node_modules
 
+# TODO: Use ts-node/esm when it's stable. Then remove esbuild (npm rm esbuild).
+RUN npm run build
+
 WORKDIR /src
 
 # RUN npm config set prefix=/app \

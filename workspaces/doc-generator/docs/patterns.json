@@ -15876,7 +15876,7 @@
         },
         {
           "name": "langDir",
-          "default": "/mnt/c/repos/codacy/codacy-eslint9/node_modules/eslint-plugin-spellcheck/rules/utils/dicts"
+          "default": "/Users/rafaelcortes/code/codacy-eslint9/node_modules/eslint-plugin-spellcheck/rules/utils/dicts"
         },
         {
           "name": "skipWords",
