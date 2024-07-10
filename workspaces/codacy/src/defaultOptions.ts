@@ -3,6 +3,15 @@
 
 import type { TSESLint } from "@typescript-eslint/utils";
 import tseslint from "typescript-eslint";
+import eslintPluginFunctional from "eslint-plugin-functional";
+import eslintPluginJson from "eslint-plugin-json";
+import eslintPluginJest from "eslint-plugin-jest";
+import eslintPluginRxjs from "eslint-plugin-rxjs";
+import eslintPluginRxjsAngular from "eslint-plugin-rxjs-angular";
+import eslintPluginAngular from "@angular-eslint/eslint-plugin";
+import eslintPluginDeprecation from "eslint-plugin-deprecation";
+import eslintPluginTypescriptEslint from "@typescript-eslint/eslint-plugin";
+import eslintPluginBabel from "@babel/eslint-plugin";
 
 export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
   {
@@ -176,6 +185,16 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
   {
     // JavaScript-specific rules
     files: ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.cjs", "**/*.json"],
+    plugins: {
+      functional: eslintPluginFunctional,
+      jest: eslintPluginJest,
+      rxjs: eslintPluginRxjs,
+      "rxjs-angular": eslintPluginRxjsAngular,
+      "@angular-eslint": eslintPluginAngular,
+      deprecation: eslintPluginDeprecation,
+      "@typescript-eslint": eslintPluginTypescriptEslint,
+      "@babel": eslintPluginBabel,
+    },
     rules: {
       // https://github.com/typescript-eslint/typescript-eslint/blob/e44a1a280f08f9fd0d29f74e5c3e73b7b64a9606/packages/eslint-plugin/src/configs/disable-type-checked.ts#L12
       //extends: ["plugin:@typescript-eslint/disable-type-checked"],
@@ -238,6 +257,9 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
       "**/*.mts",
       "**/*.cts",
     ],
+    plugins: {
+      json: eslintPluginJson,
+    },
     rules: {
       "json/json": "off",
     },

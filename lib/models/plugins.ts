@@ -1,7 +1,7 @@
 import { Rule, Linter } from "eslint";
 
-import { isBlacklisted } from "lib/models/blacklist.ts";
-import { TerminalColor, wrapConsoleTextInColor } from "lib/utils/logging.ts";
+import { isBlacklisted } from "lib/models/blacklist.js";
+import { TerminalColor, wrapConsoleTextInColor } from "lib/utils/logging.js";
 
 export interface Plugin {
   packageName: string;
@@ -15,7 +15,7 @@ export interface PluginDocsInfo {
   baseUrl?: URL;
   versionPrefix?: string | boolean;
   rejectOnError?: boolean;
-};
+}
 
 // plugins that break the tool:
 //   "eslint-plugin-canonical"
@@ -124,29 +124,42 @@ const packageNames: string[] = [
   "eslint-plugin-wdio",
   "eslint-plugin-xss",
   "eslint-plugin-yml",
-  "eslint-plugin-you-dont-need-lodash-underscore"
-]
+  "eslint-plugin-you-dont-need-lodash-underscore",
+];
 
-const plugins = Promise.all(packageNames.map(async (packageName) => {
-  const rules = packageNames.includes(packageName) 
-    ? await getModuleRules(packageName) 
-    : [];
-  const name = packageName.replace(/(\/eslint-plugin$|eslint-plugin-)/, "");
+const plugins = Promise.all(
+  packageNames.map(async (packageName) => {
+    const rules = packageNames.includes(packageName)
+      ? await getModuleRules(packageName)
+      : [];
+    const name = packageName.replace(/(\/eslint-plugin$|eslint-plugin-)/, "");
 
-  return { packageName, name, rules } as Plugin;
-}))
+    return { packageName, name, rules } as Plugin;
+  })
+);
 
-const baseRules = Array.from(new Linter({configType: "eslintrc"}).getRules());
+const baseRules = Array.from(new Linter({ configType: "eslintrc" }).getRules());
 
-async function getModuleRules (packageName: string): Promise<[string, Rule.RuleModule][]> {
-  const module = await import(packageName) as { default?: { rules?: Rule.RuleModule }, rules?: Rule.RuleModule };
+async function getModuleRules(
+  packageName: string
+): Promise<[string, Rule.RuleModule][]> {
+  const module = (await import(packageName)) as {
+    default?: { rules?: Rule.RuleModule };
+    rules?: Rule.RuleModule;
+  };
   const rules: object | undefined = module?.default?.rules || module?.rules;
 
   if (rules === undefined) {
-    console.log(wrapConsoleTextInColor(`No rules found for ${packageName}`, TerminalColor.Red), module);
+    console.log(
+      wrapConsoleTextInColor(
+        `No rules found for ${packageName}`,
+        TerminalColor.Red
+      ),
+      module
+    );
     return [];
   }
-  
+
   return Object.entries(rules);
 }
 
@@ -154,41 +167,43 @@ async function getPluginsRules(): Promise<[string, Rule.RuleModule][]> {
   const pluginsRules = (await plugins)
     .filter((plugin) => plugin.rules.length)
     .flatMap((plugin) => {
-      return plugin.rules.map(([ruleName, ruleModule]) => [
-        `${plugin.name}/${ruleName}`,
-        ruleModule,
-      ] as [string, Rule.RuleModule]);
+      return plugin.rules.map(
+        ([ruleName, ruleModule]) =>
+          [`${plugin.name}/${ruleName}`, ruleModule] as [
+            string,
+            Rule.RuleModule,
+          ]
+      );
     });
 
   return pluginsRules;
 }
 
-export async function pluginByPackageName (packageName: string): Promise<Plugin | undefined> {
-  const defaultPlugin: Plugin = { 
+export async function pluginByPackageName(
+  packageName: string
+): Promise<Plugin | undefined> {
+  const defaultPlugin: Plugin = {
     packageName: "eslint",
     name: "eslint",
     rules: baseRules,
     docs: {
-      relativeUrl: "/eslint/eslint/main/docs/src/rules/"
-    }
-  }
+      relativeUrl: "/eslint/eslint/main/docs/src/rules/",
+    },
+  };
 
   if (packageName === "eslint") {
     return defaultPlugin;
   }
 
-  return (await plugins).find(plugin => plugin.packageName === packageName);
+  return (await plugins).find((plugin) => plugin.packageName === packageName);
 }
 
-export async function getPluginsName (): Promise<string[]> {
-  return (await plugins).map(plugin => plugin.name)
+export async function getPluginsName(): Promise<string[]> {
+  return (await plugins).map((plugin) => plugin.name);
 }
 
-export async function getAllRules (): Promise<[string, Rule.RuleModule][]> {
+export async function getAllRules(): Promise<[string, Rule.RuleModule][]> {
   return baseRules
     .concat(await getPluginsRules())
-    .filter(([patternId ]) =>
-      patternId
-      && !isBlacklisted(patternId)
-    )
+    .filter(([patternId]) => patternId && !isBlacklisted(patternId));
 }

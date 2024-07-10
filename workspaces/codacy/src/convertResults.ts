@@ -1,8 +1,7 @@
-import { computeSuggestion } from "codacy/src/computeSuggestion.ts";
+import { computeSuggestion } from "codacy/src/computeSuggestion.js";
 import { FileError, Issue, ToolResult } from "codacy-seed";
 import type { ESLint } from "eslint";
-import { isBlacklisted } from "lib/models/blacklist.ts";
-import { patternIdToCodacy } from "lib/models/patterns.ts";
+import { patternIdToCodacy } from "lib/models/patterns.js";
 
 export function convertResults(
   eslintResults: ESLint.LintResult[]

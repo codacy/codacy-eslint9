@@ -1,11 +1,11 @@
 import fs from "node:fs";
 
-import { createEslintConfig } from "codacy/src/configCreator.ts";
-import { convertResults } from "codacy/src/convertResults.ts";
+import { createEslintConfig } from "codacy/src/configCreator.js";
+import { convertResults } from "codacy/src/convertResults.js";
 import { type Codacyrc, Engine, ToolResult } from "codacy-seed";
 import { ESLint } from "eslint";
-import { DEBUG, debug } from "lib/utils/logging.ts";
-import { toolName } from "lib/utils/metadata.ts";
+import { DEBUG, debug } from "lib/utils/logging.js";
+import { toolName } from "lib/utils/metadata.js";
 
 export const engineImpl: Engine = async function (
   codacyrc?: Codacyrc

@@ -2,14 +2,14 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 
 import type { TSESLint } from "@typescript-eslint/utils";
-import { baseConfig } from "codacy/src/defaultOptions.ts";
+import { baseConfig } from "codacy/src/defaultOptions.js";
 import { type Codacyrc, Parameter, ParameterSpec, Pattern } from "codacy-seed";
-import { DocGenerator } from "doc-generator/src/DocGenerator.ts";
+import { DocGenerator } from "doc-generator/src/DocGenerator.js";
 import type { Linter } from "eslint";
-import { isBlacklisted } from "lib/models/blacklist.ts";
-import { patternIdToEslint } from "lib/models/patterns.ts";
-import { getAllRules } from "lib/models/plugins.ts";
-import { DEBUG, debug } from "lib/utils/logging.ts";
+import { isBlacklisted } from "lib/models/blacklist.js";
+import { patternIdToEslint } from "lib/models/patterns.js";
+import { getAllRules } from "lib/models/plugins.js";
+import { DEBUG, debug } from "lib/utils/logging.js";
 import { fromPairs, isEmpty, partition } from "lodash-es";
 
 export async function createEslintConfig(

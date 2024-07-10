@@ -1,4 +1,4 @@
-import { engineImpl } from "codacy/src/engineImpl.ts";
+import { engineImpl } from "codacy/src/engineImpl.js";
 import { run } from "codacy-seed";
 
 run(engineImpl);
