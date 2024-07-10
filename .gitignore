@@ -12,6 +12,8 @@
 
 # Build outputs
 /dist
+/build
+tsconfig.tsbuildinfo
 
 # Dependencies
 /node_modules
@@ -19,3 +21,4 @@
 
 # Test directories
 /tests
+.codacyrc

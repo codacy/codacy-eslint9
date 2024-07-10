@@ -1,8 +1,8 @@
 // import type { ESLint } from "eslint"
 // @types/eslint doesn't have yet the new ESLint 9 options syntax
 
-import type { TSESLint } from '@typescript-eslint/utils';
-import tseslint from 'typescript-eslint';
+import type { TSESLint } from "@typescript-eslint/utils";
+import tseslint from "typescript-eslint";
 
 export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
   {
@@ -14,103 +14,135 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
       parserOptions: {
         allowInvalidAST: true,
         allowAutomaticSingleRunInference: true,
-        errorOnTypeScriptSyntacticAndSemanticIssues: false
+        errorOnTypeScriptSyntacticAndSemanticIssues: false,
       },
       globals: {
-        "document": "readonly",
-        "navigator": "readonly",
-        "window": "readonly",
-    
+        document: "readonly",
+        navigator: "readonly",
+        window: "readonly",
+
         // ECMAScript
-        "ArrayBuffer": "readonly",
-        "Atomics": "readonly",
-        "BigInt": "readonly",
-        "BigInt64Array": "readonly",
-        "BigUint64Array": "readonly",
-        "DataView": "readonly",
-        "Float32Array": "readonly",
-        "Float64Array": "readonly",
-        "Int16Array": "readonly",
-        "Int32Array": "readonly",
-        "Int8Array": "readonly",
-        "Map": "readonly",
-        "Promise": "readonly",
-        "Proxy": "readonly",
-        "Reflect": "readonly",
-        "Set": "readonly",
-        "SharedArrayBuffer": "readonly",
-        "Symbol": "readonly",
-        "Uint16Array": "readonly",
-        "Uint32Array": "readonly",
-        "Uint8Array": "readonly",
-        "Uint8ClampedArray": "readonly",
-        "WeakMap": "readonly",
-        "WeakSet": "readonly",
-    
+        ArrayBuffer: "readonly",
+        Atomics: "readonly",
+        BigInt: "readonly",
+        BigInt64Array: "readonly",
+        BigUint64Array: "readonly",
+        DataView: "readonly",
+        Float32Array: "readonly",
+        Float64Array: "readonly",
+        Int16Array: "readonly",
+        Int32Array: "readonly",
+        Int8Array: "readonly",
+        Map: "readonly",
+        Promise: "readonly",
+        Proxy: "readonly",
+        Reflect: "readonly",
+        Set: "readonly",
+        SharedArrayBuffer: "readonly",
+        Symbol: "readonly",
+        Uint16Array: "readonly",
+        Uint32Array: "readonly",
+        Uint8Array: "readonly",
+        Uint8ClampedArray: "readonly",
+        WeakMap: "readonly",
+        WeakSet: "readonly",
+
         // ECMAScript (experimental)
-        "globalThis": "readonly",
-    
+        globalThis: "readonly",
+
         // ECMA-402
-        "Intl": "readonly",
-    
+        Intl: "readonly",
+
         // Web Standard
-        "TextDecoder": "readonly",
-        "TextEncoder": "readonly",
-        "URL": "readonly",
-        "URLSearchParams": "readonly",
-        "WebAssembly": "readonly",
-        "clearInterval": "readonly",
-        "clearTimeout": "readonly",
-        "console": "readonly",
-        "queueMicrotask": "readonly",
-        "setInterval": "readonly",
-        "setTimeout": "readonly",
-    
+        TextDecoder: "readonly",
+        TextEncoder: "readonly",
+        URL: "readonly",
+        URLSearchParams: "readonly",
+        WebAssembly: "readonly",
+        clearInterval: "readonly",
+        clearTimeout: "readonly",
+        console: "readonly",
+        queueMicrotask: "readonly",
+        setInterval: "readonly",
+        setTimeout: "readonly",
+
         // Node.js
-        "Buffer": "readonly",
-        "GLOBAL": "readonly",
-        "clearImmediate": "readonly",
-        "global": "readonly",
-        "process": "readonly",
-        "root": "readonly",
-        "setImmediate": "readonly",
-    
+        Buffer: "readonly",
+        GLOBAL: "readonly",
+        clearImmediate: "readonly",
+        global: "readonly",
+        process: "readonly",
+        root: "readonly",
+        setImmediate: "readonly",
+
         // Backbone
-        "Backbone": false,
-        "_": false,
-    
+        Backbone: false,
+        _: false,
+
         // Cypress
-        "cypress/globals": true
+        "cypress/globals": true,
       },
     },
     linterOptions: {
       noInlineConfig: false,
-      reportUnusedDisableDirectives: false
+      reportUnusedDisableDirectives: false,
     },
     settings: {
-      "node": {
-        "paths": ["/src"],
-        "extensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".node", ".mjs", ".cjs", ".mts", ".cts"],
-        "tryExtensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".node", ".mjs", ".cjs", ".mts", ".cts"]
+      node: {
+        paths: ["/src"],
+        extensions: [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx",
+          ".json",
+          ".node",
+          ".mjs",
+          ".cjs",
+          ".mts",
+          ".cts",
+        ],
+        tryExtensions: [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx",
+          ".json",
+          ".node",
+          ".mjs",
+          ".cjs",
+          ".mts",
+          ".cts",
+        ],
       },
       "import/parsers": {
-        "@typescript-eslint/parser": [".ts", ".tsx"]
+        "@typescript-eslint/parser": [".ts", ".tsx"],
       },
       "import/resolver": {
-        "node": {
-          "extensions": [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".mts", ".cts", ".node"]
+        node: {
+          extensions: [
+            ".js",
+            ".jsx",
+            ".mjs",
+            ".cjs",
+            ".ts",
+            ".tsx",
+            ".mts",
+            ".cts",
+            ".node",
+          ],
         },
-        "typescript": {
-          "alwaysTryTypes": true
+        typescript: {
+          alwaysTryTypes: true,
         },
-        "webpack": true
+        webpack: true,
       },
-      "jest": {
-        "version": 29
+      jest: {
+        version: 29,
       },
-      "react": {
-        "version": "18.2.0"
-      }
+      react: {
+        version: "18.2.0",
+      },
     },
   },
   {
@@ -118,7 +150,7 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     languageOptions: {
       parserOptions: {
-        project: "/tsconfig.json"
+        project: "/tsconfig.json",
       },
     },
     rules: {
@@ -138,8 +170,8 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
       "no-this-before-super": "off",
       "no-undef": "off",
       "no-unreachable": "off",
-      "no-unsafe-negation": "off"
-    }
+      "no-unsafe-negation": "off",
+    },
   },
   {
     // JavaScript-specific rules
@@ -191,16 +223,25 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
       // https://github.com/typescript-eslint/typescript-eslint/blob/e44a1a280f08f9fd0d29f74e5c3e73b7b64a9606/eslint.config.mjs#L304
       "deprecation/deprecation": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/internal/no-poorly-typed-ts-props": "off"
-    }
+      "@typescript-eslint/internal/no-poorly-typed-ts-props": "off",
+    },
   },
   {
     // JSON-specific rules
-    files: ["**/*.js", "**/*.jsx", "**/*.mjs", "**/*.cjs", "**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    files: [
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mts",
+      "**/*.cts",
+    ],
     rules: {
-      "json/json": "off"
-    }
-  }
+      "json/json": "off",
+    },
+  },
   // JSX with Babel
   // https://www.npmjs.com/package/@babel/eslint-parser
   // "When should I use @babel/eslint-parser?"
@@ -214,7 +255,4 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
   //     "requireConfigFile": false
   //   }
   // }
-    
-]
-
-
+];
