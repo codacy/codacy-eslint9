@@ -24,7 +24,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "@stylistic/eslint-plugin",
-    relativeUrl: "/eslint-stylistic/eslint-stylistic/main/"
+    relativeUrl: "/eslint-stylistic/eslint-stylistic/main/docs/"
   },
   {
     packageName: "@tanstack/eslint-plugin-query",
@@ -32,7 +32,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "@typescript-eslint/eslint-plugin",
-    relativeUrl: "/typescript-eslint/typescript-eslint/v8/packages/eslint-plugin/docs/rules/"
+    relativeUrl: "/typescript-eslint/typescript-eslint/main/packages/eslint-plugin/docs/rules/"
   },
   {
     packageName: "eslint-plugin-backbone",
@@ -146,7 +146,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "eslint-plugin-perfectionist",
-    relativeUrl: "/azat-io/eslint-plugin-perfectionist/main/docs/rules/"
+    relativeUrl: "/azat-io/eslint-plugin-perfectionist/main/docs/content/rules/"
   },
   {
     packageName: "eslint-plugin-promise",

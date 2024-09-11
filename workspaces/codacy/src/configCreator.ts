@@ -183,6 +183,9 @@ function convertPatternsToEslintRules (patterns: Pattern[]): {
   return fromPairs(pairs)
 }
 
+
+//TODO: Check supported Configuratio File
+// https://eslint.org/docs/latest/use/configure/configuration-files
 function existsEslintConfigInRepoRoot (srcDirPath: string): string | undefined {
   const filenames = [
     ".eslint.config.js",
