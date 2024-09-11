@@ -157,7 +157,7 @@ function getPatternsUniquePrefixes (patterns: Pattern[]) {
 }
 
 function convertPatternsToEslintRules (patterns: Pattern[]): {
-  [name: string]: Linter.RuleLevel | Linter.RuleLevelAndOptions;
+  [name: string]: Linter.RuleSeverity | Linter.RuleSeverityAndOptions;
 } {
   const pairs = patterns.map((pattern: Pattern) => {
     const patternId = patternIdToEslint(pattern.patternId)

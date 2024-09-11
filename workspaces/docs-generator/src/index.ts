@@ -24,7 +24,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "@stylistic/eslint-plugin",
-    relativeUrl: "/eslint-stylistic/eslint-stylistic/main/docs/"
+    relativeUrl: "/eslint-stylistic/eslint-stylistic/main/"
   },
   {
     packageName: "@tanstack/eslint-plugin-query",
@@ -72,7 +72,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "eslint-plugin-i18next",
-    relativeUrl: "/edvardchen/eslint-plugin-i18next/next/docs/rules/"
+    relativeUrl: "/edvardchen/eslint-plugin-i18next/main/docs/rules/"
   },
   {
     packageName: "eslint-plugin-import",
@@ -198,7 +198,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "eslint-plugin-sonarjs",
-    relativeUrl: "/SonarSource/eslint-plugin-sonarjs/master/docs/rules/",
+    relativeUrl: "/SonarSource/eslint-plugin-sonarjs/blob/master/docs/rules/",
     versionPrefix: ""
   },
   {
