@@ -184,7 +184,7 @@ function convertPatternsToEslintRules (patterns: Pattern[]): {
 }
 
 
-//TODO: Check supported Configuratio File
+//TODO: Check supported Configuration File
 // https://eslint.org/docs/latest/use/configure/configuration-files
 function existsEslintConfigInRepoRoot (srcDirPath: string): string | undefined {
   const filenames = [
