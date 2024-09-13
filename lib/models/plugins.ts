@@ -94,7 +94,8 @@ const packageNames: string[] = [
   "eslint-plugin-security",
   "eslint-plugin-security-node",
   "eslint-plugin-simple-import-sort",
-  "eslint-plugin-sonarjs",
+// Not yet supported by ESLint 9: https://www.npmjs.com/package/eslint-plugin-sonarjs?activeTab=readme
+//  "eslint-plugin-sonarjs",
   "eslint-plugin-sort",
   "eslint-plugin-sort-destructure-keys",
   "eslint-plugin-sort-imports-es6-autofix",
