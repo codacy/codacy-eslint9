@@ -70,6 +70,10 @@
   {
     "parameters": [
       {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      },
+      {
         "name": "requireForBlockBody",
         "description": "requireForBlockBody"
       }
@@ -111,6 +115,10 @@
   },
   {
     "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      },
       {
         "name": "allowSingleLine",
         "description": "allowSingleLine"
@@ -211,6 +219,10 @@
   },
   {
     "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      },
       {
         "name": "enforceForClassMembers",
         "description": "enforceForClassMembers"
@@ -496,6 +508,10 @@
   {
     "parameters": [
       {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      },
+      {
         "name": "SwitchCase",
         "description": "SwitchCase"
       },
@@ -625,6 +641,10 @@
   },
   {
     "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      },
       {
         "name": "exceptAfterSingleLine",
         "description": "exceptAfterSingleLine"
@@ -2713,6 +2733,10 @@
   },
   {
     "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      },
       {
         "name": "functionPrototypeMethods",
         "description": "functionPrototypeMethods"
@@ -6479,7 +6503,20 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "paths",
+        "description": "paths"
+      },
+      {
+        "name": "services",
+        "description": "services"
+      },
+      {
+        "name": "message",
+        "description": "message"
+      }
+    ],
     "patternId": "ember_no-restricted-service-injections",
     "title": "Ember: No restricted service injections",
     "description": "Disallow injecting certain services under certain paths",
@@ -8525,12 +8562,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "unnamedParam",
-        "description": "unnamedParam"
-      }
-    ],
+    "parameters": [],
     "patternId": "flowtype_arrow-parens",
     "title": "Flowtype: Arrow parens",
     "description": "Require parentheses around arrow function arguments",
@@ -11320,7 +11352,16 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "pathPattern",
+        "description": "pathPattern"
+      },
+      {
+        "name": "order",
+        "description": "order"
+      }
+    ],
     "patternId": "jsonc_sort-array-values",
     "title": "Jsonc: Sort array values",
     "description": "Require array values to be sorted",

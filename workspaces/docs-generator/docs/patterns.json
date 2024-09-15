@@ -76,6 +76,10 @@
       "category": "CodeStyle",
       "parameters": [
         {
+          "name": "unnamedParam",
+          "default": "always"
+        },
+        {
           "name": "requireForBlockBody",
           "default": false
         }
@@ -117,6 +121,10 @@
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "1tbs"
+        },
         {
           "name": "allowSingleLine",
           "default": false
@@ -217,6 +225,10 @@
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "never"
+        },
         {
           "name": "enforceForClassMembers",
           "default": true
@@ -502,6 +514,10 @@
       "category": "CodeStyle",
       "parameters": [
         {
+          "name": "unnamedParam",
+          "default": 2
+        },
+        {
           "name": "SwitchCase",
           "default": 0
         },
@@ -631,6 +647,10 @@
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "always"
+        },
         {
           "name": "exceptAfterSingleLine",
           "default": false
@@ -2719,6 +2739,10 @@
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "outside"
+        },
         {
           "name": "functionPrototypeMethods",
           "default": false
@@ -6500,7 +6524,24 @@
       "patternId": "ember_no-restricted-service-injections",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "paths",
+          "default": [
+            ""
+          ]
+        },
+        {
+          "name": "services",
+          "default": [
+            ""
+          ]
+        },
+        {
+          "name": "message",
+          "default": "Injecting this service is not allowed from this file."
+        }
+      ],
       "enabled": false
     },
     {
@@ -8523,12 +8564,7 @@
       "patternId": "flowtype_arrow-parens",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "unnamedParam",
-          "default": "always"
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -11176,7 +11212,18 @@
       "patternId": "jsonc_sort-array-values",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "pathPattern",
+          "default": "^$"
+        },
+        {
+          "name": "order",
+          "default": {
+            "type": "asc"
+          }
+        }
+      ],
       "enabled": false
     },
     {
@@ -15987,7 +16034,7 @@
         },
         {
           "name": "langDir",
-          "default": "/Users/stefan/Documents/Projects/Codacy-app/codacy-eslint9/node_modules/eslint-plugin-spellcheck/rules/utils/dicts"
+          "default": "/Users/heliorocha/dev/codacy/codacy-eslint9/node_modules/eslint-plugin-spellcheck/rules/utils/dicts"
         },
         {
           "name": "skipWords",

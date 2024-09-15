@@ -79,6 +79,7 @@ export class DocsGenerator {
     patternId: string,
     schema: JSONSchema4 | JSONSchema4[] | undefined
   ): ParameterSpec[] {
+    console.log({ patternId, "schema": JSON.stringify(schema) })
     const unnamedParameterValue = rulesToUnnamedParametersDefaults.get(patternId)
     const unnamedParameter = unnamedParameterValue
       ? new ParameterSpec("unnamedParam", unnamedParameterValue)
@@ -87,7 +88,7 @@ export class DocsGenerator {
     const namedParameters = schema
       ? DocsGenerator.fromEslintSchemaToParameters(patternId, schema)
       : undefined
-
+    console.log({ unnamedParameter, namedParameters, unnamedParameterValue })
     if (namedParameters && unnamedParameter)
       return [unnamedParameter, ...namedParameters]
     if (namedParameters)
@@ -201,14 +202,21 @@ export class DocsGenerator {
         if (schema.anyOf) {
           schema.anyOf.forEach(item => flattenSchema(item, result));
         } else {
-          result.push(schema);
+          if (schema.items) {
+            // Check for nested items in arrays
+            flattenSchema(schema.items, result);
+          } else {
+            result.push(schema);
+          }
         }
       }
       return result;
     };
-    const flattenedSchema = flattenSchema(schema);
-    const objects = flattenedSchema.filter(value => value && value.properties);
 
+    const flattenedSchema = flattenSchema(schema);
+    console.log({ flattenedSchema })
+    const objects = flattenedSchema.filter(value => value && value.properties);
+    console.log({ "flattenedSchema": JSON.stringify(flattenedSchema), "objects": JSON.stringify(objects) })
     return Array.isArray(objects) ? fromSchemaArray(patternId, objects) : []
   }
 
@@ -223,10 +231,10 @@ export class DocsGenerator {
   }
 
   async createPatternDescriptionFile(
-      plugin: Plugin,
-      packageName: string,
-      pattern: string,
-      patternDocFilename: string
+    plugin: Plugin,
+    packageName: string,
+    pattern: string,
+    patternDocFilename: string
   ): Promise<void> {
     const docsInfo = this.docs[packageName];
     const rejectOnError = docsInfo.rejectOnError;
@@ -243,9 +251,9 @@ export class DocsGenerator {
     ].includes(pattern);
 
     let url = (
-        (docsInfo.versionPrefix !== false && docsInfo.versionPrefix !== undefined)
-            ? docsInfo.baseUrl?.href.replace(/main|master/, `${docsInfo.versionPrefix}${pluginVersion}`)
-            : docsInfo.baseUrl?.href
+      (docsInfo.versionPrefix !== false && docsInfo.versionPrefix !== undefined)
+        ? docsInfo.baseUrl?.href.replace(/main|master/, `${docsInfo.versionPrefix}${pluginVersion}`)
+        : docsInfo.baseUrl?.href
     ) + patternDocFilename;
 
     // Adjust the URL for specific patterns
@@ -257,9 +265,9 @@ export class DocsGenerator {
     try {
       const response = (await axios.get(url)).data as string;
       const text: string =
-          docsInfo.baseUrl
-              ? this.inlineLinkedMarkdownFiles(response, docsInfo.baseUrl.href)
-              : response;
+        docsInfo.baseUrl
+          ? this.inlineLinkedMarkdownFiles(response, docsInfo.baseUrl.href)
+          : response;
       const filePath = `${this.docsDescriptionDirectory}/${patternIdToCodacy((plugin.name !== "eslint" ? plugin.name + "/" : "") + pattern)}.md`;
 
       await writeFile(filePath, plugin.name === "@typescript-eslint" ? this.convertMdxToMd(text) : text);

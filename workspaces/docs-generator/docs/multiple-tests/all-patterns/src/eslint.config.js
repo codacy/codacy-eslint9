@@ -1,10 +1,18 @@
+const rxjs = require("eslint-plugin-rxjs")
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsEslint = require('typescript-eslint');
+
 module.exports = [
   {
-    "parserOptions": {
-      "project": [
-        "./tsconfig.json"
-      ],
-      "tsconfigRootDir": __dirname
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+      }
+    },
+    plugins: {
+      rxjs,
+      '@typescript-eslint': tsPlugin,
     },
     "rules": {
       "@typescript-eslint/await-thenable": "off",
