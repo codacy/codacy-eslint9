@@ -188,9 +188,9 @@ function convertPatternsToEslintRules (patterns: Pattern[]): {
 // https://eslint.org/docs/latest/use/configure/configuration-files
 function existsEslintConfigInRepoRoot (srcDirPath: string): string | undefined {
   const filenames = [
-    ".eslint.config.js",
-    ".eslint.config.mjs",
-    ".eslint.config.cjs"
+    "eslint.config.js",
+    "eslint.config.mjs",
+    "eslint.config.cjs"
   ]
   return filenames.find(filename => existsSync(srcDirPath + path.sep + filename))
 }
