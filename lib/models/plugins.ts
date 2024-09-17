@@ -20,7 +20,7 @@ export interface Plugin {
 
 const packageNames: string[] = [
   "@angular-eslint/eslint-plugin",
-  "@babel/eslint-plugin",
+ // "@babel/eslint-plugin", no rule description found
   "@lwc/eslint-plugin-lwc",
 //  "@salesforce/eslint-plugin-aura",
   "@salesforce/eslint-plugin-lightning",
@@ -68,23 +68,23 @@ const packageNames: string[] = [
   "eslint-plugin-mocha",
 //  "eslint-plugin-monorepo", deprecated
   "eslint-plugin-n",
-  "eslint-plugin-no-only-tests",
+//  "eslint-plugin-no-only-tests", no rule description
   "eslint-plugin-no-unsanitized",
   "eslint-plugin-nuxt",
   "eslint-plugin-perfectionist",
   "eslint-plugin-playwright",
 //  "eslint-plugin-prefer-arrow", deprecated
-  "eslint-plugin-prefer-object-spread",
+//  "eslint-plugin-prefer-object-spread", deprecated
 //  "eslint-plugin-prettier", no rule description
 //  "eslint-plugin-prettier-vue", no rule description
   "eslint-plugin-promise",
 //  "eslint-plugin-ramda", No rule description, only implementation
   "eslint-plugin-react",
-  "eslint-plugin-react-hooks",
+//  "eslint-plugin-react-hooks", no rule description found
   "eslint-plugin-react-native",
   "eslint-plugin-react-perf",
   "eslint-plugin-react-redux",
-  "eslint-plugin-react-refresh",
+//  "eslint-plugin-react-refresh", no rule description
   "eslint-plugin-redux-saga",
   "eslint-plugin-regexp",
 //  "eslint-plugin-relay",
@@ -99,15 +99,15 @@ const packageNames: string[] = [
   "eslint-plugin-sort-destructure-keys",
 //  "eslint-plugin-sort-imports-es6-autofix",
 //  "eslint-plugin-sort-keys-custom-order-fix", deprecated
-  "eslint-plugin-sort-keys-fix",
-  "eslint-plugin-spellcheck",
+//  "eslint-plugin-sort-keys-fix", deprecated
+//  "eslint-plugin-spellcheck", deprecated
   "eslint-plugin-storybook",
   "eslint-plugin-suitescript",
   "eslint-plugin-tailwindcss",
   "eslint-plugin-test-selectors",
   "eslint-plugin-testing-library",
-  "eslint-plugin-tsdoc",
-  "eslint-plugin-turbo",
+//  "eslint-plugin-tsdoc", no rule description
+//  "eslint-plugin-turbo", TO-DO: Build a rule parser for this plugin
   "eslint-plugin-typescript-sort-keys",
   "eslint-plugin-unicorn",
   "eslint-plugin-unused-imports",
