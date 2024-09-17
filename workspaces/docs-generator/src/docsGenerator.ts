@@ -79,7 +79,7 @@ export class DocsGenerator {
     patternId: string,
     schema: JSONSchema4 | JSONSchema4[] | undefined
   ): ParameterSpec[] {
-    console.log({ patternId, "schema": JSON.stringify(schema) })
+//    console.log({ patternId, "schema": JSON.stringify(schema) })
     const unnamedParameterValue = rulesToUnnamedParametersDefaults.get(patternId)
     const unnamedParameter = unnamedParameterValue
       ? new ParameterSpec("unnamedParam", unnamedParameterValue)
@@ -88,7 +88,7 @@ export class DocsGenerator {
     const namedParameters = schema
       ? DocsGenerator.fromEslintSchemaToParameters(patternId, schema)
       : undefined
-    console.log({ unnamedParameter, namedParameters, unnamedParameterValue })
+ //   console.log({ unnamedParameter, namedParameters, unnamedParameterValue })
     if (namedParameters && unnamedParameter)
       return [unnamedParameter, ...namedParameters]
     if (namedParameters)
@@ -214,9 +214,9 @@ export class DocsGenerator {
     };
 
     const flattenedSchema = flattenSchema(schema);
-    console.log({ flattenedSchema })
+ //   console.log({ flattenedSchema })
     const objects = flattenedSchema.filter(value => value && value.properties);
-    console.log({ "flattenedSchema": JSON.stringify(flattenedSchema), "objects": JSON.stringify(objects) })
+ //   console.log({ "flattenedSchema": JSON.stringify(flattenedSchema), "objects": JSON.stringify(objects) })
     return Array.isArray(objects) ? fromSchemaArray(patternId, objects) : []
   }
 

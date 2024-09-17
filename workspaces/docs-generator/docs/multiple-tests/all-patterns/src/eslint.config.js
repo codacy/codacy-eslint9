@@ -1,4 +1,3 @@
-const rxjs = require("eslint-plugin-rxjs")
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
 const tsEslint = require('typescript-eslint');
 
@@ -11,7 +10,6 @@ module.exports = [
       }
     },
     plugins: {
-      rxjs,
       '@typescript-eslint': tsPlugin,
     },
     "rules": {
