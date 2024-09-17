@@ -3261,79 +3261,9 @@
   },
   {
     "parameters": [],
-    "patternId": "@lwc_lwc_no-restricted-browser-globals-during-ssr",
-    "title": "@lwc: [Lwc] No restricted browser globals during ssr",
-    "description": "Disallow access to global browser APIs during SSR",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "@lwc_lwc_no-unsupported-ssr-properties",
     "title": "@lwc: [Lwc] No unsupported ssr properties",
     "description": "Disallow access of unsupported properties in SSR",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_no-node-env-in-ssr",
-    "title": "@lwc: [Lwc] No node env in ssr",
-    "description": "Disallow access of process.env.NODE_ENV in SSR",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_aura-api",
-    "title": "@salesforce: [Aura] Aura api",
-    "description": "Validate Aura APIs",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_ecma-intrinsics",
-    "title": "@salesforce: [Aura] Ecma intrinsics",
-    "description": "Validate JavaScript intrinsic APIs",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_getevt-markup-prefix",
-    "title": "@salesforce: [Aura] Getevt markup prefix",
-    "description": "Verify the presence of the 'markup://' prefix for events accessed via $A.getEvt()",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_no-deprecated-aura-error",
-    "title": "@salesforce: [Aura] No deprecated aura error",
-    "description": "Prevent usage of $A.error",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_no-deprecated-component-creation",
-    "title": "@salesforce: [Aura] No deprecated component creation",
-    "description": "Prevent usage of deprecated component creation methods",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_no-deprecated-event-creation",
-    "title": "@salesforce: [Aura] No deprecated event creation",
-    "description": "Prevent usage of deprecated event creation methods",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_secure-document",
-    "title": "@salesforce: [Aura] Secure document",
-    "description": "Validate secure document public APIs",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_aura_secure-window",
-    "title": "@salesforce: [Aura] Secure window",
-    "description": "Validate secure window public APIs",
     "timeToFix": 5
   },
   {
@@ -5577,118 +5507,6 @@
   },
   {
     "parameters": [],
-    "patternId": "awscdk_require-bucket-encryption",
-    "title": "Awscdk: Require bucket encryption",
-    "description": "Encryption should be enabled for all S3 buckets",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_require-bucket-private",
-    "title": "Awscdk: Require bucket private",
-    "description": "Buckets should not be public",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-public-ingress",
-    "title": "Awscdk: No public ingress",
-    "description": "Security Group rules should not allow access from anywhere",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-iam-star-actions",
-    "title": "Awscdk: No iam star actions",
-    "description": "Buckets should not be public",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-iam-admin-permissions",
-    "title": "Awscdk: No iam admin permissions",
-    "description": "Buckets should not be public",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-policy-allow-kms-decrypt",
-    "title": "Awscdk: No policy allow kms decrypt",
-    "description": "Buckets should not be public",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_require-bucket-ssl",
-    "title": "Awscdk: Require bucket ssl",
-    "description": "This checks whether S3 buckets have policies that require requests to use Secure Socket Layer (SSL)",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_require-dynamodb-ptr",
-    "title": "Awscdk: Require dynamodb ptr",
-    "description": "DynamoDB tables should have point-in-time recovery enabled.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_require-sns-topic-encryption",
-    "title": "Awscdk: Require sns topic encryption",
-    "description": "SNS Topics should be encrypted at rest using AWS KMS",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_require-dynamodb-autoscale",
-    "title": "Awscdk: Require dynamodb autoscale",
-    "description": "This control passes if the table uses either on-demand capacity mode or provisioned mode\n      with auto scaling configured.\n\n      Scaling capacity with demand avoids throttling exceptions, which helps to maintain availability of your applications.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-rds-public-access",
-    "title": "Awscdk: No rds public access",
-    "description": "AWS RDS instances should not be publicly available",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-kms-key-delete",
-    "title": "Awscdk: No kms key delete",
-    "description": "KMS Keys should not be scheduled for deletion",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-s3-public-write",
-    "title": "Awscdk: No s3 public write",
-    "description": "Buckets should not allow public write access",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-s3-public-read",
-    "title": "Awscdk: No s3 public read",
-    "description": "Buckets should not allow public read access",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_require-cloudfront-default-root-object",
-    "title": "Awscdk: Require cloudfront default root object",
-    "description": "This control checks whether an Amazon CloudFront distribution is configured to return a specific object that is the default root object.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "awscdk_no-redshift-public-access",
-    "title": "Awscdk: No redshift public access",
-    "description": "AWS Redshift instances should not be publicly available",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "backbone_collection-model",
     "title": "Backbone: Collection model",
     "description": "Require all collections to declare model",
@@ -5699,13 +5517,6 @@
     "patternId": "backbone_defaults-on-top",
     "title": "Backbone: Defaults on top",
     "description": "Require defaults to be on top of the model",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "backbone_event-scope",
-    "title": "Backbone: Event scope",
-    "description": "Verify that scope is passed into event handlers",
     "timeToFix": 5
   },
   {
@@ -5773,13 +5584,6 @@
   },
   {
     "parameters": [],
-    "patternId": "backbone_no-silent",
-    "title": "Backbone: No silent",
-    "description": "Prevent using silent option in functions that cause events",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "backbone_no-view-collection-models",
     "title": "Backbone: No view collection models",
     "description": "Prevent access to collection's models property inside views",
@@ -5815,147 +5619,9 @@
   },
   {
     "parameters": [],
-    "patternId": "cdk_ban-lambda-runtimes",
-    "title": "Cdk: Ban lambda runtimes",
-    "description": "Bans specific lambda runtimes from being used",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_ban-reserved-words",
-    "title": "Cdk: Ban reserved words",
-    "description": "Bans specific words from being used",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_construct-ctor",
-    "title": "Cdk: Construct ctor",
-    "description": "Ensure a uniform construct constructors signature",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_filename-match-regex",
-    "title": "Cdk: Filename match regex",
-    "description": "Enforces all linted files to match a certain pattern",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_no-static-import",
-    "title": "Cdk: No static import",
-    "description": "Enforce cdk guidelines",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_construct-props-struct-name",
-    "title": "Cdk: Construct props struct name",
-    "description": "Ensure a uniform construct constructors signature",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_public-static-property-all-caps",
-    "title": "Cdk: Public static property all caps",
-    "description": "Enforces all static properties must be named using ALL_CAPS",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_stack-props-struct-name",
-    "title": "Cdk: Stack props struct name",
-    "description": "Ensure a uniform stack constructors signature",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cdk_prefer-type-only-imports",
-    "title": "Cdk: Prefer type only imports",
-    "description": "Enforce type only imports",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "chai-expect_no-inner-compare",
-    "title": "Chai expect: No inner compare",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "chai-expect_no-inner-literal",
-    "title": "Chai expect: No inner literal",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "chai-expect_missing-assertion",
-    "title": "Chai expect: Missing assertion",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "chai-expect_terminating-properties",
-    "title": "Chai expect: Terminating properties",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "enforceForJSX",
-        "description": "enforceForJSX"
-      }
-    ],
-    "patternId": "chai-friendly_no-unused-expressions",
-    "title": "Chai friendly: No unused expressions",
-    "description": "Disallow unused expressions",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "codeceptjs_no-actor-in-scenario",
-    "title": "Codeceptjs: No actor in scenario",
-    "description": "Disallow the use of Actor directly in Scenarios in favor of page objects",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "codeceptjs_no-exclusive-tests",
-    "title": "Codeceptjs: No exclusive tests",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "codeceptjs_no-skipped-tests",
-    "title": "Codeceptjs: No skipped tests",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "codeceptjs_no-pause-in-scenario",
-    "title": "Codeceptjs: No pause in scenario",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "compat_compat",
     "title": "Compat: Compat",
     "description": "Ensure cross-browser API compatibility",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "css-modules_no-unused-class",
-    "title": "Css modules: No unused class",
-    "description": "Checks that you are using all css/scss/less classes",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "css-modules_no-undef-class",
-    "title": "Css modules: No undef class",
-    "description": "Checks that you are using the existent css/scss/less classes",
     "timeToFix": 5
   },
   {
@@ -6031,13 +5697,6 @@
     "patternId": "cypress_no-debug",
     "title": "Cypress: No debug",
     "description": "Disallow using `cy.debug()` calls",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "deprecation_deprecation",
-    "title": "Deprecation: Deprecation",
-    "description": "Do not use deprecated APIs.",
     "timeToFix": 5
   },
   {
@@ -8955,13 +8614,6 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
-    "patternId": "import_newline-after-import",
-    "title": "Import: Newline after import",
-    "description": "Enforce a newline after import statements.",
-    "timeToFix": 5
-  },
-  {
     "parameters": [
       {
         "name": "target",
@@ -9048,20 +8700,6 @@
     "patternId": "import_no-deprecated",
     "title": "Import: No deprecated",
     "description": "Forbid imported names marked with `@deprecated` documentation tag.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "import-alias_import-alias",
-    "title": "Import alias: Import alias",
-    "description": "Restrict imports to path aliases or relative imports limited by a depth",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "import-newlines_enforce",
-    "title": "Import newlines: Enforce",
-    "description": "Enforce multiple lines for import statements past a certain number of items",
     "timeToFix": 5
   },
   {
@@ -9821,13 +9459,6 @@
   },
   {
     "parameters": [],
-    "patternId": "jira-ticket-todo-comment_jira-ticket-todo-comment",
-    "title": "Jira ticket todo comment: Jira ticket todo comment",
-    "description": "Checks TODO comments and informs about missing Jira ticket mentions",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "jsdoc_check-access",
     "title": "Jsdoc: Check access",
     "description": "Checks that `@access` tags have a valid value.",
@@ -10433,132 +10064,6 @@
   },
   {
     "parameters": [],
-    "patternId": "json_*",
-    "title": "Json: *",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_json",
-    "title": "Json: Json",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_unknown",
-    "title": "Json: Unknown",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_comment-not-permitted",
-    "title": "Json: Comment not permitted",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_undefined",
-    "title": "Json: Undefined",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_enum-value-mismatch",
-    "title": "Json: Enum value mismatch",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_unexpected-end-of-comment",
-    "title": "Json: Unexpected end of comment",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_unexpected-end-of-string",
-    "title": "Json: Unexpected end of string",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_unexpected-end-of-number",
-    "title": "Json: Unexpected end of number",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_invalid-unicode",
-    "title": "Json: Invalid unicode",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_invalid-escape-character",
-    "title": "Json: Invalid escape character",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_invalid-character",
-    "title": "Json: Invalid character",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_property-expected",
-    "title": "Json: Property expected",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_comma-expected",
-    "title": "Json: Comma expected",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_colon-expected",
-    "title": "Json: Colon expected",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_value-expected",
-    "title": "Json: Value expected",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_comma-or-close-backet-expected",
-    "title": "Json: Comma or close backet expected",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_comma-or-close-brace-expected",
-    "title": "Json: Comma or close brace expected",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_trailing-comma",
-    "title": "Json: Trailing comma",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_duplicate-key",
-    "title": "Json: Duplicate key",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "json_schema-resolve-error",
-    "title": "Json: Schema resolve error",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "jsonc_array-bracket-newline",
     "title": "Jsonc: Array bracket newline",
     "description": "Enforce line breaks after opening and before closing array brackets",
@@ -10953,30 +10458,6 @@
     "patternId": "jsonc_vue-custom-block_no-parsing-error",
     "title": "Jsonc: [Vue custom block] No parsing error",
     "description": "Disallow parsing errors in Vue custom blocks",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jsx_uses-factory",
-    "title": "Jsx: Uses factory",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jsx_factory-in-scope",
-    "title": "Jsx: Factory in scope",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jsx_mark-used-vars",
-    "title": "Jsx: Mark used vars",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jsx_no-undef",
-    "title": "Jsx: No undef",
     "timeToFix": 5
   },
   {
@@ -12049,18 +11530,6 @@
   },
   {
     "parameters": [],
-    "patternId": "monorepo_no-internal-import",
-    "title": "Monorepo: No internal import",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "monorepo_no-relative-import",
-    "title": "Monorepo: No relative import",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "n_callback-return",
     "title": "N: Callback return",
     "description": "Require `return` statements after callbacks",
@@ -12918,29 +12387,9 @@
   },
   {
     "parameters": [],
-    "patternId": "prefer-arrow_prefer-arrow-functions",
-    "title": "Prefer arrow: Prefer arrow functions",
-    "description": "Prefer arrow functions",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "prefer-object-spread_prefer-object-spread",
     "title": "Prefer object spread: Prefer object spread",
     "description": "Use a spread property instead of Object.assign().",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "prettier_prettier",
-    "title": "Prettier: Prettier",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "prettier-vue_prettier",
-    "title": "Prettier vue: Prettier",
-    "description": "Make your code prettier",
     "timeToFix": 5
   },
   {
@@ -13046,188 +12495,6 @@
     "patternId": "promise_no-multiple-resolved",
     "title": "Promise: No multiple resolved",
     "description": "Disallow creating new promises with paths that resolve multiple times.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_always-simplification",
-    "title": "Ramda: Always simplification",
-    "description": "Detects cases where `always` is redundant",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_any-pass-simplification",
-    "title": "Ramda: Any pass simplification",
-    "description": "Detects when `anyPass` with complements can be replaced by complement of `allPass`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_both-simplification",
-    "title": "Ramda: Both simplification",
-    "description": "`both` simplifications, like replacing negation by `either`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_complement-simplification",
-    "title": "Ramda: Complement simplification",
-    "description": "`complement` simplifications, like when the negation should be replaced by an assertion",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_compose-pipe-style",
-    "title": "Ramda: Compose pipe style",
-    "description": "Enforces `compose` for single line expression and `pipe` for multiline",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_compose-simplification",
-    "title": "Ramda: Compose simplification",
-    "description": "Detects when there are better functions that behave the same as `compose`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_cond-simplification",
-    "title": "Ramda: Cond simplification",
-    "description": "`cond` simplification, like suggesting ifElse when too few parameters",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_either-simplification",
-    "title": "Ramda: Either simplification",
-    "description": "`either` simplifications, like replacing negation by `both`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_eq-by-simplification",
-    "title": "Ramda: Eq by simplification",
-    "description": "Detects when `eqBy(prop(_))` can be replaced by `eqProps(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_filter-simplification",
-    "title": "Ramda: Filter simplification",
-    "description": "`filter` simplifications, like `filter(complement(_))` to `reject(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_if-else-simplification",
-    "title": "Ramda: If else simplification",
-    "description": "`ifElse` simplifications, like replacing by `when` or `unless`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_map-simplification",
-    "title": "Ramda: Map simplification",
-    "description": "`map` simplifications, like `map(prop(_))` to `pluck(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_merge-simplification",
-    "title": "Ramda: Merge simplification",
-    "description": "`merge` simplifications, like suggesting assoc for one element",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_no-redundant-and",
-    "title": "Ramda: No redundant and",
-    "description": "Forbid using `and` in full call",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_no-redundant-not",
-    "title": "Ramda: No redundant not",
-    "description": "Forbid using `not` in call",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_no-redundant-or",
-    "title": "Ramda: No redundant or",
-    "description": "Forbid using `or` in full call",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_pipe-simplification",
-    "title": "Ramda: Pipe simplification",
-    "description": "Detects when there are better functions that behave the same as `pipe`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_prefer-both-either",
-    "title": "Ramda: Prefer both either",
-    "description": "Enforces using `both`/`either` instead of `allPass`/`anyPass` with a list of only two predicates",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_prefer-complement",
-    "title": "Ramda: Prefer complement",
-    "description": "Enforces using `complement` instead of compositions using `not`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_prefer-ramda-boolean",
-    "title": "Ramda: Prefer ramda boolean",
-    "description": "Suggests using Ramda T and F functions instead of explicit versions",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_prop-satisfies-simplification",
-    "title": "Ramda: Prop satisfies simplification",
-    "description": "`propSatisfies` simplifications, like `propSatisfies(equals(_))` to `propEq(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_reduce-simplification",
-    "title": "Ramda: Reduce simplification",
-    "description": "`reduce` simplifications, like `reduce(add)` to `sum`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_reject-simplification",
-    "title": "Ramda: Reject simplification",
-    "description": "`reject` simplifications, like `reject(complement(_))` to `filter(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_set-simplification",
-    "title": "Ramda: Set simplification",
-    "description": "`set` simplifications, like `set(lensProp(_))` to `assoc(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_unless-simplification",
-    "title": "Ramda: Unless simplification",
-    "description": "`unless` simplifications, like `unless(complement(_))` to `when(_)`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "ramda_when-simplification",
-    "title": "Ramda: When simplification",
-    "description": "`when` simplifications, like `when(complement(_))` to `unless(_)`",
     "timeToFix": 5
   },
   {
@@ -14827,66 +14094,6 @@
   },
   {
     "parameters": [],
-    "patternId": "relay_graphql-syntax",
-    "title": "Relay: Graphql syntax",
-    "description": "Validates the syntax of graphql`...` templates.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_compat-uses-vars",
-    "title": "Relay: Compat uses vars",
-    "description": "Relay Compat transforms fragment spreads from `...Container_foo` to `Container.getFragment('foo')`. This makes ESLint aware of this.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_graphql-naming",
-    "title": "Relay: Graphql naming",
-    "description": "Validates naming conventions of graphql tags",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_generated-flow-types",
-    "title": "Relay: Generated flow types",
-    "description": "Validates usage of RelayModern generated flow types",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_no-future-added-value",
-    "title": "Relay: No future added value",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_unused-fields",
-    "title": "Relay: Unused fields",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_must-colocate-fragment-spreads",
-    "title": "Relay: Must colocate fragment spreads",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_function-required-argument",
-    "title": "Relay: Function required argument",
-    "description": "Validates that the second argument is passed to relay functions.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "relay_hook-required-argument",
-    "title": "Relay: Hook required argument",
-    "description": "Validates that the second argument is passed to relay hooks.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "security_detect-unsafe-regex",
     "title": "Security: Detect unsafe regex",
     "description": "Detects potentially unsafe regular expressions, which may take a very long time to run, blocking the event loop.",
@@ -15138,20 +14345,6 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
-    "patternId": "simple-import-sort_imports",
-    "title": "Simple import sort: Imports",
-    "description": "Automatically sort imports.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "simple-import-sort_exports",
-    "title": "Simple import sort: Exports",
-    "description": "Automatically sort exports.",
-    "timeToFix": 5
-  },
-  {
     "parameters": [
       {
         "name": "caseSensitive",
@@ -15306,33 +14499,6 @@
     "patternId": "sort-destructure-keys_sort-destructure-keys",
     "title": "Sort destructure keys: Sort destructure keys",
     "description": "Require object destructure keys to be sorted",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "ignoreCase",
-        "description": "ignoreCase"
-      },
-      {
-        "name": "memberSyntaxSortOrder",
-        "description": "memberSyntaxSortOrder"
-      },
-      {
-        "name": "ignoreMemberSort",
-        "description": "ignoreMemberSort"
-      }
-    ],
-    "patternId": "sort-imports-es6-autofix_sort-imports-es6",
-    "title": "Sort imports es6 autofix: Sort imports es6",
-    "description": "Enforce sorted import declarations within modules",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "sort-keys-custom-order-fix_sort-keys-custom-order-fix",
-    "title": "Sort keys custom order fix: Sort keys custom order fix",
-    "description": "Require object keys to be sorted",
     "timeToFix": 5
   },
   {
@@ -18955,12 +18121,6 @@
   },
   {
     "parameters": [],
-    "patternId": "xss_no-mixed-html",
-    "title": "Xss: No mixed html",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "yml_block-mapping-colon-indicator-newline",
     "title": "Yml: Block mapping colon indicator newline",
     "description": "Enforce consistent line breaks after `:` indicator",
@@ -19176,444 +18336,6 @@
     "patternId": "yml_vue-custom-block_no-parsing-error",
     "title": "Yml: [Vue custom block] No parsing error",
     "description": "Disallow parsing errors in Vue custom blocks",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_concat",
-    "title": "You dont need lodash underscore: Concat",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_drop",
-    "title": "You dont need lodash underscore: Drop",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_drop-right",
-    "title": "You dont need lodash underscore: Drop right",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_index-of",
-    "title": "You dont need lodash underscore: Index of",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_join",
-    "title": "You dont need lodash underscore: Join",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_last",
-    "title": "You dont need lodash underscore: Last",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_last-index-of",
-    "title": "You dont need lodash underscore: Last index of",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_reverse",
-    "title": "You dont need lodash underscore: Reverse",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_fill",
-    "title": "You dont need lodash underscore: Fill",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_find",
-    "title": "You dont need lodash underscore: Find",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_detect",
-    "title": "You dont need lodash underscore: Detect",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_first",
-    "title": "You dont need lodash underscore: First",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_find-index",
-    "title": "You dont need lodash underscore: Find index",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-array",
-    "title": "You dont need lodash underscore: Is array",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_each",
-    "title": "You dont need lodash underscore: Each",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_for-each",
-    "title": "You dont need lodash underscore: For each",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_every",
-    "title": "You dont need lodash underscore: Every",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_all",
-    "title": "You dont need lodash underscore: All",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_filter",
-    "title": "You dont need lodash underscore: Filter",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_select",
-    "title": "You dont need lodash underscore: Select",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_map",
-    "title": "You dont need lodash underscore: Map",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_collect",
-    "title": "You dont need lodash underscore: Collect",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_reduce",
-    "title": "You dont need lodash underscore: Reduce",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_inject",
-    "title": "You dont need lodash underscore: Inject",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_foldl",
-    "title": "You dont need lodash underscore: Foldl",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_reduce-right",
-    "title": "You dont need lodash underscore: Reduce right",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_foldr",
-    "title": "You dont need lodash underscore: Foldr",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_size",
-    "title": "You dont need lodash underscore: Size",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_some",
-    "title": "You dont need lodash underscore: Some",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_any",
-    "title": "You dont need lodash underscore: Any",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_includes",
-    "title": "You dont need lodash underscore: Includes",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_contains",
-    "title": "You dont need lodash underscore: Contains",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_slice",
-    "title": "You dont need lodash underscore: Slice",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_take-right",
-    "title": "You dont need lodash underscore: Take right",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_bind",
-    "title": "You dont need lodash underscore: Bind",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-finite",
-    "title": "You dont need lodash underscore: Is finite",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-integer",
-    "title": "You dont need lodash underscore: Is integer",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-nan",
-    "title": "You dont need lodash underscore: Is nan",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-nil",
-    "title": "You dont need lodash underscore: Is nil",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-null",
-    "title": "You dont need lodash underscore: Is null",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-undefined",
-    "title": "You dont need lodash underscore: Is undefined",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_keys",
-    "title": "You dont need lodash underscore: Keys",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_extend-own",
-    "title": "You dont need lodash underscore: Extend own",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_assign",
-    "title": "You dont need lodash underscore: Assign",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_values",
-    "title": "You dont need lodash underscore: Values",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_entries",
-    "title": "You dont need lodash underscore: Entries",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_to-pairs",
-    "title": "You dont need lodash underscore: To pairs",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_pairs",
-    "title": "You dont need lodash underscore: Pairs",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_get",
-    "title": "You dont need lodash underscore: Get",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_split",
-    "title": "You dont need lodash underscore: Split",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_starts-with",
-    "title": "You dont need lodash underscore: Starts with",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_ends-with",
-    "title": "You dont need lodash underscore: Ends with",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_to-lower",
-    "title": "You dont need lodash underscore: To lower",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_to-upper",
-    "title": "You dont need lodash underscore: To upper",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_trim",
-    "title": "You dont need lodash underscore: Trim",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_pad-start",
-    "title": "You dont need lodash underscore: Pad start",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_pad-end",
-    "title": "You dont need lodash underscore: Pad end",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_repeat",
-    "title": "You dont need lodash underscore: Repeat",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_uniq",
-    "title": "You dont need lodash underscore: Uniq",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_replace",
-    "title": "You dont need lodash underscore: Replace",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_omit",
-    "title": "You dont need lodash underscore: Omit",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_flatten",
-    "title": "You dont need lodash underscore: Flatten",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_throttle",
-    "title": "You dont need lodash underscore: Throttle",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-string",
-    "title": "You dont need lodash underscore: Is string",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_cast-array",
-    "title": "You dont need lodash underscore: Cast array",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_clone-deep",
-    "title": "You dont need lodash underscore: Clone deep",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-function",
-    "title": "You dont need lodash underscore: Is function",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_union-by",
-    "title": "You dont need lodash underscore: Union by",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_capitalize",
-    "title": "You dont need lodash underscore: Capitalize",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-date",
-    "title": "You dont need lodash underscore: Is date",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_defaults",
-    "title": "You dont need lodash underscore: Defaults",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_is-array-buffer",
-    "title": "You dont need lodash underscore: Is array buffer",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "you-dont-need-lodash-underscore_head",
-    "title": "You dont need lodash underscore: Head",
     "timeToFix": 5
   }
 ]

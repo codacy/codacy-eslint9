@@ -29,14 +29,14 @@ const packageNames: string[] = [
   "@tanstack/eslint-plugin-query",
   "@typescript-eslint/eslint-plugin",
   "eslint",
-  "eslint-plugin-awscdk",
+//  "eslint-plugin-awscdk", no rule description
   "eslint-plugin-backbone",
-  "eslint-plugin-cdk",
-  "eslint-plugin-chai-expect",
-  "eslint-plugin-chai-friendly",
-  "eslint-plugin-codeceptjs",
+//  "eslint-plugin-cdk", deprecated
+//  "eslint-plugin-chai-expect", no rule description
+//  "eslint-plugin-chai-friendly", no rule description
+//  "eslint-plugin-codeceptjs", deprecated
   "eslint-plugin-compat",
-  "eslint-plugin-css-modules",
+//  "eslint-plugin-css-modules", no rule description
   "eslint-plugin-cypress",
   "eslint-plugin-ember",
   "eslint-plugin-ember-suave",
@@ -49,16 +49,15 @@ const packageNames: string[] = [
   "eslint-plugin-functional",
   "eslint-plugin-i18next",
   "eslint-plugin-import",
-  "eslint-plugin-import-alias",
-  "eslint-plugin-import-newlines",
+//  "eslint-plugin-import-alias",
+//  "eslint-plugin-import-newlines",
   "eslint-plugin-jasmine",
   "eslint-plugin-jest",
   "eslint-plugin-jest-dom",
   "eslint-plugin-jest-extended",
   "eslint-plugin-jest-formatting",
-  "eslint-plugin-jira-ticket-todo-comment",
+//  "eslint-plugin-jira-ticket-todo-comment",
   "eslint-plugin-jsdoc",
-  "eslint-plugin-json",
   "eslint-plugin-jsonc",
 //  "eslint-plugin-jsx",
   "eslint-plugin-jsx-a11y",
@@ -67,19 +66,19 @@ const packageNames: string[] = [
   "eslint-plugin-lodash-fp",
   "eslint-plugin-meteor",
   "eslint-plugin-mocha",
-  "eslint-plugin-monorepo",
+//  "eslint-plugin-monorepo", deprecated
   "eslint-plugin-n",
   "eslint-plugin-no-only-tests",
   "eslint-plugin-no-unsanitized",
   "eslint-plugin-nuxt",
   "eslint-plugin-perfectionist",
   "eslint-plugin-playwright",
-  "eslint-plugin-prefer-arrow",
+//  "eslint-plugin-prefer-arrow", deprecated
   "eslint-plugin-prefer-object-spread",
-  "eslint-plugin-prettier",
-  "eslint-plugin-prettier-vue",
+//  "eslint-plugin-prettier", no rule description
+//  "eslint-plugin-prettier-vue", no rule description
   "eslint-plugin-promise",
-  "eslint-plugin-ramda",
+//  "eslint-plugin-ramda", No rule description, only implementation
   "eslint-plugin-react",
   "eslint-plugin-react-hooks",
   "eslint-plugin-react-native",
@@ -93,13 +92,13 @@ const packageNames: string[] = [
 //  "eslint-plugin-rxjs-angular",
   "eslint-plugin-security",
   "eslint-plugin-security-node",
-  "eslint-plugin-simple-import-sort",
+//  "eslint-plugin-simple-import-sort",
 // Not yet supported by ESLint 9: https://www.npmjs.com/package/eslint-plugin-sonarjs?activeTab=readme
 //  "eslint-plugin-sonarjs",
   "eslint-plugin-sort",
   "eslint-plugin-sort-destructure-keys",
-  "eslint-plugin-sort-imports-es6-autofix",
-  "eslint-plugin-sort-keys-custom-order-fix",
+//  "eslint-plugin-sort-imports-es6-autofix",
+//  "eslint-plugin-sort-keys-custom-order-fix", deprecated
   "eslint-plugin-sort-keys-fix",
   "eslint-plugin-spellcheck",
   "eslint-plugin-storybook",
@@ -118,7 +117,7 @@ const packageNames: string[] = [
   "eslint-plugin-wdio",
   "eslint-plugin-xss",
   "eslint-plugin-yml",
-  "eslint-plugin-you-dont-need-lodash-underscore"
+//  "eslint-plugin-you-dont-need-lodash-underscore"
 ]
 
 const baseRules: Map<string, Rule.RuleModule> = new Linter({configType: "eslintrc"}).getRules();

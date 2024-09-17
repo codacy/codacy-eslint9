@@ -111,6 +111,14 @@ const downloadDocs: DocsInfo[] = [
     relativeUrl: "/ota-meshi/eslint-plugin-jsonc/master/docs/rules/"
   },
   {
+    packageName: "eslint-plugin-fp",
+    "relativeUrl": "/jfmengels/eslint-plugin-fp/master/docs/rules/"
+  },
+  {
+    packageName: "eslint-plugin-playwright",
+    relativeUrl: "/playwright-community/eslint-plugin-playwright/main/docs/rules/"
+  },
+  {
     packageName: "eslint-plugin-jsx-a11y",
     relativeUrl: "/jsx-eslint/eslint-plugin-jsx-a11y/main/docs/rules/"
   },
