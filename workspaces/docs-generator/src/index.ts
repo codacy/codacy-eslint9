@@ -9,10 +9,10 @@ const downloadDocs: DocsInfo[] = [
     packageName: "@lwc/eslint-plugin-lwc",
     relativeUrl: "/salesforce/eslint-plugin-lwc/master/docs/rules/"
   },
-  {
-    packageName: "@salesforce/eslint-plugin-aura",
-    relativeUrl: "/forcedotcom/eslint-plugin-aura/master/docs/rules/"
-  },
+  // {
+  //   packageName: "@salesforce/eslint-plugin-aura",
+  //   relativeUrl: "/forcedotcom/eslint-plugin-aura/master/docs/rules/"
+  // },
   {
     packageName: "@salesforce/eslint-plugin-lightning",
     relativeUrl: "/salesforce/eslint-plugin-lightning/master/docs/rules/"
@@ -70,6 +70,10 @@ const downloadDocs: DocsInfo[] = [
     packageName: "eslint-plugin-functional",
     relativeUrl: "/jonaskello/eslint-plugin-functional/master/docs/rules/"
   },
+  // {
+  //   packageName: "eslint-plugin-flowtype",
+  //   relativeUrl: "/gajus/eslint-plugin-flowtype/master/.README/rules/"
+  // },
   {
     packageName: "eslint-plugin-i18next",
     relativeUrl: "/edvardchen/eslint-plugin-i18next/main/docs/rules/"
