@@ -129,7 +129,7 @@ const plugins: Promise<Plugin[]> = Promise.all(packageNames.map(async (packageNa
   const module: TSESLint.Linter.Plugin = moduleRaw.default ?? moduleRaw;
   const name = convertFromPackageName(packageName);
 
-  if (module?.rules === undefined) {
+  if (packageName !== "eslint" && module?.rules === undefined) {
     console.log(wrapConsoleTextInColor(`No rules found for ${packageName}`, TerminalColor.Red), module);
   }
 
