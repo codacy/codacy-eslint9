@@ -31,7 +31,16 @@ const blacklistRegexes: RegExp[] = [
 ]
 
 const documentationBlacklistRegexes: RegExp[] = [
-  /@shopify\/no-debugger/
+  /@shopify\/no-debugger/,
+  /react-redux\/mapStateToProps-prefer-parameters-names/,
+  /react-redux\/prefer-separate-component-file/,
+  /react-redux\/mapStateToProps-prefer-hoisted/,
+  /react-redux\/connect-prefer-named-arguments/,
+  /react-redux\/mapDispatchToProps-prefer-parameters-names/,
+  /react-redux\/mapDispatchToProps-returns-object/,
+  /react-redux\/mapDispatchToProps-prefer-shorthand/,
+  /react-redux\/connect-prefer-minimum-two-arguments/,
+  /react-redux\/mapStateToProps-no-store/
 ]
 
 function testRegex (regexes: RegExp[], value: string): boolean {
