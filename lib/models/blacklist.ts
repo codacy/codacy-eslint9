@@ -40,7 +40,21 @@ const documentationBlacklistRegexes: RegExp[] = [
   /react-redux\/mapDispatchToProps-returns-object/,
   /react-redux\/mapDispatchToProps-prefer-shorthand/,
   /react-redux\/connect-prefer-minimum-two-arguments/,
-  /react-redux\/mapStateToProps-no-store/
+  /react-redux\/mapStateToProps-no-store/,
+  /jasmine\/named-spy/,
+  /jasmine\/no-unsafe-spy/,
+  /jasmine\/no-focused-tests/,
+  /jasmine\/no-assign-spyon/,
+  /jasmine\/no-describe-variables/,
+  /jasmine\/expect-matcher/,
+  /jasmine\/no-pending-tests/,
+  /jasmine\/no-suite-callback-args/,
+  /jasmine\/prefer-toHaveBeenCalledWith/,
+  /jasmine\/no-disabled-tests/,
+  /jasmine\/prefer-jasmine-matcher/,
+  /jasmine\/no-global-setup/,
+  /jasmine\/expect-single-argument/,
+  /jasmine\/valid-expect/
 ]
 
 function testRegex (regexes: RegExp[], value: string): boolean {
