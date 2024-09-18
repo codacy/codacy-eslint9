@@ -24,21 +24,12 @@ export default tseslint.config(
         },
       },
       rules: {
-        '@typescript-eslint/no-unsafe-argument': 'error',
-        '@typescript-eslint/no-unsafe-assignment': 'error',
-        '@typescript-eslint/no-unsafe-call': 'error',
-        '@typescript-eslint/no-unsafe-member-access': 'error',
-        '@typescript-eslint/no-unsafe-return': 'error',
       },
     },
     {
-      // Disable type-aware linting on JS files
+
       files: ['**/*.js'],
       ...tseslint.configs.disableTypeChecked,
     },
-    // {
-    //   // Enable Jest rules on test files
-    //   files: ['tests/**'],
-    //   ...jestPlugin.configs['flat/recommended'],
-    // },
+
 );
