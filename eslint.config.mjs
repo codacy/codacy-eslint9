@@ -14,9 +14,7 @@ export default tseslint.config(
   eslint.configs.recommended,
   {
     files: ['**/*.ts'],
-    plugins: {
-      '@typescript-eslint': tseslint.plugin,
-    },
+    plugins: ['@typescript-eslint'],
     languageOptions: {
       parser: tseslint.parser,
       globals: globals.node,

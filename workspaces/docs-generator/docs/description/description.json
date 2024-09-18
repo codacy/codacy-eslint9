@@ -3050,74 +3050,6 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "newIsCap",
-        "description": "newIsCap"
-      },
-      {
-        "name": "capIsNew",
-        "description": "capIsNew"
-      },
-      {
-        "name": "properties",
-        "description": "properties"
-      }
-    ],
-    "patternId": "@babel_new-cap",
-    "title": "@babel: New cap",
-    "description": "Require constructor names to begin with a capital letter",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "capIsConstructor",
-        "description": "capIsConstructor"
-      }
-    ],
-    "patternId": "@babel_no-invalid-this",
-    "title": "@babel: No invalid this",
-    "description": "Disallow use of `this` in contexts where the value of `this` is `undefined`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "typeof",
-        "description": "typeof"
-      }
-    ],
-    "patternId": "@babel_no-undef",
-    "title": "@babel: No undef",
-    "description": "Disallow the use of undeclared variables unless mentioned in `/*global */` comments",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "allowShortCircuit",
-        "description": "allowShortCircuit"
-      },
-      {
-        "name": "allowTernary",
-        "description": "allowTernary"
-      },
-      {
-        "name": "allowTaggedTemplates",
-        "description": "allowTaggedTemplates"
-      },
-      {
-        "name": "enforceForJSX",
-        "description": "enforceForJSX"
-      }
-    ],
-    "patternId": "@babel_no-unused-expressions",
-    "title": "@babel: No unused expressions",
-    "description": "Disallow unused expressions",
-    "timeToFix": 5
-  },
-  {
     "parameters": [],
     "patternId": "@lwc_lwc_consistent-component-name",
     "title": "@lwc: [Lwc] Consistent component name",
@@ -8704,42 +8636,6 @@
   },
   {
     "parameters": [],
-    "patternId": "jasmine_expect-matcher",
-    "title": "Jasmine: Expect matcher",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_expect-single-argument",
-    "title": "Jasmine: Expect single argument",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_named-spy",
-    "title": "Jasmine: Named spy",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-focused-tests",
-    "title": "Jasmine: No focused tests",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-disabled-tests",
-    "title": "Jasmine: No disabled tests",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-describe-variables",
-    "title": "Jasmine: No describe variables",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "jasmine_no-suite-dupes",
     "title": "Jasmine: No suite dupes",
     "timeToFix": 5
@@ -8754,42 +8650,6 @@
     "parameters": [],
     "patternId": "jasmine_missing-expect",
     "title": "Jasmine: Missing expect",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-suite-callback-args",
-    "title": "Jasmine: No suite callback args",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_valid-expect",
-    "title": "Jasmine: Valid expect",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-assign-spyon",
-    "title": "Jasmine: No assign spyon",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-unsafe-spy",
-    "title": "Jasmine: No unsafe spy",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-global-setup",
-    "title": "Jasmine: No global setup",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_no-pending-tests",
-    "title": "Jasmine: No pending tests",
     "timeToFix": 5
   },
   {
@@ -8818,20 +8678,8 @@
   },
   {
     "parameters": [],
-    "patternId": "jasmine_prefer-jasmine-matcher",
-    "title": "Jasmine: Prefer jasmine matcher",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "jasmine_prefer-promise-strategies",
     "title": "Jasmine: Prefer promise strategies",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jasmine_prefer-toHaveBeenCalledWith",
-    "title": "Jasmine: Prefer toHaveBeenCalledWith",
     "timeToFix": 5
   },
   {
@@ -11814,30 +11662,6 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "block",
-        "description": "block"
-      },
-      {
-        "name": "focus",
-        "description": "focus"
-      },
-      {
-        "name": "functions",
-        "description": "functions"
-      },
-      {
-        "name": "fix",
-        "description": "fix"
-      }
-    ],
-    "patternId": "no-only-tests_no-only-tests",
-    "title": "No only tests: No only tests",
-    "description": "Disallow .only blocks in tests",
-    "timeToFix": 5
-  },
-  {
     "parameters": [],
     "patternId": "no-unsanitized_property",
     "title": "No unsanitized: Property",
@@ -12383,13 +12207,6 @@
     "patternId": "playwright_valid-title",
     "title": "Playwright: Valid title",
     "description": "Enforce valid titles",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "prefer-object-spread_prefer-object-spread",
-    "title": "Prefer object spread: Prefer object spread",
-    "description": "Use a spread property instead of Object.assign().",
     "timeToFix": 5
   },
   {
@@ -13336,20 +13153,6 @@
   },
   {
     "parameters": [],
-    "patternId": "react-hooks_rules-of-hooks",
-    "title": "React hooks: Rules of hooks",
-    "description": "Enforces the Rules of Hooks",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-hooks_exhaustive-deps",
-    "title": "React hooks: Exhaustive deps",
-    "description": "Verifies the list of dependencies for Hooks like useEffect and similar",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "react-native_no-unused-styles",
     "title": "React native: No unused styles",
     "timeToFix": 5
@@ -13421,54 +13224,6 @@
   },
   {
     "parameters": [],
-    "patternId": "react-redux_connect-prefer-minimum-two-arguments",
-    "title": "React redux: Connect prefer minimum two arguments",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_connect-prefer-named-arguments",
-    "title": "React redux: Connect prefer named arguments",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_mapDispatchToProps-prefer-shorthand",
-    "title": "React redux: MapDispatchToProps prefer shorthand",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_mapDispatchToProps-returns-object",
-    "title": "React redux: MapDispatchToProps returns object",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_mapDispatchToProps-prefer-parameters-names",
-    "title": "React redux: MapDispatchToProps prefer parameters names",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_mapStateToProps-no-store",
-    "title": "React redux: MapStateToProps no store",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_mapStateToProps-prefer-hoisted",
-    "title": "React redux: MapStateToProps prefer hoisted",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_mapStateToProps-prefer-parameters-names",
-    "title": "React redux: MapStateToProps prefer parameters names",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "react-redux_mapStateToProps-prefer-selectors",
     "title": "React redux: MapStateToProps prefer selectors",
     "timeToFix": 5
@@ -13483,18 +13238,6 @@
     "parameters": [],
     "patternId": "react-redux_no-unused-prop-types",
     "title": "React redux: No unused prop types",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-redux_prefer-separate-component-file",
-    "title": "React redux: Prefer separate component file",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react-refresh_only-export-components",
-    "title": "React refresh: Only export components",
     "timeToFix": 5
   },
   {
@@ -14503,69 +14246,6 @@
   },
   {
     "parameters": [],
-    "patternId": "sort-keys-fix_sort-keys-fix",
-    "title": "Sort keys fix: Sort keys fix",
-    "description": "Require object keys to be sorted",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "comments",
-        "description": "comments"
-      },
-      {
-        "name": "strings",
-        "description": "strings"
-      },
-      {
-        "name": "identifiers",
-        "description": "identifiers"
-      },
-      {
-        "name": "ignoreRequire",
-        "description": "ignoreRequire"
-      },
-      {
-        "name": "enableUpperCaseUnderscoreCheck",
-        "description": "enableUpperCaseUnderscoreCheck"
-      },
-      {
-        "name": "templates",
-        "description": "templates"
-      },
-      {
-        "name": "lang",
-        "description": "lang"
-      },
-      {
-        "name": "langDir",
-        "description": "langDir"
-      },
-      {
-        "name": "skipWords",
-        "description": "skipWords"
-      },
-      {
-        "name": "skipIfMatch",
-        "description": "skipIfMatch"
-      },
-      {
-        "name": "skipWordIfMatch",
-        "description": "skipWordIfMatch"
-      },
-      {
-        "name": "minLength",
-        "description": "minLength"
-      }
-    ],
-    "patternId": "spellcheck_spell-checker",
-    "title": "Spellcheck: Spell checker",
-    "description": "Spell check",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "storybook_await-interactions",
     "title": "Storybook: Await interactions",
     "description": "Interactions should be awaited",
@@ -15044,25 +14724,6 @@
     "patternId": "testing-library_render-result-naming-convention",
     "title": "Testing library: Render result naming convention",
     "description": "Enforce a valid naming for return value from `render`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "tsdoc_syntax",
-    "title": "Tsdoc: Syntax",
-    "description": "Validates that TypeScript documentation comments conform to the TSDoc standard",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "allowList",
-        "description": "allowList"
-      }
-    ],
-    "patternId": "turbo_no-undeclared-env-vars",
-    "title": "Turbo: No undeclared env vars",
-    "description": "Do not allow the use of `process.env` without including the env key in any turbo.json",
     "timeToFix": 5
   },
   {
