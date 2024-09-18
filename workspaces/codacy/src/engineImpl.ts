@@ -36,7 +36,9 @@ export const engineImpl: Engine = async function (
   await debugAndCountLintIssues(lintResults);
 
   debug("engine: finished");
-  return convertResults(lintResults).map((r) => r.relativeTo(srcDirPath));
+  const results = convertResults(lintResults).map((r) => r.relativeTo(srcDirPath));
+  console.log(results)
+  return results;
 }
 
 // async function lintFilesInChunks (eslint: ESLint, files: string[]): Promise<ESLint.LintResult[]> {
@@ -65,7 +67,8 @@ export const engineImpl: Engine = async function (
 
 async function debugAndCountLintIssues (lintResults: TSESLint.FlatESLint.LintResult[]): Promise<void> {
   if (!DEBUG) return;
-
+  debug('debugAndCountLintIssues')
+  debug(JSON.stringify(lintResults))
   let nIssues = 0;
   for await (const lintResult of lintResults) {
     nIssues += lintResult.messages.length;

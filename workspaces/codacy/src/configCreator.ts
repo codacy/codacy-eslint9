@@ -10,9 +10,9 @@ import { DocsGenerator } from "docs-generator/src/docsGenerator.ts";
 import { baseConfig } from "codacy/src/defaultOptions.ts";
 import { getAll, getAllRules, getRuleMeta } from "lib/models/plugins.ts";
 import { DEBUG, debug } from "lib/utils/logging.ts";
-import { patternIdToEslint } from "lib/models/patterns.ts";
+import { patternIdToEslint, securityPlugins } from "lib/models/patterns.ts";
 
-export async function createEslintConfig (
+export async function createEslintConfig(
   srcDirPath: string,
   codacyrc: Codacyrc
 ): Promise<[TSESLint.FlatESLint.ESLintOptions, string[]]> {
@@ -25,7 +25,7 @@ export async function createEslintConfig (
   return [options, files]
 }
 
-function generateFilesToAnalyze (
+function generateFilesToAnalyze(
   codacyrc: Codacyrc
 ): string[] {
   debug("files: creating")
@@ -45,7 +45,7 @@ function generateFilesToAnalyze (
   return files
 }
 
-async function generateEslintOptions (
+async function generateEslintOptions(
   srcDirPath: string,
   codacyrc: Codacyrc
 ): Promise<TSESLint.FlatESLint.ESLintOptions> {
@@ -53,9 +53,14 @@ async function generateEslintOptions (
 
   let patterns = codacyrc.tools?.[0].patterns || [];
   debug(`options: ${patterns.length} patterns in codacyrc`);
+  if (DEBUG) {
+    for (let i = 0; i < patterns.length; i++) {
+      debug(`- ${JSON.stringify(patterns[i])}`)
+    }
+  }
 
   const eslintConfig = existsEslintConfigInRepoRoot(srcDirPath);
-  debug(`options: config file${(eslintConfig === undefined) && " not"} found`);
+  debug(`options: config file${(eslintConfig === undefined) ? " not" : ""} found`);
 
   const useCodacyPatterns = patterns.length;
   const useRepoPatterns = !useCodacyPatterns;
@@ -75,6 +80,7 @@ async function generateEslintOptions (
     warnIgnored: false,
     overrideConfig: []
   }
+
   if (eslintConfig) {
     options.overrideConfigFile = srcDirPath + path.sep + eslintConfig;
   }
@@ -86,8 +92,9 @@ async function generateEslintOptions (
 
   options.baseConfig = baseConfig;
 
-  if (DEBUG && useRepoPatterns && !eslintConfig) {
+  if (/*DEBUG && */useRepoPatterns && !eslintConfig) {
     const patternsSet = "recommended";
+    debug(`config: retrieveCodacyPatterns`)
     patterns = await retrieveCodacyPatterns(patternsSet);
     options.overrideConfig?.push({
       rules: convertPatternsToEslintRules(patterns)
@@ -107,7 +114,7 @@ async function generateEslintOptions (
 
     const [storybookPatterns, otherPatterns] = partition(
       patterns, (p: Pattern) =>
-      p.patternId.startsWith("storybook")
+      p.patternId.startsWith("storybook") || false
     )
 
     // configure override in case storybook plugin rules being turned on
@@ -137,7 +144,9 @@ async function generateEslintOptions (
   (await getAll())
     .filter(plugin => prefixes.includes(plugin.name))
     .forEach(plugin => {
-      plugins[plugin.name] = plugin.module;
+      if (!securityPlugins.includes(plugin.name)) {
+        plugins[plugin.name] = plugin.module;
+      }
     });
   if (Object.keys(plugins).length) {
     options.plugins = plugins;
@@ -148,7 +157,7 @@ async function generateEslintOptions (
   return options;
 }
 
-function getPatternsUniquePrefixes (patterns: Pattern[]) {
+function getPatternsUniquePrefixes(patterns: Pattern[]) {
   const prefixes = patterns.map(item => {
     const patternId = patternIdToEslint(item.patternId)
     return patternId.substring(0, patternId.lastIndexOf("/"))
@@ -156,7 +165,7 @@ function getPatternsUniquePrefixes (patterns: Pattern[]) {
   return [...new Set(prefixes)]
 }
 
-function convertPatternsToEslintRules (patterns: Pattern[]): {
+function convertPatternsToEslintRules(patterns: Pattern[]): {
   [name: string]: Linter.RuleSeverity | Linter.RuleSeverityAndOptions;
 } {
   const pairs = patterns.map((pattern: Pattern) => {
@@ -186,16 +195,16 @@ function convertPatternsToEslintRules (patterns: Pattern[]): {
 
 //TODO: Check supported Configuration File
 // https://eslint.org/docs/latest/use/configure/configuration-files
-function existsEslintConfigInRepoRoot (srcDirPath: string): string | undefined {
+function existsEslintConfigInRepoRoot(srcDirPath: string): string | undefined {
   const filenames = [
-    "eslint.config.mjs",
+    "eslint.config.js",
     "eslint.config.mjs",
     "eslint.config.mjs"
   ]
   return filenames.find(filename => existsSync(srcDirPath + path.sep + filename))
 }
 
-async function retrieveCodacyPatterns (set: "recommended" | "all" = "recommended"): Promise<Pattern[]> {
+async function retrieveCodacyPatterns(set: "recommended" | "all" = "recommended"): Promise<Pattern[]> {
   const patterns: Pattern[] = [];
   const allRules = await getAllRules(true);
   Object.entries(allRules)

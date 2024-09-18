@@ -12037,6 +12037,13 @@
   },
   {
     "parameters": [],
+    "patternId": "react_forward-ref-uses-ref",
+    "title": "React: Forward ref uses ref",
+    "description": "Require all forwardRef components include a ref parameter",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "react_function-component-definition",
     "title": "React: Function component definition",
     "description": "Enforce a specific function type for function components",
