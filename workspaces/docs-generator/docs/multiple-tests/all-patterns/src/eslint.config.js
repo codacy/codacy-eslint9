@@ -1,12 +1,18 @@
+const eslintPluginYml = require('eslint-plugin-yml');
+
 module.exports = [
   {
+    ...eslintPluginYml.configs['flat/recommended'],
+    // plugins: {
+    //   'eslint-plugin-yml': eslintPluginYml
+    // },
     languageOptions: {
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
       }
     },
-    "rules": {
+    rules: {
       "@typescript-eslint/await-thenable": "off",
       "@typescript-eslint/consistent-type-exports": "off",
       "@typescript-eslint/dot-notation": "off",

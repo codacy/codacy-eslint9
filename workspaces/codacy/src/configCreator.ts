@@ -140,10 +140,14 @@ async function generateEslintOptions(
 
   // load only the plugins that are being used in loaded rules
   const prefixes = getPatternsUniquePrefixes(patterns)
+  debug(`prefixes: ${JSON.stringify(prefixes)}`)
   const plugins: Record<string, TSESLint.Linter.Plugin> = {};
   (await getAll())
-    .filter(plugin => prefixes.includes(plugin.name))
+    //TODO: .filter(plugin => prefixes.includes(plugin.name))
     .forEach(plugin => {
+      if(DEBUG){
+        debug(`Config Creator, plugin name: ${plugin.name}`)
+      }
       if (!securityPlugins.includes(plugin.name)) {
         plugins[plugin.name] = plugin.module;
       }

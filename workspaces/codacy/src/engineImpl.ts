@@ -37,7 +37,6 @@ export const engineImpl: Engine = async function (
 
   debug("engine: finished");
   const results = convertResults(lintResults).map((r) => r.relativeTo(srcDirPath));
-  console.log(results)
   return results;
 }
 
