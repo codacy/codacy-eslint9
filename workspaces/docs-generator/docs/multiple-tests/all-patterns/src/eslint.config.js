@@ -2,10 +2,9 @@ const eslintPluginYml = require('eslint-plugin-yml');
 
 module.exports = [
   {
-    ...eslintPluginYml.configs['flat/recommended'],
-    // plugins: {
-    //   'eslint-plugin-yml': eslintPluginYml
-    // },
+    plugins: {
+      'yml': eslintPluginYml
+    },
     languageOptions: {
       parserOptions: {
         project: './tsconfig.json',

@@ -74,7 +74,8 @@ async function generateEslintOptions(
       "tests/**",
       "vendor/**",
       "**/tsconfig.json",
-      "**/.eslintrc*"
+      "**/.eslintrc*",
+      "**/eslint.config.*"
     ],
     //passOnNoPatterns: true,
     warnIgnored: false,
@@ -143,7 +144,7 @@ async function generateEslintOptions(
   debug(`prefixes: ${JSON.stringify(prefixes)}`)
   const plugins: Record<string, TSESLint.Linter.Plugin> = {};
   (await getAll())
-    //TODO: .filter(plugin => prefixes.includes(plugin.name))
+    .filter(plugin => prefixes.includes(plugin.name))
     .forEach(plugin => {
       if(DEBUG){
         debug(`Config Creator, plugin name: ${plugin.name}`)

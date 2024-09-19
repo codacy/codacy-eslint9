@@ -1,8 +1,11 @@
 const blacklistRegexes: RegExp[] = [
+  /@lwc\/lwc\/no-async-operation/,
+  /@lwc\/lwc\/no-leaky-event-listeners/,
   /@lwc\/lwc\/no-unexpected-wire-adapter-usages/,
   /@lwc\/lwc\/no-unknown-wire-adapters/,
   /@lwc\/lwc\/no-restricted-browser-globals-during-ssr/,
   /@lwc\/lwc\/no-node-env-in-ssr/,
+  /@salesforce\/lightning\/valid-apex-method-invocation/,
   /@typescript-eslint\/consistent-type-imports/,
   /@typescript-eslint\/ban-types/,
   /@typescript-eslint\/await-thenable/,
@@ -76,6 +79,8 @@ const blacklistRegexes: RegExp[] = [
   /functional\/prefer-immutable-types/,
   /functional\/type-declaration-immutability/,
   /import\/newline-after-import/,
+  /import\/no-amd/,
+  /import\/no-commonjs/,
   /xss\/no-mixed-html/,
   /unused-imports\/.*-ts/,
   /yml\/sort-sequence-values/
