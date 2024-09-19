@@ -333,14 +333,12 @@
   <module name="@lwc_lwc_consistent-component-name" />
   <module name="@lwc_lwc_no-api-reassignments" />
   <module name="@lwc_lwc_no-async-await" />
-  <module name="@lwc_lwc_no-async-operation" />
   <module name="@lwc_lwc_no-attributes-during-construction" />
   <module name="@lwc_lwc_no-deprecated" />
   <module name="@lwc_lwc_no-document-query" />
   <module name="@lwc_lwc_no-for-of" />
   <module name="@lwc_lwc_no-inner-html" />
   <module name="@lwc_lwc_no-leading-uppercase-api-name" />
-  <module name="@lwc_lwc_no-leaky-event-listeners" />
   <module name="@lwc_lwc_no-disallowed-lwc-imports" />
   <module name="@lwc_lwc_no-template-children" />
   <module name="@lwc_lwc_no-rest-parameter" />
@@ -353,7 +351,6 @@
   <module name="@salesforce_lightning_no-aura-localization-service" />
   <module name="@salesforce_lightning_no-moment" />
   <module name="@salesforce_lightning_prefer-i18n-service" />
-  <module name="@salesforce_lightning_valid-apex-method-invocation" />
   <module name="@shopify_binary-assignment-parens" />
   <module name="@shopify_class-property-semi" />
   <module name="@shopify_images-no-direct-imports" />
@@ -960,8 +957,6 @@
   <module name="import_no-named-as-default-member" />
   <module name="import_no-anonymous-default-export" />
   <module name="import_no-unused-modules" />
-  <module name="import_no-commonjs" />
-  <module name="import_no-amd" />
   <module name="import_no-duplicates" />
   <module name="import_first" />
   <module name="import_max-dependencies" />
@@ -1475,7 +1470,6 @@
   <module name="react_forbid-elements" />
   <module name="react_forbid-foreign-prop-types" />
   <module name="react_forbid-prop-types" />
-  <module name="react_forward-ref-uses-ref" />
   <module name="react_function-component-definition" />
   <module name="react_hook-use-state" />
   <module name="react_iframe-missing-sandbox" />

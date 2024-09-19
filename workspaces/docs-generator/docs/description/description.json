@@ -3072,13 +3072,6 @@
   },
   {
     "parameters": [],
-    "patternId": "@lwc_lwc_no-async-operation",
-    "title": "@lwc: [Lwc] No async operation",
-    "description": "Restrict usage of async operations",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "@lwc_lwc_no-attributes-during-construction",
     "title": "@lwc: [Lwc] No attributes during construction",
     "description": "No attributes during construction",
@@ -3117,13 +3110,6 @@
     "patternId": "@lwc_lwc_no-leading-uppercase-api-name",
     "title": "@lwc: [Lwc] No leading uppercase api name",
     "description": "Disallow public property to start with an upper case character",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_no-leaky-event-listeners",
-    "title": "@lwc: [Lwc] No leaky event listeners",
-    "description": "Prevent event listeners from leaking memory",
     "timeToFix": 5
   },
   {
@@ -3217,13 +3203,6 @@
     "patternId": "@salesforce_lightning_prefer-i18n-service",
     "title": "@salesforce: [Lightning] Prefer i18n service",
     "description": "Suggest usage of \"@salesforce/i18n-service\" over \"Intl\" constructor",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@salesforce_lightning_valid-apex-method-invocation",
-    "title": "@salesforce: [Lightning] Valid apex method invocation",
-    "description": "Enforce invoking Apex methods with the right arguments",
     "timeToFix": 5
   },
   {
@@ -8080,20 +8059,6 @@
   },
   {
     "parameters": [],
-    "patternId": "import_no-commonjs",
-    "title": "Import: No commonjs",
-    "description": "Forbid CommonJS `require` calls and `module.exports` or `exports.*`.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "import_no-amd",
-    "title": "Import: No amd",
-    "description": "Forbid AMD `require` and `define` calls.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "import_no-duplicates",
     "title": "Import: No duplicates",
     "description": "Forbid repeated import of the same module in multiple places.",
@@ -12033,13 +11998,6 @@
     "patternId": "react_forbid-prop-types",
     "title": "React: Forbid prop types",
     "description": "Disallow certain propTypes",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "react_forward-ref-uses-ref",
-    "title": "React: Forward ref uses ref",
-    "description": "Require all forwardRef components include a ref parameter",
     "timeToFix": 5
   },
   {

@@ -3074,13 +3074,6 @@
       "enabled": false
     },
     {
-      "patternId": "@lwc_lwc_no-async-operation",
-      "level": "Info",
-      "category": "CodeStyle",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "@lwc_lwc_no-attributes-during-construction",
       "level": "Error",
       "category": "ErrorProne",
@@ -3117,13 +3110,6 @@
     },
     {
       "patternId": "@lwc_lwc_no-leading-uppercase-api-name",
-      "level": "Info",
-      "category": "CodeStyle",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_no-leaky-event-listeners",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -3217,13 +3203,6 @@
     },
     {
       "patternId": "@salesforce_lightning_prefer-i18n-service",
-      "level": "Info",
-      "category": "CodeStyle",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@salesforce_lightning_valid-apex-method-invocation",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -8097,20 +8076,6 @@
       "enabled": false
     },
     {
-      "patternId": "import_no-commonjs",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "import_no-amd",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "import_no-duplicates",
       "level": "Error",
       "category": "ErrorProne",
@@ -12127,13 +12092,6 @@
     {
       "patternId": "react_forbid-prop-types",
       "level": "Info",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "react_forward-ref-uses-ref",
-      "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
