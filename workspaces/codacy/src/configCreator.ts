@@ -16,19 +16,16 @@ export async function createEslintConfig(
   srcDirPath: string,
   codacyrc: Codacyrc
 ): Promise<[TSESLint.FlatESLint.ESLintOptions, string[]]> {
-  debug("config: creating")
 
   const options = await generateEslintOptions(srcDirPath, codacyrc)
   const files = generateFilesToAnalyze(codacyrc)
 
-  debug("config: finished")
   return [options, files]
 }
 
 function generateFilesToAnalyze(
   codacyrc: Codacyrc
 ): string[] {
-  debug("files: creating")
 
   const defaultFilesToAnalyze = [
     "**/*.ts",
@@ -41,7 +38,6 @@ function generateFilesToAnalyze(
     ? codacyrc.files
     : defaultFilesToAnalyze
 
-  debug("files: finished")
   return files
 }
 
@@ -49,18 +45,16 @@ async function generateEslintOptions(
   srcDirPath: string,
   codacyrc: Codacyrc
 ): Promise<TSESLint.FlatESLint.ESLintOptions> {
-  debug("options: creating");
 
   let patterns = codacyrc.tools?.[0].patterns || [];
-  debug(`options: ${patterns.length} patterns in codacyrc`);
+
   if (DEBUG) {
     for (let i = 0; i < patterns.length; i++) {
-      debug(`- ${JSON.stringify(patterns[i])}`)
+
     }
   }
 
   const eslintConfig = existsEslintConfigInRepoRoot(srcDirPath);
-  debug(`options: config file${(eslintConfig === undefined) ? " not" : ""} found`);
 
   const useCodacyPatterns = patterns.length;
   const useRepoPatterns = !useCodacyPatterns;
@@ -100,7 +94,7 @@ async function generateEslintOptions(
     options.overrideConfig?.push({
       rules: convertPatternsToEslintRules(patterns)
     });
-    debug(`options: setting ${patternsSet} (${patterns.length}) patterns`);
+
   } else if (useCodacyPatterns) {
     //TODO: move this logic to a generic (or specific) plugin function
 
@@ -120,7 +114,7 @@ async function generateEslintOptions(
 
     // configure override in case storybook plugin rules being turned on
     if (storybookPatterns.length) {
-      debug(`options: setting ${storybookPatterns.length} storybook patterns`);
+
       options.overrideConfig?.push({
         files: [
           "*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
@@ -132,7 +126,7 @@ async function generateEslintOptions(
 
     // explicitly use only the rules being passed by codacyrc
     if (otherPatterns.length) {
-      debug(`options: setting ${otherPatterns.length} patterns`);
+
       options.overrideConfig?.push({
         rules: convertPatternsToEslintRules(otherPatterns)
       });
@@ -141,13 +135,13 @@ async function generateEslintOptions(
 
   // load only the plugins that are being used in loaded rules
   const prefixes = getPatternsUniquePrefixes(patterns)
-  debug(`prefixes: ${JSON.stringify(prefixes)}`)
+
   const plugins: Record<string, TSESLint.Linter.Plugin> = {};
   (await getAll())
     .filter(plugin => prefixes.includes(plugin.name))
     .forEach(plugin => {
       if(DEBUG){
-        debug(`Config Creator, plugin name: ${plugin.name}`)
+
       }
       if (!securityPlugins.includes(plugin.name)) {
         plugins[plugin.name] = plugin.module;
@@ -156,8 +150,6 @@ async function generateEslintOptions(
   if (Object.keys(plugins).length) {
     options.plugins = plugins;
   }
-
-  debug("options: finished");
 
   return options;
 }
@@ -232,6 +224,5 @@ async function retrieveCodacyPatterns(set: "recommended" | "all" = "recommended"
       patterns.push(pattern)
     })
 
-  debug(`options: returning ${set} (${patterns.length}) patterns`)
   return patterns
 }
