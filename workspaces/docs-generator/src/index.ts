@@ -144,11 +144,6 @@ const downloadDocs: DocsInfo[] = [
     relativeUrl: "/eslint-community/eslint-plugin-n/master/docs/rules/"
   },
   {
-    packageName: "eslint-plugin-no-unsanitized",
-    relativeUrl: "/mozilla/eslint-plugin-no-unsanitized/master/docs/rules/",
-    versionPrefix: false
-  },
-  {
     packageName: "eslint-plugin-nuxt",
     relativeUrl: "/nuxt/eslint-plugin-nuxt/master/docs/rules/"
   },
