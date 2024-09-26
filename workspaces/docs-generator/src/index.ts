@@ -32,7 +32,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "@vitest/eslint-plugin",
-    relativeUrl: "/vitest-dev/eslint-plugin-vitest/refs/heads/main/docs/rules"
+    relativeUrl: "/vitest-dev/eslint-plugin-vitest/main/docs/rules/"
   },
   {
     packageName: "eslint-plugin-backbone",
