@@ -104,9 +104,9 @@ async function generateEslintOptions(
     //            reports false positives on normal files.
     //            check: conf file @ eslint-plugin-storybook/configs/recommended.js
 
-    const [storybookPatterns, otherPatterns] = partition(
+    const [storybookPatterns, typescriptPatterns, otherPatterns] = partition(
       patterns, (p: Pattern) =>
-      p.patternId.startsWith("storybook") || false
+      p.patternId.startsWith("storybook") || p.patternId.startsWith("@typescript-eslint") || false
     )
 
     // configure override in case storybook plugin rules being turned on
@@ -116,6 +116,17 @@ async function generateEslintOptions(
         files: [
           "*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
           "*.story.@(ts|tsx|js|jsx|mjs|cjs)"
+        ],
+        rules: convertPatternsToEslintRules(storybookPatterns)
+      });
+    }
+
+    // configure override in case @typescript-eslint plugin rules being turned on
+    if (typescriptPatterns.length) {
+
+      options.overrideConfig?.push({
+        files: [
+          "*.@(ts|tsx)"
         ],
         rules: convertPatternsToEslintRules(storybookPatterns)
       });
