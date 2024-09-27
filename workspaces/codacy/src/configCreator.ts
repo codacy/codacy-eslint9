@@ -104,9 +104,9 @@ async function generateEslintOptions(
     //            reports false positives on normal files.
     //            check: conf file @ eslint-plugin-storybook/configs/recommended.js
 
-    const [storybookPatterns, typescriptPatterns, otherPatterns] = partition(
+    const [storybookPatterns, otherPatterns] = partition(
       patterns, (p: Pattern) =>
-      p.patternId.startsWith("storybook") || p.patternId.startsWith("@typescript-eslint") || false
+      p.patternId.startsWith("storybook") || false
     )
 
     // configure override in case storybook plugin rules being turned on
@@ -121,19 +121,25 @@ async function generateEslintOptions(
       });
     }
 
-    // configure override in case @typescript-eslint plugin rules being turned on
-    if (typescriptPatterns.length) {
-
-      options.overrideConfig?.push({
-        files: [
-          "*.@(ts|tsx)"
-        ],
-        rules: convertPatternsToEslintRules(storybookPatterns)
-      });
-    }
 
     // explicitly use only the rules being passed by codacyrc
     if (otherPatterns.length) {
+      const [typescriptPatterns] = partition(
+        otherPatterns, (p: Pattern) =>
+        p.patternId.startsWith("@typescript-eslint")
+      )
+
+      //configure override in case @typescript-eslint plugin rules being turned on
+      if (typescriptPatterns.length) {
+  
+        options.overrideConfig?.push({
+          files: [
+            "*.@(ts|tsx)"
+          ],
+          rules: convertPatternsToEslintRules(typescriptPatterns)
+        });
+      }
+
       options.overrideConfig?.push({
         rules: convertPatternsToEslintRules(otherPatterns)
       });
