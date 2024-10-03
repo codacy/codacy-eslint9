@@ -386,8 +386,7 @@ ${modules}
   }
 
   private async eslintPatternIds(): Promise<string[]> {
-    // We take all the patterns except those that have slashes because
-    // they come from third party plugins
+    // We take all the patterns except those that have slashes because they come from third party plugins
     const patternIds = await this.getPatternIds()
     
     return patternIds.filter((e) => !e.includes("/"))
