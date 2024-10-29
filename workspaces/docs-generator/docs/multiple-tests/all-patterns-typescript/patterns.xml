@@ -665,7 +665,6 @@
   <module name="angular_deferred" />
   <module name="angular_definedundefined" />
   <module name="angular_di-order" />
-  <module name="angular_di-unused" />
   <module name="angular_di" />
   <module name="angular_directive-name" />
   <module name="angular_directive-restrict" />
