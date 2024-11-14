@@ -5913,13 +5913,6 @@
       "enabled": false
     },
     {
-      "patternId": "angular_di-unused",
-      "level": "Info",
-      "category": "CodeStyle",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "angular_di",
       "level": "Info",
       "category": "CodeStyle",

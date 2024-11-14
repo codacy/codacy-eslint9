@@ -5891,12 +5891,6 @@
   },
   {
     "parameters": [],
-    "patternId": "angular_di-unused",
-    "title": "Angular: Di unused",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "angular_di",
     "title": "Angular: Di",
     "timeToFix": 5
