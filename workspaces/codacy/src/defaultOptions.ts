@@ -191,8 +191,7 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
       // https://github.com/typescript-eslint/typescript-eslint/blob/e44a1a280f08f9fd0d29f74e5c3e73b7b64a9606/eslint.config.mjs#L304
       "deprecation/deprecation": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/internal/no-poorly-typed-ts-props": "off",
-      "expect-type_expect": "off",
+      "@typescript-eslint/internal/no-poorly-typed-ts-props": "off"
     }
   },
   {
