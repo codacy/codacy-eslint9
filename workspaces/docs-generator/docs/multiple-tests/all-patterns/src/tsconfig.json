@@ -1,31 +1,22 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
-    "exactOptionalPropertyTypes": false,
-    "allowArbitraryExtensions": true,
+    "allowJs": false, // Disable if not needed for .js files
+    "checkJs": false, // Disable if not needed for .js files
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "declaration": false,
     "noEmit": true,
-    "noEmitOnError": true,
-    "strict": false,
+    "strict": true, // Enables strict type checking
     "lib": [
       "ES2022",
-      "DOM",
-      "ESNext"
+      "DOM"
     ],
     "target": "ESNext",
-    "disableReferencedProjectLoad": true,
-    "disableSolutionSearching": true,
-    "noErrorTruncation": true,
-    "pretty": false,
-    "skipLibCheck": false,
-    "sourceMap": false,
+    "skipLibCheck": true, // Speeds up type checking
     "strictNullChecks": true
   },
   "include": [
-    "./*.js",
-    "./*.ts"
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }
