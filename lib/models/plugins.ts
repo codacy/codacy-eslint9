@@ -65,6 +65,7 @@ const packageNames: string[] = [
   "eslint-plugin-sort-destructure-keys",
   "eslint-plugin-storybook",
   "eslint-plugin-suitescript",
+  "eslint-plugin-svelte",
   "eslint-plugin-tailwindcss",
   "eslint-plugin-test-selectors",
   "eslint-plugin-testing-library",
