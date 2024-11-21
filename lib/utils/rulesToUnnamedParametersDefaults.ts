@@ -43,6 +43,7 @@ export const rulesToUnnamedParametersDefaults = new Map<string, JSONSchema4Type>
   ["@stylistic/padded-blocks", "always"],
   ["@stylistic/quotes", "double"],
   ["@stylistic/semi", "always"],
+  ["svelte/no-restricted-html-elements", "off"],
   ["sort-keys", "asc"],
   ["vue/sort-keys", "asc"],
   ["@stylistic_indent", 2],

@@ -13,6 +13,7 @@ const blacklistRegexes: RegExp[] = [
   /angular\/service-name/,
   /ember\/no-restricted-property-modifications/,
   /ember\/template-indent/,
+  /expect-type\/expect/,
   /backbone\/event-scope/,
   /backbone\/no-silent/,
   /filenames\/match-regex/,

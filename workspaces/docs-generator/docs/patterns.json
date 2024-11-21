@@ -8736,13 +8736,6 @@
       "enabled": false
     },
     {
-      "patternId": "expect-type_expect",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "eslint-plugin_consistent-output",
       "level": "Warning",
       "category": "BestPractice",
@@ -17856,7 +17849,12 @@
       "patternId": "svelte_no-restricted-html-elements",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "off"
+        }
+      ],
       "enabled": false
     },
     {
