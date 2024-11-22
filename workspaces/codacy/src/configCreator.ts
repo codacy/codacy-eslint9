@@ -11,6 +11,8 @@ import { baseConfig } from "codacy/src/defaultOptions.ts";
 import { getAll, getAllRules, getRuleMeta } from "lib/models/plugins.ts";
 import { DEBUG, debug } from "lib/utils/logging.ts";
 import { patternIdToEslint/*, securityPlugins */} from "lib/models/patterns.ts";
+import sveltePlugin from 'eslint-plugin-svelte';
+
 
 export async function createEslintConfig(
   srcDirPath: string,
@@ -32,7 +34,8 @@ function generateFilesToAnalyze(
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "**/*.json"
+    "**/*.json",
+    "**/*.svelte"
   ]
   const files = codacyrc?.files && codacyrc.files.length
     ? codacyrc.files
@@ -183,12 +186,12 @@ async function generateEslintOptions(
   (await getAll())
     .filter(plugin => prefixes.includes(plugin.name))
     .forEach(plugin => {
-      //if (!securityPlugins.includes(plugin.name)) {
-        if (!plugins[plugin.name]) {
-          plugins[plugin.name] = plugin.module;
-        }
-      //}
+      if (!plugins[plugin.name]) {
+        plugins[plugin.name] = plugin.module;
+      }
     });
+  plugins.svelte = sveltePlugin as unknown as TSESLint.Linter.Plugin;
+
   if (Object.keys(plugins).length) {
     options.plugins = plugins;
   }

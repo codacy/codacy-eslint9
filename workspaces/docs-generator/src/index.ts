@@ -35,6 +35,10 @@ const downloadDocs: DocsInfo[] = [
      relativeUrl: "/SonarSource/eslint-plugin-sonarjs/refs/heads/master/docs/rules/"
   },
   {
+    packageName:"eslint-plugin-svelte",
+    relativeUrl: "/sveltejs/eslint-plugin-svelte/tree/main/docs/rules"
+ },
+  {
     packageName: "@vitest/eslint-plugin",
     relativeUrl: "/vitest-dev/eslint-plugin-vitest/main/docs/rules/"
   },

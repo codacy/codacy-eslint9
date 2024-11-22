@@ -8662,13 +8662,6 @@
   },
   {
     "parameters": [],
-    "patternId": "expect-type_expect",
-    "title": "Expect type: Expect",
-    "description": "Expects type error, type snapshot, or type.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "eslint-plugin_consistent-output",
     "title": "Eslint plugin: Consistent output",
     "description": "Enforce consistent use of `output` assertions in rule tests",
@@ -17383,6 +17376,459 @@
     "parameters": [],
     "patternId": "suitescript_no-module-extensions",
     "title": "Suitescript: No module extensions",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_block-lang",
+    "title": "Svelte: Block lang",
+    "description": "Disallows the use of languages other than those specified in the configuration for the lang attribute of `<script>` and `<style>` blocks.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_button-has-type",
+    "title": "Svelte: Button has type",
+    "description": "Disallow usage of button without an explicit type attribute",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_comment-directive",
+    "title": "Svelte: Comment directive",
+    "description": "Support comment-directives in HTML template",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_derived-has-same-inputs-outputs",
+    "title": "Svelte: Derived has same inputs outputs",
+    "description": "Derived store should use same variable names between values and callback",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_experimental-require-slot-types",
+    "title": "Svelte: Experimental require slot types",
+    "description": "Require slot type declaration using the `$$Slots` interface",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_experimental-require-strict-events",
+    "title": "Svelte: Experimental require strict events",
+    "description": "Require the strictEvents attribute on `<script>` tags",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_first-attribute-linebreak",
+    "title": "Svelte: First attribute linebreak",
+    "description": "Enforce the location of first attribute",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_html-closing-bracket-new-line",
+    "title": "Svelte: Html closing bracket new line",
+    "description": "Require or disallow a line break before tag's closing brackets",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_html-closing-bracket-spacing",
+    "title": "Svelte: Html closing bracket spacing",
+    "description": "Require or disallow a space before tag's closing brackets",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_html-quotes",
+    "title": "Svelte: Html quotes",
+    "description": "Enforce quotes style of HTML attributes",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_html-self-closing",
+    "title": "Svelte: Html self closing",
+    "description": "Enforce self-closing style",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_indent",
+    "title": "Svelte: Indent",
+    "description": "Enforce consistent indentation",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_infinite-reactive-loop",
+    "title": "Svelte: Infinite reactive loop",
+    "description": "Svelte runtime prevents calling the same reactive statement twice in a microtask. But between different microtask, it doesn't prevent.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_max-attributes-per-line",
+    "title": "Svelte: Max attributes per line",
+    "description": "Enforce the maximum number of attributes per line",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_mustache-spacing",
+    "title": "Svelte: Mustache spacing",
+    "description": "Enforce unified spacing in mustache",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-at-debug-tags",
+    "title": "Svelte: No at debug tags",
+    "description": "Disallow the use of `{@debug}`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-at-html-tags",
+    "title": "Svelte: No at html tags",
+    "description": "Disallow use of `{@html}` to prevent XSS attack",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-dom-manipulating",
+    "title": "Svelte: No dom manipulating",
+    "description": "Disallow DOM manipulating",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-dupe-else-if-blocks",
+    "title": "Svelte: No dupe else if blocks",
+    "description": "Disallow duplicate conditions in `{#if}` / `{:else if}` chains",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-dupe-on-directives",
+    "title": "Svelte: No dupe on directives",
+    "description": "Disallow duplicate `on:` directives",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-dupe-style-properties",
+    "title": "Svelte: No dupe style properties",
+    "description": "Disallow duplicate style properties",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-dupe-use-directives",
+    "title": "Svelte: No dupe use directives",
+    "description": "Disallow duplicate `use:` directives",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-dynamic-slot-name",
+    "title": "Svelte: No dynamic slot name",
+    "description": "Disallow dynamic slot name",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-export-load-in-svelte-module-in-kit-pages",
+    "title": "Svelte: No export load in svelte module in kit pages",
+    "description": "Disallow exporting load functions in `*.svelte` module in SvelteKit page components.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-extra-reactive-curlies",
+    "title": "Svelte: No extra reactive curlies",
+    "description": "Disallow wrapping single reactive statements in curly braces",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-goto-without-base",
+    "title": "Svelte: No goto without base",
+    "description": "Disallow using goto() without the base path",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-ignored-unsubscribe",
+    "title": "Svelte: No ignored unsubscribe",
+    "description": "Disallow ignoring the unsubscribe method returned by the `subscribe()` on Svelte stores.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-immutable-reactive-statements",
+    "title": "Svelte: No immutable reactive statements",
+    "description": "Disallow reactive statements that don't reference reactive values.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-inline-styles",
+    "title": "Svelte: No inline styles",
+    "description": "Disallow attributes and directives that produce inline styles",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-inner-declarations",
+    "title": "Svelte: No inner declarations",
+    "description": "Disallow variable or `function` declarations in nested blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-inspect",
+    "title": "Svelte: No inspect",
+    "description": "Warns against the use of `$inspect` directive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-not-function-handler",
+    "title": "Svelte: No not function handler",
+    "description": "Disallow use of not function in event handler",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-object-in-text-mustaches",
+    "title": "Svelte: No object in text mustaches",
+    "description": "Disallow objects in text mustache interpolation",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-reactive-functions",
+    "title": "Svelte: No reactive functions",
+    "description": "It's not necessary to define functions in reactive statements",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-reactive-literals",
+    "title": "Svelte: No reactive literals",
+    "description": "Don't assign literal values in reactive statements",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-reactive-reassign",
+    "title": "Svelte: No reactive reassign",
+    "description": "Disallow reassigning reactive values",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      }
+    ],
+    "patternId": "svelte_no-restricted-html-elements",
+    "title": "Svelte: No restricted html elements",
+    "description": "Disallow specific HTML elements",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-shorthand-style-property-overrides",
+    "title": "Svelte: No shorthand style property overrides",
+    "description": "Disallow shorthand style properties that override related longhand properties",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-spaces-around-equal-signs-in-attribute",
+    "title": "Svelte: No spaces around equal signs in attribute",
+    "description": "Disallow spaces around equal signs in attribute",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-store-async",
+    "title": "Svelte: No store async",
+    "description": "Disallow using async/await inside svelte stores because it causes issues with the auto-unsubscribing features",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-svelte-internal",
+    "title": "Svelte: No svelte internal",
+    "description": "Svelte/internal will be removed in Svelte 6.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-target-blank",
+    "title": "Svelte: No target blank",
+    "description": "Disallow `target=\"_blank\"` attribute without `rel=\"noopener noreferrer\"`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-trailing-spaces",
+    "title": "Svelte: No trailing spaces",
+    "description": "Disallow trailing whitespace at the end of lines",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-unknown-style-directive-property",
+    "title": "Svelte: No unknown style directive property",
+    "description": "Disallow unknown `style:property`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-unused-class-name",
+    "title": "Svelte: No unused class name",
+    "description": "Disallow the use of a class in the template without a corresponding style",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-unused-svelte-ignore",
+    "title": "Svelte: No unused svelte ignore",
+    "description": "Disallow unused svelte-ignore comments",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-useless-mustaches",
+    "title": "Svelte: No useless mustaches",
+    "description": "Disallow unnecessary mustache interpolations",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_prefer-class-directive",
+    "title": "Svelte: Prefer class directive",
+    "description": "Require class directives instead of ternary expressions",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_prefer-destructured-store-props",
+    "title": "Svelte: Prefer destructured store props",
+    "description": "Destructure values from object stores for better change tracking & fewer redraws",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_prefer-style-directive",
+    "title": "Svelte: Prefer style directive",
+    "description": "Require style directives instead of style attribute",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_require-each-key",
+    "title": "Svelte: Require each key",
+    "description": "Require keyed `{#each}` block",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_require-event-dispatcher-types",
+    "title": "Svelte: Require event dispatcher types",
+    "description": "Require type parameters for `createEventDispatcher`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_require-optimized-style-attribute",
+    "title": "Svelte: Require optimized style attribute",
+    "description": "Require style attributes that can be optimized",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_require-store-callbacks-use-set-param",
+    "title": "Svelte: Require store callbacks use set param",
+    "description": "Store callbacks must use `set` param",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_require-store-reactive-access",
+    "title": "Svelte: Require store reactive access",
+    "description": "Disallow to use of the store itself as an operand. Need to use $ prefix or get function.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_require-stores-init",
+    "title": "Svelte: Require stores init",
+    "description": "Require initial value in store",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_shorthand-attribute",
+    "title": "Svelte: Shorthand attribute",
+    "description": "Enforce use of shorthand syntax in attribute",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_shorthand-directive",
+    "title": "Svelte: Shorthand directive",
+    "description": "Enforce use of shorthand syntax in directives",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_sort-attributes",
+    "title": "Svelte: Sort attributes",
+    "description": "Enforce order of attributes",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_spaced-html-comment",
+    "title": "Svelte: Spaced html comment",
+    "description": "Enforce consistent spacing after the `<!--` and before the `-->` in a HTML comment",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_system",
+    "title": "Svelte: System",
+    "description": "System rule for working this plugin",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_valid-compile",
+    "title": "Svelte: Valid compile",
+    "description": "Disallow warnings when compiling.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_valid-each-key",
+    "title": "Svelte: Valid each key",
+    "description": "Enforce keys to use variables defined in the `{#each}` block",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_valid-prop-names-in-kit-pages",
+    "title": "Svelte: Valid prop names in kit pages",
+    "description": "Disallow props other than data or errors in SvelteKit page components.",
     "timeToFix": 5
   },
   {
