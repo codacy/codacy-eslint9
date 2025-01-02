@@ -8704,6 +8704,13 @@
   },
   {
     "parameters": [],
+    "patternId": "eslint-plugin_no-meta-schema-default",
+    "title": "Eslint plugin: No meta schema default",
+    "description": "Disallow rules `meta.schema` properties to include defaults",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "eslint-plugin_no-missing-message-ids",
     "title": "Eslint plugin: No missing message ids",
     "description": "Disallow `messageId`s that are missing from `meta.messages`",
@@ -8794,6 +8801,13 @@
     "timeToFix": 5
   },
   {
+    "parameters": [],
+    "patternId": "eslint-plugin_require-meta-default-options",
+    "title": "Eslint plugin: Require meta default options",
+    "description": "Require only rules with options to implement a `meta.defaultOptions` property",
+    "timeToFix": 5
+  },
+  {
     "parameters": [
       {
         "name": "pattern",
@@ -8841,6 +8855,13 @@
     "patternId": "eslint-plugin_require-meta-has-suggestions",
     "title": "Eslint plugin: Require meta has suggestions",
     "description": "Require suggestable rules to implement a `meta.hasSuggestions` property",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "eslint-plugin_require-meta-schema-description",
+    "title": "Eslint plugin: Require meta schema description",
+    "description": "Require rules `meta.schema` properties to include descriptions",
     "timeToFix": 5
   },
   {
