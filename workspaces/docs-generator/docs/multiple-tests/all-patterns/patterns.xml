@@ -1082,6 +1082,7 @@
   <module name="eslint-plugin_no-deprecated-context-methods" />
   <module name="eslint-plugin_no-deprecated-report-api" />
   <module name="eslint-plugin_no-identical-tests" />
+  <module name="eslint-plugin_no-meta-schema-default" />
   <module name="eslint-plugin_no-missing-message-ids" />
   <module name="eslint-plugin_no-missing-placeholders" />
   <module name="eslint-plugin_no-only-tests" />
@@ -1095,11 +1096,13 @@
   <module name="eslint-plugin_prefer-placeholders" />
   <module name="eslint-plugin_prefer-replace-text" />
   <module name="eslint-plugin_report-message-format" />
+  <module name="eslint-plugin_require-meta-default-options" />
   <module name="eslint-plugin_require-meta-docs-description" />
   <module name="eslint-plugin_require-meta-docs-recommended" />
   <module name="eslint-plugin_require-meta-docs-url" />
   <module name="eslint-plugin_require-meta-fixable" />
   <module name="eslint-plugin_require-meta-has-suggestions" />
+  <module name="eslint-plugin_require-meta-schema-description" />
   <module name="eslint-plugin_require-meta-schema" />
   <module name="eslint-plugin_require-meta-type" />
   <module name="eslint-plugin_test-case-property-ordering" />

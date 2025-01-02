@@ -8967,6 +8967,13 @@
       "enabled": true
     },
     {
+      "patternId": "eslint-plugin_no-meta-schema-default",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "eslint-plugin_no-missing-message-ids",
       "level": "Error",
       "category": "ErrorProne",
@@ -9058,6 +9065,13 @@
       "enabled": false
     },
     {
+      "patternId": "eslint-plugin_require-meta-default-options",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "eslint-plugin_require-meta-docs-description",
       "level": "Warning",
       "category": "BestPractice",
@@ -9106,6 +9120,13 @@
       "category": "ErrorProne",
       "parameters": [],
       "enabled": true
+    },
+    {
+      "patternId": "eslint-plugin_require-meta-schema-description",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
     },
     {
       "patternId": "eslint-plugin_require-meta-schema",
