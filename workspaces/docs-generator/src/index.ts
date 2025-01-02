@@ -47,6 +47,10 @@ const downloadDocs: DocsInfo[] = [
     relativeUrl: "/EmmanuelDemey/eslint-plugin-angular/master/docs/rules/"
   },
   {
+    packageName: "eslint-plugin-ava",
+    relativeUrl: "/avajs/eslint-plugin-ava/main/docs/rules/"
+  },
+  {
     packageName: "eslint-plugin-backbone",
     relativeUrl: "/ilyavolodin/eslint-plugin-backbone/master/docs/rules/"
   },

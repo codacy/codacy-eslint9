@@ -21,6 +21,7 @@ const packageNames: string[] = [
   "@vitest/eslint-plugin",
   "eslint",
   "eslint-plugin-angular",
+  "eslint-plugin-ava",
   "eslint-plugin-backbone",
   "eslint-plugin-compat",
   "eslint-plugin-cypress",
