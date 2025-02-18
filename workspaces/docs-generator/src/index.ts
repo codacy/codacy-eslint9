@@ -252,6 +252,10 @@ const downloadDocs: DocsInfo[] = [
     relativeUrl: "/vuejs/eslint-plugin-vue/master/docs/rules/"
   },
   {
+    packageName: "eslint-plugin-vuetify",
+    relativeUrl: "/vuetifyjs/eslint-plugin-vuetify/refs/heads/master/docs/rules/"
+  },
+  {
     packageName: "eslint-plugin-vue-scoped-css",
     relativeUrl: "/future-architect/eslint-plugin-vue-scoped-css/master/docs/rules/"
   },
