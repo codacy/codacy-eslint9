@@ -1,7 +1,7 @@
 #!/bin/sh
 max_ram=$(cat /sys/fs/cgroup/memory.max)
 max_ram=$((max_ram / 1024 / 1024))
-old_space_size=$((max_ram - 356))
+old_space_size=$((max_ram - 128))
 
 export TS_NODE_PROJECT=/app/workspaces/codacy/tsconfig.json
 
