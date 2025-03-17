@@ -73,7 +73,8 @@ const documentationBlacklistRegexes: RegExp[] = [
   /@vitest\/padding-around-expect-groups/,
   /@vitest\/padding-around-describe-blocks/,
   /@vitest\/padding-around-test-blocks/,
-  /@vitest\/padding-around-all/
+  /@vitest\/padding-around-all/,
+  /@typescript-eslint\/no-unsafe-/
 ]
 
 function testRegex (regexes: RegExp[], value: string): boolean {
