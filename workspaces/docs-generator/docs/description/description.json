@@ -1,19 +1,6 @@
 [
   {
-    "parameters": [
-      {
-        "name": "getWithoutSet",
-        "description": "getWithoutSet"
-      },
-      {
-        "name": "setWithoutGet",
-        "description": "setWithoutGet"
-      },
-      {
-        "name": "enforceForClassMembers",
-        "description": "enforceForClassMembers"
-      }
-    ],
+    "parameters": [],
     "patternId": "accessor-pairs",
     "title": "Accessor pairs",
     "description": "Enforce getter and setter pairs in objects and classes",
@@ -34,20 +21,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowImplicit",
-        "description": "allowImplicit"
-      },
-      {
-        "name": "checkForEach",
-        "description": "checkForEach"
-      },
-      {
-        "name": "allowVoid",
-        "description": "allowVoid"
-      }
-    ],
+    "parameters": [],
     "patternId": "array-callback-return",
     "title": "Array callback return",
     "description": "Enforce `return` statements in callbacks of array methods",
@@ -137,20 +111,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreDestructuring",
-        "description": "ignoreDestructuring"
-      },
-      {
-        "name": "ignoreImports",
-        "description": "ignoreImports"
-      },
-      {
-        "name": "ignoreGlobals",
-        "description": "ignoreGlobals"
-      }
-    ],
+    "parameters": [],
     "patternId": "camelcase",
     "title": "Camelcase",
     "description": "Enforce camelcase naming convention",
@@ -164,12 +125,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "enforceForClassFields",
-        "description": "enforceForClassFields"
-      }
-    ],
+    "parameters": [],
     "patternId": "class-methods-use-this",
     "title": "Class methods use this",
     "description": "Enforce that class methods utilize `this`",
@@ -234,12 +190,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "treatUndefinedAsUnspecified",
-        "description": "treatUndefinedAsUnspecified"
-      }
-    ],
+    "parameters": [],
     "patternId": "consistent-return",
     "title": "Consistent return",
     "description": "Require `return` statements to either always or never specify values",
@@ -287,7 +238,7 @@
     "parameters": [],
     "patternId": "default-case-last",
     "title": "Default case last",
-    "description": "Enforce default clauses in switch statements to be last",
+    "description": "Enforce `default` clauses in `switch` statements to be last",
     "timeToFix": 5
   },
   {
@@ -305,16 +256,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowKeywords",
-        "description": "allowKeywords"
-      },
-      {
-        "name": "allowPattern",
-        "description": "allowPattern"
-      }
-    ],
+    "parameters": [],
     "patternId": "dot-notation",
     "title": "Dot notation",
     "description": "Enforce dot notation whenever possible",
@@ -343,7 +285,7 @@
     "parameters": [],
     "patternId": "for-direction",
     "title": "For direction",
-    "description": "Enforce \"for\" loop update clause moving the counter in the right direction",
+    "description": "Enforce `for` loop update clause moving the counter in the right direction",
     "timeToFix": 5
   },
   {
@@ -372,10 +314,6 @@
       {
         "name": "unnamedParam",
         "description": "unnamedParam"
-      },
-      {
-        "name": "allowArrowFunctions",
-        "description": "allowArrowFunctions"
       }
     ],
     "patternId": "func-style",
@@ -405,12 +343,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowImplicit",
-        "description": "allowImplicit"
-      }
-    ],
+    "parameters": [],
     "patternId": "getter-return",
     "title": "Getter return",
     "description": "Enforce `return` statements in getters",
@@ -459,12 +392,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "min",
-        "description": "min"
-      }
-    ],
+    "parameters": [],
     "patternId": "id-length",
     "title": "Id length",
     "description": "Enforce minimum and maximum identifier lengths",
@@ -475,22 +403,6 @@
       {
         "name": "unnamedParam",
         "description": "unnamedParam"
-      },
-      {
-        "name": "properties",
-        "description": "properties"
-      },
-      {
-        "name": "classFields",
-        "description": "classFields"
-      },
-      {
-        "name": "onlyDeclarations",
-        "description": "onlyDeclarations"
-      },
-      {
-        "name": "ignoreDestructuring",
-        "description": "ignoreDestructuring"
       }
     ],
     "patternId": "id-match",
@@ -750,20 +662,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "newIsCap",
-        "description": "newIsCap"
-      },
-      {
-        "name": "capIsNew",
-        "description": "capIsNew"
-      },
-      {
-        "name": "properties",
-        "description": "properties"
-      }
-    ],
+    "parameters": [],
     "patternId": "new-cap",
     "title": "New cap",
     "description": "Require constructor names to begin with a capital letter",
@@ -836,12 +735,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "int32Hint",
-        "description": "int32Hint"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-bitwise",
     "title": "No bitwise",
     "description": "Disallow bitwise operators",
@@ -886,7 +780,7 @@
     "parameters": [],
     "patternId": "no-compare-neg-zero",
     "title": "No compare neg zero",
-    "description": "Disallow comparing against -0",
+    "description": "Disallow comparing against `-0`",
     "timeToFix": 5
   },
   {
@@ -1023,36 +917,21 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "includeExports",
-        "description": "includeExports"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-duplicate-imports",
     "title": "No duplicate imports",
     "description": "Disallow duplicate module imports",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowElseIf",
-        "description": "allowElseIf"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-else-return",
     "title": "No else return",
     "description": "Disallow `else` blocks after `return` statements in `if` statements",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowEmptyCatch",
-        "description": "allowEmptyCatch"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-empty",
     "title": "No empty",
     "description": "Disallow empty block statements",
@@ -1073,12 +952,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowObjectPatternsAsParameters",
-        "description": "allowObjectPatternsAsParameters"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-empty-pattern",
     "title": "No empty pattern",
     "description": "Disallow empty destructuring patterns",
@@ -1099,12 +973,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowIndirect",
-        "description": "allowIndirect"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-eval",
     "title": "No eval",
     "description": "Disallow the use of `eval()`",
@@ -1160,20 +1029,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "commentPattern",
-        "description": "commentPattern"
-      },
-      {
-        "name": "allowEmptyCase",
-        "description": "allowEmptyCase"
-      },
-      {
-        "name": "reportUnusedFallthroughComment",
-        "description": "reportUnusedFallthroughComment"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-fallthrough",
     "title": "No fallthrough",
     "description": "Disallow fallthrough of `case` statements",
@@ -1201,36 +1057,14 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "boolean",
-        "description": "boolean"
-      },
-      {
-        "name": "number",
-        "description": "number"
-      },
-      {
-        "name": "string",
-        "description": "string"
-      },
-      {
-        "name": "disallowTemplateShorthand",
-        "description": "disallowTemplateShorthand"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-implicit-coercion",
     "title": "No implicit coercion",
     "description": "Disallow shorthand type conversions",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "lexicalBindings",
-        "description": "lexicalBindings"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-implicit-globals",
     "title": "No implicit globals",
     "description": "Disallow declarations in the global scope",
@@ -1277,40 +1111,14 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "capIsConstructor",
-        "description": "capIsConstructor"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-invalid-this",
     "title": "No invalid this",
     "description": "Disallow use of `this` in contexts where the value of `this` is `undefined`",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "skipComments",
-        "description": "skipComments"
-      },
-      {
-        "name": "skipStrings",
-        "description": "skipStrings"
-      },
-      {
-        "name": "skipTemplates",
-        "description": "skipTemplates"
-      },
-      {
-        "name": "skipRegExps",
-        "description": "skipRegExps"
-      },
-      {
-        "name": "skipJSXText",
-        "description": "skipJSXText"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-irregular-whitespace",
     "title": "No irregular whitespace",
     "description": "Disallow irregular whitespace",
@@ -1331,16 +1139,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowLoop",
-        "description": "allowLoop"
-      },
-      {
-        "name": "allowSwitch",
-        "description": "allowSwitch"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-labels",
     "title": "No labels",
     "description": "Disallow labeled statements",
@@ -1441,12 +1240,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreNonDeclaration",
-        "description": "ignoreNonDeclaration"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-multi-assign",
     "title": "No multi assign",
     "description": "Disallow use of chained assignment expressions",
@@ -1594,7 +1388,7 @@
     "parameters": [],
     "patternId": "no-param-reassign",
     "title": "No param reassign",
-    "description": "Disallow reassigning `function` parameters",
+    "description": "Disallow reassigning function parameters",
     "timeToFix": 5
   },
   {
@@ -1605,12 +1399,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowForLoopAfterthoughts",
-        "description": "allowForLoopAfterthoughts"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-plusplus",
     "title": "No plusplus",
     "description": "Disallow the unary operators `++` and `--`",
@@ -1631,12 +1420,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowVoid",
-        "description": "allowVoid"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-promise-executor-return",
     "title": "No promise executor return",
     "description": "Disallow returning values from Promise executor functions",
@@ -1657,12 +1441,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "builtinGlobals",
-        "description": "builtinGlobals"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-redeclare",
     "title": "No redeclare",
     "description": "Disallow variable redeclaration",
@@ -1745,16 +1524,11 @@
     "parameters": [],
     "patternId": "no-script-url",
     "title": "No script url",
-    "description": "Disallow `javascript:` urls",
+    "description": "Disallow `javascript:` URLs",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "props",
-        "description": "props"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-self-assign",
     "title": "No self assign",
     "description": "Disallow assignments where both sides are exactly the same",
@@ -1768,12 +1542,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowInParentheses",
-        "description": "allowInParentheses"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-sequences",
     "title": "No sequences",
     "description": "Disallow comma operators",
@@ -1787,20 +1556,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "builtinGlobals",
-        "description": "builtinGlobals"
-      },
-      {
-        "name": "hoist",
-        "description": "hoist"
-      },
-      {
-        "name": "ignoreOnInitialization",
-        "description": "ignoreOnInitialization"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-shadow",
     "title": "No shadow",
     "description": "Disallow variable declarations from shadowing variables declared in the outer scope",
@@ -1896,12 +1652,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "typeof",
-        "description": "typeof"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-undef",
     "title": "No undef",
     "description": "Disallow the use of undeclared variables unless mentioned in `/*global */` comments",
@@ -1922,40 +1673,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowAfterThis",
-        "description": "allowAfterThis"
-      },
-      {
-        "name": "allowAfterSuper",
-        "description": "allowAfterSuper"
-      },
-      {
-        "name": "allowAfterThisConstructor",
-        "description": "allowAfterThisConstructor"
-      },
-      {
-        "name": "enforceInMethodNames",
-        "description": "enforceInMethodNames"
-      },
-      {
-        "name": "allowFunctionParams",
-        "description": "allowFunctionParams"
-      },
-      {
-        "name": "enforceInClassFields",
-        "description": "enforceInClassFields"
-      },
-      {
-        "name": "allowInArrayDestructuring",
-        "description": "allowInArrayDestructuring"
-      },
-      {
-        "name": "allowInObjectDestructuring",
-        "description": "allowInObjectDestructuring"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-underscore-dangle",
     "title": "No underscore dangle",
     "description": "Disallow dangling underscores in identifiers",
@@ -1976,12 +1694,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "defaultAssignment",
-        "description": "defaultAssignment"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-unneeded-ternary",
     "title": "No unneeded ternary",
     "description": "Disallow ternary operators when simpler alternatives exist",
@@ -2009,48 +1722,21 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "enforceForOrderingRelations",
-        "description": "enforceForOrderingRelations"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-unsafe-negation",
     "title": "No unsafe negation",
     "description": "Disallow negating the left operand of relational operators",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "disallowArithmeticOperators",
-        "description": "disallowArithmeticOperators"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-unsafe-optional-chaining",
     "title": "No unsafe optional chaining",
     "description": "Disallow use of optional chaining in contexts where the `undefined` value is not allowed",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowShortCircuit",
-        "description": "allowShortCircuit"
-      },
-      {
-        "name": "allowTernary",
-        "description": "allowTernary"
-      },
-      {
-        "name": "allowTaggedTemplates",
-        "description": "allowTaggedTemplates"
-      },
-      {
-        "name": "enforceForJSX",
-        "description": "enforceForJSX"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-unused-expressions",
     "title": "No unused expressions",
     "description": "Disallow unused expressions",
@@ -2113,12 +1799,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "enforceForClassMembers",
-        "description": "enforceForClassMembers"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-useless-computed-key",
     "title": "No useless computed key",
     "description": "Disallow unnecessary computed property keys in objects and classes",
@@ -2146,20 +1827,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreDestructuring",
-        "description": "ignoreDestructuring"
-      },
-      {
-        "name": "ignoreImport",
-        "description": "ignoreImport"
-      },
-      {
-        "name": "ignoreExport",
-        "description": "ignoreExport"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-useless-rename",
     "title": "No useless rename",
     "description": "Disallow renaming import, export, and destructured assignments to the same name",
@@ -2180,12 +1848,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowAsStatement",
-        "description": "allowAsStatement"
-      }
-    ],
+    "parameters": [],
     "patternId": "no-void",
     "title": "No void",
     "description": "Disallow `void` operators",
@@ -2304,32 +1967,14 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowNamedFunctions",
-        "description": "allowNamedFunctions"
-      },
-      {
-        "name": "allowUnboundThis",
-        "description": "allowUnboundThis"
-      }
-    ],
+    "parameters": [],
     "patternId": "prefer-arrow-callback",
     "title": "Prefer arrow callback",
     "description": "Require using arrow functions for callbacks",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "destructuring",
-        "description": "destructuring"
-      },
-      {
-        "name": "ignoreReadBeforeAssign",
-        "description": "ignoreReadBeforeAssign"
-      }
-    ],
+    "parameters": [],
     "patternId": "prefer-const",
     "title": "Prefer const",
     "description": "Require `const` declarations for variables that are never reassigned after declared",
@@ -2374,16 +2019,11 @@
     "parameters": [],
     "patternId": "prefer-object-spread",
     "title": "Prefer object spread",
-    "description": "Disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead",
+    "description": "Disallow using `Object.assign` with an object literal as the first argument and prefer the use of object spread instead",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowEmptyReject",
-        "description": "allowEmptyReject"
-      }
-    ],
+    "parameters": [],
     "patternId": "prefer-promise-reject-errors",
     "title": "Prefer promise reject errors",
     "description": "Require using Error objects as Promise rejection reasons",
@@ -2397,12 +2037,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "disallowRedundantWrapping",
-        "description": "disallowRedundantWrapping"
-      }
-    ],
+    "parameters": [],
     "patternId": "prefer-regex-literals",
     "title": "Prefer regex literals",
     "description": "Disallow use of the `RegExp` constructor in favor of regular expression literals",
@@ -2451,12 +2086,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowProperties",
-        "description": "allowProperties"
-      }
-    ],
+    "parameters": [],
     "patternId": "require-atomic-updates",
     "title": "Require atomic updates",
     "description": "Disallow assignments that can lead to race conditions due to usage of `await` or `yield`",
@@ -2473,7 +2103,7 @@
     "parameters": [],
     "patternId": "require-unicode-regexp",
     "title": "Require unicode regexp",
-    "description": "Enforce the use of `u` or `v` flag on RegExp",
+    "description": "Enforce the use of `u` or `v` flag on regular expressions",
     "timeToFix": 5
   },
   {
@@ -2521,27 +2151,10 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreCase",
-        "description": "ignoreCase"
-      },
-      {
-        "name": "ignoreDeclarationSort",
-        "description": "ignoreDeclarationSort"
-      },
-      {
-        "name": "ignoreMemberSort",
-        "description": "ignoreMemberSort"
-      },
-      {
-        "name": "allowSeparatedGroups",
-        "description": "allowSeparatedGroups"
-      }
-    ],
+    "parameters": [],
     "patternId": "sort-imports",
     "title": "Sort imports",
-    "description": "Enforce sorted import declarations within modules",
+    "description": "Enforce sorted `import` declarations within modules",
     "timeToFix": 5
   },
   {
@@ -2549,22 +2162,6 @@
       {
         "name": "unnamedParam",
         "description": "unnamedParam"
-      },
-      {
-        "name": "caseSensitive",
-        "description": "caseSensitive"
-      },
-      {
-        "name": "natural",
-        "description": "natural"
-      },
-      {
-        "name": "minKeys",
-        "description": "minKeys"
-      },
-      {
-        "name": "allowLineSeparatedGroups",
-        "description": "allowLineSeparatedGroups"
       }
     ],
     "patternId": "sort-keys",
@@ -2573,12 +2170,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreCase",
-        "description": "ignoreCase"
-      }
-    ],
+    "parameters": [],
     "patternId": "sort-vars",
     "title": "Sort vars",
     "description": "Require variables within the same declaration block to be sorted",
@@ -2697,28 +2289,14 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "enforceForSwitchCase",
-        "description": "enforceForSwitchCase"
-      },
-      {
-        "name": "enforceForIndexOf",
-        "description": "enforceForIndexOf"
-      }
-    ],
+    "parameters": [],
     "patternId": "use-isnan",
     "title": "Use isnan",
     "description": "Require calls to `isNaN()` when checking for `NaN`",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "requireStringLiterals",
-        "description": "requireStringLiterals"
-      }
-    ],
+    "parameters": [],
     "patternId": "valid-typeof",
     "title": "Valid typeof",
     "description": "Enforce comparing `typeof` expressions against valid strings",
@@ -2766,14 +2344,6 @@
       {
         "name": "unnamedParam",
         "description": "unnamedParam"
-      },
-      {
-        "name": "exceptRange",
-        "description": "exceptRange"
-      },
-      {
-        "name": "onlyEquality",
-        "description": "onlyEquality"
       }
     ],
     "patternId": "yoda",
@@ -4566,12 +4136,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "treatUndefinedAsUnspecified",
-        "description": "treatUndefinedAsUnspecified"
-      }
-    ],
+    "parameters": [],
     "patternId": "@typescript-eslint_consistent-return",
     "title": "@typescript eslint: Consistent return",
     "description": "Require `return` statements to either always or never specify values",
@@ -4830,12 +4395,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "capIsConstructor",
-        "description": "capIsConstructor"
-      }
-    ],
+    "parameters": [],
     "patternId": "@typescript-eslint_no-invalid-this",
     "title": "@typescript eslint: No invalid this",
     "description": "Disallow `this` keywords outside of classes or class-like objects",
@@ -5057,24 +4617,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowShortCircuit",
-        "description": "allowShortCircuit"
-      },
-      {
-        "name": "allowTernary",
-        "description": "allowTernary"
-      },
-      {
-        "name": "allowTaggedTemplates",
-        "description": "allowTaggedTemplates"
-      },
-      {
-        "name": "enforceForJSX",
-        "description": "enforceForJSX"
-      }
-    ],
+    "parameters": [],
     "patternId": "@typescript-eslint_no-unused-expressions",
     "title": "@typescript eslint: No unused expressions",
     "description": "Disallow unused expressions",
@@ -10966,28 +10509,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "skipComments",
-        "description": "skipComments"
-      },
-      {
-        "name": "skipStrings",
-        "description": "skipStrings"
-      },
-      {
-        "name": "skipTemplates",
-        "description": "skipTemplates"
-      },
-      {
-        "name": "skipRegExps",
-        "description": "skipRegExps"
-      },
-      {
-        "name": "skipJSXText",
-        "description": "skipJSXText"
-      }
-    ],
+    "parameters": [],
     "patternId": "jsonc_no-irregular-whitespace",
     "title": "Jsonc: No irregular whitespace",
     "description": "Disallow irregular whitespace",
@@ -16881,56 +16403,21 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "getWithoutSet",
-        "description": "getWithoutSet"
-      },
-      {
-        "name": "setWithoutGet",
-        "description": "setWithoutGet"
-      },
-      {
-        "name": "enforceForClassMembers",
-        "description": "enforceForClassMembers"
-      }
-    ],
+    "parameters": [],
     "patternId": "sonarjs_accessor-pairs",
     "title": "Sonarjs: Accessor pairs",
     "description": "Property getters and setters should come in pairs",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "newIsCap",
-        "description": "newIsCap"
-      },
-      {
-        "name": "capIsNew",
-        "description": "capIsNew"
-      },
-      {
-        "name": "properties",
-        "description": "properties"
-      }
-    ],
+    "parameters": [],
     "patternId": "sonarjs_new-cap",
     "title": "Sonarjs: New cap",
     "description": "Constructor names should start with an upper case letter",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "enforceForSwitchCase",
-        "description": "enforceForSwitchCase"
-      },
-      {
-        "name": "enforceForIndexOf",
-        "description": "enforceForIndexOf"
-      }
-    ],
+    "parameters": [],
     "patternId": "sonarjs_use-isnan",
     "title": "Sonarjs: Use isnan",
     "description": "\"NaN\" should not be used in comparisons",
@@ -17000,12 +16487,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowImplicit",
-        "description": "allowImplicit"
-      }
-    ],
+    "parameters": [],
     "patternId": "sonarjs_no-accessor-field-mismatch",
     "title": "Sonarjs: No accessor field mismatch",
     "description": "Getters and setters should access the expected fields",
@@ -17180,24 +16662,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowShortCircuit",
-        "description": "allowShortCircuit"
-      },
-      {
-        "name": "allowTernary",
-        "description": "allowTernary"
-      },
-      {
-        "name": "allowTaggedTemplates",
-        "description": "allowTaggedTemplates"
-      },
-      {
-        "name": "enforceForJSX",
-        "description": "enforceForJSX"
-      }
-    ],
+    "parameters": [],
     "patternId": "sonarjs_no-unused-expressions",
     "title": "Sonarjs: No unused expressions",
     "description": "Non-empty statements should change control flow or have at least one side-effect",
@@ -19364,20 +18829,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreDestructuring",
-        "description": "ignoreDestructuring"
-      },
-      {
-        "name": "ignoreImports",
-        "description": "ignoreImports"
-      },
-      {
-        "name": "ignoreGlobals",
-        "description": "ignoreGlobals"
-      }
-    ],
+    "parameters": [],
     "patternId": "vue_camelcase",
     "title": "Vue: Camelcase",
     "description": "Enforce camelcase naming convention in `<template>`",
@@ -19484,16 +18936,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowKeywords",
-        "description": "allowKeywords"
-      },
-      {
-        "name": "allowPattern",
-        "description": "allowPattern"
-      }
-    ],
+    "parameters": [],
     "patternId": "vue_dot-notation",
     "title": "Vue: Dot notation",
     "description": "Enforce dot notation whenever possible in `<template>`",
@@ -19986,12 +19429,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowObjectPatternsAsParameters",
-        "description": "allowObjectPatternsAsParameters"
-      }
-    ],
+    "parameters": [],
     "patternId": "vue_no-empty-pattern",
     "title": "Vue: No empty pattern",
     "description": "Disallow empty destructuring patterns in `<template>`",

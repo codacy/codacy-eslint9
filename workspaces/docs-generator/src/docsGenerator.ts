@@ -79,7 +79,7 @@ export class DocsGenerator {
     patternId: string,
     schema: JSONSchema4 | JSONSchema4[] | undefined
   ): ParameterSpec[] {
-//    console.log({ patternId, "schema": JSON.stringify(schema) })
+    console.log({ patternId, "schema": JSON.stringify(schema) })
     const unnamedParameterValue = rulesToUnnamedParametersDefaults.get(patternId)
     const unnamedParameter = unnamedParameterValue
       ? new ParameterSpec("unnamedParam", unnamedParameterValue)
@@ -88,11 +88,12 @@ export class DocsGenerator {
     const namedParameters = schema
       ? DocsGenerator.fromEslintSchemaToParameters(patternId, schema)
       : undefined
- //   console.log({ unnamedParameter, namedParameters, unnamedParameterValue })
+    // console.log({ patternId, unnamedParameter, namedParameters, unnamedParameterValue })
     if (namedParameters && unnamedParameter)
       return [unnamedParameter, ...namedParameters]
-    if (namedParameters)
+    if (namedParameters){
       return namedParameters
+    }
     if (unnamedParameter)
       return [unnamedParameter]
 
@@ -197,27 +198,31 @@ export class DocsGenerator {
     const flattenSchema = (schema: JSONSchema4 | JSONSchema4[], result: JSONSchema4[] = []): JSONSchema4[] => {
       if (Array.isArray(schema)) {
         schema.forEach(item => flattenSchema(item, result));
-      } else {
-        if (schema.anyOf) {
-          schema.anyOf.forEach(item => flattenSchema(item, result));
+      } else if (schema.anyOf) {
+        schema.anyOf.forEach(item => flattenSchema(item, result));
+      } else if (schema.items) {
+        if (Array.isArray(schema.items)) {
+          schema.items.forEach(item => flattenSchema(item, result));
         } else {
-          if (schema.items) {
-            // Check for nested items in arrays
-            flattenSchema(schema.items, result);
-          } else {
-            result.push(schema);
-          }
+          flattenSchema(schema.items, result);
         }
+      } else {
+        result.push(schema);
       }
       return result;
     };
-
+  
     const flattenedSchema = flattenSchema(schema);
- //   console.log({ flattenedSchema })
-    const objects = flattenedSchema.filter(value => value && value.properties);
- //   console.log({ "flattenedSchema": JSON.stringify(flattenedSchema), "objects": JSON.stringify(objects) })
-    return Array.isArray(objects) ? fromSchemaArray(patternId, objects) : []
+    
+    const objects = flattenedSchema.filter(value => 
+      value && value.properties && Object.keys(value.properties).length > 0
+    );
+  
+    console.log({ patternId, flattenedSchema, objects });
+  
+    return objects.length > 0 ? fromSchemaArray(patternId, objects) : [];
   }
+  
 
   private convertMdxToMd(text: string): string {
     return text
