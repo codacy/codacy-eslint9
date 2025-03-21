@@ -16625,6 +16625,13 @@
   },
   {
     "parameters": [],
+    "patternId": "svelte_consistent-selector-style",
+    "title": "Svelte: Consistent selector style",
+    "description": "Enforce a consistent style for CSS selectors",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "svelte_derived-has-same-inputs-outputs",
     "title": "Svelte: Derived has same inputs outputs",
     "description": "Derived store should use same variable names between values and callback",
@@ -16758,13 +16765,6 @@
   },
   {
     "parameters": [],
-    "patternId": "svelte_no-dynamic-slot-name",
-    "title": "Svelte: No dynamic slot name",
-    "description": "Disallow dynamic slot name",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "svelte_no-export-load-in-svelte-module-in-kit-pages",
     "title": "Svelte: No export load in svelte module in kit pages",
     "description": "Disallow exporting load functions in `*.svelte` module in SvelteKit page components.",
@@ -16775,13 +16775,6 @@
     "patternId": "svelte_no-extra-reactive-curlies",
     "title": "Svelte: No extra reactive curlies",
     "description": "Disallow wrapping single reactive statements in curly braces",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "svelte_no-goto-without-base",
-    "title": "Svelte: No goto without base",
-    "description": "Disallow using goto() without the base path",
     "timeToFix": 5
   },
   {
@@ -16821,6 +16814,13 @@
   },
   {
     "parameters": [],
+    "patternId": "svelte_no-navigation-without-base",
+    "title": "Svelte: No navigation without base",
+    "description": "Disallow using navigation (links, goto, pushState, replaceState) without the base path",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "svelte_no-not-function-handler",
     "title": "Svelte: No not function handler",
     "description": "Disallow use of not function in event handler",
@@ -16831,6 +16831,13 @@
     "patternId": "svelte_no-object-in-text-mustaches",
     "title": "Svelte: No object in text mustaches",
     "description": "Disallow objects in text mustache interpolation",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-raw-special-elements",
+    "title": "Svelte: No raw special elements",
+    "description": "Checks for invalid raw HTML elements",
     "timeToFix": 5
   },
   {
@@ -16917,9 +16924,36 @@
   },
   {
     "parameters": [],
+    "patternId": "svelte_no-unnecessary-state-wrap",
+    "title": "Svelte: No unnecessary state wrap",
+    "description": "Disallow unnecessary $state wrapping of reactive classes",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "svelte_no-unused-class-name",
     "title": "Svelte: No unused class name",
     "description": "Disallow the use of a class in the template without a corresponding style",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [
+      {
+        "name": "checkImportedTypes",
+        "description": "checkImportedTypes"
+      },
+      {
+        "name": "ignoreTypePatterns",
+        "description": "ignoreTypePatterns"
+      },
+      {
+        "name": "ignorePropertyPatterns",
+        "description": "ignorePropertyPatterns"
+      }
+    ],
+    "patternId": "svelte_no-unused-props",
+    "title": "Svelte: No unused props",
+    "description": "Warns about defined Props properties that are unused",
     "timeToFix": 5
   },
   {
@@ -16927,6 +16961,13 @@
     "patternId": "svelte_no-unused-svelte-ignore",
     "title": "Svelte: No unused svelte ignore",
     "description": "Disallow unused svelte-ignore comments",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-useless-children-snippet",
+    "title": "Svelte: No useless children snippet",
+    "description": "Disallow explicit children snippet where it's not needed",
     "timeToFix": 5
   },
   {
@@ -16941,6 +16982,13 @@
     "patternId": "svelte_prefer-class-directive",
     "title": "Svelte: Prefer class directive",
     "description": "Require class directives instead of ternary expressions",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_prefer-const",
+    "title": "Svelte: Prefer const",
+    "description": "Require `const` declarations for variables that are never reassigned after declared",
     "timeToFix": 5
   },
   {
@@ -17053,6 +17101,13 @@
     "patternId": "svelte_valid-prop-names-in-kit-pages",
     "title": "Svelte: Valid prop names in kit pages",
     "description": "Disallow props other than data or errors in SvelteKit page components.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_valid-style-parse",
+    "title": "Svelte: Valid style parse",
+    "description": "Require valid style element parsing",
     "timeToFix": 5
   },
   {

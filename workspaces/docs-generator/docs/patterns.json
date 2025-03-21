@@ -16839,6 +16839,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_consistent-selector-style",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_derived-has-same-inputs-outputs",
       "level": "Warning",
       "category": "BestPractice",
@@ -16972,13 +16979,6 @@
       "enabled": false
     },
     {
-      "patternId": "svelte_no-dynamic-slot-name",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "svelte_no-export-load-in-svelte-module-in-kit-pages",
       "level": "Error",
       "category": "ErrorProne",
@@ -16987,13 +16987,6 @@
     },
     {
       "patternId": "svelte_no-extra-reactive-curlies",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "svelte_no-goto-without-base",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17035,6 +17028,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_no-navigation-without-base",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_no-not-function-handler",
       "level": "Error",
       "category": "ErrorProne",
@@ -17043,6 +17043,13 @@
     },
     {
       "patternId": "svelte_no-object-in-text-mustaches",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_no-raw-special-elements",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -17131,6 +17138,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_no-unnecessary-state-wrap",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_no-unused-class-name",
       "level": "Warning",
       "category": "BestPractice",
@@ -17138,7 +17152,34 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_no-unused-props",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "checkImportedTypes",
+          "default": false
+        },
+        {
+          "name": "ignoreTypePatterns",
+          "default": []
+        },
+        {
+          "name": "ignorePropertyPatterns",
+          "default": []
+        }
+      ],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_no-unused-svelte-ignore",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_no-useless-children-snippet",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17153,6 +17194,13 @@
     },
     {
       "patternId": "svelte_prefer-class-directive",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_prefer-const",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17265,6 +17313,13 @@
     },
     {
       "patternId": "svelte_valid-prop-names-in-kit-pages",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_valid-style-parse",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
