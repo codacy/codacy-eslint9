@@ -2283,6 +2283,8 @@
   <module name="typescript-sort-keys_string-enum" />
   <module name="unicorn_better-regex" />
   <module name="unicorn_catch-error-name" />
+  <module name="unicorn_consistent-assert" />
+  <module name="unicorn_consistent-date-clone" />
   <module name="unicorn_consistent-destructuring" />
   <module name="unicorn_consistent-empty-array-spread" />
   <module name="unicorn_consistent-existence-index-check" />
@@ -2297,6 +2299,7 @@
   <module name="unicorn_import-style" />
   <module name="unicorn_new-for-builtins" />
   <module name="unicorn_no-abusive-eslint-disable" />
+  <module name="unicorn_no-accessor-recursion" />
   <module name="unicorn_no-anonymous-default-export" />
   <module name="unicorn_no-array-callback-reference" />
   <module name="unicorn_no-array-for-each" />
@@ -2310,13 +2313,14 @@
   <module name="unicorn_no-empty-file" />
   <module name="unicorn_no-for-loop" />
   <module name="unicorn_no-hex-escape" />
-  <module name="unicorn_no-instanceof-array" />
+  <module name="unicorn_no-instanceof-builtins" />
   <module name="unicorn_no-invalid-fetch-options" />
   <module name="unicorn_no-invalid-remove-event-listener" />
   <module name="unicorn_no-keyword-prefix" />
   <module name="unicorn_no-length-as-slice-end" />
   <module name="unicorn_no-lonely-if" />
   <module name="unicorn_no-magic-array-flat-depth" />
+  <module name="unicorn_no-named-default" />
   <module name="unicorn_no-negated-condition" />
   <module name="unicorn_no-negation-in-equality-check" />
   <module name="unicorn_no-nested-ternary" />

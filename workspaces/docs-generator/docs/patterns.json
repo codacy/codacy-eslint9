@@ -17669,16 +17669,25 @@
       "patternId": "unicorn_better-regex",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "sortCharacterClasses",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
       "patternId": "unicorn_catch-error-name",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_consistent-assert",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_consistent-date-clone",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17709,12 +17718,7 @@
       "patternId": "unicorn_consistent-function-scoping",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkArrowFunctions",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -17749,16 +17753,7 @@
       "patternId": "unicorn_expiring-todo-comments",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "ignoreDatesOnPullRequests",
-          "default": true
-        },
-        {
-          "name": "allowWarningComments",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -17802,6 +17797,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-accessor-recursion",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-anonymous-default-export",
       "level": "Warning",
       "category": "BestPractice",
@@ -17840,12 +17842,7 @@
       "patternId": "unicorn_no-array-reduce",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "allowSimpleOperations",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -17898,9 +17895,9 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_no-instanceof-array",
-      "level": "Warning",
-      "category": "BestPractice",
+      "patternId": "unicorn_no-instanceof-builtins",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -17947,6 +17944,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-named-default",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-negated-condition",
       "level": "Warning",
       "category": "BestPractice",
@@ -17985,12 +17989,7 @@
       "patternId": "unicorn_no-null",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkStrictEquality",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18039,12 +18038,7 @@
       "patternId": "unicorn_no-typeof-undefined",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkGlobalVariables",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18142,12 +18136,7 @@
       "patternId": "unicorn_numeric-separators-style",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "onlyIfContainsSeparator",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18161,12 +18150,7 @@
       "patternId": "unicorn_prefer-array-find",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkFromLast",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18201,12 +18185,7 @@
       "patternId": "unicorn_prefer-at",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkAllIndexAccess",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18276,12 +18255,7 @@
       "patternId": "unicorn_prefer-export-from",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "ignoreUsedVariables",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18379,16 +18353,7 @@
       "patternId": "unicorn_prefer-number-properties",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkInfinity",
-          "default": false
-        },
-        {
-          "name": "checkNaN",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -18500,16 +18465,7 @@
       "patternId": "unicorn_prefer-switch",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "minimumCases",
-          "default": 3
-        },
-        {
-          "name": "emptyDefaultCase",
-          "default": "no-default-comment"
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {

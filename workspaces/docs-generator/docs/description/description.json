@@ -17449,12 +17449,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "sortCharacterClasses",
-        "description": "sortCharacterClasses"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_better-regex",
     "title": "Unicorn: Better regex",
     "description": "Improve regexes by making them shorter, consistent, and safer.",
@@ -17465,6 +17460,20 @@
     "patternId": "unicorn_catch-error-name",
     "title": "Unicorn: Catch error name",
     "description": "Enforce a specific parameter name in catch clauses.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "unicorn_consistent-assert",
+    "title": "Unicorn: Consistent assert",
+    "description": "Enforce consistent assertion style with `node:assert`.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "unicorn_consistent-date-clone",
+    "title": "Unicorn: Consistent date clone",
+    "description": "Prefer passing `Date` directly to the constructor when cloning.",
     "timeToFix": 5
   },
   {
@@ -17489,12 +17498,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "checkArrowFunctions",
-        "description": "checkArrowFunctions"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_consistent-function-scoping",
     "title": "Unicorn: Consistent function scoping",
     "description": "Move function definitions to the highest possible scope.",
@@ -17529,16 +17533,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreDatesOnPullRequests",
-        "description": "ignoreDatesOnPullRequests"
-      },
-      {
-        "name": "allowWarningComments",
-        "description": "allowWarningComments"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_expiring-todo-comments",
     "title": "Unicorn: Expiring todo comments",
     "description": "Add expiration conditions to TODO comments.",
@@ -17586,6 +17581,13 @@
   },
   {
     "parameters": [],
+    "patternId": "unicorn_no-accessor-recursion",
+    "title": "Unicorn: No accessor recursion",
+    "description": "Disallow recursive access to `this` within getters and setters.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "unicorn_no-anonymous-default-export",
     "title": "Unicorn: No anonymous default export",
     "description": "Disallow anonymous functions and classes as the default export.",
@@ -17620,12 +17622,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "allowSimpleOperations",
-        "description": "allowSimpleOperations"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_no-array-reduce",
     "title": "Unicorn: No array reduce",
     "description": "Disallow `Array#reduce()` and `Array#reduceRight()`.",
@@ -17682,9 +17679,9 @@
   },
   {
     "parameters": [],
-    "patternId": "unicorn_no-instanceof-array",
-    "title": "Unicorn: No instanceof array",
-    "description": "Require `Array.isArray()` instead of `instanceof Array`.",
+    "patternId": "unicorn_no-instanceof-builtins",
+    "title": "Unicorn: No instanceof builtins",
+    "description": "Disallow `instanceof` with built-in objects",
     "timeToFix": 5
   },
   {
@@ -17731,6 +17728,13 @@
   },
   {
     "parameters": [],
+    "patternId": "unicorn_no-named-default",
+    "title": "Unicorn: No named default",
+    "description": "Disallow named usage of default import and export.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "unicorn_no-negated-condition",
     "title": "Unicorn: No negated condition",
     "description": "Disallow negated conditions.",
@@ -17765,12 +17769,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "checkStrictEquality",
-        "description": "checkStrictEquality"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_no-null",
     "title": "Unicorn: No null",
     "description": "Disallow the use of the `null` literal.",
@@ -17819,12 +17818,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "checkGlobalVariables",
-        "description": "checkGlobalVariables"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_no-typeof-undefined",
     "title": "Unicorn: No typeof undefined",
     "description": "Disallow comparing `undefined` using `typeof`.",
@@ -17922,12 +17916,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "onlyIfContainsSeparator",
-        "description": "onlyIfContainsSeparator"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_numeric-separators-style",
     "title": "Unicorn: Numeric separators style",
     "description": "Enforce the style of numeric separators by correctly grouping digits.",
@@ -17941,12 +17930,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "checkFromLast",
-        "description": "checkFromLast"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_prefer-array-find",
     "title": "Unicorn: Prefer array find",
     "description": "Prefer `.find(…)` and `.findLast(…)` over the first or last element from `.filter(…)`.",
@@ -17981,12 +17965,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "checkAllIndexAccess",
-        "description": "checkAllIndexAccess"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_prefer-at",
     "title": "Unicorn: Prefer at",
     "description": "Prefer `.at()` method for index access and `String#charAt()`.",
@@ -18056,12 +18035,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "ignoreUsedVariables",
-        "description": "ignoreUsedVariables"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_prefer-export-from",
     "title": "Unicorn: Prefer export from",
     "description": "Prefer `export…from` when re-exporting.",
@@ -18159,16 +18133,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "checkInfinity",
-        "description": "checkInfinity"
-      },
-      {
-        "name": "checkNaN",
-        "description": "checkNaN"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_prefer-number-properties",
     "title": "Unicorn: Prefer number properties",
     "description": "Prefer `Number` static properties over global ones.",
@@ -18280,16 +18245,7 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "minimumCases",
-        "description": "minimumCases"
-      },
-      {
-        "name": "emptyDefaultCase",
-        "description": "emptyDefaultCase"
-      }
-    ],
+    "parameters": [],
     "patternId": "unicorn_prefer-switch",
     "title": "Unicorn: Prefer switch",
     "description": "Prefer `switch` over multiple `else-if`.",
