@@ -4272,7 +4272,7 @@
     "parameters": [],
     "patternId": "@typescript-eslint_no-base-to-string",
     "title": "@typescript eslint: No base to string",
-    "description": "Require `.toString()` to only be called on objects which provide useful information when stringified",
+    "description": "Require `.toString()` and `.toLocaleString()` to only be called on objects which provide useful information when stringified",
     "timeToFix": 5
   },
   {
@@ -4333,6 +4333,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@typescript-eslint_no-empty-interface",
+    "title": "@typescript eslint: No empty interface",
+    "description": "Disallow the declaration of empty interfaces",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@typescript-eslint_no-empty-object-type",
     "title": "@typescript eslint: No empty object type",
     "description": "Disallow accidentally using the \"empty object\" type",
@@ -4377,7 +4384,7 @@
     "parameters": [],
     "patternId": "@typescript-eslint_no-implied-eval",
     "title": "@typescript eslint: No implied eval",
-    "description": "Disallow the use of `eval()`-like methods",
+    "description": "Disallow the use of `eval()`-like functions",
     "timeToFix": 5
   },
   {
@@ -4413,6 +4420,13 @@
     "patternId": "@typescript-eslint_no-loop-func",
     "title": "@typescript eslint: No loop func",
     "description": "Disallow function declarations that contain unsafe references inside loop statements",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-loss-of-precision",
+    "title": "@typescript eslint: No loss of precision",
+    "description": "Disallow literal numbers that lose precision",
     "timeToFix": 5
   },
   {
@@ -4467,6 +4481,13 @@
     "patternId": "@typescript-eslint_no-misused-promises",
     "title": "@typescript eslint: No misused promises",
     "description": "Disallow Promises in places not designed to handle them",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-misused-spread",
+    "title": "@typescript eslint: No misused spread",
+    "description": "Disallow using the spread operator when it might cause unexpected behavior",
     "timeToFix": 5
   },
   {
@@ -4551,6 +4572,13 @@
     "patternId": "@typescript-eslint_no-this-alias",
     "title": "@typescript eslint: No this alias",
     "description": "Disallow aliasing `this`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-type-alias",
+    "title": "@typescript eslint: No type alias",
+    "description": "Disallow type aliases",
     "timeToFix": 5
   },
   {
@@ -4653,6 +4681,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@typescript-eslint_no-var-requires",
+    "title": "@typescript eslint: No var requires",
+    "description": "Disallow `require` statements except in import statements",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@typescript-eslint_no-wrapper-object-types",
     "title": "@typescript eslint: No wrapper object types",
     "description": "Disallow using confusing built-in primitive class wrappers",
@@ -4662,7 +4697,7 @@
     "parameters": [],
     "patternId": "@typescript-eslint_non-nullable-type-assertion-style",
     "title": "@typescript eslint: Non nullable type assertion style",
-    "description": "Enforce non-null assertions over explicit type casts",
+    "description": "Enforce non-null assertions over explicit type assertions",
     "timeToFix": 5
   },
   {
@@ -4781,7 +4816,7 @@
     "parameters": [],
     "patternId": "@typescript-eslint_prefer-reduce-type-parameter",
     "title": "@typescript eslint: Prefer reduce type parameter",
-    "description": "Enforce using type parameter when calling `Array#reduce` instead of casting",
+    "description": "Enforce using type parameter when calling `Array#reduce` instead of using a type assertion",
     "timeToFix": 5
   },
   {
@@ -4807,9 +4842,23 @@
   },
   {
     "parameters": [],
+    "patternId": "@typescript-eslint_prefer-ts-expect-error",
+    "title": "@typescript eslint: Prefer ts expect error",
+    "description": "Enforce using `@ts-expect-error` over `@ts-ignore`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@typescript-eslint_promise-function-async",
     "title": "@typescript eslint: Promise function async",
     "description": "Require any function or method that returns a Promise to be marked async",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_related-getter-setter-pairs",
+    "title": "@typescript eslint: Related getter setter pairs",
+    "description": "Enforce that `get()` types should be assignable to their equivalent `set()` type",
     "timeToFix": 5
   },
   {
@@ -4845,6 +4894,13 @@
     "patternId": "@typescript-eslint_return-await",
     "title": "@typescript eslint: Return await",
     "description": "Enforce consistent awaiting of returned promises",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_sort-type-constituents",
+    "title": "@typescript eslint: Sort type constituents",
+    "description": "Enforce constituents of a type union/intersection to be sorted alphabetically",
     "timeToFix": 5
   },
   {

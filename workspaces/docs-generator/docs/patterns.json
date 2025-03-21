@@ -4343,6 +4343,13 @@
       "enabled": true
     },
     {
+      "patternId": "@typescript-eslint_no-empty-interface",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_no-empty-object-type",
       "level": "Warning",
       "category": "BestPractice",
@@ -4427,6 +4434,13 @@
       "enabled": false
     },
     {
+      "patternId": "@typescript-eslint_no-loss-of-precision",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_no-magic-numbers",
       "level": "Warning",
       "category": "BestPractice",
@@ -4475,6 +4489,13 @@
     },
     {
       "patternId": "@typescript-eslint_no-misused-promises",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": true
+    },
+    {
+      "patternId": "@typescript-eslint_no-misused-spread",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -4563,6 +4584,13 @@
       "category": "BestPractice",
       "parameters": [],
       "enabled": true
+    },
+    {
+      "patternId": "@typescript-eslint_no-type-alias",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
     },
     {
       "patternId": "@typescript-eslint_no-unnecessary-boolean-literal-compare",
@@ -4659,6 +4687,13 @@
       "patternId": "@typescript-eslint_no-useless-empty-export",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-var-requires",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -4817,11 +4852,25 @@
       "enabled": true
     },
     {
+      "patternId": "@typescript-eslint_prefer-ts-expect-error",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_promise-function-async",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_related-getter-setter-pairs",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": true
     },
     {
       "patternId": "@typescript-eslint_require-array-sort-compare",
@@ -4857,6 +4906,13 @@
       "category": "ErrorProne",
       "parameters": [],
       "enabled": true
+    },
+    {
+      "patternId": "@typescript-eslint_sort-type-constituents",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
     },
     {
       "patternId": "@typescript-eslint_strict-boolean-expressions",
