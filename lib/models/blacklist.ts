@@ -38,7 +38,8 @@ const blacklistRegexes: RegExp[] = [
   /unused-imports\/.*-ts/,
   /yml\/sort-sequence-values/,
   /jest\/unbound-method/,
-  /angular\/di-unused/
+  /angular\/di-unused/,
+  /@typescript-eslint\/no-unsafe-/
 ]
 
 const documentationBlacklistRegexes: RegExp[] = [
