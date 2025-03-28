@@ -56,7 +56,7 @@
     "@types/node": "22.7.5",
     "@vue/eslint-config-typescript": "^14.4.0",
     "angular-eslint": "^19.2.1",
-    "eslint": "9.22.0",
+    "eslint": "9.23.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-angular": "4.1.0",
     "eslint-plugin-eslint-plugin": "6.4.0",
