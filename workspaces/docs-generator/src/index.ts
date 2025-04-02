@@ -100,7 +100,7 @@ const downloadDocs: DocsInfo[] = [
   },
   {
     packageName: "eslint-plugin-jasmine",
-    relativeUrl: "/tlvince/eslint-plugin-jasmine/master/docs/rules/"
+    relativeUrl: "/tlvince/eslint-plugin-jasmine/refs/heads/master/docs/rules/"
   },
   {
     packageName: "eslint-plugin-jest",

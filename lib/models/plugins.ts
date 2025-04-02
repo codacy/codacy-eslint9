@@ -105,12 +105,12 @@ async function getPluginsRules(): Promise<Record<string, TSESLint.LooseRuleDefin
       if (plugin.module.rules === undefined) return;
 
       for (const [ruleName, ruleModule] of Object.entries(plugin.module.rules)) {
-        if (ruleModule !== undefined) {
+
+        //if (ruleModule !== undefined) {
           pluginsRules[`${plugin.name}/${ruleName}`] = ruleModule;
-        }
+        //}
       }
     });
-
   return pluginsRules;
 }
 

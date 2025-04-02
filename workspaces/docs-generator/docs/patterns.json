@@ -9035,6 +9035,37 @@
       "enabled": false
     },
     {
+      "patternId": "filenames_match-regex",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "^([a-z0-9]+)([A-Z][a-z0-9]+)*$"
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "filenames_match-exported",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": "camel"
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "filenames_no-index",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "fp_no-arguments",
       "level": "Info",
       "category": "CodeStyle",
@@ -9659,6 +9690,48 @@
       "enabled": false
     },
     {
+      "patternId": "jasmine_expect-matcher",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_expect-single-argument",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_named-spy",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-focused-tests",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-disabled-tests",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-describe-variables",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jasmine_no-suite-dupes",
       "level": "Info",
       "category": "CodeStyle",
@@ -9674,6 +9747,48 @@
     },
     {
       "patternId": "jasmine_missing-expect",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-suite-callback-args",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_valid-expect",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-assign-spyon",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-unsafe-spy",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-global-setup",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_no-pending-tests",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -9708,9 +9823,23 @@
       "enabled": false
     },
     {
+      "patternId": "jasmine_prefer-jasmine-matcher",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jasmine_prefer-promise-strategies",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jasmine_prefer-toHaveBeenCalledWith",
+      "level": "Info",
+      "category": "CodeStyle",
       "parameters": [],
       "enabled": false
     },
@@ -14351,6 +14480,62 @@
       "enabled": false
     },
     {
+      "patternId": "react-redux_connect-prefer-minimum-two-arguments",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_connect-prefer-named-arguments",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_mapDispatchToProps-prefer-shorthand",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_mapDispatchToProps-returns-object",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_mapDispatchToProps-prefer-parameters-names",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_mapStateToProps-no-store",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_mapStateToProps-prefer-hoisted",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_mapStateToProps-prefer-parameters-names",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "react-redux_mapStateToProps-prefer-selectors",
       "level": "Info",
       "category": "CodeStyle",
@@ -14366,6 +14551,13 @@
     },
     {
       "patternId": "react-redux_no-unused-prop-types",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-redux_prefer-separate-component-file",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -21499,6 +21691,15 @@
     },
     {
       "patternId": "xss_no-location-href-assign",
+      "level": "Warning",
+      "category": "Security",
+      "subcategory": "XSS",
+      "scanType": "SAST",
+      "parameters": [],
+      "enabled": true
+    },
+    {
+      "patternId": "xss_no-mixed-html",
       "level": "Warning",
       "category": "Security",
       "subcategory": "XSS",

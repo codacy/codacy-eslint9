@@ -1,8 +1,6 @@
-const blacklistRegexes: RegExp[] = [
-]
+const blacklistRegexes: RegExp[] = []
 
-const documentationBlacklistRegexes: RegExp[] = [
-]
+const documentationBlacklistRegexes: RegExp[] = []
 
 function testRegex (regexes: RegExp[], value: string): boolean {
   return regexes.some((regex) => regex.test(value))

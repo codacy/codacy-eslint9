@@ -17,7 +17,7 @@ import fs from "fs-extra"
 import type { JSONSchema4 } from "json-schema"
 import type { TSESLint } from '@typescript-eslint/utils';
 
-import { isBlacklistedOnlyFromDocumentation } from "lib/models/blacklist.ts"
+//import { isBlacklistedOnlyFromDocumentation } from "lib/models/blacklist.ts"
 import { capitalize, patternTitle } from "lib/utils/strings.ts"
 import { getAllNames, getAllRules, getByPackageName, getRuleMeta, type Plugin } from "lib/models/plugins.ts";
 import { patternIdToCodacy, translateTypes } from "lib/models/patterns.ts";
@@ -43,14 +43,14 @@ export class DocsGenerator {
   private async initializeRules(): Promise<Record<string, TSESLint.LooseRuleDefinition>> {
     const rules: Record<string, TSESLint.LooseRuleDefinition> = await getAllRules();
 
-    const rulesFiltered = Object.fromEntries(
-      Object.entries(rules).filter(([patternId, _]) =>
-        !isBlacklistedOnlyFromDocumentation(patternId)
-      )
-    );
+    // const rulesFiltered = Object.fromEntries(
+    //   Object.entries(rules).filter(([patternId, _]) =>
+    //     !isBlacklistedOnlyFromDocumentation(patternId)
+    //   )
+    // );
 
-    console.log("Number of rules: ", Object.keys(rulesFiltered).length)
-    return rulesFiltered
+    console.log("Number of rules: ", Object.keys(rules).length)
+    return rules
   }
 
   private async initializeDependencies(): Promise<Record<string, string>> {
@@ -106,7 +106,6 @@ export class DocsGenerator {
     Object.entries(rules).forEach(([patternId, ruleModule]) => {
       const meta = getRuleMeta(ruleModule);
 
-      if (meta === undefined) return;
       const type = meta?.type ?? meta?.docs?.category
       const [level, category, securitySubcategory, scanType] = translateTypes(
         patternId,
@@ -342,6 +341,7 @@ export class DocsGenerator {
   async createPatternsFile(): Promise<void> {
     console.log("Generate patterns.json")
     const patterns = await this.generatePatterns()
+    
 
     if (!patterns.patterns.length) return
 
