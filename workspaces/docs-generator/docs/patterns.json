@@ -2838,6 +2838,55 @@
       "enabled": false
     },
     {
+      "patternId": "@lwc_lwc_ssr-no-host-mutation-in-connected-callback",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-restricted-browser-globals",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-unsupported-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-node-env",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-unsupported-node-api",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-static-imports-of-user-specific-scoped-modules",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-form-factor",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@salesforce_lightning_no-aura-localization-service",
       "level": "Info",
       "category": "CodeStyle",

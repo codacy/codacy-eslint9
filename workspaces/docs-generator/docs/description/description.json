@@ -2836,6 +2836,55 @@
   },
   {
     "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-host-mutation-in-connected-callback",
+    "title": "@lwc: [Lwc] Ssr no host mutation in connected callback",
+    "description": "Disallow mutations to the host element in connectedCallback",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-restricted-browser-globals",
+    "title": "@lwc: [Lwc] Ssr no restricted browser globals",
+    "description": "Disallow access to global browser APIs during SSR",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-unsupported-properties",
+    "title": "@lwc: [Lwc] Ssr no unsupported properties",
+    "description": "Disallow access of unsupported properties in SSR",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-node-env",
+    "title": "@lwc: [Lwc] Ssr no node env",
+    "description": "Disallow access of process.env.NODE_ENV in SSR",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-unsupported-node-api",
+    "title": "@lwc: [Lwc] Ssr no unsupported node api",
+    "description": "Disallow unsupported Node.js API calls in SSR-able components.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-static-imports-of-user-specific-scoped-modules",
+    "title": "@lwc: [Lwc] Ssr no static imports of user specific scoped modules",
+    "description": "Disallow static imports of user-specific scoped modules in SSR-able components",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_ssr-no-form-factor",
+    "title": "@lwc: [Lwc] Ssr no form factor",
+    "description": "Discourage use of formFactor.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@salesforce_lightning_no-aura-localization-service",
     "title": "@salesforce: [Lightning] No aura localization service",
     "description": "Disallow usage of \"$A.localizationService\"",

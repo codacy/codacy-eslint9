@@ -336,7 +336,6 @@
   <module name="@lwc_lwc_consistent-component-name" />
   <module name="@lwc_lwc_no-api-reassignments" />
   <module name="@lwc_lwc_no-async-await" />
-  <module name="@lwc_lwc_no-async-operation" />
   <module name="@lwc_lwc_no-attributes-during-construction" />
   <module name="@lwc_lwc_no-deprecated" />
   <module name="@lwc_lwc_no-document-query" />
@@ -344,28 +343,27 @@
   <module name="@lwc_lwc_no-for-of" />
   <module name="@lwc_lwc_no-inner-html" />
   <module name="@lwc_lwc_no-leading-uppercase-api-name" />
-  <module name="@lwc_lwc_no-leaky-event-listeners" />
   <module name="@lwc_lwc_no-disallowed-lwc-imports" />
   <module name="@lwc_lwc_no-template-children" />
-  <module name="@lwc_lwc_no-unexpected-wire-adapter-usages" />
   <module name="@lwc_lwc_no-rest-parameter" />
-  <module name="@lwc_lwc_no-unknown-wire-adapters" />
-  <module name="@lwc_lwc_prefer-custom-event" />
   <module name="@lwc_lwc_valid-api" />
   <module name="@lwc_lwc_valid-graphql-wire-adapter-callback-parameters" />
   <module name="@lwc_lwc_valid-track" />
   <module name="@lwc_lwc_valid-wire" />
-  <module name="@lwc_lwc_no-restricted-browser-globals-during-ssr" />
   <module name="@lwc_lwc_no-unsupported-ssr-properties" />
-  <module name="@lwc_lwc_no-node-env-in-ssr" />
+  <module name="@lwc_lwc_ssr-no-host-mutation-in-connected-callback" />
+  <module name="@lwc_lwc_ssr-no-restricted-browser-globals" />
+  <module name="@lwc_lwc_ssr-no-unsupported-properties" />
+  <module name="@lwc_lwc_ssr-no-node-env" />
+  <module name="@lwc_lwc_ssr-no-unsupported-node-api" />
+  <module name="@lwc_lwc_ssr-no-static-imports-of-user-specific-scoped-modules" />
+  <module name="@lwc_lwc_ssr-no-form-factor" />
   <module name="@salesforce_lightning_no-aura-localization-service" />
   <module name="@salesforce_lightning_no-moment" />
   <module name="@salesforce_lightning_prefer-i18n-service" />
-  <module name="@salesforce_lightning_valid-apex-method-invocation" />
   <module name="@shopify_binary-assignment-parens" />
   <module name="@shopify_class-property-semi" />
   <module name="@shopify_images-no-direct-imports" />
-  <module name="@shopify_jest-no-all-mocks-methods" />
   <module name="@shopify_jest-no-snapshots" />
   <module name="@shopify_jsx-no-complex-expressions" />
   <module name="@shopify_jsx-no-hardcoded-content" />
@@ -509,7 +507,6 @@
   <module name="@typescript-eslint_consistent-type-assertions" />
   <module name="@typescript-eslint_consistent-type-definitions" />
   <module name="@typescript-eslint_consistent-type-exports" />
-  <module name="@typescript-eslint_consistent-type-imports" />
   <module name="@typescript-eslint_default-param-last" />
   <module name="@typescript-eslint_dot-notation" />
   <module name="@typescript-eslint_explicit-function-return-type" />
@@ -699,7 +696,6 @@
   <module name="angular_deferred" />
   <module name="angular_definedundefined" />
   <module name="angular_di-order" />
-  <module name="angular_di-unused" />
   <module name="angular_di" />
   <module name="angular_directive-name" />
   <module name="angular_directive-restrict" />
@@ -735,7 +731,6 @@
   <module name="angular_prefer-component" />
   <module name="angular_provider-name" />
   <module name="angular_rest-service" />
-  <module name="angular_service-name" />
   <module name="angular_timeout-service" />
   <module name="angular_typecheck-array" />
   <module name="angular_typecheck-date" />
@@ -775,7 +770,6 @@
   <module name="ava_use-true-false" />
   <module name="backbone_collection-model" />
   <module name="backbone_defaults-on-top" />
-  <module name="backbone_event-scope" />
   <module name="backbone_events-on-top" />
   <module name="backbone_initialize-on-top" />
   <module name="backbone_model-defaults" />
@@ -785,7 +779,6 @@
   <module name="backbone_no-el-assign" />
   <module name="backbone_no-model-attributes" />
   <module name="backbone_no-native-jquery" />
-  <module name="backbone_no-silent" />
   <module name="backbone_no-view-collection-models" />
   <module name="backbone_no-view-model-attributes" />
   <module name="backbone_no-view-onoff-binding" />
@@ -858,7 +851,6 @@
   <module name="ember_no-private-routing-service" />
   <module name="ember_no-proxies" />
   <module name="ember_no-replace-test-comments" />
-  <module name="ember_no-restricted-property-modifications" />
   <module name="ember_no-restricted-resolver-tests" />
   <module name="ember_no-restricted-service-injections" />
   <module name="ember_no-runloop" />
@@ -893,7 +885,6 @@
   <module name="ember_require-valid-css-selector-in-test-helpers" />
   <module name="ember_route-path-style" />
   <module name="ember_routes-segments-snake-case" />
-  <module name="ember_template-indent" />
   <module name="ember_template-no-let-reference" />
   <module name="ember_use-brace-expansion" />
   <module name="ember_use-ember-data-rfc-395-imports" />
@@ -1120,7 +1111,6 @@
   <module name="es-x_no-weak-map" />
   <module name="es-x_no-weak-set" />
   <module name="es-x_no-weakrefs" />
-  <module name="expect-type_expect" />
   <module name="eslint-plugin_consistent-output" />
   <module name="eslint-plugin_fixer-return" />
   <module name="eslint-plugin_meta-property-ordering" />
@@ -1152,9 +1142,6 @@
   <module name="eslint-plugin_require-meta-type" />
   <module name="eslint-plugin_test-case-property-ordering" />
   <module name="eslint-plugin_test-case-shorthand-strings" />
-  <module name="filenames_match-regex" />
-  <module name="filenames_match-exported" />
-  <module name="filenames_no-index" />
   <module name="fp_no-arguments" />
   <module name="fp_no-class" />
   <module name="fp_no-delete" />
@@ -1172,25 +1159,14 @@
   <module name="fp_no-throw" />
   <module name="fp_no-unused-expression" />
   <module name="fp_no-valueof-field" />
-  <module name="functional_functional-parameters" />
-  <module name="functional_immutable-data" />
   <module name="functional_no-classes" />
-  <module name="functional_no-conditional-statements" />
-  <module name="functional_no-expression-statements" />
-  <module name="functional_no-let" />
   <module name="functional_no-loop-statements" />
-  <module name="functional_no-mixed-types" />
   <module name="functional_no-promise-reject" />
-  <module name="functional_no-return-void" />
   <module name="functional_no-this-expressions" />
-  <module name="functional_no-throw-statements" />
-  <module name="functional_no-try-statements" />
-  <module name="functional_prefer-immutable-types" />
   <module name="functional_prefer-property-signatures" />
   <module name="functional_prefer-readonly-type" />
   <module name="functional_prefer-tacit" />
   <module name="functional_readonly-type" />
-  <module name="functional_type-declaration-immutability" />
   <module name="i18next_no-literal-string" />
   <module name="import_no-unresolved" />
   <module name="import_named" />
@@ -1198,7 +1174,6 @@
   <module name="import_namespace" />
   <module name="import_no-namespace" />
   <module name="import_export" />
-  <module name="import_no-mutable-exports" />
   <module name="import_extensions" />
   <module name="import_no-restricted-paths" />
   <module name="import_no-internal-modules" />
@@ -1213,8 +1188,6 @@
   <module name="import_no-named-as-default-member" />
   <module name="import_no-anonymous-default-export" />
   <module name="import_no-unused-modules" />
-  <module name="import_no-commonjs" />
-  <module name="import_no-amd" />
   <module name="import_no-duplicates" />
   <module name="import_first" />
   <module name="import_max-dependencies" />
@@ -1223,7 +1196,6 @@
   <module name="import_no-nodejs-modules" />
   <module name="import_no-webpack-loader-syntax" />
   <module name="import_order" />
-  <module name="import_newline-after-import" />
   <module name="import_prefer-default-export" />
   <module name="import_no-default-export" />
   <module name="import_no-named-export" />
@@ -1317,7 +1289,6 @@
   <module name="jest_require-hook" />
   <module name="jest_require-to-throw-message" />
   <module name="jest_require-top-level-describe" />
-  <module name="jest_unbound-method" />
   <module name="jest_valid-describe-callback" />
   <module name="jest_valid-expect-in-promise" />
   <module name="jest_valid-expect" />
@@ -2529,8 +2500,6 @@
   <module name="unicorn_text-encoding-identifier-case" />
   <module name="unicorn_throw-new-error" />
   <module name="unicorn_no-instanceof-array" />
-  <module name="unused-imports_no-unused-vars" />
-  <module name="unused-imports_no-unused-imports" />
   <module name="vue_array-bracket-newline" />
   <module name="vue_array-bracket-spacing" />
   <module name="vue_array-element-newline" />
@@ -2830,7 +2799,6 @@
   <module name="wdio_no-debug" />
   <module name="wdio_no-pause" />
   <module name="xss_no-location-href-assign" />
-  <module name="xss_no-mixed-html" />
   <module name="yml_block-mapping-colon-indicator-newline" />
   <module name="yml_block-mapping-question-indicator-newline" />
   <module name="yml_block-mapping" />
@@ -2856,7 +2824,6 @@
   <module name="yml_quotes" />
   <module name="yml_require-string-key" />
   <module name="yml_sort-keys" />
-  <module name="yml_sort-sequence-values" />
   <module name="yml_spaced-comment" />
   <module name="yml_vue-custom-block_no-parsing-error" />
 </module>
