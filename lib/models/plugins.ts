@@ -126,7 +126,7 @@ export async function getAllNames (): Promise<string[]> {
   return (await plugins).map(plugin => plugin.name)
 }
 
-export async function getAllRules(withDeprecated: boolean = true): Promise<Record<string, TSESLint.LooseRuleDefinition>> {
+export async function getAllRules(): Promise<Record<string, TSESLint.LooseRuleDefinition>> {
   const pluginsRules = await getPluginsRules();
   const allRules: Record<string, TSESLint.LooseRuleDefinition> = {};
 
@@ -140,7 +140,7 @@ export async function getAllRules(withDeprecated: boolean = true): Promise<Recor
     if (
       patternId
       && !isBlacklisted(patternId)
-      && (!withDeprecated || !hasRuleMetaDeprecated(ruleModule))
+      //&& (!withDeprecated || !hasRuleMetaDeprecated(ruleModule))
     ) {
       allRules[patternId] = ruleModule;
     }
@@ -162,9 +162,9 @@ export function getRuleMeta(rule: TSESLint.LooseRuleDefinition): { [key: string]
     : undefined
 }
 
-function hasRuleMetaDeprecated(rule: TSESLint.LooseRuleDefinition): boolean {
-  const meta = getRuleMeta(rule);
-  return meta !== undefined && 
-    'deprecated' in meta && 
-    meta.deprecated === true;
-}
+// function hasRuleMetaDeprecated(rule: TSESLint.LooseRuleDefinition): boolean {
+//   const meta = getRuleMeta(rule);
+//   return meta !== undefined && 
+//     'deprecated' in meta && 
+//     meta.deprecated === true;
+// }

@@ -2450,6 +2450,18 @@
     "timeToFix": 5
   },
   {
+    "parameters": [
+      {
+        "name": "allowStatic",
+        "description": "allowStatic"
+      }
+    ],
+    "patternId": "@angular-eslint_no-host-metadata-property",
+    "title": "@angular eslint: No host metadata property",
+    "description": "Disallows usage of the `host` metadata property. NOTE: This used to be recommended by the Angular Team, but now they recommend the exact opposite: https://github.com/angular/angular/issues/54284",
+    "timeToFix": 5
+  },
+  {
     "parameters": [],
     "patternId": "@angular-eslint_no-input-prefix",
     "title": "@angular eslint: No input prefix",
@@ -2542,6 +2554,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@angular-eslint_prefer-standalone-component",
+    "title": "@angular eslint: Prefer standalone component",
+    "description": "Ensures component `standalone` property is set to `true` in the component decorator",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@angular-eslint_prefer-output-readonly",
     "title": "@angular eslint: Prefer output readonly",
     "description": "Prefer to declare `@Output`, `OutputEmitterRef` and `OutputRef` as `readonly` since they are not supposed to be reassigned",
@@ -2582,6 +2601,18 @@
     "patternId": "@angular-eslint_sort-lifecycle-methods",
     "title": "@angular eslint: Sort lifecycle methods",
     "description": "Ensures that lifecycle methods are declared in order of execution",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [
+      {
+        "name": "locale",
+        "description": "locale"
+      }
+    ],
+    "patternId": "@angular-eslint_sort-ngmodule-metadata-arrays",
+    "title": "@angular eslint: Sort ngmodule metadata arrays",
+    "description": "Ensures ASC alphabetical order for `NgModule` metadata arrays for easy visual scanning",
     "timeToFix": 5
   },
   {
@@ -2642,6 +2673,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@lwc_lwc_no-async-operation",
+    "title": "@lwc: [Lwc] No async operation",
+    "description": "Restrict usage of async operations",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@lwc_lwc_no-attributes-during-construction",
     "title": "@lwc: [Lwc] No attributes during construction",
     "description": "No attributes during construction",
@@ -2663,6 +2701,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@lwc_lwc_no-dupe-class-members",
+    "title": "@lwc: [Lwc] No dupe class members",
+    "description": "Disallow duplicate class members",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@lwc_lwc_no-for-of",
     "title": "@lwc: [Lwc] No for of",
     "description": "Disallow usage of the for-of syntax",
@@ -2680,6 +2725,13 @@
     "patternId": "@lwc_lwc_no-leading-uppercase-api-name",
     "title": "@lwc: [Lwc] No leading uppercase api name",
     "description": "Disallow public property to start with an upper case character",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_no-leaky-event-listeners",
+    "title": "@lwc: [Lwc] No leaky event listeners",
+    "description": "Prevent event listeners from leaking memory",
     "timeToFix": 5
   },
   {
@@ -2707,9 +2759,30 @@
   },
   {
     "parameters": [],
+    "patternId": "@lwc_lwc_no-unexpected-wire-adapter-usages",
+    "title": "@lwc: [Lwc] No unexpected wire adapter usages",
+    "description": "Restrict unexpected wire adapter usages",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@lwc_lwc_no-rest-parameter",
     "title": "@lwc: [Lwc] No rest parameter",
     "description": "Disallow usage of the rest parameter syntax",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_no-unknown-wire-adapters",
+    "title": "@lwc: [Lwc] No unknown wire adapters",
+    "description": "Restrict usage of unknown wire adapters",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_prefer-custom-event",
+    "title": "@lwc: [Lwc] Prefer custom event",
+    "description": "Suggest usage of \"CustomEvent\" over \"Event\" constructor",
     "timeToFix": 5
   },
   {
@@ -2742,9 +2815,23 @@
   },
   {
     "parameters": [],
+    "patternId": "@lwc_lwc_no-restricted-browser-globals-during-ssr",
+    "title": "@lwc: [Lwc] No restricted browser globals during ssr",
+    "description": "Disallow access to global browser APIs during SSR",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@lwc_lwc_no-unsupported-ssr-properties",
     "title": "@lwc: [Lwc] No unsupported ssr properties",
     "description": "Disallow access of unsupported properties in SSR",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@lwc_lwc_no-node-env-in-ssr",
+    "title": "@lwc: [Lwc] No node env in ssr",
+    "description": "Disallow access of process.env.NODE_ENV in SSR",
     "timeToFix": 5
   },
   {
@@ -2770,6 +2857,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@salesforce_lightning_valid-apex-method-invocation",
+    "title": "@salesforce: [Lightning] Valid apex method invocation",
+    "description": "Enforce invoking Apex methods with the right arguments",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@shopify_binary-assignment-parens",
     "title": "@shopify: Binary assignment parens",
     "description": "Enforce (or disallow) assignments of binary, boolean-producing expressions to be wrapped in parentheses.",
@@ -2787,6 +2881,13 @@
     "patternId": "@shopify_images-no-direct-imports",
     "title": "@shopify: Images no direct imports",
     "description": "Prefer importing image files from the index file of the directory instead of the direct path to the image file.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@shopify_jest-no-all-mocks-methods",
+    "title": "@shopify: Jest no all mocks methods",
+    "description": "Disallows jest allMocks methods.",
     "timeToFix": 5
   },
   {
@@ -2822,6 +2923,13 @@
     "patternId": "@shopify_no-ancestor-directory-import",
     "title": "@shopify: No ancestor directory import",
     "description": "Prefer that imports from within a directory extend to the file from where they are importing without relying on an index file.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@shopify_no-debugger",
+    "title": "@shopify: No debugger",
+    "description": "Disallow the use of `debugger`.",
     "timeToFix": 5
   },
   {
@@ -3335,6 +3443,13 @@
     "patternId": "@stylistic_jsx-function-call-newline",
     "title": "@stylistic: Jsx function call newline",
     "description": "Enforce line breaks before and after JSX elements when they are used as arguments to a function.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@stylistic_jsx-indent",
+    "title": "@stylistic: Jsx indent",
+    "description": "Enforce JSX indentation. Deprecated, use `indent` rule instead.",
     "timeToFix": 5
   },
   {
@@ -4165,6 +4280,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@typescript-eslint_consistent-type-imports",
+    "title": "@typescript eslint: Consistent type imports",
+    "description": "Enforce consistent usage of type imports",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@typescript-eslint_default-param-last",
     "title": "@typescript eslint: Default param last",
     "description": "Enforce default parameters to be last",
@@ -4646,6 +4768,76 @@
   },
   {
     "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-argument",
+    "title": "@typescript eslint: No unsafe argument",
+    "description": "Disallow calling a function with a value with type `any`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-assignment",
+    "title": "@typescript eslint: No unsafe assignment",
+    "description": "Disallow assigning a value with type `any` to variables and properties",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-call",
+    "title": "@typescript eslint: No unsafe call",
+    "description": "Disallow calling a value with type `any`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-declaration-merging",
+    "title": "@typescript eslint: No unsafe declaration merging",
+    "description": "Disallow unsafe declaration merging",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-enum-comparison",
+    "title": "@typescript eslint: No unsafe enum comparison",
+    "description": "Disallow comparing an enum value with a non-enum value",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-function-type",
+    "title": "@typescript eslint: No unsafe function type",
+    "description": "Disallow using the unsafe built-in Function type",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-member-access",
+    "title": "@typescript eslint: No unsafe member access",
+    "description": "Disallow member access on a value with type `any`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-return",
+    "title": "@typescript eslint: No unsafe return",
+    "description": "Disallow returning a value with type `any` from a function",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-type-assertion",
+    "title": "@typescript eslint: No unsafe type assertion",
+    "description": "Disallow type assertions that narrow a type",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@typescript-eslint_no-unsafe-unary-minus",
+    "title": "@typescript eslint: No unsafe unary minus",
+    "description": "Require unary negation to take a number",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@typescript-eslint_no-unused-expressions",
     "title": "@typescript eslint: No unused expressions",
     "description": "Disallow unused expressions",
@@ -5096,6 +5288,13 @@
   },
   {
     "parameters": [],
+    "patternId": "@vitest_no-done-callback",
+    "title": "@vitest: No done callback",
+    "description": "Disallow using a callback in asynchronous tests and hooks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "@vitest_no-duplicate-hooks",
     "title": "@vitest: No duplicate hooks",
     "description": "Disallow duplicate hooks and teardown hooks",
@@ -5355,6 +5554,62 @@
   },
   {
     "parameters": [],
+    "patternId": "@vitest_padding-around-after-all-blocks",
+    "title": "@vitest: Padding around after all blocks",
+    "description": "Enforce padding around `afterAll` blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-after-each-blocks",
+    "title": "@vitest: Padding around after each blocks",
+    "description": "Enforce padding around `afterEach` blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-all",
+    "title": "@vitest: Padding around all",
+    "description": "Enforce padding around vitest functions",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-before-all-blocks",
+    "title": "@vitest: Padding around before all blocks",
+    "description": "Enforce padding around `beforeAll` blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-before-each-blocks",
+    "title": "@vitest: Padding around before each blocks",
+    "description": "Enforce padding around `beforeEach` blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-describe-blocks",
+    "title": "@vitest: Padding around describe blocks",
+    "description": "Enforce padding around `describe` blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-expect-groups",
+    "title": "@vitest: Padding around expect groups",
+    "description": "Enforce padding around `expect` groups",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "@vitest_padding-around-test-blocks",
+    "title": "@vitest: Padding around test blocks",
+    "description": "Enforce padding around afterAll blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "angular_angularelement",
     "title": "Angular: Angularelement",
     "timeToFix": 5
@@ -5423,6 +5678,12 @@
     "parameters": [],
     "patternId": "angular_di-order",
     "title": "Angular: Di order",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "angular_di-unused",
+    "title": "Angular: Di unused",
     "timeToFix": 5
   },
   {
@@ -5633,6 +5894,12 @@
     "parameters": [],
     "patternId": "angular_rest-service",
     "title": "Angular: Rest service",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "angular_service-name",
+    "title": "Angular: Service name",
     "timeToFix": 5
   },
   {
@@ -5900,6 +6167,13 @@
   },
   {
     "parameters": [],
+    "patternId": "backbone_event-scope",
+    "title": "Backbone: Event scope",
+    "description": "Verify that scope is passed into event handlers",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "backbone_events-on-top",
     "title": "Backbone: Events on top",
     "description": "Events should be the first thing registered in the View",
@@ -5959,6 +6233,13 @@
     "patternId": "backbone_no-native-jquery",
     "title": "Backbone: No native jquery",
     "description": "Prevent usage of $ in the views",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "backbone_no-silent",
+    "title": "Backbone: No silent",
+    "description": "Prevent using silent option in functions that cause events",
     "timeToFix": 5
   },
   {
@@ -6535,6 +6816,13 @@
   },
   {
     "parameters": [],
+    "patternId": "ember_no-restricted-property-modifications",
+    "title": "Ember: No restricted property modifications",
+    "description": "Disallow modifying the specified properties",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "ember_no-restricted-resolver-tests",
     "title": "Ember: No restricted resolver tests",
     "description": "Disallow the use of patterns that use the restricted resolver in tests",
@@ -6817,6 +7105,18 @@
     "timeToFix": 5
   },
   {
+    "parameters": [
+      {
+        "name": "ignoreComments",
+        "description": "ignoreComments"
+      }
+    ],
+    "patternId": "ember_template-indent",
+    "title": "Ember: Template indent",
+    "description": "Enforce consistent indentation for gts/gjs templates",
+    "timeToFix": 5
+  },
+  {
     "parameters": [],
     "patternId": "ember_template-no-let-reference",
     "title": "Ember: Template no let reference",
@@ -7092,6 +7392,13 @@
   },
   {
     "parameters": [],
+    "patternId": "es-x_no-array-string-prototype-at",
+    "title": "Es x: No array string prototype at",
+    "description": "Disallow the `{Array,String}.prototype.at()` methods.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "es-x_no-arraybuffer-prototype-transfer",
     "title": "Es x: No arraybuffer prototype transfer",
     "description": "Disallow the `ArrayBuffer.prototype.transfer` method.",
@@ -7158,6 +7465,13 @@
     "patternId": "es-x_no-block-scoped-variables",
     "title": "Es x: No block scoped variables",
     "description": "Disallow block-scoped variable declarations.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "es-x_no-class-fields",
+    "title": "Es x: No class fields",
+    "description": "Disallow class fields.",
     "timeToFix": 5
   },
   {
@@ -7841,6 +8155,13 @@
   },
   {
     "parameters": [],
+    "patternId": "es-x_no-object-map-groupby",
+    "title": "Es x: No object map groupby",
+    "description": "Disallow the `{Object,Map}.groupBy()` function (array grouping).",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "es-x_no-object-preventextensions",
     "title": "Es x: No object preventextensions",
     "description": "Disallow the `Object.preventExtensions` method.",
@@ -8219,6 +8540,13 @@
   },
   {
     "parameters": [],
+    "patternId": "es-x_no-string-prototype-iswellformed-towellformed",
+    "title": "Es x: No string prototype iswellformed towellformed",
+    "description": "Disallow the `String.prototype.{isWellFormed,toWellFormed}` methods.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "es-x_no-string-prototype-matchall",
     "title": "Es x: No string prototype matchall",
     "description": "Disallow the `String.prototype.matchAll` method.",
@@ -8383,6 +8711,13 @@
     "patternId": "es-x_no-weakrefs",
     "title": "Es x: No weakrefs",
     "description": "Disallow the `WeakRef` and `FinalizationRegistry` class.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "expect-type_expect",
+    "title": "Expect type: Expect",
+    "description": "Expects type error, type snapshot, or type.",
     "timeToFix": 5
   },
   {
@@ -8623,6 +8958,34 @@
     "timeToFix": 5
   },
   {
+    "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      }
+    ],
+    "patternId": "filenames_match-regex",
+    "title": "Filenames: Match regex",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      }
+    ],
+    "patternId": "filenames_match-exported",
+    "title": "Filenames: Match exported",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "filenames_no-index",
+    "title": "Filenames: No index",
+    "timeToFix": 5
+  },
+  {
     "parameters": [],
     "patternId": "fp_no-arguments",
     "title": "Fp: No arguments",
@@ -8743,9 +9106,44 @@
   },
   {
     "parameters": [],
+    "patternId": "functional_functional-parameters",
+    "title": "Functional: Functional parameters",
+    "description": "Enforce functional parameters.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_immutable-data",
+    "title": "Functional: Immutable data",
+    "description": "Enforce treating data as immutable.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "functional_no-classes",
     "title": "Functional: No classes",
     "description": "Disallow classes.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_no-conditional-statements",
+    "title": "Functional: No conditional statements",
+    "description": "Disallow conditional statements.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_no-expression-statements",
+    "title": "Functional: No expression statements",
+    "description": "Disallow expression statements.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_no-let",
+    "title": "Functional: No let",
+    "description": "Disallow mutable variables.",
     "timeToFix": 5
   },
   {
@@ -8757,6 +9155,13 @@
   },
   {
     "parameters": [],
+    "patternId": "functional_no-mixed-types",
+    "title": "Functional: No mixed types",
+    "description": "Restrict types so that only members of the same kind are allowed in them.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "functional_no-promise-reject",
     "title": "Functional: No promise reject",
     "description": "Disallow rejecting promises.",
@@ -8764,9 +9169,37 @@
   },
   {
     "parameters": [],
+    "patternId": "functional_no-return-void",
+    "title": "Functional: No return void",
+    "description": "Disallow functions that don't return anything.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "functional_no-this-expressions",
     "title": "Functional: No this expressions",
     "description": "Disallow this access.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_no-throw-statements",
+    "title": "Functional: No throw statements",
+    "description": "Disallow throwing exceptions.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_no-try-statements",
+    "title": "Functional: No try statements",
+    "description": "Disallow try-catch[-finally] and try-finally patterns.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_prefer-immutable-types",
+    "title": "Functional: Prefer immutable types",
+    "description": "Require function parameters to be typed as certain immutability",
     "timeToFix": 5
   },
   {
@@ -8783,6 +9216,13 @@
   },
   {
     "parameters": [],
+    "patternId": "functional_prefer-readonly-type",
+    "title": "Functional: Prefer readonly type",
+    "description": "Prefer readonly types over mutable types.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "functional_prefer-tacit",
     "title": "Functional: Prefer tacit",
     "description": "Replaces `x => f(x)` with just `f`.",
@@ -8793,6 +9233,13 @@
     "patternId": "functional_readonly-type",
     "title": "Functional: Readonly type",
     "description": "Require consistently using either `readonly` keywords or `Readonly<T>`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "functional_type-declaration-immutability",
+    "title": "Functional: Type declaration immutability",
+    "description": "Enforce the immutability of types based on patterns.",
     "timeToFix": 5
   },
   {
@@ -8856,6 +9303,13 @@
     "patternId": "import_export",
     "title": "Import: Export",
     "description": "Forbid any invalid exports, i.e. re-export of the same name.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "import_no-mutable-exports",
+    "title": "Import: No mutable exports",
+    "description": "Forbid the use of mutable exports with `var` or `let`.",
     "timeToFix": 5
   },
   {
@@ -8971,6 +9425,20 @@
   },
   {
     "parameters": [],
+    "patternId": "import_no-commonjs",
+    "title": "Import: No commonjs",
+    "description": "Forbid CommonJS `require` calls and `module.exports` or `exports.*`.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "import_no-amd",
+    "title": "Import: No amd",
+    "description": "Forbid AMD `require` and `define` calls.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "import_no-duplicates",
     "title": "Import: No duplicates",
     "description": "Forbid repeated import of the same module in multiple places.",
@@ -9036,6 +9504,13 @@
     "patternId": "import_order",
     "title": "Import: Order",
     "description": "Enforce a convention in module import order.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "import_newline-after-import",
+    "title": "Import: Newline after import",
+    "description": "Enforce a newline after import statements.",
     "timeToFix": 5
   },
   {
@@ -9129,6 +9604,49 @@
   },
   {
     "parameters": [],
+    "patternId": "import_imports-first",
+    "title": "Import: Imports first",
+    "description": "Replaced by `import/first`.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_expect-matcher",
+    "title": "Jasmine: Expect matcher",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_expect-single-argument",
+    "title": "Jasmine: Expect single argument",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_named-spy",
+    "title": "Jasmine: Named spy",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-focused-tests",
+    "title": "Jasmine: No focused tests",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-disabled-tests",
+    "title": "Jasmine: No disabled tests",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-describe-variables",
+    "title": "Jasmine: No describe variables",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "jasmine_no-suite-dupes",
     "title": "Jasmine: No suite dupes",
     "timeToFix": 5
@@ -9143,6 +9661,42 @@
     "parameters": [],
     "patternId": "jasmine_missing-expect",
     "title": "Jasmine: Missing expect",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-suite-callback-args",
+    "title": "Jasmine: No suite callback args",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_valid-expect",
+    "title": "Jasmine: Valid expect",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-assign-spyon",
+    "title": "Jasmine: No assign spyon",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-unsafe-spy",
+    "title": "Jasmine: No unsafe spy",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-global-setup",
+    "title": "Jasmine: No global setup",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_no-pending-tests",
+    "title": "Jasmine: No pending tests",
     "timeToFix": 5
   },
   {
@@ -9171,8 +9725,20 @@
   },
   {
     "parameters": [],
+    "patternId": "jasmine_prefer-jasmine-matcher",
+    "title": "Jasmine: Prefer jasmine matcher",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "jasmine_prefer-promise-strategies",
     "title": "Jasmine: Prefer promise strategies",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jasmine_prefer-toHaveBeenCalledWith",
+    "title": "Jasmine: Prefer toHaveBeenCalledWith",
     "timeToFix": 5
   },
   {
@@ -9583,6 +10149,13 @@
     "patternId": "jest_require-top-level-describe",
     "title": "Jest: Require top level describe",
     "description": "Require test cases and hooks to be inside a `describe` block",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jest_unbound-method",
+    "title": "Jest: Unbound method",
+    "description": "Enforce unbound methods are called with their expected scope",
     "timeToFix": 5
   },
   {
@@ -10775,6 +11348,13 @@
   },
   {
     "parameters": [],
+    "patternId": "jsx-a11y_accessible-emoji",
+    "title": "Jsx a11y: Accessible emoji",
+    "description": "Enforce emojis are wrapped in `<span>` and provide screenreader access.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "jsx-a11y_alt-text",
     "title": "Jsx a11y: Alt text",
     "description": "Enforce all elements that require alternative text have meaningful information to relay back to end user.",
@@ -10906,6 +11486,13 @@
   },
   {
     "parameters": [],
+    "patternId": "jsx-a11y_label-has-for",
+    "title": "Jsx a11y: Label has for",
+    "description": "Enforce that `<label>` elements have the `htmlFor` prop.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "jsx-a11y_lang",
     "title": "Jsx a11y: Lang",
     "description": "Enforce lang attribute has a valid value.",
@@ -10984,6 +11571,13 @@
     "patternId": "jsx-a11y_no-noninteractive-tabindex",
     "title": "Jsx a11y: No noninteractive tabindex",
     "description": "`tabIndex` should only be declared on interactive elements.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "jsx-a11y_no-onchange",
+    "title": "Jsx a11y: No onchange",
+    "description": "Enforce usage of `onBlur` over `onChange` on select menus for accessibility.",
     "timeToFix": 5
   },
   {
@@ -12133,6 +12727,20 @@
   },
   {
     "parameters": [],
+    "patternId": "n_no-hide-core-modules",
+    "title": "N: No hide core modules",
+    "description": "Disallow third-party modules which are hiding core modules",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "n_shebang",
+    "title": "N: Shebang",
+    "description": "Require correct usage of hashbang",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "nuxt_no-env-in-context",
     "title": "Nuxt: No env in context",
     "description": "Disallow `context.isServer/context.isClient` in `asyncData/fetch/nuxtServerInit`",
@@ -12192,6 +12800,27 @@
     "patternId": "perfectionist_sort-intersection-types",
     "title": "Perfectionist: Sort intersection types",
     "description": "Enforce sorted intersection types.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "perfectionist_sort-svelte-attributes",
+    "title": "Perfectionist: Sort svelte attributes",
+    "description": "Enforce sorted Svelte attributes.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "perfectionist_sort-astro-attributes",
+    "title": "Perfectionist: Sort astro attributes",
+    "description": "Enforce sorted Astro attributes.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "perfectionist_sort-vue-attributes",
+    "title": "Perfectionist: Sort vue attributes",
+    "description": "Enforce sorted Vue attributes.",
     "timeToFix": 5
   },
   {
@@ -13210,6 +13839,13 @@
     "timeToFix": 5
   },
   {
+    "parameters": [],
+    "patternId": "react_jsx-sort-default-props",
+    "title": "React: Jsx sort default props",
+    "description": "Enforce defaultProps declarations alphabetical sorting",
+    "timeToFix": 5
+  },
+  {
     "parameters": [
       {
         "name": "multiline",
@@ -13223,6 +13859,13 @@
     "patternId": "react_jsx-sort-props",
     "title": "React: Jsx sort props",
     "description": "Enforce props alphabetical sorting",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react_jsx-space-before-closing",
+    "title": "React: Jsx space before closing",
+    "description": "Enforce spacing before closing bracket in JSX",
     "timeToFix": 5
   },
   {
@@ -13667,6 +14310,54 @@
   },
   {
     "parameters": [],
+    "patternId": "react-redux_connect-prefer-minimum-two-arguments",
+    "title": "React redux: Connect prefer minimum two arguments",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_connect-prefer-named-arguments",
+    "title": "React redux: Connect prefer named arguments",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_mapDispatchToProps-prefer-shorthand",
+    "title": "React redux: MapDispatchToProps prefer shorthand",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_mapDispatchToProps-returns-object",
+    "title": "React redux: MapDispatchToProps returns object",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_mapDispatchToProps-prefer-parameters-names",
+    "title": "React redux: MapDispatchToProps prefer parameters names",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_mapStateToProps-no-store",
+    "title": "React redux: MapStateToProps no store",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_mapStateToProps-prefer-hoisted",
+    "title": "React redux: MapStateToProps prefer hoisted",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_mapStateToProps-prefer-parameters-names",
+    "title": "React redux: MapStateToProps prefer parameters names",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "react-redux_mapStateToProps-prefer-selectors",
     "title": "React redux: MapStateToProps prefer selectors",
     "timeToFix": 5
@@ -13681,6 +14372,12 @@
     "parameters": [],
     "patternId": "react-redux_no-unused-prop-types",
     "title": "React redux: No unused prop types",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "react-redux_prefer-separate-component-file",
+    "title": "React redux: Prefer separate component file",
     "timeToFix": 5
   },
   {
@@ -14553,6 +15250,13 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_no-tab",
+    "title": "Sonarjs: No tab",
+    "description": "Tabulation characters should not be used",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_variable-name",
     "title": "Sonarjs: Variable name",
     "description": "Variable, property and parameter names should comply with a naming convention",
@@ -14644,6 +15348,13 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_no-redundant-parentheses",
+    "title": "Sonarjs: No redundant parentheses",
+    "description": "Redundant pairs of parentheses should be removed",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_no-labels",
     "title": "Sonarjs: No labels",
     "description": "Labels should not be used",
@@ -14689,6 +15400,13 @@
     "patternId": "sonarjs_todo-tag",
     "title": "Sonarjs: Todo tag",
     "description": "Track uses of \"TODO\" tags",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_useless-string-operation",
+    "title": "Sonarjs: Useless string operation",
+    "description": "Results of operations on strings should not be ignored",
     "timeToFix": 5
   },
   {
@@ -15036,6 +15754,13 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_cookies",
+    "title": "Sonarjs: Cookies",
+    "description": "Writing cookies is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_null-dereference",
     "title": "Sonarjs: Null dereference",
     "description": "Properties of variables with \"null\" or \"undefined\" values should not be accessed",
@@ -15158,6 +15883,13 @@
     "patternId": "sonarjs_non-existent-operator",
     "title": "Sonarjs: Non existent operator",
     "description": "Non-existent operators '=+', '=-' and '=!' should not be used",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_web-sql-database",
+    "title": "Sonarjs: Web sql database",
+    "description": "Web SQL databases should not be used",
     "timeToFix": 5
   },
   {
@@ -15358,6 +16090,13 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_enforce-trailing-comma",
+    "title": "Sonarjs: Enforce trailing comma",
+    "description": "Trailing commas should be used",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_void-use",
     "title": "Sonarjs: Void use",
     "description": "\"void\" should not be used",
@@ -15459,6 +16198,13 @@
     "patternId": "sonarjs_no-same-line-conditional",
     "title": "Sonarjs: No same line conditional",
     "description": "Conditionals should start on new lines",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_conditional-indentation",
+    "title": "Sonarjs: Conditional indentation",
+    "description": "A conditionally executed single line should be denoted by indentation",
     "timeToFix": 5
   },
   {
@@ -15666,6 +16412,20 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_regular-expr",
+    "title": "Sonarjs: Regular expr",
+    "description": "Using regular expressions is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_encryption",
+    "title": "Sonarjs: Encryption",
+    "description": "Encrypting data is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_hashing",
     "title": "Sonarjs: Hashing",
     "description": "Using weak hashing algorithms is security-sensitive",
@@ -15680,9 +16440,37 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_xpath",
+    "title": "Sonarjs: Xpath",
+    "description": "Executing XPath expressions is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_sockets",
+    "title": "Sonarjs: Sockets",
+    "description": "Using Sockets is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_no-try-promise",
     "title": "Sonarjs: No try promise",
     "description": "Promise rejections should not be caught by \"try\" blocks",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_process-argv",
+    "title": "Sonarjs: Process argv",
+    "description": "Using command line arguments is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_standard-input",
+    "title": "Sonarjs: Standard input",
+    "description": "Reading the Standard Input is security-sensitive",
     "timeToFix": 5
   },
   {
@@ -15869,6 +16657,20 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_certificate-transparency",
+    "title": "Sonarjs: Certificate transparency",
+    "description": "Disabling Certificate Transparency monitoring is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_dns-prefetching",
+    "title": "Sonarjs: Dns prefetching",
+    "description": "Allowing browsers to perform DNS prefetching is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_confidential-information-logging",
     "title": "Sonarjs: Confidential information logging",
     "description": "Allowing confidential information to be logged is security-sensitive",
@@ -16009,6 +16811,13 @@
   },
   {
     "parameters": [],
+    "patternId": "sonarjs_aws-s3-bucket-server-encryption",
+    "title": "Sonarjs: Aws s3 bucket server encryption",
+    "description": "Disabling server-side encryption of S3 buckets is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "sonarjs_aws-s3-bucket-insecure-http",
     "title": "Sonarjs: Aws s3 bucket insecure http",
     "description": "Authorizing HTTP communications with S3 buckets is security-sensitive",
@@ -16054,6 +16863,13 @@
     "patternId": "sonarjs_aws-s3-bucket-public-access",
     "title": "Sonarjs: Aws s3 bucket public access",
     "description": "Allowing public ACLs or policies on a S3 bucket is security-sensitive",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "sonarjs_no-vue-bypass-sanitization",
+    "title": "Sonarjs: No vue bypass sanitization",
+    "description": "Disabling Vue.js built-in escaping is security-sensitive",
     "timeToFix": 5
   },
   {
@@ -16604,6 +17420,13 @@
   },
   {
     "parameters": [],
+    "patternId": "svelte_@typescript-eslint_no-unnecessary-condition",
+    "title": "Svelte: [@typescript eslint] No unnecessary condition",
+    "description": "Disallow conditionals where the type is always truthy or always falsy",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "svelte_block-lang",
     "title": "Svelte: Block lang",
     "description": "Disallows the use of languages other than those specified in the configuration for the lang attribute of `<script>` and `<style>` blocks.",
@@ -16765,6 +17588,13 @@
   },
   {
     "parameters": [],
+    "patternId": "svelte_no-dynamic-slot-name",
+    "title": "Svelte: No dynamic slot name",
+    "description": "Disallow dynamic slot name",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "svelte_no-export-load-in-svelte-module-in-kit-pages",
     "title": "Svelte: No export load in svelte module in kit pages",
     "description": "Disallow exporting load functions in `*.svelte` module in SvelteKit page components.",
@@ -16775,6 +17605,13 @@
     "patternId": "svelte_no-extra-reactive-curlies",
     "title": "Svelte: No extra reactive curlies",
     "description": "Disallow wrapping single reactive statements in curly braces",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "svelte_no-goto-without-base",
+    "title": "Svelte: No goto without base",
+    "description": "Disallow using goto() without the base path",
     "timeToFix": 5
   },
   {
@@ -18344,6 +19181,12 @@
   },
   {
     "parameters": [],
+    "patternId": "unicorn_no-instanceof-array",
+    "title": "Unicorn: No instanceof array",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "unused-imports_no-unused-vars",
     "title": "Unused imports: No unused vars",
     "description": "Disallow unused variables",
@@ -18521,6 +19364,13 @@
     "patternId": "vue_component-options-name-casing",
     "title": "Vue: Component options name casing",
     "description": "Enforce the casing of component name in `components` options",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "vue_component-tags-order",
+    "title": "Vue: Component tags order",
+    "description": "Enforce order of component top-level elements",
     "timeToFix": 5
   },
   {
@@ -19080,6 +19930,13 @@
     "timeToFix": 5
   },
   {
+    "parameters": [],
+    "patternId": "vue_no-invalid-model-keys",
+    "title": "Vue: No invalid model keys",
+    "description": "Require valid keys in model option",
+    "timeToFix": 5
+  },
+  {
     "parameters": [
       {
         "name": "skipComments",
@@ -19186,6 +20043,13 @@
     "patternId": "vue_no-ref-as-operand",
     "title": "Vue: No ref as operand",
     "description": "Disallow use of value wrapped by `ref()` (Composition API) as an operand",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "vue_no-ref-object-destructure",
+    "title": "Vue: No ref object destructure",
+    "description": "Disallow usages of ref objects that can lead to loss of reactivity",
     "timeToFix": 5
   },
   {
@@ -19312,6 +20176,13 @@
     "patternId": "vue_no-root-v-if",
     "title": "Vue: No root v if",
     "description": "Disallow `v-if` directives on root element",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "vue_no-setup-props-destructure",
+    "title": "Vue: No setup props destructure",
+    "description": "Disallow usages that lose the reactivity of `props` passed to `setup`",
     "timeToFix": 5
   },
   {
@@ -19878,6 +20749,13 @@
   },
   {
     "parameters": [],
+    "patternId": "vue_script-setup-uses-vars",
+    "title": "Vue: Script setup uses vars",
+    "description": "Prevent `<script setup>` variables used in `<template>` to be marked as unused",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "vue_singleline-html-element-content-newline",
     "title": "Vue: Singleline html element content newline",
     "description": "Require a line break before and after the contents of a singleline element",
@@ -20007,6 +20885,13 @@
     "patternId": "vue_v-on-event-hyphenation",
     "title": "Vue: V on event hyphenation",
     "description": "Enforce v-on event naming style on custom components in template",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "vue_v-on-function-call",
+    "title": "Vue: V on function call",
+    "description": "Enforce or forbid parentheses after method calls without arguments in `v-on` directives",
     "timeToFix": 5
   },
   {
@@ -20312,6 +21197,13 @@
   },
   {
     "parameters": [],
+    "patternId": "vue-scoped-css_require-scoped",
+    "title": "Vue scoped css: Require scoped",
+    "description": "Enforce the `<style>` tags to has the `scoped` attribute",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "vue-scoped-css_require-selector-used-inside",
     "title": "Vue scoped css: Require selector used inside",
     "description": "Disallow selectors defined that is not used inside `<template>`",
@@ -20473,6 +21365,12 @@
   },
   {
     "parameters": [],
+    "patternId": "vuejs-accessibility_no-onchange",
+    "title": "Vuejs accessibility: No onchange",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "vuejs-accessibility_no-redundant-roles",
     "title": "Vuejs accessibility: No redundant roles",
     "timeToFix": 5
@@ -20527,6 +21425,12 @@
     "patternId": "xss_no-location-href-assign",
     "title": "Xss: No location href assign",
     "description": "Disallow location.href assignment (prevent possible XSS)",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "xss_no-mixed-html",
+    "title": "Xss: No mixed html",
     "timeToFix": 5
   },
   {
@@ -20732,6 +21636,13 @@
     "patternId": "yml_sort-keys",
     "title": "Yml: Sort keys",
     "description": "Require mapping keys to be sorted",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "yml_sort-sequence-values",
+    "title": "Yml: Sort sequence values",
+    "description": "Require sequence values to be sorted",
     "timeToFix": 5
   },
   {

@@ -2453,6 +2453,18 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_no-host-metadata-property",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "allowStatic",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_no-input-prefix",
       "level": "Warning",
       "category": "BestPractice",
@@ -2544,6 +2556,13 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_prefer-standalone-component",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_prefer-output-readonly",
       "level": "Warning",
       "category": "BestPractice",
@@ -2585,6 +2604,18 @@
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_sort-ngmodule-metadata-arrays",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "locale",
+          "default": "en-US"
+        }
+      ],
       "enabled": false
     },
     {
@@ -2644,6 +2675,13 @@
       "enabled": false
     },
     {
+      "patternId": "@lwc_lwc_no-async-operation",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@lwc_lwc_no-attributes-during-construction",
       "level": "Error",
       "category": "ErrorProne",
@@ -2665,6 +2703,13 @@
       "enabled": false
     },
     {
+      "patternId": "@lwc_lwc_no-dupe-class-members",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@lwc_lwc_no-for-of",
       "level": "Info",
       "category": "CodeStyle",
@@ -2680,6 +2725,13 @@
     },
     {
       "patternId": "@lwc_lwc_no-leading-uppercase-api-name",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_no-leaky-event-listeners",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -2709,7 +2761,28 @@
       "enabled": false
     },
     {
+      "patternId": "@lwc_lwc_no-unexpected-wire-adapter-usages",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@lwc_lwc_no-rest-parameter",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_no-unknown-wire-adapters",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_prefer-custom-event",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -2744,7 +2817,21 @@
       "enabled": false
     },
     {
+      "patternId": "@lwc_lwc_no-restricted-browser-globals-during-ssr",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@lwc_lwc_no-unsupported-ssr-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_no-node-env-in-ssr",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -2772,6 +2859,13 @@
       "enabled": false
     },
     {
+      "patternId": "@salesforce_lightning_valid-apex-method-invocation",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@shopify_binary-assignment-parens",
       "level": "Info",
       "category": "BestPractice",
@@ -2787,6 +2881,13 @@
     },
     {
       "patternId": "@shopify_images-no-direct-imports",
+      "level": "Info",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@shopify_jest-no-all-mocks-methods",
       "level": "Info",
       "category": "BestPractice",
       "parameters": [],
@@ -2824,6 +2925,13 @@
       "patternId": "@shopify_no-ancestor-directory-import",
       "level": "Info",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@shopify_no-debugger",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -3343,6 +3451,13 @@
     },
     {
       "patternId": "@stylistic_jsx-function-call-newline",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@stylistic_jsx-indent",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -4175,6 +4290,13 @@
       "enabled": false
     },
     {
+      "patternId": "@typescript-eslint_consistent-type-imports",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_default-param-last",
       "level": "Warning",
       "category": "BestPractice",
@@ -4656,6 +4778,76 @@
       "enabled": true
     },
     {
+      "patternId": "@typescript-eslint_no-unsafe-argument",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-assignment",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-call",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-declaration-merging",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-enum-comparison",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-function-type",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-member-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-return",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-type-assertion",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@typescript-eslint_no-unsafe-unary-minus",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_no-unused-expressions",
       "level": "Warning",
       "category": "BestPractice",
@@ -5106,6 +5298,13 @@
       "enabled": false
     },
     {
+      "patternId": "@vitest_no-done-callback",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@vitest_no-duplicate-hooks",
       "level": "Warning",
       "category": "BestPractice",
@@ -5365,6 +5564,62 @@
       "enabled": false
     },
     {
+      "patternId": "@vitest_padding-around-after-all-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-after-each-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-all",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-before-all-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-before-each-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-describe-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-expect-groups",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_padding-around-test-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "angular_angularelement",
       "level": "Info",
       "category": "CodeStyle",
@@ -5443,6 +5698,13 @@
     },
     {
       "patternId": "angular_di-order",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "angular_di-unused",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -5688,6 +5950,13 @@
     },
     {
       "patternId": "angular_rest-service",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "angular_service-name",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -5967,6 +6236,13 @@
       "enabled": false
     },
     {
+      "patternId": "backbone_event-scope",
+      "level": "Info",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "backbone_events-on-top",
       "level": "Info",
       "category": "CodeStyle",
@@ -6024,6 +6300,13 @@
     },
     {
       "patternId": "backbone_no-native-jquery",
+      "level": "Info",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "backbone_no-silent",
       "level": "Info",
       "category": "BestPractice",
       "parameters": [],
@@ -6602,6 +6885,13 @@
       "enabled": false
     },
     {
+      "patternId": "ember_no-restricted-property-modifications",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "ember_no-restricted-resolver-tests",
       "level": "Error",
       "category": "ErrorProne",
@@ -6889,6 +7179,18 @@
       "enabled": false
     },
     {
+      "patternId": "ember_template-indent",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [
+        {
+          "name": "ignoreComments",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
       "patternId": "ember_template-no-let-reference",
       "level": "Warning",
       "category": "BestPractice",
@@ -7166,6 +7468,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-array-string-prototype-at",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-arraybuffer-prototype-transfer",
       "level": "Error",
       "category": "ErrorProne",
@@ -7230,6 +7539,13 @@
     },
     {
       "patternId": "es-x_no-block-scoped-variables",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-class-fields",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7915,6 +8231,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-object-map-groupby",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-object-preventextensions",
       "level": "Error",
       "category": "ErrorProne",
@@ -8293,6 +8616,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-string-prototype-iswellformed-towellformed",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-string-prototype-matchall",
       "level": "Error",
       "category": "ErrorProne",
@@ -8455,6 +8785,13 @@
     },
     {
       "patternId": "es-x_no-weakrefs",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "expect-type_expect",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8817,7 +9154,42 @@
       "enabled": false
     },
     {
+      "patternId": "functional_functional-parameters",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_immutable-data",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "functional_no-classes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_no-conditional-statements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_no-expression-statements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_no-let",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -8831,6 +9203,13 @@
       "enabled": false
     },
     {
+      "patternId": "functional_no-mixed-types",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "functional_no-promise-reject",
       "level": "Warning",
       "category": "BestPractice",
@@ -8838,7 +9217,35 @@
       "enabled": false
     },
     {
+      "patternId": "functional_no-return-void",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "functional_no-this-expressions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_no-throw-statements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_no-try-statements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_prefer-immutable-types",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -8857,6 +9264,13 @@
       "enabled": false
     },
     {
+      "patternId": "functional_prefer-readonly-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "functional_prefer-tacit",
       "level": "Warning",
       "category": "BestPractice",
@@ -8865,6 +9279,13 @@
     },
     {
       "patternId": "functional_readonly-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_type-declaration-immutability",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -8930,6 +9351,13 @@
       "patternId": "import_export",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "import_no-mutable-exports",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -9045,6 +9473,20 @@
       "enabled": false
     },
     {
+      "patternId": "import_no-commonjs",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "import_no-amd",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "import_no-duplicates",
       "level": "Error",
       "category": "ErrorProne",
@@ -9111,6 +9553,13 @@
           "default": false
         }
       ],
+      "enabled": false
+    },
+    {
+      "patternId": "import_newline-after-import",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
       "enabled": false
     },
     {
@@ -9197,6 +9646,13 @@
     },
     {
       "patternId": "import_no-deprecated",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "import_imports-first",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -9666,6 +10122,13 @@
       "patternId": "jest_require-top-level-describe",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jest_unbound-method",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -10870,6 +11333,13 @@
       "enabled": false
     },
     {
+      "patternId": "jsx-a11y_accessible-emoji",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsx-a11y_alt-text",
       "level": "Info",
       "category": "CodeStyle",
@@ -11001,6 +11471,13 @@
       "enabled": false
     },
     {
+      "patternId": "jsx-a11y_label-has-for",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsx-a11y_lang",
       "level": "Info",
       "category": "CodeStyle",
@@ -11077,6 +11554,13 @@
     },
     {
       "patternId": "jsx-a11y_no-noninteractive-tabindex",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsx-a11y_no-onchange",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -12281,6 +12765,20 @@
       "enabled": false
     },
     {
+      "patternId": "n_no-hide-core-modules",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "n_shebang",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "nuxt_no-env-in-context",
       "level": "Info",
       "category": "CodeStyle",
@@ -12338,6 +12836,27 @@
     },
     {
       "patternId": "perfectionist_sort-intersection-types",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "perfectionist_sort-svelte-attributes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "perfectionist_sort-astro-attributes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "perfectionist_sort-vue-attributes",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -13362,6 +13881,13 @@
       "enabled": false
     },
     {
+      "patternId": "react_jsx-sort-default-props",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "react_jsx-sort-props",
       "level": "Info",
       "category": "CodeStyle",
@@ -13375,6 +13901,13 @@
           "default": "auto"
         }
       ],
+      "enabled": false
+    },
+    {
+      "patternId": "react_jsx-space-before-closing",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
       "enabled": false
     },
     {
@@ -14751,6 +15284,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_no-tab",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_variable-name",
       "level": "Warning",
       "category": "BestPractice",
@@ -14842,6 +15382,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_no-redundant-parentheses",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_no-labels",
       "level": "Warning",
       "category": "BestPractice",
@@ -14887,6 +15434,13 @@
       "patternId": "sonarjs_todo-tag",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_useless-string-operation",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -15234,6 +15788,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_cookies",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_null-dereference",
       "level": "Error",
       "category": "ErrorProne",
@@ -15354,6 +15915,13 @@
     },
     {
       "patternId": "sonarjs_non-existent-operator",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_web-sql-database",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -15556,6 +16124,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_enforce-trailing-comma",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_void-use",
       "level": "Warning",
       "category": "BestPractice",
@@ -15655,6 +16230,13 @@
     },
     {
       "patternId": "sonarjs_no-same-line-conditional",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_conditional-indentation",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -15864,6 +16446,20 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_regular-expr",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_encryption",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_hashing",
       "level": "Error",
       "category": "ErrorProne",
@@ -15878,7 +16474,35 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_xpath",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sockets",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_no-try-promise",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_process-argv",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_standard-input",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -16067,6 +16691,20 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_certificate-transparency",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_dns-prefetching",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_confidential-information-logging",
       "level": "Error",
       "category": "ErrorProne",
@@ -16207,6 +16845,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_aws-s3-bucket-server-encryption",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_aws-s3-bucket-insecure-http",
       "level": "Error",
       "category": "ErrorProne",
@@ -16250,6 +16895,13 @@
     },
     {
       "patternId": "sonarjs_aws-s3-bucket-public-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-vue-bypass-sanitization",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -16818,6 +17470,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_@typescript-eslint_no-unnecessary-condition",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_block-lang",
       "level": "Warning",
       "category": "BestPractice",
@@ -16979,6 +17638,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_no-dynamic-slot-name",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_no-export-load-in-svelte-module-in-kit-pages",
       "level": "Error",
       "category": "ErrorProne",
@@ -16987,6 +17653,13 @@
     },
     {
       "patternId": "svelte_no-extra-reactive-curlies",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_no-goto-without-base",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18560,6 +19233,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-instanceof-array",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unused-imports_no-unused-vars",
       "level": "Error",
       "category": "ErrorProne",
@@ -18735,6 +19415,13 @@
     },
     {
       "patternId": "vue_component-options-name-casing",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_component-tags-order",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19297,6 +19984,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue_no-invalid-model-keys",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_no-irregular-whitespace",
       "level": "Error",
       "category": "ErrorProne",
@@ -19402,6 +20096,13 @@
       "patternId": "vue_no-ref-as-operand",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_no-ref-object-destructure",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -19526,6 +20227,13 @@
     },
     {
       "patternId": "vue_no-root-v-if",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_no-setup-props-destructure",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -20094,6 +20802,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue_script-setup-uses-vars",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_singleline-html-element-content-newline",
       "level": "Info",
       "category": "CodeStyle",
@@ -20221,6 +20936,13 @@
     },
     {
       "patternId": "vue_v-on-event-hyphenation",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_v-on-function-call",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -20528,6 +21250,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue-scoped-css_require-scoped",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue-scoped-css_require-selector-used-inside",
       "level": "Warning",
       "category": "BestPractice",
@@ -20700,6 +21429,13 @@
     },
     {
       "patternId": "vuejs-accessibility_no-distracting-elements",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuejs-accessibility_no-onchange",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -20970,6 +21706,13 @@
     },
     {
       "patternId": "yml_sort-keys",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "yml_sort-sequence-values",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],

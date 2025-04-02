@@ -248,7 +248,7 @@ function existsEslintConfigInRepoRoot(srcDirPath: string): string | undefined {
 
 async function retrieveCodacyPatterns(set: "recommended" | "all" = "recommended"): Promise<Pattern[]> {
   const patterns: Pattern[] = [];
-  const allRules = await getAllRules(true);
+  const allRules = await getAllRules();
   Object.entries(allRules)
     .filter(([patternId, rule]) =>
       // problems with the path generated (win vs nix) for this specific pattern

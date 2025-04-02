@@ -41,7 +41,7 @@ export class DocsGenerator {
   }
 
   private async initializeRules(): Promise<Record<string, TSESLint.LooseRuleDefinition>> {
-    const rules: Record<string, TSESLint.LooseRuleDefinition> = await getAllRules(true);
+    const rules: Record<string, TSESLint.LooseRuleDefinition> = await getAllRules();
 
     const rulesFiltered = Object.fromEntries(
       Object.entries(rules).filter(([patternId, _]) =>
@@ -132,12 +132,7 @@ export class DocsGenerator {
       const p = patternId.split("/")[0]
       return p !== patternId ? p : ""
     }
-
-    // The following arrays represents groups of default rules.
-    // Each entry is an object where:
-    //   - The key is the prefix identifying the plugin name (e.g. '@stylistic', '@typescript-eslint', 'security')
-    //     ESLint core rules are represented by an empty prefix ("");
-    //   - The value is either 'recommended' or 'all', which determines whether all rules or only the recommended rules in the group are included.
+  
     type prefixSet = { [key: string]: "recommended" | "all" }
     const defaultPrefixes = [
       { "": "recommended" },
@@ -150,16 +145,22 @@ export class DocsGenerator {
       { "security-node": "recommended" },
       { "xss": "all" }
     ] as prefixSet[]
-
+  
     const prefixes = [...defaultPrefixes, ...securityPrefixes]
     const prefix = prefixSplit(patternId)
     const meta = getRuleMeta(ruleModule)
-
+  
+    // Exclude "@typescript-eslint/no-unsafe-*" as defaults for now
+    if (patternId.startsWith("@typescript-eslint/no-unsafe-")) {
+      return false
+    }
+  
     return prefixes.some((p) =>
       p[prefix] === "all"
-      || p[prefix] === "recommended" && meta?.docs?.recommended
+      || (p[prefix] === "recommended" && meta?.docs?.recommended)
     )
   }
+  
 
   private async generateDescriptionEntries(): Promise<DescriptionEntry[]> {
     const descriptions: DescriptionEntry[] = []
