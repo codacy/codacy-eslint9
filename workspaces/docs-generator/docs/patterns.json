@@ -1,12 +1,25 @@
 {
   "name": "eslint-9",
-  "version": "9.23.0",
+  "version": "9.12.0",
   "patterns": [
     {
       "patternId": "accessor-pairs",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "getWithoutSet",
+          "default": false
+        },
+        {
+          "name": "setWithoutGet",
+          "default": true
+        },
+        {
+          "name": "enforceForClassMembers",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -27,7 +40,20 @@
       "patternId": "array-callback-return",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowImplicit",
+          "default": false
+        },
+        {
+          "name": "checkForEach",
+          "default": false
+        },
+        {
+          "name": "allowVoid",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -117,7 +143,20 @@
       "patternId": "camelcase",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreDestructuring",
+          "default": false
+        },
+        {
+          "name": "ignoreImports",
+          "default": false
+        },
+        {
+          "name": "ignoreGlobals",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -131,7 +170,12 @@
       "patternId": "class-methods-use-this",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "enforceForClassFields",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -196,7 +240,12 @@
       "patternId": "consistent-return",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "treatUndefinedAsUnspecified",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -262,7 +311,16 @@
       "patternId": "dot-notation",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowKeywords",
+          "default": true
+        },
+        {
+          "name": "allowPattern",
+          "default": ""
+        }
+      ],
       "enabled": false
     },
     {
@@ -320,6 +378,10 @@
         {
           "name": "unnamedParam",
           "default": "expression"
+        },
+        {
+          "name": "allowArrowFunctions",
+          "default": false
         }
       ],
       "enabled": false
@@ -349,7 +411,12 @@
       "patternId": "getter-return",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowImplicit",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -398,7 +465,12 @@
       "patternId": "id-length",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "min",
+          "default": 2
+        }
+      ],
       "enabled": false
     },
     {
@@ -409,6 +481,22 @@
         {
           "name": "unnamedParam",
           "default": "^[a-z]+([A-Z][a-z]+)*$"
+        },
+        {
+          "name": "properties",
+          "default": false
+        },
+        {
+          "name": "classFields",
+          "default": false
+        },
+        {
+          "name": "onlyDeclarations",
+          "default": false
+        },
+        {
+          "name": "ignoreDestructuring",
+          "default": false
         }
       ],
       "enabled": false
@@ -668,7 +756,20 @@
       "patternId": "new-cap",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "newIsCap",
+          "default": true
+        },
+        {
+          "name": "capIsNew",
+          "default": true
+        },
+        {
+          "name": "properties",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -741,7 +842,12 @@
       "patternId": "no-bitwise",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "int32Hint",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -923,21 +1029,36 @@
       "patternId": "no-duplicate-imports",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "includeExports",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "no-else-return",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowElseIf",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "no-empty",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowEmptyCatch",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -958,7 +1079,12 @@
       "patternId": "no-empty-pattern",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowObjectPatternsAsParameters",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -979,7 +1105,12 @@
       "patternId": "no-eval",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowIndirect",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1035,7 +1166,20 @@
       "patternId": "no-fallthrough",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "commentPattern",
+          "default": ""
+        },
+        {
+          "name": "allowEmptyCase",
+          "default": false
+        },
+        {
+          "name": "reportUnusedFallthroughComment",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -1063,14 +1207,36 @@
       "patternId": "no-implicit-coercion",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "boolean",
+          "default": true
+        },
+        {
+          "name": "number",
+          "default": true
+        },
+        {
+          "name": "string",
+          "default": true
+        },
+        {
+          "name": "disallowTemplateShorthand",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "no-implicit-globals",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "lexicalBindings",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1117,14 +1283,40 @@
       "patternId": "no-invalid-this",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "capIsConstructor",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "no-irregular-whitespace",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "skipComments",
+          "default": false
+        },
+        {
+          "name": "skipStrings",
+          "default": true
+        },
+        {
+          "name": "skipTemplates",
+          "default": false
+        },
+        {
+          "name": "skipRegExps",
+          "default": false
+        },
+        {
+          "name": "skipJSXText",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -1145,7 +1337,16 @@
       "patternId": "no-labels",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowLoop",
+          "default": false
+        },
+        {
+          "name": "allowSwitch",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1246,7 +1447,12 @@
       "patternId": "no-multi-assign",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreNonDeclaration",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1405,7 +1611,12 @@
       "patternId": "no-plusplus",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowForLoopAfterthoughts",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1426,7 +1637,12 @@
       "patternId": "no-promise-executor-return",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowVoid",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1447,7 +1663,12 @@
       "patternId": "no-redeclare",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "builtinGlobals",
+          "default": true
+        }
+      ],
       "enabled": true
     },
     {
@@ -1534,7 +1755,12 @@
       "patternId": "no-self-assign",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "props",
+          "default": true
+        }
+      ],
       "enabled": true
     },
     {
@@ -1548,7 +1774,12 @@
       "patternId": "no-sequences",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowInParentheses",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -1562,7 +1793,20 @@
       "patternId": "no-shadow",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "builtinGlobals",
+          "default": false
+        },
+        {
+          "name": "hoist",
+          "default": "functions"
+        },
+        {
+          "name": "ignoreOnInitialization",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1658,7 +1902,12 @@
       "patternId": "no-undef",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "typeof",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -1679,7 +1928,40 @@
       "patternId": "no-underscore-dangle",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowAfterThis",
+          "default": false
+        },
+        {
+          "name": "allowAfterSuper",
+          "default": false
+        },
+        {
+          "name": "allowAfterThisConstructor",
+          "default": false
+        },
+        {
+          "name": "enforceInMethodNames",
+          "default": false
+        },
+        {
+          "name": "allowFunctionParams",
+          "default": true
+        },
+        {
+          "name": "enforceInClassFields",
+          "default": false
+        },
+        {
+          "name": "allowInArrayDestructuring",
+          "default": true
+        },
+        {
+          "name": "allowInObjectDestructuring",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -1700,7 +1982,12 @@
       "patternId": "no-unneeded-ternary",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "defaultAssignment",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -1728,21 +2015,48 @@
       "patternId": "no-unsafe-negation",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "enforceForOrderingRelations",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
       "patternId": "no-unsafe-optional-chaining",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "disallowArithmeticOperators",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
       "patternId": "no-unused-expressions",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowShortCircuit",
+          "default": false
+        },
+        {
+          "name": "allowTernary",
+          "default": false
+        },
+        {
+          "name": "allowTaggedTemplates",
+          "default": false
+        },
+        {
+          "name": "enforceForJSX",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1805,7 +2119,12 @@
       "patternId": "no-useless-computed-key",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "enforceForClassMembers",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -1833,7 +2152,20 @@
       "patternId": "no-useless-rename",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreDestructuring",
+          "default": false
+        },
+        {
+          "name": "ignoreImport",
+          "default": false
+        },
+        {
+          "name": "ignoreExport",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1854,7 +2186,12 @@
       "patternId": "no-void",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowAsStatement",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -1973,14 +2310,32 @@
       "patternId": "prefer-arrow-callback",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowNamedFunctions",
+          "default": false
+        },
+        {
+          "name": "allowUnboundThis",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "prefer-const",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "destructuring",
+          "default": "any"
+        },
+        {
+          "name": "ignoreReadBeforeAssign",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -2029,7 +2384,12 @@
       "patternId": "prefer-promise-reject-errors",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowEmptyReject",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -2043,7 +2403,12 @@
       "patternId": "prefer-regex-literals",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "disallowRedundantWrapping",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -2092,7 +2457,12 @@
       "patternId": "require-atomic-updates",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowProperties",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -2157,7 +2527,24 @@
       "patternId": "sort-imports",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreCase",
+          "default": false
+        },
+        {
+          "name": "ignoreDeclarationSort",
+          "default": false
+        },
+        {
+          "name": "ignoreMemberSort",
+          "default": false
+        },
+        {
+          "name": "allowSeparatedGroups",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -2168,6 +2555,22 @@
         {
           "name": "unnamedParam",
           "default": "asc"
+        },
+        {
+          "name": "caseSensitive",
+          "default": true
+        },
+        {
+          "name": "natural",
+          "default": false
+        },
+        {
+          "name": "minKeys",
+          "default": 2
+        },
+        {
+          "name": "allowLineSeparatedGroups",
+          "default": false
         }
       ],
       "enabled": false
@@ -2176,7 +2579,12 @@
       "patternId": "sort-vars",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreCase",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -2295,14 +2703,28 @@
       "patternId": "use-isnan",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "enforceForSwitchCase",
+          "default": true
+        },
+        {
+          "name": "enforceForIndexOf",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
       "patternId": "valid-typeof",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "requireStringLiterals",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -2350,6 +2772,14 @@
         {
           "name": "unnamedParam",
           "default": "never"
+        },
+        {
+          "name": "exceptRange",
+          "default": false
+        },
+        {
+          "name": "onlyEquality",
+          "default": false
         }
       ],
       "enabled": false
@@ -2832,55 +3262,6 @@
     },
     {
       "patternId": "@lwc_lwc_no-node-env-in-ssr",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-host-mutation-in-connected-callback",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-restricted-browser-globals",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-unsupported-properties",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-node-env",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-unsupported-node-api",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-static-imports-of-user-specific-scoped-modules",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@lwc_lwc_ssr-no-form-factor",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -4314,7 +4695,12 @@
       "patternId": "@typescript-eslint_consistent-return",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "treatUndefinedAsUnspecified",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -4587,7 +4973,12 @@
       "patternId": "@typescript-eslint_no-invalid-this",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "capIsConstructor",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -4660,13 +5051,6 @@
     },
     {
       "patternId": "@typescript-eslint_no-misused-promises",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": true
-    },
-    {
-      "patternId": "@typescript-eslint_no-misused-spread",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -4883,13 +5267,6 @@
       "enabled": false
     },
     {
-      "patternId": "@typescript-eslint_no-unsafe-type-assertion",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "@typescript-eslint_no-unsafe-unary-minus",
       "level": "Error",
       "category": "ErrorProne",
@@ -4900,7 +5277,24 @@
       "patternId": "@typescript-eslint_no-unused-expressions",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowShortCircuit",
+          "default": false
+        },
+        {
+          "name": "allowTernary",
+          "default": false
+        },
+        {
+          "name": "allowTaggedTemplates",
+          "default": false
+        },
+        {
+          "name": "enforceForJSX",
+          "default": false
+        }
+      ],
       "enabled": true
     },
     {
@@ -5105,13 +5499,6 @@
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
-    },
-    {
-      "patternId": "@typescript-eslint_related-getter-setter-pairs",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": true
     },
     {
       "patternId": "@typescript-eslint_require-array-sort-compare",
@@ -11303,7 +11690,28 @@
       "patternId": "jsonc_no-irregular-whitespace",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "skipComments",
+          "default": false
+        },
+        {
+          "name": "skipStrings",
+          "default": true
+        },
+        {
+          "name": "skipTemplates",
+          "default": false
+        },
+        {
+          "name": "skipRegExps",
+          "default": false
+        },
+        {
+          "name": "skipJSXText",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -15504,504 +15912,14 @@
       "enabled": true
     },
     {
-      "patternId": "sonarjs_function-name",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_class-name",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_max-lines",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-tab",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_variable-name",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_comment-regex",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-commented-code",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_elseif-without-else",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-fallthrough",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_nested-control-flow",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_too-many-break-or-continue-in-loop",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_max-lines-per-function",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-nested-incdec",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-equals-in-for-termination",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-extra-arguments",
+      "patternId": "sonarjs_anchor-precedence",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-collapsible-if",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_expression-complexity",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-redundant-parentheses",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-labels",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-nested-assignment",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-redundant-boolean",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-single-boolean-return",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_unused-import",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_fixme-tag",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_todo-tag",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_useless-string-operation",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-unused-function-argument",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-duplicate-string",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-case-label-in-switch",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-parameter-reassignment",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-while",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-sonar-comments",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-small-switch",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-hardcoded-ip",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_label-position",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_public-static-readonly",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_file-header",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_call-argument-line",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_max-switch-cases",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-unused-vars",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-immediate-return",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_function-inside-loop",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_code-eval",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-variable-usage-before-declaration",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_future-reserved-words",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_array-constructor",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_bitwise-operators",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-function-declaration-in-block",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-primitive-wrappers",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_for-in",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_cyclomatic-complexity",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-skipped-tests",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-one-iteration-loop",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-identical-expressions",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-nested-switch",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_constructor-for-side-effects",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-dead-store",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-identical-conditions",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-duplicated-branches",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_deprecation",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-inverted-boolean-check",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_misplaced-loop-counter",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-nested-functions",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-hardcoded-passwords",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_sql-queries",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_insecure-cookie",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-useless-increment",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-globals-shadowing",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-undefined-assignment",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-empty-test-file",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-ignored-return",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-wildcard-import",
+      "patternId": "sonarjs_argument-type",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -16015,272 +15933,6 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_pseudo-random",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_for-loop-increment-sign",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_cookies",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_null-dereference",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-selector-parameter",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_updated-loop-counter",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_block-scoped-var",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-built-in-override",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-object-literal",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-ignored-exceptions",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-gratuitous-expressions",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_file-uploads",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_file-permissions",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-empty-character-class",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-unenclosed-multiline-block",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_index-of-compare-to-positive-number",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_assertions-in-tests",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-implicit-global",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-useless-catch",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_xml-parser-xxe",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_non-existent-operator",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_web-sql-database",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_post-message",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-array-delete",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-alphabetical-sort",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-incomplete-assertions",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-global-this",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_new-operator-misuse",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-delete-var",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_strings-comparison",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_file-name-differ-from-class",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_cookie-no-httponly",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-nested-conditional",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-incorrect-string-concat",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_different-types-comparison",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_inverted-assertion-arguments",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_shorthand-property-grouping",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_updated-const-var",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "sonarjs_arguments-usage",
       "level": "Warning",
       "category": "BestPractice",
@@ -16288,14 +15940,14 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_destructuring-assignment-syntax",
-      "level": "Warning",
-      "category": "BestPractice",
+      "patternId": "sonarjs_array-callback-without-return",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-invariant-returns",
+      "patternId": "sonarjs_array-constructor",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -16309,6 +15961,188 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_assertions-in-tests",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-apigateway-public-api",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-ec2-rds-dms-public",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-ec2-unencrypted-ebs-volume",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-efs-unencrypted",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-iam-all-privileges",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-iam-all-resources-accessible",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-iam-privilege-escalation",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-iam-public-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-opensearchservice-domain",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-rds-unencrypted-databases",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-restricted-ip-admin-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-s3-bucket-granted-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-s3-bucket-insecure-http",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-s3-bucket-public-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-s3-bucket-server-encryption",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-s3-bucket-versioning",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-sagemaker-unencrypted-notebook",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-sns-unencrypted-topics",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_aws-sqs-unencrypted-queue",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_bitwise-operators",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_bool-param-default",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_call-argument-line",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_certificate-transparency",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_chai-determinate-assertion",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_class-name",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_class-prototype",
       "level": "Warning",
       "category": "BestPractice",
@@ -16316,21 +16150,14 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_generator-without-yield",
+      "patternId": "sonarjs_code-eval",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-require-or-define",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-associative-arrays",
+      "patternId": "sonarjs_cognitive-complexity",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -16344,133 +16171,14 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-redundant-jump",
+      "patternId": "sonarjs_comment-regex",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_inconsistent-function-call",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-use-of-empty-return-value",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_enforce-trailing-comma",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_void-use",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_operation-returning-nan",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_values-not-convertible-to-numbers",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_non-number-in-arithmetic-expression",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_cognitive-complexity",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_argument-type",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_in-operator-type-error",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_array-callback-without-return",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_declarations-in-global-scope",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_function-return-type",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-inconsistent-returns",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-reference-error",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_super-invocation",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-all-duplicated-branches",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-same-line-conditional",
+      "patternId": "sonarjs_concise-regex",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -16484,9 +16192,1062 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_confidential-information-logging",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_constructor-for-side-effects",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_content-length",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_content-security-policy",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_cookie-no-httponly",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_cookies",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_cors",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_csrf",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_cyclomatic-complexity",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_declarations-in-global-scope",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_deprecation",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_destructuring-assignment-syntax",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_different-types-comparison",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_disabled-auto-escaping",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_disabled-resource-integrity",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_disabled-timeout",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_dns-prefetching",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_duplicates-in-character-class",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_elseif-without-else",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_empty-string-repetition",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_encryption",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_encryption-secure-mode",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_enforce-trailing-comma",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_existing-groups",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_expression-complexity",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_file-header",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_file-name-differ-from-class",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_file-permissions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_file-uploads",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_fixme-tag",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_for-in",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_for-loop-increment-sign",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_frame-ancestors",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_function-inside-loop",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_function-name",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_function-return-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_future-reserved-words",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_generator-without-yield",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_hashing",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_hidden-files",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_hook-use-state",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "allowDestructuredState",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_in-operator-type-error",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_inconsistent-function-call",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_index-of-compare-to-positive-number",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_insecure-cookie",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_insecure-jwt-token",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_inverted-assertion-arguments",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_jsx-key",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_jsx-no-constructed-context-values",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_label-position",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_link-with-target-blank",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_max-switch-cases",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_max-union-size",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_misplaced-loop-counter",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_mouse-events-a11y",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_nested-control-flow",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_new-operator-misuse",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-all-duplicated-branches",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-alphabetical-sort",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-angular-bypass-sanitization",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-array-delete",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-array-index-key",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-associative-arrays",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-async-constructor",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-built-in-override",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-case-label-in-switch",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-clear-text-protocols",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-code-after-done",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-collapsible-if",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_no-collection-size-mischeck",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-commented-code",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-dead-store",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-delete-var",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-deprecated-react",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-duplicate-in-composite",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-duplicate-string",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-duplicated-branches",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-element-overwrite",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-after-reluctant",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-alternatives",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-collection",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-group",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-test-file",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-equals-in-for-termination",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-exclusive-tests",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-extra-arguments",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-for-in-iterable",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-function-declaration-in-block",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-global-this",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-globals-shadowing",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-gratuitous-expressions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-hardcoded-credentials",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-hardcoded-ip",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-hook-setter-in-body",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-identical-conditions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-identical-expressions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-identical-functions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-ignored-exceptions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-ignored-return",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-implicit-dependencies",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-implicit-global",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-in-misuse",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-incomplete-assertions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-inconsistent-returns",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-incorrect-string-concat",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-internal-api-use",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-intrusive-permissions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-invalid-await",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-invariant-returns",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-inverted-boolean-check",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-ip-forward",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-labels",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-literal-call",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-mime-sniff",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-misleading-array-reverse",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-mixed-content",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-nested-assignment",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-nested-conditional",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-nested-functions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-nested-incdec",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-nested-switch",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-nested-template-literals",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-one-iteration-loop",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-os-command-from-path",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-parameter-reassignment",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-primitive-wrappers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redundant-assignments",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redundant-boolean",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redundant-jump",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redundant-optional",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redundant-parentheses",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-reference-error",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-referrer-policy",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-require-or-define",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-return-type-any",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-same-argument-assert",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-same-line-conditional",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-selector-parameter",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-skipped-test",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-small-switch",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-tab",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-table-as-layout",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-try-promise",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-undefined-argument",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-undefined-assignment",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unenclosed-multiline-block",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-uniq-key",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unsafe",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "checkAliases",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unsafe-unzip",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unstable-nested-components",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -16505,812 +17266,35 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-os-command-from-path",
+      "patternId": "sonarjs_no-unused-function-argument",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-use-of-empty-return-value",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-misleading-array-reverse",
+      "patternId": "sonarjs_no-useless-catch",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-invalid-await",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-for-in-iterable",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-element-overwrite",
+      "patternId": "sonarjs_no-useless-increment",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-identical-functions",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-empty-collection",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-redundant-assignments",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-type-guard",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_use-type-alias",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-return-type-any",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-implicit-dependencies",
-      "level": "Warning",
-      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
       "patternId": "sonarjs_no-useless-intersection",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_weak-ssl",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-weak-keys",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_csrf",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_production-debug",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-default-last",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-in-misuse",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-duplicate-in-composite",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_max-union-size",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-undefined-argument",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-nested-template-literals",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_prefer-promise-shorthand",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_os-command",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-redundant-optional",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_regular-expr",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_encryption",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_hashing",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_bool-param-default",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_xpath",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_sockets",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-try-promise",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_process-argv",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_standard-input",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_unverified-certificate",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-unsafe-unzip",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_cors",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_link-with-target-blank",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_disabled-auto-escaping",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_table-header",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-table-as-layout",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_table-header-reference",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_object-alt-content",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-clear-text-protocols",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_publicly-writable-directories",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_unverified-hostname",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_encryption-secure-mode",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-weak-cipher",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-intrusive-permissions",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_insecure-jwt-token",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_x-powered-by",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_hidden-files",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_content-length",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_disabled-resource-integrity",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_content-security-policy",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-mixed-content",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_frame-ancestors",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-mime-sniff",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-referrer-policy",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_strict-transport-security",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_certificate-transparency",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_dns-prefetching",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_confidential-information-logging",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-ip-forward",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_empty-string-repetition",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_regex-complexity",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_anchor-precedence",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_slow-regex",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-invalid-regexp",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_unused-named-groups",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-same-argument-assert",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_unicode-aware-regex",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-misleading-character-class",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_duplicates-in-character-class",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_session-regeneration",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_test-check-exception",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_stable-tests",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-empty-after-reluctant",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_single-character-alternation",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-code-after-done",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_disabled-timeout",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_chai-determinate-assertion",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-s3-bucket-server-encryption",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-s3-bucket-insecure-http",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-s3-bucket-versioning",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-s3-bucket-granted-access",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-angular-bypass-sanitization",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-iam-public-access",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-ec2-unencrypted-ebs-volume",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-s3-bucket-public-access",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-vue-bypass-sanitization",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-iam-all-privileges",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-rds-unencrypted-databases",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-iam-all-resources-accessible",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-opensearchservice-domain",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-iam-privilege-escalation",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-sagemaker-unencrypted-notebook",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-restricted-ip-admin-access",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-empty-alternatives",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-control-regex",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-regex-spaces",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-sns-unencrypted-topics",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_existing-groups",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-ec2-rds-dms-public",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-sqs-unencrypted-queue",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-empty-group",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-efs-unencrypted",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_aws-apigateway-public-api",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_stateful-regex",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_concise-regex",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_single-char-in-character-classes",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-hardcoded-secrets",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-exclusive-tests",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_jsx-no-leaked-render",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-hook-setter-in-body",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -17324,42 +17308,168 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-uniq-key",
+      "patternId": "sonarjs_no-variable-usage-before-declaration",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_redundant-type-aliases",
+      "patternId": "sonarjs_no-vue-bypass-sanitization",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-weak-cipher",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-weak-keys",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-wildcard-import",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_prefer-regexp-exec",
+      "patternId": "sonarjs_non-existent-operator",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_non-number-in-arithmetic-expression",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-internal-api-use",
+      "patternId": "sonarjs_null-dereference",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_object-alt-content",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_prefer-read-only-props",
+      "patternId": "sonarjs_operation-returning-nan",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-literal-call",
+      "patternId": "sonarjs_os-command",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_post-message",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-default-last",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-immediate-return",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-object-literal",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-promise-shorthand",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-single-boolean-return",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-type-guard",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-while",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_process-argv",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_production-debug",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_pseudo-random",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_public-static-readonly",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_publicly-writable-directories",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -17373,9 +17483,820 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-async-constructor",
+      "patternId": "sonarjs_redundant-type-aliases",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_regex-complexity",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_regular-expr",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_session-regeneration",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_shorthand-property-grouping",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_single-char-in-character-classes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_single-character-alternation",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_slow-regex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sockets",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-block-scoped-var",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-jsx-no-leaked-render",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-max-lines",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-max-lines-per-function",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-control-regex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-empty-character-class",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-fallthrough",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-invalid-regexp",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-magic-numbers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "detectObjects",
+          "default": false
+        },
+        {
+          "name": "enforceConst",
+          "default": false
+        },
+        {
+          "name": "ignoreArrayIndexes",
+          "default": false
+        },
+        {
+          "name": "ignoreDefaultValues",
+          "default": false
+        },
+        {
+          "name": "ignoreClassFieldInitialValues",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-misleading-character-class",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-regex-spaces",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-unused-class-component-methods",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-unused-vars",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-prefer-optional-chain",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-prefer-read-only-props",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-prefer-regexp-exec",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sql-queries",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_stable-tests",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_standard-input",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_stateful-regex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_strict-transport-security",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_strings-comparison",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_super-invocation",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_table-header",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_table-header-reference",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_test-check-exception",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_todo-tag",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_too-many-break-or-continue-in-loop",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_unicode-aware-regex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_unused-import",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_unused-named-groups",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_unverified-certificate",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_unverified-hostname",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_updated-const-var",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_updated-loop-counter",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_use-type-alias",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_useless-string-operation",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_values-not-convertible-to-numbers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_variable-name",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_void-use",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_weak-ssl",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_web-sql-database",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_x-powered-by",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_xml-parser-xxe",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_xpath",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-max-params",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unused-private-class-members",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_alt-text",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_brace-style",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "allowSingleLine",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-extra-semi",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-function",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_switch-without-default",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_semi",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_sonar-no-dupe-keys",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unreachable",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_default-param-last",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-infinite-loop",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_accessor-pairs",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "getWithoutSet",
+          "default": false
+        },
+        {
+          "name": "setWithoutGet",
+          "default": true
+        },
+        {
+          "name": "enforceForClassMembers",
+          "default": true
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_new-cap",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "newIsCap",
+          "default": true
+        },
+        {
+          "name": "capIsNew",
+          "default": true
+        },
+        {
+          "name": "properties",
+          "default": true
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_use-isnan",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [
+        {
+          "name": "enforceForSwitchCase",
+          "default": true
+        },
+        {
+          "name": "enforceForIndexOf",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redeclare",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_object-shorthand",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-var",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-template",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-throw-literal",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-interface",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_media-has-caption",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-for-of",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-namespace-keyword",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-accessor-field-mismatch",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [
+        {
+          "name": "allowImplicit",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-this-alias",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_html-has-lang",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_unnecessary-character-escapes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-misused-promises",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-base-to-string",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-string-starts-ends-with",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-redundant-type-constituents",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-enum-initializers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-function-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-nullish-coalescing",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-extend-native",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-useless-constructor",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-lonely-if",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-object-spread",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-spread",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-useless-call",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-self-compare",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unknown-property",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_jsx-no-useless-fragment",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-find-dom-node",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_anchor-has-content",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_anchor-is-valid",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_label-has-associated-control",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-self-import",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-unused-expressions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [
+        {
+          "name": "allowShortCircuit",
+          "default": false
+        },
+        {
+          "name": "allowTernary",
+          "default": false
+        },
+        {
+          "name": "allowTaggedTemplates",
+          "default": false
+        },
+        {
+          "name": "enforceForJSX",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_rules-of-hooks",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -17739,13 +18660,6 @@
       "enabled": false
     },
     {
-      "patternId": "svelte_consistent-selector-style",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "svelte_derived-has-same-inputs-outputs",
       "level": "Warning",
       "category": "BestPractice",
@@ -17942,13 +18856,6 @@
       "enabled": false
     },
     {
-      "patternId": "svelte_no-navigation-without-base",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "svelte_no-not-function-handler",
       "level": "Error",
       "category": "ErrorProne",
@@ -17957,13 +18864,6 @@
     },
     {
       "patternId": "svelte_no-object-in-text-mustaches",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "svelte_no-raw-special-elements",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -18052,13 +18952,6 @@
       "enabled": false
     },
     {
-      "patternId": "svelte_no-unnecessary-state-wrap",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "svelte_no-unused-class-name",
       "level": "Warning",
       "category": "BestPractice",
@@ -18066,34 +18959,7 @@
       "enabled": false
     },
     {
-      "patternId": "svelte_no-unused-props",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkImportedTypes",
-          "default": false
-        },
-        {
-          "name": "ignoreTypePatterns",
-          "default": []
-        },
-        {
-          "name": "ignorePropertyPatterns",
-          "default": []
-        }
-      ],
-      "enabled": false
-    },
-    {
       "patternId": "svelte_no-unused-svelte-ignore",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "svelte_no-useless-children-snippet",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18108,13 +18974,6 @@
     },
     {
       "patternId": "svelte_prefer-class-directive",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "svelte_prefer-const",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18227,13 +19086,6 @@
     },
     {
       "patternId": "svelte_valid-prop-names-in-kit-pages",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "svelte_valid-style-parse",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -18583,25 +19435,16 @@
       "patternId": "unicorn_better-regex",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "sortCharacterClasses",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "unicorn_catch-error-name",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "unicorn_consistent-assert",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "unicorn_consistent-date-clone",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18632,7 +19475,12 @@
       "patternId": "unicorn_consistent-function-scoping",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "checkArrowFunctions",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -18667,7 +19515,16 @@
       "patternId": "unicorn_expiring-todo-comments",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreDatesOnPullRequests",
+          "default": true
+        },
+        {
+          "name": "allowWarningComments",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -18711,13 +19568,6 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_no-accessor-recursion",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "unicorn_no-anonymous-default-export",
       "level": "Warning",
       "category": "BestPractice",
@@ -18756,7 +19606,12 @@
       "patternId": "unicorn_no-array-reduce",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowSimpleOperations",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -18809,9 +19664,9 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_no-instanceof-builtins",
-      "level": "Error",
-      "category": "ErrorProne",
+      "patternId": "unicorn_no-instanceof-array",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -18858,13 +19713,6 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_no-named-default",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "unicorn_no-negated-condition",
       "level": "Warning",
       "category": "BestPractice",
@@ -18903,7 +19751,12 @@
       "patternId": "unicorn_no-null",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "checkStrictEquality",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -18952,7 +19805,12 @@
       "patternId": "unicorn_no-typeof-undefined",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "checkGlobalVariables",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -19050,7 +19908,12 @@
       "patternId": "unicorn_numeric-separators-style",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "onlyIfContainsSeparator",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -19064,7 +19927,12 @@
       "patternId": "unicorn_prefer-array-find",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "checkFromLast",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -19099,7 +19967,12 @@
       "patternId": "unicorn_prefer-at",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "checkAllIndexAccess",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -19169,7 +20042,12 @@
       "patternId": "unicorn_prefer-export-from",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreUsedVariables",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -19267,7 +20145,16 @@
       "patternId": "unicorn_prefer-number-properties",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "checkInfinity",
+          "default": false
+        },
+        {
+          "name": "checkNaN",
+          "default": true
+        }
+      ],
       "enabled": false
     },
     {
@@ -19379,7 +20266,16 @@
       "patternId": "unicorn_prefer-switch",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "minimumCases",
+          "default": 3
+        },
+        {
+          "name": "emptyDefaultCase",
+          "default": "no-default-comment"
+        }
+      ],
       "enabled": false
     },
     {
@@ -19474,7 +20370,119 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_no-instanceof-array",
+      "patternId": "unicorn_import-index",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-array-instanceof",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-fn-reference-in-iterator",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-reduce",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-unsafe-regex",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-dataset",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-event-key",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-exponentiation-operator",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-flat-map",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-node-append",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-node-remove",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-object-has-own",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-replace-all",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-starts-ends-with",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-text-content",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-trim-start-end",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_regex-shorthand",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -19593,7 +20601,20 @@
       "patternId": "vue_camelcase",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "ignoreDestructuring",
+          "default": false
+        },
+        {
+          "name": "ignoreImports",
+          "default": false
+        },
+        {
+          "name": "ignoreGlobals",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
@@ -19707,7 +20728,16 @@
       "patternId": "vue_dot-notation",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowKeywords",
+          "default": true
+        },
+        {
+          "name": "allowPattern",
+          "default": ""
+        }
+      ],
       "enabled": false
     },
     {
@@ -20200,7 +21230,12 @@
       "patternId": "vue_no-empty-pattern",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "allowObjectPatternsAsParameters",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {
