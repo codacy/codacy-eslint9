@@ -6937,7 +6937,14 @@
       "patternId": "ember_no-restricted-property-modifications",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "properties",
+          "default": [
+            ""
+          ]
+        }
+      ],
       "enabled": false
     },
     {
@@ -13142,6 +13149,13 @@
       "patternId": "perfectionist_sort-maps",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "prettier_prettier",
+      "level": "Info",
+      "category": "CodeStyle",
       "parameters": [],
       "enabled": false
     },

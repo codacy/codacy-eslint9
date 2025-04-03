@@ -6864,7 +6864,12 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "properties",
+        "description": "properties"
+      }
+    ],
     "patternId": "ember_no-restricted-property-modifications",
     "title": "Ember: No restricted property modifications",
     "description": "Disallow modifying the specified properties",
@@ -12975,6 +12980,12 @@
     "patternId": "perfectionist_sort-maps",
     "title": "Perfectionist: Sort maps",
     "description": "Enforce sorted Map elements.",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "prettier_prettier",
+    "title": "Prettier: Prettier",
     "timeToFix": 5
   },
   {
