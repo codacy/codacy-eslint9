@@ -68,6 +68,7 @@ export class rulesNamedParametersAndDefaults {
       "message",
       "Injecting this service is not allowed from this file."
     ],
+    ["ember/no-restricted-property-modifications", "properties", [""]],
     ["@stylistic/indent", "ArrayExpression", 1],
     ["@stylistic/indent", "CallExpression", { "arguments": 1 }],
     ["@stylistic/indent", "FunctionDeclaration", { "parameters": 1, "body": 1 }],

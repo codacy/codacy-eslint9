@@ -10,7 +10,7 @@
   "dependencies": {
     "@angular-eslint/eslint-plugin": "^18.3.1",
     "@babel/eslint-plugin": "^7.25.7",
-    "@lwc/eslint-plugin-lwc": "^1.8.2",
+    "@lwc/eslint-plugin-lwc": "^2.1.0",
     "@salesforce/eslint-plugin-aura": "^2.1.0",
     "@salesforce/eslint-plugin-lightning": "^1.0.0",
     "@shopify/eslint-plugin": "^46.0.0",
