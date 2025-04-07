@@ -38,8 +38,7 @@ const blacklistRegexes: RegExp[] = [
   /unused-imports\/.*-ts/,
   /yml\/sort-sequence-values/,
   /jest\/unbound-method/,
-  /angular\/di-unused/,
-  /@typescript-eslint\/no-unsafe-/
+  /angular\/di-unused/
 ]
 
 const documentationBlacklistRegexes: RegExp[] = [
@@ -74,8 +73,7 @@ const documentationBlacklistRegexes: RegExp[] = [
   /@vitest\/padding-around-expect-groups/,
   /@vitest\/padding-around-describe-blocks/,
   /@vitest\/padding-around-test-blocks/,
-  /@vitest\/padding-around-all/,
-  /@typescript-eslint\/no-unsafe-/
+  /@vitest\/padding-around-all/
 ]
 
 function testRegex (regexes: RegExp[], value: string): boolean {
