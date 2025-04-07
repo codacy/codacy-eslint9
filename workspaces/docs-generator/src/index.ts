@@ -83,6 +83,10 @@ const downloadDocs: DocsInfo[] = [
     relativeUrl: "/eslint/eslint/main/docs/src/rules/"
   },
   {
+    packageName: "eslint-plugin-check-file",
+    relativeUrl: "/dukeluo/eslint-plugin-check-file/main/docs/rules/"
+  },
+  {
     packageName: "eslint-plugin-eslint-plugin",
     relativeUrl: "/eslint-community/eslint-plugin-eslint-plugin/main/docs/rules/"
   },

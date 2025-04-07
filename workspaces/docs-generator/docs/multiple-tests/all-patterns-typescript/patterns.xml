@@ -752,6 +752,11 @@
   <module name="backbone_no-view-onoff-binding" />
   <module name="backbone_no-view-qualified-jquery" />
   <module name="backbone_render-return" />
+  <module name="check-file_filename-blocklist" />
+  <module name="check-file_filename-naming-convention" />
+  <module name="check-file_folder-match-with-fex" />
+  <module name="check-file_folder-naming-convention" />
+  <module name="check-file_no-index" />
   <module name="compat_compat" />
   <module name="cypress_no-assigning-return-values" />
   <module name="cypress_unsafe-to-chain-command" />
