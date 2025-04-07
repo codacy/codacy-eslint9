@@ -79,7 +79,7 @@ export class DocsGenerator {
     patternId: string,
     schema: JSONSchema4 | JSONSchema4[] | undefined
   ): ParameterSpec[] {
-//    console.log({ patternId, "schema": JSON.stringify(schema) })
+    //    console.log({ patternId, "schema": JSON.stringify(schema) })
     const unnamedParameterValue = rulesToUnnamedParametersDefaults.get(patternId)
     const unnamedParameter = unnamedParameterValue
       ? new ParameterSpec("unnamedParam", unnamedParameterValue)
@@ -88,7 +88,7 @@ export class DocsGenerator {
     const namedParameters = schema
       ? DocsGenerator.fromEslintSchemaToParameters(patternId, schema)
       : undefined
- //   console.log({ unnamedParameter, namedParameters, unnamedParameterValue })
+    //   console.log({ unnamedParameter, namedParameters, unnamedParameterValue })
     if (namedParameters && unnamedParameter)
       return [unnamedParameter, ...namedParameters]
     if (namedParameters)
@@ -213,9 +213,9 @@ export class DocsGenerator {
     };
 
     const flattenedSchema = flattenSchema(schema);
- //   console.log({ flattenedSchema })
+    //   console.log({ flattenedSchema })
     const objects = flattenedSchema.filter(value => value && value.properties);
- //   console.log({ "flattenedSchema": JSON.stringify(flattenedSchema), "objects": JSON.stringify(objects) })
+    //   console.log({ "flattenedSchema": JSON.stringify(flattenedSchema), "objects": JSON.stringify(objects) })
     return Array.isArray(objects) ? fromSchemaArray(patternId, objects) : []
   }
 
@@ -281,48 +281,43 @@ export class DocsGenerator {
     }
   }
 
+  async downloadPluginDocs(docsInfo: DocsInfo): Promise<void> {
 
-  async downloadAllPluginsDocs(downloadDocsInfo: DocsInfo[]): Promise<void> {
-    downloadDocsInfo.forEach((docsInfo) => {
-      docsInfo['baseUrl'] = new URL((!docsInfo.relativeUrl.startsWith("https://") ? this.githubBaseUrl : "") + docsInfo.relativeUrl);
-      this.docs[docsInfo.packageName] = docsInfo;
-      try {
-        this.downloadPluginDocs(docsInfo.packageName);
+    docsInfo['baseUrl'] = new URL((!docsInfo.relativeUrl.startsWith("https://") ? this.githubBaseUrl : "") + docsInfo.relativeUrl);
+    this.docs[docsInfo.packageName] = docsInfo;
+    try {
+
+      const plugin: Plugin | undefined = await getByPackageName(docsInfo.packageName)
+
+      if (plugin === undefined) {
+        console.error(wrapConsoleTextInColor(`Plugin for package "${docsInfo.packageName}" not found`, TerminalColor.Red), await getAllNames())
+        return
       }
-      catch (error) {
-        console.error(error)
-      }
-    });
-  }
 
-  async downloadPluginDocs(packageName: string): Promise<void> {
-    const plugin: Plugin | undefined = await getByPackageName(packageName)
+      console.log(`Generate ${plugin.name} description files`)
 
-    if (plugin === undefined) {
-      console.error(wrapConsoleTextInColor(`Plugin for package "${packageName}" not found`, TerminalColor.Red), await getAllNames())
-      return
-    }
+      const patterns = plugin.name !== "eslint"
+        ? await this.patternIdsWithoutPrefix(plugin.name)
+        : this.eslintPatternIds()
 
-    console.log(`Generate ${plugin.name} description files`)
-
-    const patterns = plugin.name !== "eslint"
-      ? await this.patternIdsWithoutPrefix(plugin.name)
-      : this.eslintPatternIds()
-
-    const promises = plugin.name === "@stylistic"
-      ? rulesStylistic
-        .filter((rule: RuleInfo) => rule.ruleId.match(/^@stylistic\/[^/]+$/) !== null)
-        .map((rule: RuleInfo) => {
-          return this.createPatternDescriptionFile(plugin, packageName, rule.name, rule.docsEntry)
+      const promises = plugin.name === "@stylistic"
+        ? rulesStylistic
+          .filter((rule: RuleInfo) => rule.ruleId.match(/^@stylistic\/[^/]+$/) !== null)
+          .map((rule: RuleInfo) => {
+            return this.createPatternDescriptionFile(plugin, docsInfo.packageName, rule.name, rule.docsEntry)
+          })
+        : (await patterns).map((pattern: string) => {
+          const patternDocFilename =
+            plugin.name === "@typescript-eslint" || plugin.name === "perfectionist"
+              ? `${pattern}.mdx`
+              : `${pattern}.md`
+          return this.createPatternDescriptionFile(plugin, docsInfo.packageName, pattern, patternDocFilename)
         })
-      : (await patterns).map((pattern: string) => {
-        const patternDocFilename =
-          plugin.name === "@typescript-eslint" || plugin.name === "perfectionist"
-            ? `${pattern}.mdx`
-            : `${pattern}.md`
-        return this.createPatternDescriptionFile(plugin, packageName, pattern, patternDocFilename)
-      })
-    await Promise.all(promises)
+      await Promise.all(promises)
+    }
+    catch (error) {
+      console.error(error)
+    }
   }
 
   async createDescriptionFile(): Promise<void> {
@@ -379,7 +374,7 @@ ${modules}
     const longPrefix = prefix + "/"
 
     const patternIds = await this.getPatternIds()
-    
+
     return patternIds
       .filter((patternId) => patternId.startsWith(longPrefix))
       .map((patternId) => patternId.substring(longPrefix.length))
@@ -389,9 +384,9 @@ ${modules}
     // We take all the patterns except those that have slashes because
     // they come from third party plugins
     const patternIds = await this.getPatternIds()
-    
+
     return patternIds.filter((e) => !e.includes("/"))
-    
+
   }
 
   private convertFromGithubRawLink(url: string): string {
