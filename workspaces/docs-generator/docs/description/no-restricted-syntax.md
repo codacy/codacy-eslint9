@@ -13,7 +13,7 @@ JavaScript has a lot of language features, and not everyone likes all of them. A
 
 Rather than creating separate rules for every language feature you want to turn off, this rule allows you to configure the syntax elements you want to restrict use of. For the JavaScript language, these elements are represented by their [ESTree](https://github.com/estree/estree) node types. For example, a function declaration is represented by `FunctionDeclaration` and the `with` statement is represented by `WithStatement`. You may use [Code Explorer](https://explorer.eslint.org) to determine the nodes that represent your code.
 
-You can also specify [AST selectors](https://github.com/eslint/eslint/tree/refs/tags/main/docs/src/extend/selectors) to restrict, allowing much more precise control over syntax patterns.
+You can also specify [AST selectors](https://github.com/eslint/eslint/tree/refs/tags/master/docs/src/extend/selectors) to restrict, allowing much more precise control over syntax patterns.
 
 Note: This rule can be used with any language you lint using ESLint. To see what type of nodes your code in another language consists of, you can use:
 

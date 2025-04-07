@@ -55,7 +55,7 @@ This rule aims to enforce consistent spacing between rest and spread operators a
 }
 ```
 
-Please read the user guide's section on [configuring parser options](https://github.com/eslint/eslint/tree/refs/tags/main/docs/src/use/configure#specifying-parser-options) to learn more.
+Please read the user guide's section on [configuring parser options](https://github.com/eslint/eslint/tree/refs/tags/master/docs/src/use/configure#specifying-parser-options) to learn more.
 
 ## Options
 

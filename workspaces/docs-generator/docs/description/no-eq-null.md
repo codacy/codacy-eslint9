@@ -56,7 +56,7 @@ while (qux !== null) {
 
 ## When Not To Use It
 
-If you want to enforce type-checking operations in general, use the more powerful [eqeqeq](https://github.com/eslint/eslint/tree/refs/tags/main/docs/src/rules/eqeqeq) instead.
+If you want to enforce type-checking operations in general, use the more powerful [eqeqeq](https://github.com/eslint/eslint/tree/refs/tags/master/docs/src/rules/eqeqeq) instead.
 
 ## Compatibility
 

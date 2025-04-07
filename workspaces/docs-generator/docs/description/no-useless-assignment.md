@@ -135,7 +135,7 @@ function fn4() {
 :::
 
 This rule will not report variables that are never read.
-Because it's clearly an unused variable. If you want it reported, please enable the [no-unused-vars](https://github.com/eslint/eslint/tree/refs/tags/main/docs/src/rules/no-unused-vars) rule.
+Because it's clearly an unused variable. If you want it reported, please enable the [no-unused-vars](https://github.com/eslint/eslint/tree/refs/tags/master/docs/src/rules/no-unused-vars) rule.
 
 ::: correct
 
