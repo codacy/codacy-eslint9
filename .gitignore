@@ -1,5 +1,5 @@
 # Tool files
-/workspaces/docs-generator/docs/description/*.md
+#/workspaces/docs-generator/docs/description/*.md
 
 # Configuration files
 .codarcyrc

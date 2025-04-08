@@ -1,0 +1,298 @@
+---
+title: sort-sets
+description: Ensure your sets are sorted. Improve readability and maintain consistent code with this ESLint rule
+shortDescription: Enforce sorted Set elements
+keywords:
+  - eslint
+  - sort set
+  - eslint rule
+  - coding standards
+  - code quality
+  - javascript linting
+  - set sorting
+---
+
+import CodeExample from '../../components/CodeExample.svelte'
+import CodeTabs from '../../components/CodeTabs.svelte'
+import { dedent } from 'ts-dedent'
+
+Enforce sorted set values.
+
+By keeping sets sorted, developers can quickly scan and verify the values, making the code more predictable and reducing the likelihood of errors. This practice simplifies debugging and enhances the overall clarity of the codebase.
+
+
+## Try it out
+
+<CodeExample
+  alphabetical={dedent`
+    const getProductCategories = (product) => {
+      let electronics = new Set([
+        'Drone',
+        'Headphones',
+        'Keyboard',
+        'Laptop',
+        'Monitor',
+        'Mouse',
+        'Router',
+        'Smartphone',
+        'Smartwatch',
+        'Tablet',
+      ])
+      let accessories = new Set([
+        'Adapter',
+        'Case',
+        'Charger',
+        'Screen Protector',
+        'Cable',
+        'Battery',
+        'Memory Card',
+      ])
+      if (electronics.has(product.name)) {
+        return 'Electronics'
+      } else if (accessories.has(product.name)) {
+        return 'Accessories'
+      }
+      return 'Unknown'
+    }
+`}
+  lineLength={dedent`
+    const getProductCategories = (product) => {
+      let electronics = new Set([
+        'Smartphone',
+        'Smartwatch',
+        'Headphones',
+        'Keyboard',
+        'Monitor',
+        'Laptop',
+        'Router',
+        'Tablet',
+        'Drone',
+        'Mouse',
+      ])
+      let accessories = new Set([
+        'Screen Protector',
+        'Memory Card',
+        'Adapter',
+        'Charger',
+        'Battery',
+        'Cable',
+        'Case',
+      ])
+      if (electronics.has(product.name)) {
+        return 'Electronics'
+      } else if (accessories.has(product.name)) {
+        return 'Accessories'
+      }
+      return 'Unknown'
+    }
+`}
+  client:load
+  lang="tsx"
+  initial={dedent`
+    const getProductCategories = (product) => {
+      let electronics = new Set([
+        'Mouse',
+        'Drone',
+        'Smartphone',
+        'Keyboard',
+        'Tablet',
+        'Monitor',
+        'Laptop',
+        'Smartwatch',
+        'Router',
+        'Headphones',
+      ])
+      let accessories = new Set([
+        'Memory Card',
+        'Charger',
+        'Cable',
+        'Battery',
+        'Screen Protector',
+        'Case',
+        'Adapter',
+      ])
+      if (electronics.has(product.name)) {
+        return 'Electronics'
+      } else if (accessories.has(product.name)) {
+        return 'Accessories'
+      }
+      return 'Unknown'
+    }
+`}
+/>
+
+## Options
+
+This rule accepts an options object with the following properties:
+
+### type
+
+<sub>default: `'alphabetical'`</sub>
+
+Specifies the sorting method.
+
+- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”).
+- `'natural'` — Sort items in a natural order (e.g., “item2” < “item10”).
+- `'line-length'` — Sort items by the length of the code line (shorter lines first).
+
+### order
+
+<sub>default: `'asc'`</sub>
+
+Determines whether the sorted items should be in ascending or descending order.
+
+- `'asc'` — Sort items in ascending order (A to Z, 1 to 9).
+- `'desc'` — Sort items in descending order (Z to A, 9 to 1).
+
+### ignoreCase
+
+<sub>default: `true`</sub>
+
+Controls whether sorting should be case-sensitive or not.
+
+- `true` — Ignore case when sorting alphabetically or naturally (e.g., “A” and “a” are the same).
+- `false` — Consider case when sorting (e.g., “A” comes before “a”).
+
+### specialCharacters
+
+<sub>default: `keep`</sub>
+
+Controls whether special characters should be trimmed, removed or kept before sorting.
+
+- `'keep'` — Keep special characters when sorting (e.g., “_a” comes before “a”).
+- `'trim'` — Trim special characters when sorting alphabetically or naturally (e.g., “_a” and “a” are the same).
+- `'remove'` — Remove special characters when sorting (e.g., “/a/b” and “ab” are the same).
+
+
+### groupKind
+
+<sub>default: `'literals-first'`</sub>
+
+Allows you to group set elements by their kind, determining whether spread values should come before or after literal values.
+
+- `mixed` — Do not group set elements by their kind; spread values are sorted together with literal values.
+- `literals-first` — Group all literal values before spread values.
+- `spreads-first` — Group all spread values before literal values.
+
+### partitionByComment
+
+<sub>default: `false`</sub>
+
+Allows you to use comments to separate the members of enums into logical groups. This can help in organizing and maintaining large enums by creating partitions within the enum based on comments.
+
+- `true` — All comments will be treated as delimiters, creating partitions.
+-	`false` — Comments will not be used as delimiters.
+- `string` — A glob pattern to specify which comments should act as delimiters.
+- `string[]` — A list of glob patterns to specify which comments should act as delimiters.
+
+### partitionByNewLine
+
+<sub>default: `false`</sub>
+
+When `true`, the rule will not sort the members of a set if there is an empty line between them. This can be useful for keeping logically separated groups of members in their defined order.
+
+```ts
+let items = new Set([
+     // Group 1
+    'Drone',
+    'Keyboard',
+    'Mouse',
+    'Smartphone',
+
+    // Group 2
+    'Laptop',
+    'Monitor',
+    'Smartwatch',
+    'Tablet',
+
+    // Group 3
+    'Headphones',
+    'Router',
+  ])
+```
+
+Each group of elements (separated by empty lines) is treated independently, and the order within each group is preserved.
+
+### matcher
+
+<sub>default: `'minimatch'`</sub>
+
+Determines the matcher used for patterns in the `partitionByComment` option.
+
+- `'minimatch'` — Use the [minimatch](https://github.com/isaacs/minimatch) library for pattern matching.
+- `'regex'` — Use regular expressions for pattern matching.
+
+## Usage
+
+<CodeTabs
+  code={[
+    {
+      source: dedent`
+        // eslint.config.js
+        import perfectionist from 'eslint-plugin-perfectionist'
+
+        export default [
+          {
+            plugins: {
+              perfectionist,
+            },
+            rules: {
+              'perfectionist/sort-sets': [
+                'error',
+                {
+                  type: 'alphabetical',
+                  order: 'asc',
+                  ignoreCase: true,
+                  specialCharacters: 'keep',
+                  groupKind: 'literals-first',
+                  partitionByNewLine: false,
+                  matcher: 'minimatch',
+                },
+              ],
+            },
+          },
+        ]
+      `,
+      name: 'Flat Config',
+      value: 'flat',
+    },
+    {
+      source: dedent`
+        // .eslintrc.js
+        module.exports = {
+          plugins: [
+            'perfectionist',
+          ],
+          rules: {
+            'perfectionist/sort-sets': [
+              'error',
+              {
+                type: 'alphabetical',
+                order: 'asc',
+                ignoreCase: true,
+                specialCharacters: 'keep',
+                groupKind: 'literals-first',
+                partitionByNewLine: false,
+                matcher: 'minimatch',
+              },
+            ],
+          },
+        }
+      `,
+      name: 'Legacy Config',
+      value: 'legacy',
+    },
+  ]}
+  type="config-type"
+  client:load
+  lang="ts"
+/>
+
+## Version
+
+This rule was introduced in [v3.4.0](https://github.com/azat-io/eslint-plugin-perfectionist/releases/tag/v3.4.0).
+
+## Resources
+
+- [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-sets.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-sets.test.ts)
