@@ -73,8 +73,8 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-check-file",
-      relativeUrl: "/dukeluo/eslint-plugin-check-file/main/docs/rules/",
-      versionPrefix: "",
+      relativeUrl: "/dukeluo/eslint-plugin-check-file/refs/tags/main/docs/rules/",
+      versionPrefix: "v",
     })
     await sleep(500)
 
