@@ -1,0 +1,421 @@
+---
+title: sort-interfaces
+description: Enforce sorting of TypeScript interface properties for a clear and predictable code structure. Use this ESLint rule to maintain consistency in your interfaces
+shortDescription: Enforce sorted interface properties
+keywords:
+  - eslint
+  - sort interfaces
+  - eslint rule
+  - coding standards
+  - code quality
+  - javascript linting
+  - typescript interfaces sorting
+---
+
+import CodeExample from '../../components/CodeExample.svelte'
+import Important from '../../components/Important.astro'
+import CodeTabs from '../../components/CodeTabs.svelte'
+import { dedent } from 'ts-dedent'
+
+Enforce sorted TypeScript interface properties.
+
+Sorting interface properties in TypeScript provides a clear and predictable structure to the codebase. This rule helps developers locate various properties defined within an interface more easily, promoting consistency and enabling efficient maintenance and collaboration.
+
+Additionally, it ensures that property comments are sorted along with the properties themselves, preserving documentation clarity.
+
+<Important>
+  If you use the
+  [`adjacent-overload-signatures`](https://typescript-eslint.io/rules/adjacent-overload-signatures)
+  rule from the
+  [`@typescript-eslint/eslint-plugin`](https://typescript-eslint.io) plugin, it
+  is highly recommended to [disable
+  it](https://eslint.org/docs/latest/use/configure/rules#using-configuration-files-1)
+  to avoid conflicts.
+</Important>
+
+It's **safe**. If you document interface properties line by line, property comments will also be sorted.
+
+## Try it out
+
+<CodeExample
+  alphabetical={dedent`
+    interface Address {
+      apartmentNumber?: string
+      city: string
+      country: string
+      postalCode: string
+      street: string
+    }
+
+    interface User {
+      address: Address
+      email: string
+      firstName: string
+      id: string
+      login: string
+      phoneNumber?: string
+      roles: string[]
+    }
+
+    interface Project {
+      budget: number
+      description: string
+      id: string
+      name: string
+      projectTeamMembers: User[]
+      startDate: Date
+      status: string
+    }
+  `}
+  lineLength={dedent`
+    interface Address {
+      apartmentNumber?: string
+      postalCode: string
+      country: string
+      street: string
+      city: string
+    }
+
+    interface User {
+      phoneNumber?: string
+      firstName: string
+      address: Address
+      roles: string[]
+      email: string
+      login: string
+      id: string
+    }
+
+    interface Project {
+      projectTeamMembers: User[]
+      description: string
+      startDate: Date
+      budget: number
+      status: string
+      name: string
+      id: string
+    }
+  `}
+  initial={dedent`
+    interface Address {
+      street: string
+      city: string
+      country: string
+      postalCode: string
+      apartmentNumber?: string
+    }
+
+    interface User {
+      firstName: string
+      email: string
+      roles: string[]
+      login: string
+      phoneNumber?: string
+      address: Address
+      id: string
+    }
+
+    interface Project {
+      startDate: Date
+      budget: number
+      description: string
+      id: string
+      projectTeamMembers: User[]
+      name: string
+      status: string
+    }
+  `}
+  client:load
+  lang="tsx"
+/>
+
+## Options
+
+This rule accepts an options object with the following properties:
+
+### type
+
+<sub>default: `'alphabetical'`</sub>
+
+Specifies the sorting method.
+
+- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”).
+- `'natural'` — Sort items in a natural order (e.g., “item2” < “item10”).
+- `'line-length'` — Sort items by the length of the code line (shorter lines first).
+
+### order
+
+<sub>default: `'asc'`</sub>
+
+Determines whether the sorted items should be in ascending or descending order.
+
+- `'asc'` — Sort items in ascending order (A to Z, 1 to 9).
+- `'desc'` — Sort items in descending order (Z to A, 9 to 1).
+
+### ignoreCase
+
+<sub>default: `true`</sub>
+
+Controls whether sorting should be case-sensitive or not.
+
+- `true` — Ignore case when sorting alphabetically or naturally (e.g., “A” and “a” are the same).
+- `false` — Consider case when sorting (e.g., “A” comes before “a”).
+
+### specialCharacters
+
+<sub>default: `keep`</sub>
+
+Controls whether special characters should be trimmed, removed or kept before sorting.
+
+- `'keep'` — Keep special characters when sorting (e.g., “_a” comes before “a”).
+- `'trim'` — Trim special characters when sorting alphabetically or naturally (e.g., “_a” and “a” are the same).
+- `'remove'` — Remove special characters when sorting (e.g., “/a/b” and “ab” are the same).
+
+### ignorePattern
+
+<sub>default: `[]`</sub>
+
+Allows you to specify names or patterns for interfaces that should be ignored by this rule. This can be useful if you have specific interfaces that you do not want to sort.
+
+You can specify their names or a glob pattern to ignore, for example: `'Component*'` to ignore all interfaces whose names begin with the word “Component”.
+
+### partitionByComment
+
+<sub>default: `false`</sub>
+
+Allows you to use comments to separate the properties of interfaces into logical groups. This can help in organizing and maintaining large interfaces by creating partitions within the interface based on comments.
+
+- `true` — All comments will be treated as delimiters, creating partitions.
+- `false` — Comments will not be used as delimiters.
+- `string` — A glob pattern to specify which comments should act as delimiters.
+- `string[]` — An array of glob patterns to specify which comments should act as delimiters.
+
+### partitionByNewLine
+
+<sub>default: `false`</sub>
+
+When `true`, the rule will not sort the members of an interface if there is an empty line between them. This can be useful for keeping logically separated groups of members in their defined order.
+
+```ts
+interface User {
+  // Group 1
+  firstName: string;
+  lastName: string;
+
+  // Group 2
+  age: number;
+  birthDate: Date;
+
+  // Group 3
+  address: string;
+  phone?: string;
+}
+```
+
+Each group of members (separated by empty lines) is treated independently, and the order within each group is preserved.
+
+### groupKind
+
+<sub>default: `'mixed'`</sub>
+
+Specifies how optional and required members should be ordered in TypeScript interfaces.
+
+- `'optional-first'` — Put all optional members before required members.
+- `'required-first'` — Put all required members before optional members.
+- `'mixed'` — Do not enforce any specific order based on optionality.
+
+### groups
+
+<sub>
+  type: `Array<string | string[]>`
+</sub>
+<sub>default: `[]`</sub>
+
+Allows you to specify a list of interface member groups for sorting. Groups help organize members into categories, making your interfaces more readable and maintainable.
+
+Predefined groups:
+
+- `'multiline'` — Members with multiline definitions, such as methods or properties with complex types.
+- `'method'` - Members that are methods.
+- `'unknown'` — Interface members that don’t fit into any group specified in the `groups` option.
+
+If the `unknown` group is not specified in the `groups` option, it will automatically be added to the end of the list.
+
+Each interface member will be assigned a single group specified in the `groups` option (or the `unknown` group if no match is found).
+The order of items in the `groups` option determines how groups are ordered.
+
+Within a given group, members will be sorted according to the `type`, `order`, `ignoreCase`, etc. options.
+
+Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
+All members of the groups in the array will be sorted together as if they were part of a single group.
+
+#### Example
+
+```ts
+interface User {
+  firstName: string // unknown
+  lastName: string  // unknown
+  username: string  // unknown
+  job: {            // multiline
+    // Stuff about job
+  }
+  localization: {   // multiline
+    // Stuff about localization
+  }
+}
+```
+
+`groups` option configuration:
+
+```js
+{
+  groups: [
+    'unknown',
+    'method',
+    'multiline',
+  ]
+}
+```
+
+### customGroups
+
+<sub>
+  type: `{ [groupName: string]: string | string[] }`
+</sub>
+<sub>default: `{}`</sub>
+
+You can define your own groups and use custom glob patterns or regex to match specific interface members.
+
+Use the `matcher` option to specify the pattern matching method.
+
+Each key of `customGroups` represents a group name which you can then use in the `groups` option. The value for each key can either be of type:
+- `string` — An interface member's name matching the value will be marked as part of the group referenced by the key.
+- `string[]` — An interface member's name matching any of the values of the array will be marked as part of the group referenced by the key.
+The order of values in the array does not matter.
+
+Custom group matching takes precedence over predefined group matching.
+
+#### Example
+
+Put all properties starting with `id` and `name` at the top, combine and sort metadata and multiline properties at the bottom.
+Anything else is put in the middle.
+
+```ts
+interface User {
+  id: string                 // top
+  name: string               // top
+  age: number                // unknown
+  isAdmin: boolean           // unknown
+  lastUpdated_metadata: Date // bottom
+  localization: {            // multiline
+    // Stuff about localization
+  }
+  version_metadata: string   // bottom
+}
+```
+
+`groups` and `customGroups` configuration:
+
+```js
+ {
+   groups: [
++    'top',                  // [!code ++]
+     'unknown',
+     ['multiline', 'bottom'] // [!code ++]
+   ],
++  customGroups: {           // [!code ++]
++    top: ['id', 'name']     // [!code ++]
++    bottom: '*_metadata'     // [!code ++]
++  }                         // [!code ++]
+ }
+```
+
+### matcher
+
+<sub>default: `'minimatch'`</sub>
+
+Determines the matcher used for patterns in the `partitionByComment`, `ignorePattern` and `customGroups` options.
+
+- `'minimatch'` — Use the [minimatch](https://github.com/isaacs/minimatch) library for pattern matching.
+- `'regex'` — Use regular expressions for pattern matching.
+
+## Usage
+
+<CodeTabs
+  code={[
+    {
+      source: dedent`
+        // eslint.config.js
+        import perfectionist from 'eslint-plugin-perfectionist'
+
+        export default [
+          {
+            plugins: {
+              perfectionist,
+            },
+            rules: {
+              'perfectionist/sort-interfaces': [
+                'error',
+                {
+                  type: 'alphabetical',
+                  order: 'asc',
+                  ignoreCase: true,
+                  specialCharacters: 'keep',
+                  ignorePattern: [],
+                  partitionByNewLine: false,
+                  optionalityOrder: 'ignore',
+                  matcher: 'minimatch',
+                  groups: [],
+                  customGroups: {},
+                },
+              ],
+            },
+          },
+        ]
+      `,
+      name: 'Flat Config',
+      value: 'flat',
+    },
+    {
+      source: dedent`
+        // .eslintrc.js
+        module.exports = {
+          plugins: [
+            'perfectionist',
+          ],
+          rules: {
+            'perfectionist/sort-interfaces': [
+              'error',
+              {
+                type: 'alphabetical',
+                order: 'asc',
+                ignoreCase: true,
+                specialCharacters: 'keep',
+                ignorePattern: [],
+                partitionByNewLine: false,
+                optionalityOrder: 'ignore',
+                matcher: 'minimatch',
+                groups: [],
+                customGroups: {},
+              },
+            ],
+          },
+        }
+      `,
+      name: 'Legacy Config',
+      value: 'legacy',
+    },
+  ]}
+  type="config-type"
+  client:load
+  lang="ts"
+/>
+
+## Version
+
+This rule was introduced in [v0.1.0](https://github.com/azat-io/eslint-plugin-perfectionist/releases/tag/v0.1.0).
+
+## Resources
+
+- [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-interfaces.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-interfaces.test.ts)
