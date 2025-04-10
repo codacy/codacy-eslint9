@@ -5998,6 +5998,41 @@
   },
   {
     "parameters": [],
+    "patternId": "check-file_filename-blocklist",
+    "title": "Check file: Filename blocklist",
+    "description": "The filename should be blocklisted",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_filename-naming-convention",
+    "title": "Check file: Filename naming convention",
+    "description": "The filename should follow the filename naming convention",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_folder-match-with-fex",
+    "title": "Check file: Folder match with fex",
+    "description": "The folder should match the naming pattern specified by its file",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_folder-naming-convention",
+    "title": "Check file: Folder naming convention",
+    "description": "The folder should follow the folder naming convention",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_no-index",
+    "title": "Check file: No index",
+    "description": "A file cannot be named \"index\"",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "compat_compat",
     "title": "Compat: Compat",
     "description": "Ensure cross-browser API compatibility",

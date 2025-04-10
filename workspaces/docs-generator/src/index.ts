@@ -70,6 +70,14 @@ async function main() {
     })
     await sleep(500)
 
+
+    await docGenerator.downloadPluginDocs({
+      packageName: "eslint-plugin-check-file",
+      relativeUrl: "/dukeluo/eslint-plugin-check-file/main/docs/rules/",
+      versionPrefix: "",
+    })
+    await sleep(500)
+
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-angular",
       relativeUrl: "/EmmanuelDemey/eslint-plugin-angular/refs/tags/master/docs/rules/",
