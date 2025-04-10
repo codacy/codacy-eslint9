@@ -4256,7 +4256,12 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "unnamedParam",
+        "description": "unnamedParam"
+      }
+    ],
     "patternId": "@typescript-eslint_consistent-type-definitions",
     "title": "@typescript eslint: Consistent type definitions",
     "description": "Enforce type definitions to consistently use either `interface` or `type`",

@@ -4270,7 +4270,14 @@
       "patternId": "@typescript-eslint_consistent-type-definitions",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "unnamedParam",
+          "default": [
+            "interface"
+          ]
+        }
+      ],
       "enabled": true
     },
     {
