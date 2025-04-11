@@ -23,6 +23,7 @@ const packageNames: string[] = [
   "eslint-plugin-angular",
   "eslint-plugin-ava",
   "eslint-plugin-backbone",
+  "eslint-plugin-check-file",
   "eslint-plugin-compat",
   "eslint-plugin-cypress",
   "eslint-plugin-ember",

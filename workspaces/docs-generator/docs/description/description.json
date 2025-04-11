@@ -2534,38 +2534,10 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "preferReadonlySignalProperties",
-        "description": "preferReadonlySignalProperties"
-      },
-      {
-        "name": "preferInputSignals",
-        "description": "preferInputSignals"
-      },
-      {
-        "name": "preferQuerySignals",
-        "description": "preferQuerySignals"
-      },
-      {
-        "name": "useTypeChecking",
-        "description": "useTypeChecking"
-      },
-      {
-        "name": "additionalSignalCreationFunctions",
-        "description": "additionalSignalCreationFunctions"
-      }
-    ],
-    "patternId": "@angular-eslint_prefer-signals",
-    "title": "@angular eslint: Prefer signals",
-    "description": "Use readonly signals instead of `@Input()`, `@ViewChild()` and other legacy decorators",
-    "timeToFix": 5
-  },
-  {
     "parameters": [],
     "patternId": "@angular-eslint_prefer-standalone",
     "title": "@angular eslint: Prefer standalone",
-    "description": "Ensures Components, Directives and Pipes do not opt out of standalone",
+    "description": "Ensures component, directive and pipe `standalone` property is set to `true` in the component decorator",
     "timeToFix": 5
   },
   {
@@ -2580,13 +2552,6 @@
     "patternId": "@angular-eslint_relative-url-prefix",
     "title": "@angular eslint: Relative url prefix",
     "description": "The ./ and ../ prefix is standard syntax for relative URLs; don't depend on Angular's current ability to do without that prefix. See more at https://angular.dev/style-guide#style-05-04",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@angular-eslint_require-lifecycle-on-prototype",
-    "title": "@angular eslint: Require lifecycle on prototype",
-    "description": "Ensures that lifecycle methods are defined on the object's prototype instead of on an instance.",
     "timeToFix": 5
   },
   {
@@ -2784,55 +2749,6 @@
   },
   {
     "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-host-mutation-in-connected-callback",
-    "title": "@lwc: [Lwc] Ssr no host mutation in connected callback",
-    "description": "Disallow mutations to the host element in connectedCallback",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-restricted-browser-globals",
-    "title": "@lwc: [Lwc] Ssr no restricted browser globals",
-    "description": "Disallow access to global browser APIs during SSR",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-unsupported-properties",
-    "title": "@lwc: [Lwc] Ssr no unsupported properties",
-    "description": "Disallow access of unsupported properties in SSR",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-node-env",
-    "title": "@lwc: [Lwc] Ssr no node env",
-    "description": "Disallow access of process.env.NODE_ENV in SSR",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-unsupported-node-api",
-    "title": "@lwc: [Lwc] Ssr no unsupported node api",
-    "description": "Disallow unsupported Node.js API calls in SSR-able components.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-static-imports-of-user-specific-scoped-modules",
-    "title": "@lwc: [Lwc] Ssr no static imports of user specific scoped modules",
-    "description": "Disallow static imports of user-specific scoped modules in SSR-able components",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@lwc_lwc_ssr-no-form-factor",
-    "title": "@lwc: [Lwc] Ssr no form factor",
-    "description": "Discourage use of formFactor.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "@salesforce_lightning_no-aura-localization-service",
     "title": "@salesforce: [Lightning] No aura localization service",
     "description": "Disallow usage of \"$A.localizationService\"",
@@ -2906,13 +2822,6 @@
     "patternId": "@shopify_no-ancestor-directory-import",
     "title": "@shopify: No ancestor directory import",
     "description": "Prefer that imports from within a directory extend to the file from where they are importing without relying on an index file.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@shopify_no-context-menu",
-    "title": "@shopify: No context menu",
-    "description": "Disallow contextmenu event listeners",
     "timeToFix": 5
   },
   {
@@ -3303,10 +3212,6 @@
       {
         "name": "offsetTernaryExpressions",
         "description": "offsetTernaryExpressions"
-      },
-      {
-        "name": "offsetTernaryExpressionsOffsetCallExpressions",
-        "description": "offsetTernaryExpressionsOffsetCallExpressions"
       },
       {
         "name": "ignoreComments",
@@ -4006,10 +3911,6 @@
       {
         "name": "int32Hint",
         "description": "int32Hint"
-      },
-      {
-        "name": "ignoreTypes",
-        "description": "ignoreTypes"
       }
     ],
     "patternId": "@stylistic_space-infix-ops",
@@ -4159,13 +4060,6 @@
     "patternId": "@tanstack_query_infinite-query-property-order",
     "title": "@tanstack: [Query] Infinite query property order",
     "description": "Ensure correct order of inference sensitive properties for infinite queries",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@tanstack_query_no-void-query-fn",
-    "title": "@tanstack: [Query] No void query fn",
-    "description": "Ensures queryFn returns a non-undefined value",
     "timeToFix": 5
   },
   {
@@ -5461,7 +5355,7 @@
     "parameters": [],
     "patternId": "@vitest_prefer-vi-mocked",
     "title": "@vitest: Prefer vi mocked",
-    "description": "Require `vi.mocked()` over `fn as Mock`",
+    "description": "Prefer `vi.mocked()` over `fn as Mock`",
     "timeToFix": 5
   },
   {
@@ -5532,27 +5426,6 @@
     "patternId": "@vitest_prefer-expect-assertions",
     "title": "@vitest: Prefer expect assertions",
     "description": "Enforce using expect assertions instead of callbacks",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@vitest_valid-expect-in-promise",
-    "title": "@vitest: Valid expect in promise",
-    "description": "Require promises that have expectations in their chain to be valid",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@vitest_prefer-strict-boolean-matchers",
-    "title": "@vitest: Prefer strict boolean matchers",
-    "description": "Enforce using `toBe(true)` and `toBe(false)` over matchers that coerce types to boolean",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@vitest_require-mock-type-parameters",
-    "title": "@vitest: Require mock type parameters",
-    "description": "Enforce using type parameters with vitest mock functions",
     "timeToFix": 5
   },
   {
@@ -6200,6 +6073,41 @@
   },
   {
     "parameters": [],
+    "patternId": "check-file_filename-blocklist",
+    "title": "Check file: Filename blocklist",
+    "description": "The filename should be blocklisted",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_filename-naming-convention",
+    "title": "Check file: Filename naming convention",
+    "description": "The filename should follow the filename naming convention",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_folder-match-with-fex",
+    "title": "Check file: Folder match with fex",
+    "description": "The folder should match the naming pattern specified by its file",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_folder-naming-convention",
+    "title": "Check file: Folder naming convention",
+    "description": "The folder should follow the folder naming convention",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "check-file_no-index",
+    "title": "Check file: No index",
+    "description": "A file cannot be named \"index\"",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "compat_compat",
     "title": "Compat: Compat",
     "description": "Ensure cross-browser API compatibility",
@@ -6278,13 +6186,6 @@
     "patternId": "cypress_no-debug",
     "title": "Cypress: No debug",
     "description": "Disallow using `cy.debug()` calls",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "cypress_no-xpath",
-    "title": "Cypress: No xpath",
-    "description": "Disallow using `cy.xpath()` calls",
     "timeToFix": 5
   },
   {
@@ -7420,13 +7321,6 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-dataview-prototype-getfloat16-setfloat16",
-    "title": "Es x: No dataview prototype getfloat16 setfloat16",
-    "description": "Disallow the `DataView.prototype.{getFloat16,setFloat16}` methods.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-date-now",
     "title": "Es x: No date now",
     "description": "Disallow the `Date.now` method.",
@@ -7469,13 +7363,6 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-dynamic-import-options",
-    "title": "Es x: No dynamic import options",
-    "description": "Disallow the second parameter to `import()`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-error-cause",
     "title": "Es x: No error cause",
     "description": "Disallow Error Cause.",
@@ -7500,13 +7387,6 @@
     "patternId": "es-x_no-export-ns-from",
     "title": "Es x: No export ns from",
     "description": "Disallow `export * as ns`.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-float16array",
-    "title": "Es x: No float16array",
-    "description": "Disallow the `Float16Array` class.",
     "timeToFix": 5
   },
   {
@@ -7553,13 +7433,6 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-import-attributes",
-    "title": "Es x: No import attributes",
-    "description": "Disallow Import Attributes.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-import-meta",
     "title": "Es x: No import meta",
     "description": "Disallow `import.meta` meta property.",
@@ -7591,13 +7464,6 @@
     "patternId": "es-x_no-intl-displaynames",
     "title": "Es x: No intl displaynames",
     "description": "Disallow the `Intl.DisplayNames` object.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-intl-durationformat",
-    "title": "Es x: No intl durationformat",
-    "description": "Disallow the `Intl.DurationFormat` object.",
     "timeToFix": 5
   },
   {
@@ -7679,100 +7545,9 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-iterator",
-    "title": "Es x: No iterator",
-    "description": "Disallow the `Iterator` class.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-drop",
-    "title": "Es x: No iterator prototype drop",
-    "description": "Disallow the `Iterator.prototype.drop` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-every",
-    "title": "Es x: No iterator prototype every",
-    "description": "Disallow the `Iterator.prototype.every` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-filter",
-    "title": "Es x: No iterator prototype filter",
-    "description": "Disallow the `Iterator.prototype.filter` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-find",
-    "title": "Es x: No iterator prototype find",
-    "description": "Disallow the `Iterator.prototype.find` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-flatmap",
-    "title": "Es x: No iterator prototype flatmap",
-    "description": "Disallow the `Iterator.prototype.flatMap` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-foreach",
-    "title": "Es x: No iterator prototype foreach",
-    "description": "Disallow the `Iterator.prototype.forEach` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-map",
-    "title": "Es x: No iterator prototype map",
-    "description": "Disallow the `Iterator.prototype.map` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-reduce",
-    "title": "Es x: No iterator prototype reduce",
-    "description": "Disallow the `Iterator.prototype.reduce` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-some",
-    "title": "Es x: No iterator prototype some",
-    "description": "Disallow the `Iterator.prototype.some` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-take",
-    "title": "Es x: No iterator prototype take",
-    "description": "Disallow the `Iterator.prototype.take` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-iterator-prototype-toarray",
-    "title": "Es x: No iterator prototype toarray",
-    "description": "Disallow the `Iterator.prototype.toArray` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-json",
     "title": "Es x: No json",
     "description": "Disallow the `JSON` class.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-json-modules",
-    "title": "Es x: No json modules",
-    "description": "Disallow JSON Modules.",
     "timeToFix": 5
   },
   {
@@ -7882,13 +7657,6 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-math-f16round",
-    "title": "Es x: No math f16round",
-    "description": "Disallow the `Math.f16round` method.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-math-fround",
     "title": "Es x: No math fround",
     "description": "Disallow the `Math.fround` method.",
@@ -7969,482 +7737,6 @@
     "patternId": "es-x_no-new-target",
     "title": "Es x: No new target",
     "description": "Disallow `new.target` meta property.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-array-properties",
-    "title": "Es x: No nonstandard array properties",
-    "description": "Disallow non-standard static properties on `Array` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-array-prototype-properties",
-    "title": "Es x: No nonstandard array prototype properties",
-    "description": "Disallow non-standard properties on Array instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-arraybuffer-properties",
-    "title": "Es x: No nonstandard arraybuffer properties",
-    "description": "Disallow non-standard static properties on `ArrayBuffer` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-arraybuffer-prototype-properties",
-    "title": "Es x: No nonstandard arraybuffer prototype properties",
-    "description": "Disallow non-standard properties on ArrayBuffer instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-atomics-properties",
-    "title": "Es x: No nonstandard atomics properties",
-    "description": "Disallow non-standard static properties on `Atomics`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-bigint-properties",
-    "title": "Es x: No nonstandard bigint properties",
-    "description": "Disallow non-standard static properties on `BigInt` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-bigint-prototype-properties",
-    "title": "Es x: No nonstandard bigint prototype properties",
-    "description": "Disallow non-standard properties on BigInt instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-boolean-properties",
-    "title": "Es x: No nonstandard boolean properties",
-    "description": "Disallow non-standard static properties on `Boolean` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-boolean-prototype-properties",
-    "title": "Es x: No nonstandard boolean prototype properties",
-    "description": "Disallow non-standard properties on Boolean instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-dataview-properties",
-    "title": "Es x: No nonstandard dataview properties",
-    "description": "Disallow non-standard static properties on `DataView` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-dataview-prototype-properties",
-    "title": "Es x: No nonstandard dataview prototype properties",
-    "description": "Disallow non-standard properties on DataView instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-date-properties",
-    "title": "Es x: No nonstandard date properties",
-    "description": "Disallow non-standard static properties on `Date` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-date-prototype-properties",
-    "title": "Es x: No nonstandard date prototype properties",
-    "description": "Disallow non-standard properties on Date instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-finalizationregistry-properties",
-    "title": "Es x: No nonstandard finalizationregistry properties",
-    "description": "Disallow non-standard static properties on `FinalizationRegistry` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-finalizationregistry-prototype-properties",
-    "title": "Es x: No nonstandard finalizationregistry prototype properties",
-    "description": "Disallow non-standard properties on FinalizationRegistry instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-function-properties",
-    "title": "Es x: No nonstandard function properties",
-    "description": "Disallow non-standard static properties on `Function` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-collator-properties",
-    "title": "Es x: No nonstandard intl collator properties",
-    "description": "Disallow non-standard static properties on `Intl.Collator` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-collator-prototype-properties",
-    "title": "Es x: No nonstandard intl collator prototype properties",
-    "description": "Disallow non-standard properties on Intl.Collator instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-datetimeformat-properties",
-    "title": "Es x: No nonstandard intl datetimeformat properties",
-    "description": "Disallow non-standard static properties on `Intl.DateTimeFormat` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-datetimeformat-prototype-properties",
-    "title": "Es x: No nonstandard intl datetimeformat prototype properties",
-    "description": "Disallow non-standard properties on Intl.DateTimeFormat instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-displaynames-properties",
-    "title": "Es x: No nonstandard intl displaynames properties",
-    "description": "Disallow non-standard static properties on `Intl.DisplayNames` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-displaynames-prototype-properties",
-    "title": "Es x: No nonstandard intl displaynames prototype properties",
-    "description": "Disallow non-standard properties on Intl.DisplayNames instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-durationformat-properties",
-    "title": "Es x: No nonstandard intl durationformat properties",
-    "description": "Disallow non-standard static properties on `Intl.DurationFormat` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-durationformat-prototype-properties",
-    "title": "Es x: No nonstandard intl durationformat prototype properties",
-    "description": "Disallow non-standard properties on Intl.DurationFormat instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-listformat-properties",
-    "title": "Es x: No nonstandard intl listformat properties",
-    "description": "Disallow non-standard static properties on `Intl.ListFormat` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-listformat-prototype-properties",
-    "title": "Es x: No nonstandard intl listformat prototype properties",
-    "description": "Disallow non-standard properties on Intl.ListFormat instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-locale-properties",
-    "title": "Es x: No nonstandard intl locale properties",
-    "description": "Disallow non-standard static properties on `Intl.Locale` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-locale-prototype-properties",
-    "title": "Es x: No nonstandard intl locale prototype properties",
-    "description": "Disallow non-standard properties on Intl.Locale instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-numberformat-properties",
-    "title": "Es x: No nonstandard intl numberformat properties",
-    "description": "Disallow non-standard static properties on `Intl.NumberFormat` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-numberformat-prototype-properties",
-    "title": "Es x: No nonstandard intl numberformat prototype properties",
-    "description": "Disallow non-standard properties on Intl.NumberFormat instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-pluralrules-properties",
-    "title": "Es x: No nonstandard intl pluralrules properties",
-    "description": "Disallow non-standard static properties on `Intl.PluralRules` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-pluralrules-prototype-properties",
-    "title": "Es x: No nonstandard intl pluralrules prototype properties",
-    "description": "Disallow non-standard properties on Intl.PluralRules instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-properties",
-    "title": "Es x: No nonstandard intl properties",
-    "description": "Disallow non-standard static properties on `Intl`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-relativetimeformat-properties",
-    "title": "Es x: No nonstandard intl relativetimeformat properties",
-    "description": "Disallow non-standard static properties on `Intl.RelativeTimeFormat` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-relativetimeformat-prototype-properties",
-    "title": "Es x: No nonstandard intl relativetimeformat prototype properties",
-    "description": "Disallow non-standard properties on Intl.RelativeTimeFormat instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-segmenter-properties",
-    "title": "Es x: No nonstandard intl segmenter properties",
-    "description": "Disallow non-standard static properties on `Intl.Segmenter` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-intl-segmenter-prototype-properties",
-    "title": "Es x: No nonstandard intl segmenter prototype properties",
-    "description": "Disallow non-standard properties on Intl.Segmenter instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-iterator-properties",
-    "title": "Es x: No nonstandard iterator properties",
-    "description": "Disallow non-standard static properties on `Iterator` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-iterator-prototype-properties",
-    "title": "Es x: No nonstandard iterator prototype properties",
-    "description": "Disallow non-standard properties on Iterator instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-json-properties",
-    "title": "Es x: No nonstandard json properties",
-    "description": "Disallow non-standard static properties on `JSON`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-map-properties",
-    "title": "Es x: No nonstandard map properties",
-    "description": "Disallow non-standard static properties on `Map` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-map-prototype-properties",
-    "title": "Es x: No nonstandard map prototype properties",
-    "description": "Disallow non-standard properties on Map instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-math-properties",
-    "title": "Es x: No nonstandard math properties",
-    "description": "Disallow non-standard static properties on `Math`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-number-properties",
-    "title": "Es x: No nonstandard number properties",
-    "description": "Disallow non-standard static properties on `Number` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-number-prototype-properties",
-    "title": "Es x: No nonstandard number prototype properties",
-    "description": "Disallow non-standard properties on Number instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-object-properties",
-    "title": "Es x: No nonstandard object properties",
-    "description": "Disallow non-standard static properties on `Object` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-promise-properties",
-    "title": "Es x: No nonstandard promise properties",
-    "description": "Disallow non-standard static properties on `Promise` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-promise-prototype-properties",
-    "title": "Es x: No nonstandard promise prototype properties",
-    "description": "Disallow non-standard properties on Promise instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-proxy-properties",
-    "title": "Es x: No nonstandard proxy properties",
-    "description": "Disallow non-standard static properties on `Proxy` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-reflect-properties",
-    "title": "Es x: No nonstandard reflect properties",
-    "description": "Disallow non-standard static properties on `Reflect`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-regexp-properties",
-    "title": "Es x: No nonstandard regexp properties",
-    "description": "Disallow non-standard static properties on `RegExp` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-regexp-prototype-properties",
-    "title": "Es x: No nonstandard regexp prototype properties",
-    "description": "Disallow non-standard properties on RegExp instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-set-properties",
-    "title": "Es x: No nonstandard set properties",
-    "description": "Disallow non-standard static properties on `Set` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-set-prototype-properties",
-    "title": "Es x: No nonstandard set prototype properties",
-    "description": "Disallow non-standard properties on Set instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-sharedarraybuffer-properties",
-    "title": "Es x: No nonstandard sharedarraybuffer properties",
-    "description": "Disallow non-standard static properties on `SharedArrayBuffer` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-sharedarraybuffer-prototype-properties",
-    "title": "Es x: No nonstandard sharedarraybuffer prototype properties",
-    "description": "Disallow non-standard properties on SharedArrayBuffer instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-string-properties",
-    "title": "Es x: No nonstandard string properties",
-    "description": "Disallow non-standard static properties on `String` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-string-prototype-properties",
-    "title": "Es x: No nonstandard string prototype properties",
-    "description": "Disallow non-standard properties on String instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-symbol-properties",
-    "title": "Es x: No nonstandard symbol properties",
-    "description": "Disallow non-standard static properties on `Symbol` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-symbol-prototype-properties",
-    "title": "Es x: No nonstandard symbol prototype properties",
-    "description": "Disallow non-standard properties on Symbol instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-typed-array-properties",
-    "title": "Es x: No nonstandard typed array properties",
-    "description": "Disallow non-standard static properties on typed array class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-typed-array-prototype-properties",
-    "title": "Es x: No nonstandard typed array prototype properties",
-    "description": "Disallow non-standard properties on typed array instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-weakmap-properties",
-    "title": "Es x: No nonstandard weakmap properties",
-    "description": "Disallow non-standard static properties on `WeakMap` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-weakmap-prototype-properties",
-    "title": "Es x: No nonstandard weakmap prototype properties",
-    "description": "Disallow non-standard properties on WeakMap instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-weakref-properties",
-    "title": "Es x: No nonstandard weakref properties",
-    "description": "Disallow non-standard static properties on `WeakRef` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-weakref-prototype-properties",
-    "title": "Es x: No nonstandard weakref prototype properties",
-    "description": "Disallow non-standard properties on WeakRef instance",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-weakset-properties",
-    "title": "Es x: No nonstandard weakset properties",
-    "description": "Disallow non-standard static properties on `WeakSet` class",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-nonstandard-weakset-prototype-properties",
-    "title": "Es x: No nonstandard weakset prototype properties",
-    "description": "Disallow non-standard properties on WeakSet instance",
     "timeToFix": 5
   },
   {
@@ -8750,13 +8042,6 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-promise-try",
-    "title": "Es x: No promise try",
-    "description": "Disallow `Promise.try` function",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-promise-withresolvers",
     "title": "Es x: No promise withresolvers",
     "description": "Disallow the `Promise.withResolvers()` method.",
@@ -8799,23 +8084,9 @@
   },
   {
     "parameters": [],
-    "patternId": "es-x_no-regexp-escape",
-    "title": "Es x: No regexp escape",
-    "description": "Disallow `RegExp.escape` function",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "es-x_no-regexp-lookbehind-assertions",
     "title": "Es x: No regexp lookbehind assertions",
     "description": "Disallow RegExp lookbehind assertions.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-regexp-modifiers",
-    "title": "Es x: No regexp modifiers",
-    "description": "Disallow RegExp Modifiers.",
     "timeToFix": 5
   },
   {
@@ -9180,13 +8451,6 @@
     "patternId": "es-x_no-trailing-commas",
     "title": "Es x: No trailing commas",
     "description": "Disallow trailing commas in array/object literals.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "es-x_no-trailing-dynamic-import-commas",
-    "title": "Es x: No trailing dynamic import commas",
-    "description": "Disallow trailing commas in `import()`",
     "timeToFix": 5
   },
   {
@@ -9592,13 +8856,6 @@
     "patternId": "functional_no-classes",
     "title": "Functional: No classes",
     "description": "Disallow classes.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "functional_no-class-inheritance",
-    "title": "Functional: No class inheritance",
-    "description": "Disallow inheritance in classes.",
     "timeToFix": 5
   },
   {
@@ -10276,7 +9533,7 @@
     "parameters": [],
     "patternId": "jest_padding-around-test-blocks",
     "title": "Jest: Padding around test blocks",
-    "description": "Enforce padding around `test` and `it` blocks",
+    "description": "Enforce padding around afterAll blocks",
     "timeToFix": 5
   },
   {
@@ -10881,7 +10138,6 @@
     "parameters": [],
     "patternId": "jsdoc_no-multi-asterisks",
     "title": "Jsdoc: No multi asterisks",
-    "description": "Prevents use of multiple asterisks at the beginning of lines.",
     "timeToFix": 5
   },
   {
@@ -11236,7 +10492,6 @@
     "parameters": [],
     "patternId": "jsdoc_text-escaping",
     "title": "Jsdoc: Text escaping",
-    "description": "Auto-escape certain characters that are input within block and tag descriptions.",
     "timeToFix": 5
   },
   {
@@ -11784,7 +11039,7 @@
     "parameters": [],
     "patternId": "jsx-a11y_no-access-key",
     "title": "Jsx a11y: No access key",
-    "description": "Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screen reader.",
+    "description": "Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screenreader.",
     "timeToFix": 5
   },
   {
@@ -12839,10 +12094,6 @@
       {
         "name": "allowAtRootLevel",
         "description": "allowAtRootLevel"
-      },
-      {
-        "name": "ignores",
-        "description": "ignores"
       }
     ],
     "patternId": "n_no-sync",
@@ -13055,13 +12306,6 @@
   },
   {
     "parameters": [],
-    "patternId": "perfectionist_sort-heritage-clauses",
-    "title": "Perfectionist: Sort heritage clauses",
-    "description": "Enforce sorted heritage clauses.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "perfectionist_sort-array-includes",
     "title": "Perfectionist: Sort array includes",
     "description": "Enforce sorted arrays before include method.",
@@ -13104,13 +12348,6 @@
   },
   {
     "parameters": [],
-    "patternId": "perfectionist_sort-decorators",
-    "title": "Perfectionist: Sort decorators",
-    "description": "Enforce sorted decorators.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "perfectionist_sort-interfaces",
     "title": "Perfectionist: Sort interfaces",
     "description": "Enforce sorted interface properties.",
@@ -13121,13 +12358,6 @@
     "patternId": "perfectionist_sort-jsx-props",
     "title": "Perfectionist: Sort jsx props",
     "description": "Enforce sorted JSX props.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "perfectionist_sort-modules",
-    "title": "Perfectionist: Sort modules",
-    "description": "Enforce sorted modules.",
     "timeToFix": 5
   },
   {
@@ -13329,18 +12559,6 @@
     "patternId": "playwright_no-skipped-test",
     "title": "Playwright: No skipped test",
     "description": "Prevent usage of the `.skip()` skip test annotation.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [
-      {
-        "name": "allowConditional",
-        "description": "allowConditional"
-      }
-    ],
-    "patternId": "playwright_no-slowed-test",
-    "title": "Playwright: No slowed test",
-    "description": "Prevent usage of the `.slow()` slow test annotation.",
     "timeToFix": 5
   },
   {
@@ -13599,13 +12817,6 @@
     "patternId": "promise_prefer-await-to-then",
     "title": "Promise: Prefer await to then",
     "description": "Prefer `await` to `then()`/`catch()`/`finally()` for reading Promise values.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "promise_prefer-catch",
-    "title": "Promise: Prefer catch",
-    "description": "Prefer `catch` to `then(a, b)`/`then(null, b)` for handling errors.",
     "timeToFix": 5
   },
   {
@@ -17387,13 +16598,6 @@
   },
   {
     "parameters": [],
-    "patternId": "storybook_meta-satisfies-type",
-    "title": "Storybook: Meta satisfies type",
-    "description": "Meta should use `satisfies Meta`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "storybook_no-redundant-story-name",
     "title": "Storybook: No redundant story name",
     "description": "A story should not have a redundant name property",
@@ -17438,7 +16642,7 @@
     "parameters": [],
     "patternId": "storybook_use-storybook-expect",
     "title": "Storybook: Use storybook expect",
-    "description": "Use expect from `@storybook/test`, `storybook/test` or `@storybook/jest`",
+    "description": "Use expect from `@storybook/test` or `@storybook/jest`",
     "timeToFix": 5
   },
   {
@@ -17855,10 +17059,6 @@
       {
         "name": "ignorePropertyPatterns",
         "description": "ignorePropertyPatterns"
-      },
-      {
-        "name": "allowUnusedNestedProperties",
-        "description": "allowUnusedNestedProperties"
       }
     ],
     "patternId": "svelte_no-unused-props",
@@ -18439,7 +17639,7 @@
     "parameters": [],
     "patternId": "unicorn_escape-case",
     "title": "Unicorn: Escape case",
-    "description": "Require escape sequences to use uppercase or lowercase values.",
+    "description": "Require escape sequences to use uppercase values.",
     "timeToFix": 5
   },
   {
@@ -19254,13 +18454,6 @@
   },
   {
     "parameters": [],
-    "patternId": "unicorn_no-instanceof-array",
-    "title": "Unicorn: No instanceof array",
-    "description": "Replaced by `unicorn/no-instanceof-builtins` which covers more cases.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "unused-imports_no-unused-vars",
     "title": "Unused imports: No unused vars",
     "description": "Disallow unused variables",
@@ -19511,7 +18704,20 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "button",
+        "description": "button"
+      },
+      {
+        "name": "submit",
+        "description": "submit"
+      },
+      {
+        "name": "reset",
+        "description": "reset"
+      }
+    ],
     "patternId": "vue_html-button-has-type",
     "title": "Vue: Html button has type",
     "description": "Disallow usage of button without an explicit type attribute",
@@ -19535,7 +18741,7 @@
     "parameters": [],
     "patternId": "vue_html-comment-content-newline",
     "title": "Vue: Html comment content newline",
-    "description": "Enforce unified line break in HTML comments",
+    "description": "Enforce unified line brake in HTML comments",
     "timeToFix": 5
   },
   {
@@ -19591,7 +18797,7 @@
     "parameters": [],
     "patternId": "vue_key-spacing",
     "title": "Vue: Key spacing",
-    "description": "Enforce consistent spacing between keys and values in object literal properties in `<template>`",
+    "description": "Enforce consistent spacing between property names and type annotations in types and interfaces in `<template>`",
     "timeToFix": 5
   },
   {
@@ -19678,6 +18884,10 @@
       {
         "name": "unnamedParam",
         "description": "unnamedParam"
+      },
+      {
+        "name": "ignoreJSX",
+        "description": "ignoreJSX"
       }
     ],
     "patternId": "vue_multiline-ternary",
@@ -19980,21 +19190,32 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
-    "patternId": "vue_no-implicit-coercion",
-    "title": "Vue: No implicit coercion",
-    "description": "Disallow shorthand type conversions in `<template>`",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "vue_no-import-compiler-macros",
-    "title": "Vue: No import compiler macros",
-    "description": "Disallow importing Vue compiler macros",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "skipComments",
+        "description": "skipComments"
+      },
+      {
+        "name": "skipStrings",
+        "description": "skipStrings"
+      },
+      {
+        "name": "skipTemplates",
+        "description": "skipTemplates"
+      },
+      {
+        "name": "skipRegExps",
+        "description": "skipRegExps"
+      },
+      {
+        "name": "skipHTMLAttributeValues",
+        "description": "skipHTMLAttributeValues"
+      },
+      {
+        "name": "skipHTMLTextContents",
+        "description": "skipHTMLTextContents"
+      }
+    ],
     "patternId": "vue_no-irregular-whitespace",
     "title": "Vue: No irregular whitespace",
     "description": "Disallow irregular whitespace in `.vue` files",
@@ -20032,14 +19253,14 @@
     "parameters": [],
     "patternId": "vue_no-multiple-objects-in-class",
     "title": "Vue: No multiple objects in class",
-    "description": "Disallow passing multiple objects in an array to class",
+    "description": "Disallow to pass multiple objects into array to class",
     "timeToFix": 5
   },
   {
     "parameters": [],
     "patternId": "vue_no-multiple-slot-args",
     "title": "Vue: No multiple slot args",
-    "description": "Disallow passing multiple arguments to scoped slots",
+    "description": "Disallow to pass multiple arguments to scoped slots",
     "timeToFix": 5
   },
   {
@@ -20394,9 +19615,23 @@
   },
   {
     "parameters": [],
+    "patternId": "vue_no-v-for-template-key",
+    "title": "Vue: No v for template key",
+    "description": "Disallow `key` attribute on `<template v-for>`",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "vue_no-v-html",
     "title": "Vue: No v html",
     "description": "Disallow use of v-html to prevent XSS attack",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "vue_no-v-model-argument",
+    "title": "Vue: No v model argument",
+    "description": "Disallow adding an argument to `v-model` used in custom component",
     "timeToFix": 5
   },
   {
@@ -20559,7 +19794,7 @@
     "parameters": [],
     "patternId": "vue_quote-props",
     "title": "Vue: Quote props",
-    "description": "Require quotes around object literal property names in `<template>`",
+    "description": "Require quotes around object literal, type literal, interfaces and enums property names in `<template>`",
     "timeToFix": 5
   },
   {
@@ -20619,7 +19854,28 @@
     "timeToFix": 5
   },
   {
-    "parameters": [],
+    "parameters": [
+      {
+        "name": "defineProps",
+        "description": "defineProps"
+      },
+      {
+        "name": "defineEmits",
+        "description": "defineEmits"
+      },
+      {
+        "name": "defineSlots",
+        "description": "defineSlots"
+      },
+      {
+        "name": "useSlots",
+        "description": "useSlots"
+      },
+      {
+        "name": "useAttrs",
+        "description": "useAttrs"
+      }
+    ],
     "patternId": "vue_require-macro-variable-name",
     "title": "Vue: Require macro variable name",
     "description": "Require a certain macro variable name",
@@ -20749,6 +20005,22 @@
       {
         "name": "unnamedParam",
         "description": "unnamedParam"
+      },
+      {
+        "name": "caseSensitive",
+        "description": "caseSensitive"
+      },
+      {
+        "name": "minKeys",
+        "description": "minKeys"
+      },
+      {
+        "name": "natural",
+        "description": "natural"
+      },
+      {
+        "name": "runOutsideVue",
+        "description": "runOutsideVue"
       }
     ],
     "patternId": "vue_sort-keys",
@@ -20898,6 +20170,13 @@
   },
   {
     "parameters": [],
+    "patternId": "vue_valid-model-definition",
+    "title": "Vue: Valid model definition",
+    "description": "Require valid keys in model option",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
     "patternId": "vue_valid-next-tick",
     "title": "Vue: Valid next tick",
     "description": "Enforce valid `nextTick` function calls",
@@ -20908,6 +20187,13 @@
     "patternId": "vue_valid-template-root",
     "title": "Vue: Valid template root",
     "description": "Enforce valid template root",
+    "timeToFix": 5
+  },
+  {
+    "parameters": [],
+    "patternId": "vue_valid-v-bind-sync",
+    "title": "Vue: Valid v bind sync",
+    "description": "Enforce valid `.sync` modifier on `v-bind` directives",
     "timeToFix": 5
   },
   {
@@ -21333,24 +20619,14 @@
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "instances",
-        "description": "instances"
-      }
-    ],
+    "parameters": [],
     "patternId": "wdio_no-debug",
     "title": "Wdio: No debug",
     "description": "Disallow browser.debug() in tests",
     "timeToFix": 5
   },
   {
-    "parameters": [
-      {
-        "name": "instances",
-        "description": "instances"
-      }
-    ],
+    "parameters": [],
     "patternId": "wdio_no-pause",
     "title": "Wdio: No pause",
     "description": "Disallow browser.pause() in tests",
