@@ -95,6 +95,7 @@ class E {
 
 :::
 
+
 This rule additionally supports TypeScript type syntax. It has support for TypeScript's method overload definitions.
 
 Examples of **correct** TypeScript code for this rule:
