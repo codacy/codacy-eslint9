@@ -53,7 +53,6 @@ const createArray = Array => new Array();
 
 :::
 
-
 This rule additionally supports TypeScript type syntax.
 
 Examples of **correct** code for this rule:
@@ -93,7 +92,6 @@ Array?.(0, 1, 2);
 ```
 
 :::
-
 
 ## When Not To Use It
 
