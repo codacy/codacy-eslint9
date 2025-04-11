@@ -56,7 +56,8 @@ export const rulesToUnnamedParametersDefaults = new Map<string, JSONSchema4Type>
   ["@stylistic/wrap-iife", "outside"],
   ["wrap-iife", "outside"],
   ["vue/multiline-ternary", "always"],
-  ["yoda", "never"]
+  ["yoda", "never"],
+  ["@typescript-eslint/consistent-type-definitions", 'type']
 ])
 
 export class rulesNamedParametersAndDefaults {
