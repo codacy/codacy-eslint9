@@ -155,11 +155,6 @@ export class DocsGenerator {
     const prefix = prefixSplit(patternId)
     const meta = getRuleMeta(ruleModule)
 
-    if(patternId.startsWith("@typescript-eslint")){
-      console.log(patternId)
-    }
-    
-
     // Exclude "@typescript-eslint/no-unsafe-*" as defaults for now
     if (patternId.startsWith("@typescript-eslint/no-unsafe-")) {
       return false
