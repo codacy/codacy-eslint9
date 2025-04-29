@@ -481,6 +481,15 @@
   <module name="@tanstack_query_no-rest-destructuring" />
   <module name="@tanstack_query_no-unstable-deps" />
   <module name="@tanstack_query_infinite-query-property-order" />
+  <module name="@typescript-eslint_no-unsafe-argument" />
+  <module name="@typescript-eslint_no-unsafe-assignment" />
+  <module name="@typescript-eslint_no-unsafe-call" />
+  <module name="@typescript-eslint_no-unsafe-declaration-merging" />
+  <module name="@typescript-eslint_no-unsafe-enum-comparison" />
+  <module name="@typescript-eslint_no-unsafe-function-type" />
+  <module name="@typescript-eslint_no-unsafe-member-access" />
+  <module name="@typescript-eslint_no-unsafe-return" />
+  <module name="@typescript-eslint_no-unsafe-unary-minus" />
   <module name="@typescript-eslint_adjacent-overload-signatures" />
   <module name="@typescript-eslint_array-type" />
   <module name="@typescript-eslint_await-thenable" />
