@@ -10,7 +10,7 @@ since: v5.0.0
 
 > enforce usage of `exact` modifier on `v-on`
 
-- :gear: This rule is included in all of `"plugin:vue/vue3-essential"`, `*.configs["flat/essential"]`, `"plugin:vue/essential"`, `*.configs["flat/vue2-essential"]`, `"plugin:vue/vue3-strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/vue3-recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/vue2-recommended"]`.
+- :gear: This rule is included in all of `"plugin:vue/essential"`, `*.configs["flat/essential"]`, `"plugin:vue/vue2-essential"`, `*.configs["flat/vue2-essential"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue2-strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/vue2-recommended"` and `*.configs["flat/vue2-recommended"]`.
 
 ## :book: Rule Details
 
@@ -37,8 +37,8 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/v-on-style](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/v-on-style.md)
-- [vue/valid-v-on](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-v-on.md)
+- [vue/v-on-style](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/v-on-style.md)
+- [vue/valid-v-on](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-v-on.md)
 
 ## :books: Further Reading
 

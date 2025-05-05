@@ -10,8 +10,8 @@ since: v4.1.0
 
 > require or disallow a line break before tag's closing brackets
 
-- :gear: This rule is included in all of `"plugin:vue/vue3-strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/vue3-recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/vue2-recommended"]`.
-- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
+- :gear: This rule is included in all of `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue2-strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/vue2-recommended"` and `*.configs["flat/vue2-recommended"]`.
+- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fix-problems) can automatically fix some of the problems reported by this rule.
 
 People have their own preference about the location of closing brackets.
 This rule enforces a line break (or no line break) before tag's closing brackets.
@@ -85,7 +85,7 @@ Every option can be set to one of the following values:
 
 If `selfClosingTag` is not specified, the `singleline` and `multiline` options are inherited for self-closing tags.
 
-Plus, you can use [`vue/html-indent`](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/html-indent.md) rule to enforce indent-level of the closing brackets.
+Plus, you can use [`vue/html-indent`](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/html-indent.md) rule to enforce indent-level of the closing brackets.
 
 ### `"multiline": "never"`
 

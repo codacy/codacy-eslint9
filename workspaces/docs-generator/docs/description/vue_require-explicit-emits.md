@@ -10,7 +10,7 @@ since: v7.0.0
 
 > require `emits` option with name triggered by `$emit()`
 
-- :gear: This rule is included in all of `"plugin:vue/vue3-strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue3-recommended"` and `*.configs["flat/recommended"]`.
+- :gear: This rule is included in all of `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/recommended"]`.
 - :bulb: Some problems reported by this rule are manually fixable by editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).
 
 ## :book: Rule Details
@@ -112,8 +112,8 @@ export default {
 
 ## :couple: Related Rules
 
-- [vue/no-unused-emit-declarations](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-unused-emit-declarations.md)
-- [vue/require-explicit-slots](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/require-explicit-slots.md)
+- [vue/no-unused-emit-declarations](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-unused-emit-declarations.md)
+- [vue/require-explicit-slots](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/require-explicit-slots.md)
 
 ## :books: Further Reading
 

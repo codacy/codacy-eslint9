@@ -2,7 +2,7 @@
 
 <!-- RULE-CATEGORIES:START -->
 
-**Included in these configurations**: <ul><li>csf</li></ul>
+**Included in these configurations**: <ul><li>csf</li><li>flat/csf</li><li>csf-strict</li><li>flat/csf-strict</li></ul>
 
 <!-- RULE-CATEGORIES:END -->
 
@@ -33,4 +33,4 @@ While we encourage each CSF file to clearly correspond to a single component, it
 
 ## Further Reading
 
-- [Automatic argType inference](https://storybook.js.org/docs/react/api/argtypes#automatic-argtype-inference)
+- [Automatic argType inference](https://storybook.js.org/docs/api/argtypes#automatic-argtype-inference)

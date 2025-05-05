@@ -1,6 +1,6 @@
 # Prefer `.at()` method for index access and `String#charAt()`
 
-💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#preset-configs-eslintconfigjs).
+💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
 🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
@@ -124,4 +124,4 @@ const foo = utils.lastElement(bar); // Fails
 
 ## Related rules
 
-- [unicorn/prefer-negative-index](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/docs/rules/prefer-negative-index.md)
+- [unicorn/prefer-negative-index](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/refs/tags/main/docs/rules/prefer-negative-index.md)

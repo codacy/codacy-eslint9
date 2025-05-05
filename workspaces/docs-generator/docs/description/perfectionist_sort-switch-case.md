@@ -17,7 +17,7 @@ keywords:
 import CodeExample from '../../components/CodeExample.svelte'
 import Important from '../../components/Important.astro'
 import CodeTabs from '../../components/CodeTabs.svelte'
-import { dedent } from 'ts-dedent'
+import dedent from 'dedent'
 
 Enforce sorted switch case statements.
 
@@ -152,37 +152,83 @@ This rule accepts an options object with the following properties:
 
 Specifies the sorting method.
 
-- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”).
-- `'natural'` — Sort items in a natural order (e.g., “item2” < “item10”).
-- `'line-length'` — Sort items by the length of the code line (shorter lines first).
+- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”) using [localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare).
+- `'natural'` — Sort items in a [natural](https://github.com/yobacca/natural-orderby) order (e.g., “item2” < “item10”).
+- `'line-length'` — Sort items by code line length (shorter lines first).
+- `'custom'` — Sort items using the alphabet specified in the [`alphabet`](#alphabet) option.
+- `'unsorted'` — Do not sort items.
 
 ### order
 
 <sub>default: `'asc'`</sub>
 
-Determines whether the sorted items should be in ascending or descending order.
+Specifies whether to sort items in ascending or descending order.
 
 - `'asc'` — Sort items in ascending order (A to Z, 1 to 9).
 - `'desc'` — Sort items in descending order (Z to A, 9 to 1).
+
+### fallbackSort
+
+<sub>
+  type:
+  ```
+  {
+    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    order?: 'asc' | 'desc'
+  }
+  ```
+</sub>
+<sub>default: `{ type: 'unsorted' }`</sub>
+
+Specifies fallback sort options for elements that are equal according to the primary sort
+[`type`](#type).
+
+Example: enforce alphabetical sort between two elements with the same length.
+```ts
+{
+  type: 'line-length',
+  order: 'desc',
+  fallbackSort: { type: 'alphabetical', order: 'asc' }
+}
+```
+
+### alphabet
+
+<sub>default: `''`</sub>
+
+Used only when the [`type`](#type) option is set to `'custom'`. Specifies the custom alphabet for sorting.
+
+Use the `Alphabet` utility class from `eslint-plugin-perfectionist/alphabet` to quickly generate a custom alphabet.
+
+Example: `0123456789abcdef...`
 
 ### ignoreCase
 
 <sub>default: `true`</sub>
 
-Controls whether sorting should be case-sensitive or not.
+Specifies whether sorting should be case-sensitive.
 
 - `true` — Ignore case when sorting alphabetically or naturally (e.g., “A” and “a” are the same).
-- `false` — Consider case when sorting (e.g., “A” comes before “a”).
+- `false` — Consider case when sorting (e.g., “a” comes before “A”).
 
 ### specialCharacters
 
 <sub>default: `keep`</sub>
 
-Controls whether special characters should be trimmed, removed or kept before sorting.
+Specifies whether to trim, remove, or keep special characters before sorting.
 
 - `'keep'` — Keep special characters when sorting (e.g., “_a” comes before “a”).
 - `'trim'` — Trim special characters when sorting alphabetically or naturally (e.g., “_a” and “a” are the same).
 - `'remove'` — Remove special characters when sorting (e.g., “/a/b” and “ab” are the same).
+
+### locales
+
+<sub>default: `'en-US'`</sub>
+
+Specifies the sorting locales. Refer To [String.prototype.localeCompare() - locales](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare#locales).
+
+- `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
+- `string[]` — An array of BCP 47 language tags.
 
 ## Usage
 
@@ -204,9 +250,9 @@ Controls whether special characters should be trimmed, removed or kept before so
                 {
                   type: 'alphabetical',
                   order: 'asc',
+                  fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
-                  matcher: 'minimatch',
                 },
               ],
             },
@@ -229,9 +275,9 @@ Controls whether special characters should be trimmed, removed or kept before so
               {
                 type: 'alphabetical',
                 order: 'asc',
+                fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
-                matcher: 'minimatch',
               },
             ],
           },
@@ -243,7 +289,7 @@ Controls whether special characters should be trimmed, removed or kept before so
   ]}
   type="config-type"
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Version

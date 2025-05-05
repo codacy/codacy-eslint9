@@ -3,7 +3,7 @@
 
 # Disallow classes (`functional/no-classes`)
 
-💼 This rule is enabled in the following configs: ☑️ `lite`, `noOtherParadigms`, ✅ `recommended`, 🔒 `strict`.
+💼🚫 This rule is enabled in the following configs: `noOtherParadigms`, ✅ `recommended`, 🔒 `strict`. This rule is _disabled_ in the ☑️ `lite` config.
 
 <!-- end auto-generated rule header -->
 <!-- markdownlint-restore -->

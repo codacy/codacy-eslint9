@@ -10,7 +10,8 @@ since: v9.6.0
 
 > enforce props with default values to be optional
 
-- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
+- :gear: This rule is included in all of `"plugin:vue/vue2-recommended"`, `*.configs["flat/vue2-recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/recommended"]`.
+- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fix-problems) can automatically fix some of the problems reported by this rule.
 - :bulb: Some problems reported by this rule are manually fixable by editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).
 
 ## :book: Rule Details
@@ -89,7 +90,7 @@ export default {
 
 ## :couple: Related Rules
 
-- [vue/require-default-prop](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/require-default-prop.md)
+- [vue/require-default-prop](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/require-default-prop.md)
 
 ## :rocket: Version
 

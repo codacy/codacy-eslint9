@@ -1,6 +1,6 @@
 # Prefer the spread operator over `Array.from(…)`, `Array#concat(…)`, `Array#{slice,toSpliced}()` and `String#split('')`
 
-💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#preset-configs-eslintconfigjs).
+💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
 🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
@@ -87,7 +87,7 @@ const characters = [...string];
 
 ## With the `unicorn/no-useless-spread` rule
 
-Some cases are fixed using extra spread syntax. Therefore we recommend enabling the [`unicorn/no-useless-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/docs/rules/no-useless-spread.md) rule to fix it.
+Some cases are fixed using extra spread syntax. Therefore we recommend enabling the [`unicorn/no-useless-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/refs/tags/main/docs/rules/no-useless-spread.md) rule to fix it.
 
 For example:
 

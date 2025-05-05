@@ -81,12 +81,18 @@ Default options is `"always"`.
 
 ```json
 {
-  "vue/prefer-true-attribute-shorthand": ["error", "always" | "never"]
+  "vue/prefer-true-attribute-shorthand": ["error",
+    "always" | "never",
+    {
+      except: []
+    }
+  ]
 }
 ```
 
 - `"always"` (default) ... requires shorthand form.
 - `"never"` ... requires long form.
+- `except` (`string[]`) ... specifies a list of attribute names that should be treated differently.
 
 ### `"never"`
 
@@ -105,10 +111,30 @@ Default options is `"always"`.
 
 </eslint-code-block>
 
+### `"never", { 'except': ['value', '/^foo-/'] }`
+
+<eslint-code-block :rules="{'vue/prefer-true-attribute-shorthand': ['error', 'never', { 'except': ['value', '/^foo-/'] }]}">
+
+```vue
+<template>
+  <!-- ✗ BAD -->
+  <MyComponent show />
+  <MyComponent :value="true" />
+  <MyComponent :foo-bar="true" />
+
+  <!-- ✓ GOOD -->
+  <MyComponent :show="true" />
+  <MyComponent value />
+  <MyComponent foo-bar />
+</template>
+```
+
+</eslint-code-block>
+
 ## :couple: Related Rules
 
-- [vue/no-boolean-default](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-boolean-default.md)
-- [vue/prefer-prop-type-boolean-first](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/prefer-prop-type-boolean-first.md)
+- [vue/no-boolean-default](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-boolean-default.md)
+- [vue/prefer-prop-type-boolean-first](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/prefer-prop-type-boolean-first.md)
 
 ## :rocket: Version
 

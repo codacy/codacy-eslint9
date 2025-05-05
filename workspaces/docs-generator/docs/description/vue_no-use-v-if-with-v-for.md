@@ -10,7 +10,7 @@ since: v4.6.0
 
 > disallow using `v-if` on the same element as `v-for`
 
-- :gear: This rule is included in all of `"plugin:vue/vue3-essential"`, `*.configs["flat/essential"]`, `"plugin:vue/essential"`, `*.configs["flat/vue2-essential"]`, `"plugin:vue/vue3-strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/vue3-recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/vue2-recommended"]`.
+- :gear: This rule is included in all of `"plugin:vue/essential"`, `*.configs["flat/essential"]`, `"plugin:vue/vue2-essential"`, `*.configs["flat/vue2-essential"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue2-strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/vue2-recommended"` and `*.configs["flat/vue2-recommended"]`.
 
 ## :book: Rule Details
 
@@ -91,7 +91,7 @@ There are two common cases where this can be tempting:
 
 ## :couple: Related Rules
 
-- [vue/no-use-v-else-with-v-for](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-use-v-else-with-v-for.md)
+- [vue/no-use-v-else-with-v-for](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-use-v-else-with-v-for.md)
 
 ## :books: Further Reading
 

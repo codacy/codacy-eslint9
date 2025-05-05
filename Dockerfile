@@ -13,7 +13,8 @@ COPY --chown=docker:docker --chmod=0555 entrypoint.sh entrypoint.sh
 RUN npm install --legacy-peer-dep \
     && npm install --legacy-peer-dep --workspaces
 # Generate documentation
-RUN mv workspaces/docs-generator/docs /docs \
+RUN npm start -w docs-generator \
+    && mv workspaces/docs-generator/docs /docs \
     && chmod -R 0777 /docs 
     
 # Prepare env

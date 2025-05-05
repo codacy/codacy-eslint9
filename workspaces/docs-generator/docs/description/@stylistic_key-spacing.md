@@ -28,6 +28,7 @@ This rule has an object option:
   - `"value"`: enforces horizontal alignment of values in object literals.
   - `"colon"` enforces horizontal alignment of both colons and values in object literals.
 - `"align"` with an object value allows for fine-grained spacing when values are being aligned in object literals.
+- `"ignoredNodes"` can be used to disable spacing checking for the AST node. It can be used to resolve conflicts with [`type-annotation-spacing`](https://github.com/eslint-stylistic/eslint-stylistic/tree/ts/type-annotation-spacing).
 - `"singleLine"` specifies a spacing style for single-line object literals.
 - `"multiLine"` specifies a spacing style for multi-line object literals.
 
@@ -307,6 +308,38 @@ var obj = {
 
 :::
 
+### ignoredNodes
+
+The "ignoredNodes" object property is optional (default: []).
+
+Examples of **correct** code for this rule with sample `{ "ignoredNodes": [] }` options:
+
+::: correct
+
+```js
+/*eslint key-spacing: [2, { "ignoredNodes": ["ObjectExpression"] }]*/
+var obj = {
+    a: 1,
+    b : 2,
+    c :3,
+}
+```
+
+:::
+
+::: correct
+
+```js
+/*eslint key-spacing: [2, { "ignoredNodes": ["ObjectPattern"] }]*/
+var {
+    a: b,
+    c : d,
+    e :f,
+} = obj
+```
+
+:::
+
 ### align and multiLine
 
 The `multiLine` and `align` options can differ, which allows for fine-tuned control over the `key-spacing` of your files. `align` will **not** inherit from `multiLine` if `align` is configured as an object.
@@ -390,7 +423,7 @@ Examples of **correct** code for this rule with sample `{ "singleLine": { }, "mu
 ::: correct
 
 ```js
-/*eslint "key-spacing": [2, {
+/*eslint key-spacing: [2, {
     "singleLine": {
         "beforeColon": false,
         "afterColon": true

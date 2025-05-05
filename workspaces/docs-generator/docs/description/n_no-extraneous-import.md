@@ -37,6 +37,11 @@ Please see the shared settings documentation for more information.
 This can be configured in the rule options or as a shared setting [`settings.resolvePaths`](https://github.com/eslint-community/eslint-plugin-n/tree/master/docs/shared-settings.md#resolvepaths).
 Please see the shared settings documentation for more information.
 
+#### resolverConfig
+
+This can be configured in the rule options or as a shared setting [`settings.resolverConfig`](https://github.com/eslint-community/eslint-plugin-n/tree/master/docs/shared-settings.md#resolverconfig).
+Please see the shared settings documentation for more information.
+
 #### convertPath
 
 This can be configured in the rule options or as a shared setting [`settings.convertPath`](https://github.com/eslint-community/eslint-plugin-n/tree/master/docs/shared-settings.md#convertpath).

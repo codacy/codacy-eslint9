@@ -43,10 +43,10 @@ foo('a', ...tuple2, anyTyped);
 
 declare function bar(arg1: string, arg2: number, ...rest: string[]): void;
 const x = [1, 2] as [number, ...number[]];
-foo('a', ...x, anyTyped);
+bar('a', ...x, anyTyped);
 
 declare function baz(arg1: Set<string>, arg2: Map<string, string>): void;
-foo(new Set<any>(), new Map<any, string>());
+baz(new Set<any>(), new Map<any, string>());
 ```
 
 #### ✅ Correct
@@ -64,7 +64,7 @@ const array: string[] = ['a'];
 bar('a', 1, ...array);
 
 declare function baz(arg1: Set<string>, arg2: Map<string, string>): void;
-foo(new Set<string>(), new Map<string, string>());
+baz(new Set<string>(), new Map<string, string>());
 ```
 
 <!--/tabs-->

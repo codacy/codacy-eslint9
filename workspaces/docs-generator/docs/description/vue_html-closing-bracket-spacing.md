@@ -10,8 +10,8 @@ since: v4.1.0
 
 > require or disallow a space before tag's closing brackets
 
-- :gear: This rule is included in all of `"plugin:vue/vue3-strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/vue3-recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/vue2-recommended"]`.
-- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
+- :gear: This rule is included in all of `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue2-strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/vue2-recommended"` and `*.configs["flat/vue2-recommended"]`.
+- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fix-problems) can automatically fix some of the problems reported by this rule.
 
 ## :book: Rule Details
 
@@ -86,8 +86,8 @@ This rule aims to enforce consistent spacing style before closing brackets `>` o
 
 ## :couple: Related Rules
 
-- [vue/no-multi-spaces](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-multi-spaces.md)
-- [vue/html-closing-bracket-newline](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/html-closing-bracket-newline.md)
+- [vue/no-multi-spaces](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-multi-spaces.md)
+- [vue/html-closing-bracket-newline](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/html-closing-bracket-newline.md)
 
 ## :rocket: Version
 

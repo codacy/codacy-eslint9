@@ -1,6 +1,6 @@
 # Prefer modern `Math` APIs over legacy patterns
 
-💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#preset-configs-eslintconfigjs).
+💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -82,4 +82,4 @@ Math.sqrt(x ** 2)
 
 ## Separate rule for `Math.trunc()`
 
-See [`unicorn/prefer-math-trunc`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/docs/rules/prefer-math-trunc.md) rule.
+See [`unicorn/prefer-math-trunc`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/refs/tags/main/docs/rules/prefer-math-trunc.md) rule.

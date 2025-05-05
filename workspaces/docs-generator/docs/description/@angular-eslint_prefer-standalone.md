@@ -15,7 +15,7 @@
 
 # `@angular-eslint/prefer-standalone`
 
-Ensures component, directive and pipe `standalone` property is set to `true` in the component decorator
+Ensures Components, Directives and Pipes do not opt out of standalone
 
 - Type: suggestion
 - 🔧 Supports autofix (`--fix`)
@@ -56,36 +56,8 @@ The rule does not have any configuration options.
 #### ❌ Invalid Code
 
 ```ts
-@Component({})
-~~~~~~~~~~~~~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
 @Component({ standalone: false })
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ~~~~~~~~~~~~~~~~~
 class Test {}
 ```
 
@@ -113,107 +85,10 @@ class Test {}
 
 ```ts
 @Component({
-~~~~~~~~~~~~
-standalone: false,
-~~~~~~~~~~~~~~~~~~
-template: '<div></div>'
-~~~~~~~~~~~~~~~~~~~~~~~
+  standalone: false,
+  ~~~~~~~~~~~~~~~~~
+  template: '<div></div>'
 })
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Component({
-~~~~~~~~~~~~
-template: '<div></div>'
-~~~~~~~~~~~~~~~~~~~~~~~
-})
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Component({
-~~~~~~~~~~~~
-selector: 'my-selector',
-~~~~~~~~~~~~~~~~~~~~~~~
-template: '<div></div>'
-~~~~~~~~~~~~~~~~~~~~~~~
-})
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Directive({})
-~~~~~~~~~~~~~~
 class Test {}
 ```
 
@@ -241,7 +116,7 @@ class Test {}
 
 ```ts
 @Directive({ standalone: false })
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             ~~~~~~~~~~~~~~~~~
 class Test {}
 ```
 
@@ -269,107 +144,10 @@ class Test {}
 
 ```ts
 @Directive({
-~~~~~~~~~~~~
   standalone: false,
-  ~~~~~~~~~~~~~~~~~~
+  ~~~~~~~~~~~~~~~~~
   selector: 'x-selector'
-  ~~~~~~~~~~~~~~~~~~~~~~
 })
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Directive({
-~~~~~~~~~~~~
-  selector: 'test-selector'
-  ~~~~~~~~~~~~~~~~~~~~~~~~~
-})
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Directive({
-~~~~~~~~~~~~
-  selector: 'my-selector',
-  ~~~~~~~~~~~~~~~~~~~~~~~~
-  providers: []
-  ~~~~~~~~~~~~~
-})
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Pipe({})
-~~~~~~~~~
 class Test {}
 ```
 
@@ -397,7 +175,7 @@ class Test {}
 
 ```ts
 @Pipe({ standalone: false })
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ~~~~~~~~~~~~~~~~~
 class Test {}
 ```
 
@@ -425,79 +203,10 @@ class Test {}
 
 ```ts
 @Pipe({
-~~~~~~~
   standalone: false,
-  ~~~~~~~~~~~~~~~~~~
+  ~~~~~~~~~~~~~~~~~
   name: 'pipe-name'
-  ~~~~~~~~~~~~~~~~~
 })
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Pipe({
-~~~~~~~
-  name: 'test-name'
-  ~~~~~~~~~~~~~~~~~
-})
-~~
-class Test {}
-```
-
-<br>
-
----
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/prefer-standalone": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Pipe({
-~~~~~~~
-  selector: 'my-selector',
-  ~~~~~~~~~~~~~~~~~~~~~~~~
-  name: 'test-name'
-  ~~~~~~~~~~~~~~~~~
-})
-~~
 class Test {}
 ```
 
@@ -531,8 +240,64 @@ class Test {}
 #### ✅ Valid Code
 
 ```ts
+@Component({})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
 @Component({
   standalone: true,
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Component({
+  selector: 'test-selector'
 })
 class Test {}
 ```
@@ -592,6 +357,37 @@ class Test {}
 ```ts
 @Component({
   selector: 'test-selector',
+  template: '<div></div>',
+  styleUrls: ['./test.css']
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Component({
+  selector: 'test-selector',
   standalone: true,
   template: '<div></div>',
   styleUrls: ['./test.css']
@@ -622,6 +418,33 @@ class Test {}
 #### ✅ Valid Code
 
 ```ts
+@Directive({})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
 @Directive({
   standalone: true,
 })
@@ -652,8 +475,67 @@ class Test {}
 
 ```ts
 @Directive({
+  selector: 'test-selector'
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Directive({
   standalone: true,
   selector: 'test-selector'
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Directive({
+  selector: 'test-selector',
+  providers: []
 })
 class Test {}
 ```
@@ -739,6 +621,33 @@ abstract class Test {}
 #### ✅ Valid Code
 
 ```ts
+@Pipe({})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
 @Pipe({
   standalone: true,
 })
@@ -769,8 +678,67 @@ class Test {}
 
 ```ts
 @Pipe({
+  name: 'test-pipe'
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Pipe({
   standalone: true,
   name: 'test-pipe'
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/prefer-standalone": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Pipe({
+  name: 'my-pipe',
+  pure: true
 })
 class Test {}
 ```

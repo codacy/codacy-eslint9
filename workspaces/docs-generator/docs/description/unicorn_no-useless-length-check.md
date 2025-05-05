@@ -1,6 +1,6 @@
 # Disallow useless array length check
 
-💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#preset-configs-eslintconfigjs).
+💼 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -10,7 +10,7 @@
 - `Array#some()` returns `false` for an empty array. There is no need to check if the array is not empty.
 - `Array#every()` returns `true` for an empty array. There is no need to check if the array is empty.
 
-We only check `.length === 0`, `.length !== 0`, and `.length > 0`. These zero and non-zero length check styles are allowed in the [`unicorn/explicit-length-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/docs/rules/explicit-length-check.md#options) rule. It is recommended to use them together.
+We only check `.length === 0`, `.length !== 0`, and `.length > 0`. These zero and non-zero length check styles are allowed in the [`unicorn/explicit-length-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/refs/tags/main/docs/rules/explicit-length-check.md#options) rule. It is recommended to use them together.
 
 ## Fail
 

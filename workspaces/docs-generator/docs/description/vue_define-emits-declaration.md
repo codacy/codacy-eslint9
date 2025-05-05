@@ -35,8 +35,8 @@ const emit = defineEmits<{
 
 /* ✗ BAD */
 const emit = defineEmits({
-  change: (id) => typeof id == 'number',
-  update: (value) => typeof value == 'string'
+  change: (id) => typeof id === 'number',
+  update: (value) => typeof value === 'string'
 })
 
 /* ✗ BAD */
@@ -70,8 +70,8 @@ const emit = defineEmits<{
 
 /* ✓ GOOD */
 const emit = defineEmits({
-  change: (id) => typeof id == 'number',
-  update: (value) => typeof value == 'string'
+  change: (id) => typeof id === 'number',
+  update: (value) => typeof value === 'string'
 })
 
 /* ✓ GOOD */
@@ -92,8 +92,8 @@ const emit = defineEmits(['change', 'update'])
 
 /* ✗ BAD */
 const emit = defineEmits({
-  change: (id) => typeof id == 'number',
-  update: (value) => typeof value == 'string'
+  change: (id) => typeof id === 'number',
+  update: (value) => typeof value === 'string'
 })
 
 /* ✗ BAD */
@@ -114,8 +114,8 @@ const emit = defineEmits<{
 
 ## :couple: Related Rules
 
-- [vue/define-props-declaration](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/define-props-declaration.md)
-- [vue/valid-define-emits](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-define-emits.md)
+- [vue/define-props-declaration](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/define-props-declaration.md)
+- [vue/valid-define-emits](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-define-emits.md)
 
 ## :books: Further Reading
 

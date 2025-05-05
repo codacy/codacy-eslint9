@@ -10,6 +10,8 @@ since: v9.13.0
 
 > enforce valid `defineOptions` compiler macro
 
+- :gear: This rule is included in all of `"plugin:vue/essential"`, `*.configs["flat/essential"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/recommended"]`.
+
 This rule checks whether `defineOptions` compiler macro is valid.
 
 ## :book: Rule Details
@@ -110,8 +112,8 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/valid-define-emits](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-define-emits.md)
-- [vue/valid-define-props](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-define-props.md)
+- [vue/valid-define-emits](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-define-emits.md)
+- [vue/valid-define-props](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-define-props.md)
 
 ## :rocket: Version
 

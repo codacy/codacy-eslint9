@@ -10,6 +10,7 @@ since: v9.16.0
 
 > disallow deprecated `model` definition (in Vue.js 3.0.0+)
 
+- :gear: This rule is included in all of `"plugin:vue/essential"`, `*.configs["flat/essential"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/recommended"]`.
 - :bulb: Some problems reported by this rule are manually fixable by editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).
 
 ## :book: Rule Details
@@ -64,8 +65,8 @@ export default defineComponent({
 
 ## :couple: Related Rules
 
-- [vue/valid-model-definition](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-model-definition.md) (for Vue.js 2.x)
-- [vue/no-v-model-argument](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-v-model-argument.md) (for Vue.js 2.x)
+- [vue/valid-model-definition](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-model-definition.md) (for Vue.js 2.x)
+- [vue/no-v-model-argument](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-v-model-argument.md) (for Vue.js 2.x)
 
 ## :books: Further Reading
 

@@ -16,7 +16,7 @@ keywords:
 import CodeExample from '../../components/CodeExample.svelte'
 import Important from '../../components/Important.astro'
 import CodeTabs from '../../components/CodeTabs.svelte'
-import { dedent } from 'ts-dedent'
+import dedent from 'dedent'
 
 Enforce sorted imports.
 
@@ -110,7 +110,7 @@ Rule `perfectionist/sort-imports` works in a similar way to rule `import/order`,
     import authRoutes from '~/routes/auth'
   `}
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Options
@@ -123,45 +123,91 @@ This rule accepts an options object with the following properties:
 
 Specifies the sorting method.
 
-- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”).
-- `'natural'` — Sort items in a natural order (e.g., “item2” < “item10”).
-- `'line-length'` — Sort items by the length of the code line (shorter lines first).
+- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”) using [localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare).
+- `'natural'` — Sort items in a [natural](https://github.com/yobacca/natural-orderby) order (e.g., “item2” < “item10”).
+- `'line-length'` — Sort items by code line length (shorter lines first).
+- `'custom'` — Sort items using the alphabet specified in the [`alphabet`](#alphabet) option.
+- `'unsorted'` — Do not sort items. [`grouping`](#groups) and [`newlines behavior`](#newlinesbetween) are still enforced.
 
 ### order
 
 <sub>default: `'asc'`</sub>
 
-Determines whether the sorted items should be in ascending or descending order.
+Specifies whether to sort items in ascending or descending order.
 
 - `'asc'` — Sort items in ascending order (A to Z, 1 to 9).
 - `'desc'` — Sort items in descending order (Z to A, 9 to 1).
+
+### fallbackSort
+
+<sub>
+  type:
+  ```
+  {
+    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    order?: 'asc' | 'desc'
+  }
+  ```
+</sub>
+<sub>default: `{ type: 'unsorted' }`</sub>
+
+Specifies fallback sort options for elements that are equal according to the primary sort
+[`type`](#type).
+
+Example: enforce alphabetical sort between two elements with the same length.
+```ts
+{
+  type: 'line-length',
+  order: 'desc',
+  fallbackSort: { type: 'alphabetical', order: 'asc' }
+}
+```
+
+### alphabet
+
+<sub>default: `''`</sub>
+
+Used only when the [`type`](#type) option is set to `'custom'`. Specifies the custom alphabet for sorting.
+
+Use the `Alphabet` utility class from `eslint-plugin-perfectionist/alphabet` to quickly generate a custom alphabet.
+
+Example: `0123456789abcdef...`
 
 ### ignoreCase
 
 <sub>default: `true`</sub>
 
-Controls whether sorting should be case-sensitive or not.
+Specifies whether sorting should be case-sensitive.
 
 - `true` — Ignore case when sorting alphabetically or naturally (e.g., “A” and “a” are the same).
-- `false` — Consider case when sorting (e.g., “A” comes before “a”).
+- `false` — Consider case when sorting (e.g., “a” comes before “A”).
 
 ### specialCharacters
 
 <sub>default: `keep`</sub>
 
-Controls whether special characters should be trimmed, removed or kept before sorting.
+Specifies whether to trim, remove, or keep special characters before sorting.
 
 - `'keep'` — Keep special characters when sorting (e.g., “_a” comes before “a”).
 - `'trim'` — Trim special characters when sorting alphabetically or naturally (e.g., “_a” and “a” are the same).
 - `'remove'` — Remove special characters when sorting (e.g., “/a/b” and “ab” are the same).
 
+### locales
+
+<sub>default: `'en-US'`</sub>
+
+Specifies the sorting locales. Refer To [String.prototype.localeCompare() - locales](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare#locales).
+
+- `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
+- `string[]` — An array of BCP 47 language tags.
+
 ### internalPattern
 
-<sub>default: `['~/**']` for `minimatch` matcher, `['^~/.*']` for `regex` matcher</sub>
+<sub>default: `['^~/.*']`</sub>
 
-Allows you to specify a pattern for identifying internal imports. This is useful for distinguishing your own modules from external dependencies.
+Specifies a pattern for identifying internal imports. This is useful for distinguishing your own modules from external dependencies.
 
-You can use glob patterns to define these internal imports.
+You can use regexp patterns to define these internal imports.
 
 ### sortSideEffects
 
@@ -172,15 +218,46 @@ Specifies whether side effect imports should be sorted. By default, sorting side
 - `true` — Sort side effect imports.
 - `false` — Do not sort side effect imports.
 
+### partitionByComment
+
+<sub>default: `false`</sub>
+
+Enables the use of comments to separate imports into logical groups.
+
+- `true` — All comments will be treated as delimiters, creating partitions.
+- `false` — Comments will not be used as delimiters.
+- `RegExpPattern = string | { pattern: string; flags: string}` — A regexp pattern to specify which comments should act as delimiters.
+- `RegExpPattern[]` — A list of regexp patterns to specify which comments should act as delimiters.
+- `{ block: boolean | RegExpPattern | RegExpPattern[]; line: boolean | RegExpPattern | RegExpPattern[] }` — Specify which block and line comments should act as delimiters.
+
+### partitionByNewLine
+
+<sub>default: `false`</sub>
+
+When `true`, the rule will not sort imports if there is an empty line between them. This helps maintain the defined order of logically separated groups of members.
+
+```ts
+import { b1, b2 } from 'b'
+
+import { a } from 'a'
+import { c } from 'c'
+```
+
 ### newlinesBetween
 
 <sub>default: `'always'`</sub>
 
-Specifies how new lines should be handled between import groups.
+Specifies how to handle new lines between import groups.
 
 - `ignore` — Do not report errors related to new lines between import groups.
 - `always` — Enforce one new line between each group, and forbid new lines inside a group.
 - `never` — No new lines are allowed in the entire import section.
+
+You can also enforce the newline behavior between two specific groups through the `groups` options.
+
+See the [`groups`](#newlines-between-groups) option.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
 
 ### maxLineLength
 
@@ -189,6 +266,14 @@ Specifies how new lines should be handled between import groups.
 Specifies a maximum line length for sorting imports. When the line length exceeds this number, sorting will be based only on the import name, excluding the elements.
 
 This option is only available when the type is set to `'line-length'`.
+
+### tsconfigRootDir
+
+<sub>default: `undefined`</sub>
+
+Specifies the  directory of the root `tsconfig.json` file (ex: `.`). This is used in [`groups`](#groups) for:
+- Marking aliased imports as `internal`.
+- Marking imports matching [tsconfig paths](https://www.typescriptlang.org/tsconfig/#paths) as `tsconfig-path`.
 
 ### groups
 
@@ -199,138 +284,303 @@ This option is only available when the type is set to `'line-length'`.
   default:
   ```
   [
-    'type',
-    ['builtin', 'external'],
-    'internal-type',
-    'internal',
-    ['parent-type', 'sibling-type', 'index-type'],
-    ['parent', 'sibling', 'index'],
-    'object',
+    'type-import',
+    ['value-builtin', 'value-external'],
+    'type-internal',
+    'value-internal',
+    ['type-parent', 'type-sibling', 'type-index'],
+    ['value-parent', 'value-sibling', 'value-index'],
+    'ts-equals-import',
     'unknown',
   ]
   ```
 </sub>
 
-Allows you to specify a list of import groups for sorting. Groups help organize imports into meaningful categories, making your code more readable and maintainable. Multiple groups can be combined.
+Specifies a list of import groups for sorting. Groups help organize imports into meaningful categories, making your code more readable and maintainable.
 
-Predefined groups:
+Each import will be assigned a single group specified in the `groups` option (or the `unknown` group if no match is found).
+The order of items in the `groups` option determines how groups are ordered.
 
+Within a given group, members will be sorted according to the `type`, `order`, `ignoreCase`, etc. options.
+
+Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
+All members of the groups in the array will be sorted together as if they were part of a single group.
+
+Predefined groups are characterized by a single selector and potentially multiple modifiers. You may enter modifiers in any order, but the selector must always come at the end.
+
+#### Selectors
+
+The list of selectors is sorted from most to least important:
+
+- `'type'` — TypeScript type imports.
+- `'side-effect-style'` — Side effect style imports.
+- `'side-effect'` — Side effect imports.
+- `'style'` — Styles.
+- `'tsconfig-path'` — `tsconfig` [paths](https://www.typescriptlang.org/tsconfig/#paths) alias imports. Requires [`tsconfigRootDir`](#tsconfigrootdir) to be set.
+- `'index'` — Main file from the current directory.
+- `'sibling'` — Modules from the same directory.
+- `'parent'` — Modules from the parent directory.
+- `'subpath'` — Node.js [subpath](https://nodejs.org/api/packages.html#packages_subpath_imports) imports.
+- `'internal'` — Your internal modules.
 - `'builtin'` — Node.js Built-in Modules.
 - `'external'` — External modules installed in the project.
-- `'internal'` — Your internal modules.
-- `'parent'` — Modules from the parent directory.
-- `'sibling'` — Modules from the same directory.
+- `'import'` — Any import.
+
+#### Modifiers
+
+The list of modifiers is sorted from most to least important:
+
 - `'side-effect'` — Side effect imports.
-- `'side-effect-style'` — Side effect style imports.
-- `'index'` — Main file from the current directory.
-- `'object'` — TypeScript object imports.
-- `'style'` — Styles.
-- `'external-type'` — TypeScript type imports from external modules.
-- `'builtin-type'` — TypeScript type imports from built-in modules.
-- `'internal-type'` — TypeScript type imports from your internal modules.
-- `'parent-type'` — TypeScript type imports from the parent directory.
-- `'sibling-type'` — TypeScript type imports from the same directory.
-- `'index-type'` — TypeScript type imports from the main directory file.
-- `'unknown'` — Imports that don’t fit into any group specified in the `groups` option.
+- `'type'` — Typescript type imports.
+- `'value'` — Value imports.
+- `'ts-equals'` — TypeScript import-equals imports.
+- `'require'` — `require` imports.
+- `'default'` — Imports containing the `default` specifier.
+- `'wildcard'` — Imports containing the wildcard (`* as`) specifier.
+- `'named'` — Imports containing at least one named specifier.
 
-If the `unknown` group is not specified in the `groups` option, it will automatically be added to the end of the list.
+#### Important notes
 
-#### Example
+##### The `unknown` group
+
+Members that don’t fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
+the members will remain in their original order.
+
+##### Behavior when multiple groups match an element
+
+The lists of selectors and modifiers above are both sorted by importance, from most to least important.
+In case of multiple groups matching an element, the following rules will be applied:
+
+1. Selector priority: `type`, `index`, ... will take precedence over `external` groups for example.
+2. If the selector is the same, the group with the most modifiers matching will be selected.
+3. If modifiers quantity is the same, order will be chosen based on modifier importance as listed above.
+
+Example 1:
 
 ```ts
-// 'builtin' - Node.js Built-in Modules
-import path from 'path'
-// 'external' - External modules installed in the project
-import axios from 'axios'
-// 'internal' - Your internal modules
-import Button from '~/components/Button'
-// 'parent' - Modules from parent directory
-import formatNumber from '../utils/format-number'
-// 'sibling' - Modules from the same directory
-import config from './config'
-// 'side-effect' - Side effect imports
-import './set-production-env.js'
-// side-effect-style - Side effect style imports
-import './styles.scss'
-// 'index' - Main file from the current directory
-import main from '.'
-// 'object' - TypeScript object-imports
-import log = console.log
-// 'style' - Styles
-import styles from './index.module.css'
-// 'external-type' - TypeScript type imports
 import type { FC } from 'react'
-// 'builtin-type' - TypeScript type imports from Built-in Modules
+```
+
+`react` can be matched by the following groups, from most to least important:
+- `named-type` (`type` selector).
+- `type`.
+- `named-type-external` or `type-named-external` (`type` modifier).
+- `type-external`.
+- `named-external`.
+- `external`.
+- `named-type-import` or `type-named-import`.
+- `type-import`.
+- `named-import`.
+- `import`.
+
+Example 2:
+
+```ts
+import 'style.scss'
+```
+
+`style.scss` can be matched by the following relevant groups, from most to least important:
+
+- `side-effect-style` (`side-effect-style` selector).
+- `side-effect`.
+- `value-style`.
+- `style`.
+- `side-effect-import`.  (`side-effect` modifier)
+- `value-import`.
+- `import`.
+
+Example 3 (The most important group is written in the comments):
+
+```ts
+// 'value-builtin' - Node.js Built-in Modules
+import path from 'path'
+// 'value-external' - External modules installed in the project
+import axios from 'axios'
+// 'value-internal' - Your internal modules
+import Button from '~/components/Button'
+// 'value-parent' - Modules from parent directory
+import formatNumber from '../utils/format-number'
+// 'value-subpath' - Node.js subpath imports
+import subpathContent from '#subpathModule'
+// 'value-sibling' - Modules from the same directory
+import config from './config'
+// 'value-side-effect' - Side effect imports
+import './set-production-env.js'
+// value-side-effect-style - Side effect style imports
+import './styles.scss'
+// 'value-index' - Main file from the current directory
+import main from '.'
+// 'value-style' - Styles
+import styles from './index.module.css'
+// 'type-external' - TypeScript type imports
+import type { FC } from 'react'
+// 'named-type-builtin' - TypeScript type imports from Built-in Modules
 import type { Server } from 'http'
-// 'internal-type' - TypeScript type imports from your internal modules
+// 'named-type-internal' - TypeScript type imports from your internal modules
 import type { User } from '~/users'
-// 'parent-type' - TypeScript type imports from parent directory
+// 'named-type-parent' - TypeScript type imports from parent directory
 import type { InputProps } from '../Input'
-// 'sibling-type' - TypeScript type imports from the same directory
+// 'named-type-sibling' - TypeScript type imports from the same directory
 import type { Details } from './data'
-// 'index-type' - TypeScript type imports from main directory file
+// 'named-type-index' - TypeScript type imports from main directory file
 import type { BaseOptions } from './index.d.ts'
+// 'value-ts-equals-import' - TypeScript import-equals imports
+import NotFoundError = ErrorsNamespace.NotFoundError
+```
+
+#### Newlines between groups
+
+You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
+
+See the [`newlinesBetween`](#newlinesbetween) option.
+
+This feature is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+```ts
+{
+  newlinesBetween: 'always',
+  groups: [
+    'a',
+    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    'b',
+  ]
+}
 ```
 
 ### customGroups
 
-<sub>
-  type:
-  ```
-  {
-    value: { [groupName: string]: string | string[] }
-    type: { [groupName: string]: string | string[] }
+<Important title="Migrating from the old API">
+Support for the object-based `customGroups` option is deprecated.
+
+Here is how to migrate from the old to the current API:
+
+Old API:
+```ts
+{
+  value: {
+    "keyForValue1": "value1",
+    "keyForValue2": "value2"
+  },
+  type: {
+    "keyForType1": "value1",
+    "keyForType2": "value2"
   }
-  ```
+}
+```
+
+Current API:
+```ts
+[
+  {
+    "selector": "type",
+    "groupName": "keyForType1",
+    "elementNamePattern": "value1"
+  },
+  {
+    "selector": "type",
+    "groupName": "keyForType2",
+    "elementNamePattern": "value2"
+  },
+  {
+    "groupName": "keyForValue1",
+    "elementNamePattern": "value1"
+  },
+  {
+    "groupName": "keyForValue2",
+    "elementNamePattern": "value2"
+  }
+]
+```
+</Important>
+
+<sub>
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
 </sub>
-<sub>default: `{ value: {}, type: {} }`</sub>
+<sub>default: `[]`</sub>
 
-You can define your own groups and use custom glob patterns or regex to match specific imports.
+You can define your own groups and use regex for matching very specific imports.
 
-Use the `matcher` option to specify the pattern matching method.
+A custom group definition may follow one of the two following interfaces:
 
-Each key of the `value` or `type` fields represents a group name which you can then use in the `groups` option. The value for each key can either be of type:
-- `string` — An import matching the value will be marked as part of the group referenced by the key.
-- `string[]` — An import matching any of the values of the array will be marked as part of the group referenced by the key.
-The order of values in the array does not matter.
+```ts
+interface CustomGroupDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: 'always' | 'never'
+  selector?: string
+  modifiers?: string[]
+  elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+}
+```
+An import will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
-Custom group matching takes precedence over predefined group matching.
+or:
+
+```ts
+interface CustomGroupAnyOfDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: 'always' | 'never'
+  anyOf: Array<{
+      selector?: string
+      modifiers?: string[]
+      elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  }>
+}
+```
+
+An import will match a `CustomGroupAnyOfDefinition` group if it matches all the filters of at least one of the `anyOf` items.
+
+#### Attributes
+
+- `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
+- `selector` — Filter on the `selector` of the element.
+- `modifiers` — Filter on the `modifiers` of the element. (All the modifiers of the element must be present in that list)
+- `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
+- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `order` — Overrides the [`order`](#order) option for that custom group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
+- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+
+#### Match importance
+
+The `customGroups` list is ordered:
+The first custom group definition that matches an element will be used.
+
+Custom groups have a higher priority than any predefined group. If you want a predefined group to take precedence over a custom group,
+you must write a custom group definition that does the same as what the predefined group does (using `selector` and `modifiers` filters), and put it first in the list.
 
 #### Example
 
 ```js
    groups: [
-+    'react',                       // [!code ++]
-     'type',
-     ['builtin', 'external'],
-+    'lodash',                      // [!code ++]
-     'internal-type',
-     'internal',
-     ['parent-type', 'sibling-type', 'index-type'],
-     ['parent', 'sibling', 'index'],
-     'object',
++    'react',                           // [!code ++]
+     'type-import',
+     ['value-builtin', 'value-external'],
++    'lodash',                          // [!code ++]
+     'type-internal',
+     'value-internal',
+     ['type-parent', 'type-sibling', 'type-index'],
+     ['value-parent', 'value-sibling', 'value-index'],
+     'ts-equals-import',
      'unknown',
    ],
-+  customGroups: {                  // [!code ++]
-+    value: {                       // [!code ++]
-+     react: ['react', 'react-*'],  // [!code ++]
-+     lodash: 'lodash',             // [!code ++]
-+    },                             // [!code ++]
-+    type: {                        // [!code ++]
-+      react: ['react', 'react-*'], // [!code ++]
-+    }                              // [!code ++]
-+  },                               // [!code ++]
++  customGroups: [                      // [!code ++]
++    {                                // [!code ++]
++      groupName: 'react',             // [!code ++]
++      elementNamePattern: ['^react$', '^react-.+'], // [!code ++]
++    },                                 // [!code ++]
++    {                                 // [!code ++]
++      groupName: 'lodash',           // [!code ++]
++      elementNamePattern: 'lodash', // [!code ++]
++    }                               // [!code ++]
++  ],                                   // [!code ++]
  }
 ```
-
-### matcher
-
-<sub>default: `'minimatch'`</sub>
-
-Determines the matcher used for patterns in the `internalPattern` and `customGroups` options.
-
-- `'minimatch'` — Use the [minimatch](https://github.com/isaacs/minimatch) library for pattern matching.
-- `'regex'` — Use regular expressions for pattern matching.
 
 ### environment
 
@@ -358,24 +608,25 @@ Specifies which environment’s built-in modules should be recognized. If you ar
                 {
                   type: 'alphabetical',
                   order: 'asc',
+                  fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
-                  matcher: 'minimatch',
-                  internalPattern: ['~/**'],
+                  internalPattern: ['^~/.+'],
+                  partitionByComment: false,
+                  partitionByNewLine: false,
                   newlinesBetween: 'always',
                   maxLineLength: undefined,
-                  matcher: 'minimatch',
                   groups: [
-                    'type',
-                    ['builtin', 'external'],
-                    'internal-type',
-                    'internal',
-                    ['parent-type', 'sibling-type', 'index-type'],
-                    ['parent', 'sibling', 'index'],
-                    'object',
+                    'type-import',
+                    ['value-builtin', 'value-external'],
+                    'type-internal',
+                    'value-internal',
+                    ['type-parent', 'type-sibling', 'type-index'],
+                    ['value-parent', 'value-sibling', 'value-index'],
+                    'ts-equals-import',
                     'unknown',
                   ],
-                  customGroups: { type: {}, value: {} },
+                  customGroups: [],
                   environment: 'node',
                 },
               ],
@@ -399,24 +650,25 @@ Specifies which environment’s built-in modules should be recognized. If you ar
               {
                 type: 'alphabetical',
                 order: 'asc',
+                fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
-                matcher: 'minimatch',
-                internalPattern: ['~/**'],
+                internalPattern: ['^~/.+'],
+                partitionByComment: false,
+                partitionByNewLine: false,
                 newlinesBetween: 'always',
                 maxLineLength: undefined,
-                matcher: 'minimatch',
                 groups: [
-                  'type',
-                  ['builtin', 'external'],
-                  'internal-type',
-                  'internal',
-                  ['parent-type', 'sibling-type', 'index-type'],
-                  ['parent', 'sibling', 'index'],
-                  'object',
+                  'type-import',
+                  ['value-builtin', 'value-external'],
+                  'type-internal',
+                  'value-internal',
+                  ['type-parent', 'type-sibling', 'type-index'],
+                  ['value-parent', 'value-sibling', 'value-index'],
+                  'ts-equals-import',
                   'unknown',
                 ],
-                customGroups: { type: {}, value: {} },
+                customGroups: [],
                 environment: 'node',
               },
             ],
@@ -429,7 +681,7 @@ Specifies which environment’s built-in modules should be recognized. If you ar
   ]}
   type="config-type"
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Version

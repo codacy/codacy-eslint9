@@ -10,7 +10,7 @@ since: v4.2.0
 
 > enforce consistent indentation in `<script>`
 
-- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) can automatically fix some of the problems reported by this rule.
+- :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fix-problems) can automatically fix some of the problems reported by this rule.
 
 ## :book: Rule Details
 
@@ -118,7 +118,7 @@ This rule only checks `.vue` files and does not interfere with other `.js` files
 ## :couple: Related Rules
 
 - [indent](https://eslint.org/docs/rules/indent)
-- [vue/html-indent](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/html-indent.md)
+- [vue/html-indent](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/html-indent.md)
 - [@typescript-eslint/indent](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/indent.md)
 
 ## :rocket: Version

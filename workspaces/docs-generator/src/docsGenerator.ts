@@ -244,27 +244,11 @@ export class DocsGenerator {
     const rejectOnError = docsInfo.rejectOnError;
     const pluginVersion = (await this.dependencies)[plugin.packageName];
 
-    // Check if the pattern needs URL adjustment. For @shopify in-folder rules: https://github.com/Shopify/web-configs/tree/main/packages/eslint-plugin/docs/rules
-    const needsAdjustment = [
-      "typescript-prefer-pascal-case-enums",
-      "typescript-prefer-singular-enums",
-      "jest-no-all-mocks-methods",
-      "typescript-prefer-build-client-schema",
-      "jest-no-snapshots",
-      "webpack-no-unnamed-dynamic-imports"
-    ].includes(pattern);
-
     let url = (
       (docsInfo.versionPrefix !== false && docsInfo.versionPrefix !== undefined)
         ? docsInfo.baseUrl?.href.replace(/main|master/, `${docsInfo.versionPrefix}${pluginVersion}`)
         : docsInfo.baseUrl?.href
     ) + patternDocFilename;
-
-    // Adjust the URL for specific patterns
-    if (needsAdjustment) {
-      // Replace the first hyphen with a slash
-      url = url.replace(/-(?=[^/]*\.md$)/, "/");
-    }
 
     try {
       const response = (await axios.get(url)).data as string;
