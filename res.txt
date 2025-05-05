@@ -1,0 +1,141 @@
+
+> docs-generator@0.0.3 start
+> tsc --noEmit && node --import=../../register.js src/index.ts
+
+Generate description.json
+Number of rules:  2859
+Number of descriptions:  2859
+Generate patterns.json
+Generate patterns.xml
+Generate @angular-eslint description files
+Generate @lwc/lwc description files
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-unsupported-node-api.md'
+}
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-host-mutation-in-connected-callback.md'
+}
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-restricted-browser-globals.md'
+}
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-unsupported-properties.md'
+}
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-form-factor.md'
+}
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-node-env.md'
+}
+{
+  plugin: '@lwc/lwc',
+  url: 'https://raw.githubusercontent.com/salesforce/eslint-plugin-lwc/refs/tags/v3.0.0/docs/rules/ssr-no-static-imports-of-user-specific-scoped-modules.md'
+}
+Generate @salesforce/lightning description files
+Generate @shopify description files
+{
+  plugin: '@shopify',
+  url: 'https://raw.githubusercontent.com/Shopify/web-configs/refs/tags/@shopify/eslint-plugin@48.0.2/packages/eslint-plugin/docs/rules/webpack/no-unnamed-dynamic-imports.md'
+}
+{
+  plugin: '@shopify',
+  url: 'https://raw.githubusercontent.com/Shopify/web-configs/refs/tags/@shopify/eslint-plugin@48.0.2/packages/eslint-plugin/docs/rules/typescript/prefer-singular-enums.md'
+}
+{
+  plugin: '@shopify',
+  url: 'https://raw.githubusercontent.com/Shopify/web-configs/refs/tags/@shopify/eslint-plugin@48.0.2/packages/eslint-plugin/docs/rules/typescript/prefer-pascal-case-enums.md'
+}
+{
+  plugin: '@shopify',
+  url: 'https://raw.githubusercontent.com/Shopify/web-configs/refs/tags/@shopify/eslint-plugin@48.0.2/packages/eslint-plugin/docs/rules/jest/no-snapshots.md'
+}
+{
+  plugin: '@shopify',
+  url: 'https://raw.githubusercontent.com/Shopify/web-configs/refs/tags/@shopify/eslint-plugin@48.0.2/packages/eslint-plugin/docs/rules/typescript/prefer-build-client-schema.md'
+}
+Generate @stylistic description files
+Generate @tanstack/query description files
+Generate @typescript-eslint description files
+Generate svelte description files
+Generate @vitest description files
+Generate check-file description files
+Generate angular description files
+Generate ava description files
+Generate backbone description files
+Generate compat description files
+Generate cypress description files
+Generate ember description files
+Generate ember-suave description files
+Generate es-x description files
+Generate expect-type description files
+Generate eslint description files
+Generate eslint-plugin description files
+Generate functional description files
+Generate i18next description files
+Generate import description files
+Generate jasmine description files
+Generate jest description files
+Generate jest-dom description files
+Generate jest-extended description files
+Generate jest-formatting description files
+Generate jsdoc description files
+Generate jsonc description files
+Generate fp description files
+Generate playwright description files
+Generate jsx-a11y description files
+Generate lit description files
+Generate lodash description files
+Generate lodash-fp description files
+Generate meteor description files
+Generate mocha description files
+Generate n description files
+Generate nuxt description files
+Generate perfectionist description files
+Generate promise description files
+Generate react description files
+Generate react-perf description files
+Generate react-redux description files
+Generate redux-saga description files
+Generate regexp description files
+Generate security description files
+Generate security-node description files
+Generate sort description files
+Generate sort-destructure-keys description files
+Generate storybook description files
+Generate suitescript description files
+Generate tailwindcss description files
+Generate test-selectors description files
+Generate testing-library description files
+Generate typescript-sort-keys description files
+Generate unicorn description files
+{
+  plugin: 'unicorn',
+  url: 'https://raw.githubusercontent.com/sindresorhus/eslint-plugin-unicorn/refs/tags/v59.0.0/docs/rules/no-array-push-push.md'
+}
+{
+  plugin: 'unicorn',
+  url: 'https://raw.githubusercontent.com/sindresorhus/eslint-plugin-unicorn/refs/tags/v59.0.0/docs/rules/no-length-as-slice-end.md'
+}
+{
+  plugin: 'unicorn',
+  url: 'https://raw.githubusercontent.com/sindresorhus/eslint-plugin-unicorn/refs/tags/v59.0.0/docs/rules/no-instanceof-array.md'
+}
+Generate unused-imports description files
+Generate vue description files
+Generate vuetify description files
+{
+  plugin: 'vuetify',
+  url: 'https://raw.githubusercontent.com/vuetifyjs/eslint-plugin-vuetify/refs/tags/v2.5.2/docs/rules/no-deprecated-imports.md'
+}
+Generate vue-scoped-css description files
+Generate vuejs-accessibility description files
+Generate wdio description files
+Generate xss description files
+Generate yml description files
+Generate eslint description files

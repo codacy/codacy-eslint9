@@ -86,7 +86,7 @@ export default {
 
 ## :couple: Related Rules
 
-- [vue/restricted-component-names](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/restricted-component-names.md)
+- [vue/restricted-component-names](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/restricted-component-names.md)
 
 ## :rocket: Version
 

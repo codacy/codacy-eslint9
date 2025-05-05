@@ -139,9 +139,9 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/define-emits-declaration](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/define-emits-declaration.md)
-- [vue/valid-define-options](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-define-options.md)
-- [vue/valid-define-props](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-define-props.md)
+- [vue/define-emits-declaration](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/define-emits-declaration.md)
+- [vue/valid-define-options](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-define-options.md)
+- [vue/valid-define-props](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-define-props.md)
 
 ## :rocket: Version
 

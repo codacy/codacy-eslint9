@@ -17,7 +17,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "@lwc/eslint-plugin-lwc",
-      relativeUrl: "/salesforce/eslint-plugin-lwc/master/docs/rules/",
+      relativeUrl: "/salesforce/eslint-plugin-lwc/refs/tags/master/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)
@@ -30,7 +30,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "@shopify/eslint-plugin",
-      relativeUrl: "/Shopify/web-configs/main/packages/eslint-plugin/docs/rules/",
+      relativeUrl: "/Shopify/web-configs/refs/tags/main/packages/eslint-plugin/docs/rules/",
       versionPrefix: "@shopify/eslint-plugin@"
     })
     await sleep(500)
@@ -115,8 +115,8 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-ember",
-      relativeUrl: "/ember-cli/eslint-plugin-ember/refs/tags/master/docs/rules/",
-      versionPrefix: "v",
+      relativeUrl: "/ember-cli/eslint-plugin-ember/refs/heads/master/docs/rules/",
+      versionPrefix: false,
     })
     await sleep(500)
 
@@ -136,7 +136,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-expect-type",
-      relativeUrl: "/JoshuaKGoldberg/eslint-plugin-expect-type/refs/heads/main/docs/rules/",
+      relativeUrl: "/JoshuaKGoldberg/eslint-plugin-expect-type/refs/tags/main/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)
@@ -276,8 +276,8 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-mocha",
-      relativeUrl: "/lo1tuma/eslint-plugin-mocha/master/docs/rules/",
-      versionPrefix: "v",
+      relativeUrl: "/lo1tuma/eslint-plugin-mocha/refs/tags/main/docs/rules/",
+      versionPrefix: "",
     })
     await sleep(500)
 
@@ -416,7 +416,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-unicorn",
-      relativeUrl: "/sindresorhus/eslint-plugin-unicorn/main/docs/rules/",
+      relativeUrl: "/sindresorhus/eslint-plugin-unicorn/refs/tags/main/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)
@@ -430,7 +430,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-vue",
-      relativeUrl: "/vuejs/eslint-plugin-vue/master/docs/rules/",
+      relativeUrl: "/vuejs/eslint-plugin-vue/refs/tags/master/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)

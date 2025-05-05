@@ -153,7 +153,7 @@ This rule aims to enforce a consistent location for the first attribute.
 
 ## :couple: Related Rules
 
-- [vue/max-attributes-per-line](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/max-attributes-per-line.md)
+- [vue/max-attributes-per-line](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/max-attributes-per-line.md)
 
 ## :books: Further Reading
 

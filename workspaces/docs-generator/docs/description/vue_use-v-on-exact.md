@@ -37,8 +37,8 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/v-on-style](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/v-on-style.md)
-- [vue/valid-v-on](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-v-on.md)
+- [vue/v-on-style](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/v-on-style.md)
+- [vue/valid-v-on](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-v-on.md)
 
 ## :books: Further Reading
 

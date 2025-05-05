@@ -57,7 +57,7 @@ This rule enforces consistency in component names.
 
 ## :couple: Related Rules
 
-- [vue/no-restricted-component-names](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-restricted-component-names.md)
+- [vue/no-restricted-component-names](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-restricted-component-names.md)
 
 ## :rocket: Version
 

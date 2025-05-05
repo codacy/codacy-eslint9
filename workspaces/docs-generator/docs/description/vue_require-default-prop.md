@@ -64,7 +64,7 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/no-boolean-default](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-boolean-default.md)
+- [vue/no-boolean-default](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-boolean-default.md)
 
 ## :books: Further Reading
 

@@ -65,8 +65,8 @@ export default defineComponent({
 
 ## :couple: Related Rules
 
-- [vue/valid-model-definition](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/valid-model-definition.md) (for Vue.js 2.x)
-- [vue/no-v-model-argument](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-v-model-argument.md) (for Vue.js 2.x)
+- [vue/valid-model-definition](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/valid-model-definition.md) (for Vue.js 2.x)
+- [vue/no-v-model-argument](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-v-model-argument.md) (for Vue.js 2.x)
 
 ## :books: Further Reading
 

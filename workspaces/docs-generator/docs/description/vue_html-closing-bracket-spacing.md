@@ -86,8 +86,8 @@ This rule aims to enforce consistent spacing style before closing brackets `>` o
 
 ## :couple: Related Rules
 
-- [vue/no-multi-spaces](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/no-multi-spaces.md)
-- [vue/html-closing-bracket-newline](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/html-closing-bracket-newline.md)
+- [vue/no-multi-spaces](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-multi-spaces.md)
+- [vue/html-closing-bracket-newline](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/html-closing-bracket-newline.md)
 
 ## :rocket: Version
 

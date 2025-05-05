@@ -51,7 +51,7 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/require-default-export](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/require-default-export.md)
+- [vue/require-default-export](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/require-default-export.md)
 
 ## :books: Further Reading
 

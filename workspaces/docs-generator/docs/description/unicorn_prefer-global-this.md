@@ -14,7 +14,7 @@ However, there are several exceptions that remain permitted:
 1. Certain window/WebWorker-specific APIs, such as `window.innerHeight` and `self.postMessage`
 2. Window-specific events, such as `window.addEventListener('resize')`
 
-The complete list of permitted APIs can be found in the rule's [source code](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/rules/prefer-global-this.js).
+The complete list of permitted APIs can be found in the rule's [source code](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/refs/tags/main/rules/prefer-global-this.js).
 
 ## Examples
 

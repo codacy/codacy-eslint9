@@ -48,7 +48,7 @@ Nothing.
 
 ## :couple: Related Rules
 
-- [vue/one-component-per-file](https://github.com/vuejs/eslint-plugin-vue/tree/master/docs/rules/one-component-per-file.md)
+- [vue/one-component-per-file](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/one-component-per-file.md)
 
 ## :rocket: Version
 
