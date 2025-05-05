@@ -14,6 +14,53 @@ This rule reports when you may consider replacing:
 - An `||` operator with `??`
 - An `||=` operator with `??=`
 - Ternary expressions (`?:`) that are equivalent to `||` or `??` with `??`
+- Assignment expressions (`=`) that can be safely replaced by `??=`
+
+## Examples
+
+<!--tabs-->
+
+#### ❌ Incorrect
+
+```ts
+declare const a: string | null;
+declare const b: string | null;
+
+const c = a || b;
+
+declare let foo: { a: string } | null;
+declare function makeFoo(): { a: string };
+
+function lazyInitializeFooByTruthiness() {
+  if (!foo) {
+    foo = makeFoo();
+  }
+}
+
+function lazyInitializeFooByNullCheck() {
+  if (foo == null) {
+    foo = makeFoo();
+  }
+}
+```
+
+#### ✅ Correct
+
+```ts
+declare const a: string | null;
+declare const b: string | null;
+
+const c = a ?? b;
+
+declare let foo: { a: string } | null;
+declare function makeFoo(): { a: string };
+
+function lazyInitializeFoo() {
+  foo ??= makeFoo();
+}
+```
+
+<!--/tabs-->
 
 :::caution
 This rule will not work as expected if [`strictNullChecks`](https://www.typescriptlang.org/tsconfig#strictNullChecks) is not enabled.
@@ -62,6 +109,48 @@ b ?? 'a string';
 
 declare const c: string | null;
 c ?? 'a string';
+```
+
+<!--/tabs-->
+
+### `ignoreIfStatements`
+
+<!-- insert option description -->
+
+Examples of code for this rule with `{ ignoreIfStatements: false }`:
+
+<!--tabs-->
+
+#### ❌ Incorrect
+
+```ts option='{ "ignoreIfStatements": false }'
+declare let foo: { a: string } | null;
+declare function makeFoo(): { a: string };
+
+function lazyInitializeFoo1() {
+  if (!foo) {
+    foo = makeFoo();
+  }
+}
+
+function lazyInitializeFoo2() {
+  if (!foo) foo = makeFoo();
+}
+```
+
+#### ✅ Correct
+
+```ts option='{ "ignoreIfStatements": false }'
+declare let foo: { a: string } | null;
+declare function makeFoo(): { a: string };
+
+function lazyInitializeFoo1() {
+  foo ??= makeFoo();
+}
+
+function lazyInitializeFoo2() {
+  foo ??= makeFoo();
+}
 ```
 
 <!--/tabs-->
@@ -247,3 +336,4 @@ If you are not using TypeScript 3.7 (or greater), then you will not be able to u
 
 - [TypeScript 3.7 Release Notes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html)
 - [Nullish Coalescing Operator Proposal](https://github.com/tc39/proposal-nullish-coalescing/)
+- [`logical-assignment-operators`](https://eslint.org/docs/latest/rules/logical-assignment-operators)

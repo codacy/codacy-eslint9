@@ -14,8 +14,9 @@ keywords:
 ---
 
 import CodeExample from '../../components/CodeExample.svelte'
+import Important from '../../components/Important.astro'
 import CodeTabs from '../../components/CodeTabs.svelte'
-import { dedent } from 'ts-dedent'
+import dedent from 'dedent'
 
 Enforce sorted class members.
 
@@ -146,7 +147,7 @@ By sorting class members systematically, confusion is minimized, and the code be
     }
   `}
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Options
@@ -159,47 +160,165 @@ This rule accepts an options object with the following properties:
 
 Specifies the sorting method.
 
-- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”).
-- `'natural'` — Sort items in a natural order (e.g., “item2” < “item10”).
-- `'line-length'` — Sort items by the length of the code line (shorter lines first).
+- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”) using [localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare).
+- `'natural'` — Sort items in a [natural](https://github.com/yobacca/natural-orderby) order (e.g., “item2” < “item10”).
+- `'line-length'` — Sort items by code line length (shorter lines first).
+- `'custom'` — Sort items using the alphabet specified in the [`alphabet`](#alphabet) option.
+- `'unsorted'` — Do not sort items. [`grouping`](#groups) and [`newlines behavior`](#newlinesbetween) are still enforced.
 
 ### order
 
 <sub>default: `'asc'`</sub>
 
-Determines whether the sorted items should be in ascending or descending order.
+Specifies whether to sort items in ascending or descending order.
 
 - `'asc'` — Sort items in ascending order (A to Z, 1 to 9).
 - `'desc'` — Sort items in descending order (Z to A, 9 to 1).
+
+### fallbackSort
+
+<sub>
+  type:
+  ```
+  {
+    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    order?: 'asc' | 'desc'
+  }
+  ```
+</sub>
+<sub>default: `{ type: 'unsorted' }`</sub>
+
+Specifies fallback sort options for elements that are equal according to the primary sort
+[`type`](#type).
+
+Example: enforce alphabetical sort between two elements with the same length.
+```ts
+{
+  type: 'line-length',
+  order: 'desc',
+  fallbackSort: { type: 'alphabetical', order: 'asc' }
+}
+```
+
+### alphabet
+
+<sub>default: `''`</sub>
+
+Used only when the [`type`](#type) option is set to `'custom'`. Specifies the custom alphabet for sorting.
+
+Use the `Alphabet` utility class from `eslint-plugin-perfectionist/alphabet` to quickly generate a custom alphabet.
+
+Example: `0123456789abcdef...`
 
 ### ignoreCase
 
 <sub>default: `true`</sub>
 
-Controls whether sorting should be case-sensitive or not.
+Specifies whether sorting should be case-sensitive.
 
 - `true` — Ignore case when sorting alphabetically or naturally (e.g., “A” and “a” are the same).
-- `false` — Consider case when sorting (e.g., “A” comes before “a”).
+- `false` — Consider case when sorting (e.g., “a” comes before “A”).
 
 ### specialCharacters
 
 <sub>default: `keep`</sub>
 
-Controls whether special characters should be trimmed, removed or kept before sorting.
+Specifies whether to trim, remove, or keep special characters before sorting.
 
 - `'keep'` — Keep special characters when sorting (e.g., “_a” comes before “a”).
 - `'trim'` — Trim special characters when sorting alphabetically or naturally (e.g., “_a” and “a” are the same).
 - `'remove'` — Remove special characters when sorting (e.g., “/a/b” and “ab” are the same).
 
+### locales
+
+<sub>default: `'en-US'`</sub>
+
+Specifies the sorting locales. Refer To [String.prototype.localeCompare() - locales](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare#locales).
+
+- `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
+- `string[]` — An array of BCP 47 language tags.
+
 ### partitionByComment
 
 <sub>default: `false`</sub>
 
-Allows you to use comments to separate the class members into logical groups. This can help in organizing and maintaining large enums by creating partitions within the enum based on comments.
+Enables the use of comments to separate the class members into logical groups. This can help in organizing and maintaining large classes by creating partitions within the class based on comments.
 
 - `true` — All comments will be treated as delimiters, creating partitions.
--	`false` — Comments will not be used as delimiters.
-- string — A glob pattern to specify which comments should act as delimiters.
+- `false` — Comments will not be used as delimiters.
+- `RegExpPattern = string | { pattern: string; flags: string}` — A regexp pattern to specify which comments should act as delimiters.
+- `RegExpPattern[]` — A list of regexp patterns to specify which comments should act as delimiters.
+- `{ block: boolean | RegExpPattern | RegExpPattern[]; line: boolean | RegExpPattern | RegExpPattern[] }` — Specify which block and line comments should act as delimiters.
+
+### partitionByNewLine
+
+<sub>default: `false`</sub>
+
+When `true`, the rule will not sort the members of a class if there is an empty line between them. This helps maintain the defined order of logically separated groups of members.
+
+```ts
+class User {
+  // Group 1
+  firstName: string;
+  lastName: string;
+
+  // Group 2
+  age: number;
+  birthDate: Date;
+
+  // Group 3
+  address: {
+    street: string;
+    city: string;
+  };
+  phone?: string;
+
+  // Group 4
+  updateAddress(address: string) {}
+  updatePhone(phone?: string) {}
+
+  // Group 5
+  editFirstName(firstName: string) {}
+  editLastName(lastName: string) {}
+};
+```
+
+### newlinesBetween
+
+<sub>default: `'ignore'`</sub>
+
+Specifies how to handle new lines between class member groups.
+
+- `ignore` — Do not report errors related to new lines between object type groups.
+- `always` — Enforce one new line between each group, and forbid new lines inside a group.
+- `never` — No new lines are allowed in object types.
+
+You can also enforce the newline behavior between two specific groups through the `groups` options.
+
+See the [`groups`](#newlines-between-groups) option.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### ignoreCallbackDependenciesPatterns
+
+<sub>
+  type: `string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]`
+</sub>
+<sub>default: `[]`</sub>
+
+Specifies regexp patterns of function names that should ignore dependency sorting in their callback functions.
+
+Example with `ignoreCallbackDependenciesPatterns: ['^computed$']`:
+
+```ts
+class User {
+  fullName = computed(() => this.role + ' - ' + this.username);
+  role = signal('admin');
+  username = signal('John');
+};
+```
+
+Without `ignoreCallbackDependenciesPatterns: ['^computed$']`, `role` and `username` would be sorted before `fullName` as it depends on them.
 
 ### groups
 
@@ -227,7 +346,7 @@ Allows you to use comments to separate the class members into logical groups. Th
   ```
 </sub>
 
-Allows you to specify a list of class member groups for sorting. Groups help organize class members into categories, prioritizing them during sorting.
+Specifies a list of class member groups for sorting. Groups help organize class members into categories, prioritizing them during sorting.
 
 Each class member will be assigned a single group specified in the `groups` option (or the `unknown` group if no match is found).
 The order of items in the `groups` option determines how groups are ordered.
@@ -246,7 +365,7 @@ Predefined groups are characterized by a single selector and potentially multipl
 
 #### Methods
 - Selectors: `get-method`, `set-method`, `method`.
-- Modifiers: `static`, `abstract`, `decorated`, `override`, `protected`, `private`, `public`, `optional`.
+- Modifiers: `static`, `abstract`, `decorated`, `override`, `protected`, `private`, `public`, `optional`, `async`.
 - Example: `private-static-accessor-property`, `protected-abstract-override-method` or `static-get-method`.
 
 The `optional` modifier is incompatible with the `get-method` and `set-method` selectors.
@@ -264,7 +383,7 @@ The `abstract` modifier is incompatible with the `static`, `private` and `decora
 
 #### Properties
 - Selectors: `function-property`, `property`.
-- Modifiers: `static`, `declare`, `abstract`, `decorated`, `override`, `readonly`, `protected`, `private`, `public`, `optional`.
+- Modifiers: `static`, `declare`, `abstract`, `decorated`, `override`, `readonly`, `protected`, `private`, `public`, `optional`, `async`.
 - Example: `readonly-decorated-property`.
 
 The `abstract` modifier is incompatible with the `static`, `private` and `decorated` modifiers.
@@ -273,6 +392,8 @@ The `declare` modifier is incompatible with the `override` and `decorated` modif
 
 The `function-property` selector will match properties whose values are defined functions or arrow-functions.
 As such, the `declare` and `abstract` modifiers are incompatible with this selector.
+
+The `async` modifier is reserved for the `function-property` selector.
 
 #### Index-signatures
 - Selector: `index-signature`.
@@ -293,7 +414,6 @@ The `private` modifier will currently match any of the following:
 
 ##### Scope of the `public` modifier
 Elements that are not `protected` nor `private` will be matched with the `public` modifier, even if the keyword is not present.
-
 
 ##### The `unknown` group
 Members that don’t fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
@@ -348,6 +468,45 @@ abstract class Example extends BaseExample {
     console.log("I am a static block");
   }
 
+  // 'public-property'
+  public description: string;
+
+  // 'public-decorated-property'
+  @SomeDecorator
+  public value: number;
+
+  // 'public-decorated-accessor-property'
+  @SomeDecorator
+  public accessor value: number;
+
+  // 'public-decorated-get-method'
+  @SomeDecorator
+  get decoratedValue() {
+    return this._value;
+  }
+
+  // 'public-decorated-set-method'
+  @SomeDecorator
+  set decoratedValue(value: number) {
+    this._value = value;
+  }
+
+  // 'public-decorated-get-method'
+  @SomeDecorator
+  get value() {
+    return this._value;
+  }
+
+  // 'public-get-method'
+  get value() {
+    return this._value;
+  }
+
+  // 'public-set-method'
+  set value(value: number) {
+    this._value = value;
+  }
+
   // 'protected-abstract-override-readonly-decorated-property'
   @SomeDecorator
   protected abstract override readonly _value: number;
@@ -359,6 +518,12 @@ abstract class Example extends BaseExample {
   // 'protected-property'
   protected name: string;
 
+  // 'protected-decorated-get-method'
+  @SomeDecorator
+  protected get value() {
+    return this._value;
+  }
+
   // 'private-decorated-property'
   @SomeDecorator
   private _value: number;
@@ -367,25 +532,14 @@ abstract class Example extends BaseExample {
   @SomeDecorator
   private accessor _value: number;
 
-  // private-function-property
-  private arrowProperty = () => {};
-
-  // private-function-property
-  private functionProperty = function() {};
-
   // 'private-property'
   private name: string;
 
-  // 'public-property'
-  public description: string;
-
-  // 'public-decorated-property'
+  // 'private-decorated-get-method'
   @SomeDecorator
-  public value: number;
-
-  // 'public-decorated-accessor-property'
-  @SomeDecorator
-  public accessor value: number;
+  private get value() {
+    return this._value;
+  }
 
   // 'public-constructor'
   constructor(value: number) {
@@ -407,16 +561,6 @@ abstract class Example extends BaseExample {
     this.instance = new Example(0);
   }
 
-  // 'protected-method'
-  protected calculate() {
-    return this._value * 2;
-  }
-
-  // 'private-method'
-  private calculate() {
-    return this._value * 2;
-  }
-
   // 'public-decorated-method'
   @SomeDecorator
   public decoratedMethod() {
@@ -428,58 +572,79 @@ abstract class Example extends BaseExample {
     console.log(this._value);
   }
 
-  // 'public-decorated-get-method'
-  @SomeDecorator
-  get decoratedValue() {
-    return this._value;
+  // 'protected-method'
+  protected calculate() {
+    return this._value * 2;
   }
 
-  // 'public-decorated-set-method'
-  @SomeDecorator
-  set decoratedValue(value: number) {
-    this._value = value;
+  // private-function-property
+  private arrowProperty = () => {};
+
+  // 'private-method'
+  private calculate() {
+    return this._value * 2;
   }
 
-  // 'protected-decorated-get-method'
-  @SomeDecorator
-  protected get value() {
-    return this._value;
-  }
+  // private-function-property
+  private functionProperty = function() {};
+}
+```
 
-  // 'private-decorated-get-method'
-  @SomeDecorator
-  private get value() {
-    return this._value;
-  }
+##### Newlines between groups
 
-  // 'public-decorated-get-method'
-  @SomeDecorator
-  get value() {
-    return this._value;
-  }
+You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
 
-  // 'public-get-method'
-  get value() {
-    return this._value;
-  }
+See the [`newlinesBetween`](#newlinesbetween) option.
 
-  // 'public-set-method'
-  set value(value: number) {
-    this._value = value;
-  }
+This feature is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+```ts
+{
+  newlinesBetween: 'always',
+  groups: [
+    'a',
+    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    'b',
+  ]
 }
 ```
 
 ### customGroups
 
+<Important title="Migrating from the old API">
+Support for the object-based `customGroups` option has been removed.
+
+Migrating from the old to the current API is easy:
+
+Old API:
+```ts
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+```
+
+Current API:
+```ts
+[
+  {
+    "groupName": "key1",
+    "elementNamePattern": "value1"
+  },
+  {
+    "groupName": "key2",
+    "elementNamePattern": "value2"
+  }
+]
+```
+</Important>
+
 <sub>
-  type: `Array<CustomGroupDefinition | CustomGroupBlockDefinition>`
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
 </sub>
 <sub>default: `[]`</sub>
 
-You can define your own groups and use custom glob patterns or regex for matching very specific class members.
-
-Use the `matcher` option to specify the pattern matching method.
+You can define your own groups and use regex for matching very specific class members.
 
 A custom group definition may follow one of the two following interfaces:
 
@@ -488,11 +653,13 @@ interface CustomGroupDefinition {
   groupName: string
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: 'always' | 'never'
   selector?: string
   modifiers?: string[]
-  elementNamePattern?: string
-  elementValuePattern?: string
-  decoratorNamePattern?: string
+  elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  elementValuePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  decoratorNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
 ```
 A class member will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
@@ -500,32 +667,36 @@ A class member will match a `CustomGroupDefinition` group if it matches all the 
 or:
 
 ```ts
-interface CustomGroupBlockDefinition {
+interface CustomGroupAnyOfDefinition {
   groupName: string
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: 'always' | 'never'
   anyOf: Array<{
       selector?: string
       modifiers?: string[]
-      elementNamePattern?: string
-      elementValuePattern?: string
-      decoratorNamePattern?: string
+      elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+      elementValuePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+      decoratorNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
   }>
 }
 ```
 
-A class member will match a `CustomGroupBlockDefinition` group if it matches all the filters of at least one of the `anyOf` items.
+A class member will match a `CustomGroupAnyOfDefinition` group if it matches all the filters of at least one of the `anyOf` items.
 
 #### Attributes
 
-- `groupName`: The group's name, which needs to be put in the `groups` option.
-- `selector`: Filter on the `selector` of the element.
-- `modifiers`: Filter on the `modifiers` of the element. (All the modifiers of the element must be present in that list)
-- `elementNamePattern`: If entered, will check that the name of the element matches the pattern entered.
-- `elementValuePattern`: Only for non-function properties. If entered, will check that the value of the property matches the pattern entered.
-- `decoratorNamePattern`: If entered, will check that at least one `decorator` matches the pattern entered.
-- `type`: Overrides the sort type for that custom group. `unsorted` will not sort the group.
-- `order`: Overrides the sort order for that custom group
+- `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
+- `selector` — Filter on the `selector` of the element.
+- `modifiers` — Filter on the `modifiers` of the element. (All the modifiers of the element must be present in that list)
+- `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
+- `elementValuePattern` — Only for non-function properties. If entered, will check that the value of the property matches the pattern entered.
+- `decoratorNamePattern` — If entered, will check that at least one `decorator` matches the pattern entered.
+- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `order` — Overrides the [`order`](#order) option for that custom group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
+- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
 
 #### Match importance
 
@@ -542,59 +713,49 @@ Example:
    groups: [
     'static-block',
     'index-signature',
-+   'input-properties',                         // [!code ++]
-+   'output-properties',                        // [!code ++]
++   'input-properties',                                     // [!code ++]
++   'output-properties',                                    // [!code ++]
     'constructor',
-+   'unsorted-methods-and-other-properties',    // [!code ++]
++   'unsorted-methods-and-other-properties',                // [!code ++]
     ['get-method', 'set-method'],
     'unknown',
    ],
-+  customGroups: [                               // [!code ++]
-+    [                                           // [!code ++]
-+      {                                         // [!code ++]
-+        // `constructor()` members must not match  // [!code ++]
-+        // `unsorted-methods-and-other-properties` // [!code ++]
-+        // so make them match this first           // [!code ++]
-+         groupName: 'constructor',              // [!code ++]
-+         selector: 'constructor',               // [!code ++]
-+      },                                        // [!code ++]
-+      {                                         // [!code ++]
-+         groupName: 'input-properties',         // [!code ++]
-+         selector: 'property',                  // [!code ++]
-+         modifiers: ['decorated'],              // [!code ++]
-+         decoratorNamePattern: 'Input',         // [!code ++]
-+      },                                        // [!code ++]
-+      {                                         // [!code ++]
-+         groupName: 'output-properties',        // [!code ++]
-+         selector: 'property',                  // [!code ++]
-+         modifiers: ['decorated'],              // [!code ++]
-+         decoratorNamePattern: 'Output',        // [!code ++]
-+      },                                        // [!code ++]
-+      {                                         // [!code ++]
-+         groupName: 'unsorted-methods-and-other-properties', // [!code ++]
-+         type: 'unsorted',                      // [!code ++]
-+         anyOf: [                               // [!code ++]
-+           {                                    // [!code ++]
-+              selector: 'method',               // [!code ++]
-+           },                                   // [!code ++]
-+           {                                    // [!code ++]
-+              selector: 'property',             // [!code ++]
-+           },                                   // [!code ++]
-+         ]                                      // [!code ++]
-+      },                                        // [!code ++]
-+    ]                                           // [!code ++]
-+  ]                                             // [!code ++]
++  customGroups: [                                          // [!code ++]
++    {                                                      // [!code ++]
++      // `constructor()` members must not match            // [!code ++]
++      // `unsorted-methods-and-other-properties`           // [!code ++]
++      // so make them match this first                     // [!code ++]
++       groupName: 'constructor',                           // [!code ++]
++       selector: 'constructor',                            // [!code ++]
++    },                                                     // [!code ++]
++    {                                                      // [!code ++]
++       groupName: 'input-properties',                      // [!code ++]
++       selector: 'property',                               // [!code ++]
++       modifiers: ['decorated'],                           // [!code ++]
++       decoratorNamePattern: 'Input',                      // [!code ++]
++    },                                                     // [!code ++]
++    {                                                      // [!code ++]
++       groupName: 'output-properties',                     // [!code ++]
++       selector: 'property',                               // [!code ++]
++       modifiers: ['decorated'],                           // [!code ++]
++       decoratorNamePattern: 'Output',                     // [!code ++]
++    },                                                     // [!code ++]
++    {                                                      // [!code ++]
++       groupName: 'unsorted-methods-and-other-properties', // [!code ++]
++       type: 'unsorted',                                   // [!code ++]
++       anyOf: [                                            // [!code ++]
++         {                                                 // [!code ++]
++            selector: 'method',                            // [!code ++]
++         },                                                // [!code ++]
++         {                                                 // [!code ++]
++            selector: 'property',                          // [!code ++]
++         },                                                // [!code ++]
++       ]                                                   // [!code ++]
++    },                                                     // [!code ++]
++  ]                                                        // [!code ++]
  }
 ```
 
-### matcher
-
-<sub>default: `'minimatch'`</sub>
-
-Determines the matcher used for patterns in the `partitionByComment` and `customGroups` options.
-
-- `'minimatch'` — Use the [minimatch](https://github.com/isaacs/minimatch) library for pattern matching.
-- `'regex'` — Use regular expressions for pattern matching.
 
 ## Usage
 
@@ -616,23 +777,35 @@ Determines the matcher used for patterns in the `partitionByComment` and `custom
                 {
                   type: 'alphabetical',
                   order: 'asc',
+                  fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
                   partitionByComment: false,
-                  matcher: 'minimatch',
+                  partitionByNewLine: false,
+                  newlinesBetween: 'ignore',
+                  ignoreCallbackDependenciesPatterns: [],
                   groups: [
-                    'static-block',
                     'index-signature',
-                    'static-property',
-                    ['protected-property', 'protected-accessor-property'],
-                    ['private-property', 'private-accessor-property'],
+                    ['static-property', 'static-accessor-property'],
+                    ['static-get-method', 'static-set-method'],
+                    ['protected-static-property', 'protected-static-accessor-property'],
+                    ['protected-static-get-method', 'protected-static-set-method'],
+                    ['private-static-property', 'private-static-accessor-property'],
+                    ['private-static-get-method', 'private-static-set-method'],
+                    'static-block',
                     ['property', 'accessor-property'],
-                    'constructor',
-                    'static-method',
-                    'protected-method',
-                    'private-method',
-                    'method',
                     ['get-method', 'set-method'],
+                    ['protected-property', 'protected-accessor-property'],
+                    ['protected-get-method', 'protected-set-method'],
+                    ['private-property', 'private-accessor-property'],
+                    ['private-get-method', 'private-set-method'],
+                    'constructor',
+                    ['static-method', 'static-function-property'],
+                    ['protected-static-method', 'protected-static-function-property'],
+                    ['private-static-method', 'private-static-function-property'],
+                    ['method', 'function-property'],
+                    ['protected-method', 'protected-function-property'],
+                    ['private-method', 'private-function-property'],
                     'unknown',
                   ],
                   customGroups: [],
@@ -658,23 +831,35 @@ Determines the matcher used for patterns in the `partitionByComment` and `custom
               {
                 type: 'alphabetical',
                 order: 'asc',
+                fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
                 partitionByComment: false,
-                matcher: 'minimatch',
+                partitionByNewLine: false,
+                newlinesBetween: 'ignore',
+                ignoreCallbackDependenciesPatterns: [],
                 groups: [
-                  'static-block',
                   'index-signature',
-                  'static-property',
-                  ['protected-property', 'protected-accessor-property'],
-                  ['private-property', 'private-accessor-property'],
+                  ['static-property', 'static-accessor-property'],
+                  ['static-get-method', 'static-set-method'],
+                  ['protected-static-property', 'protected-static-accessor-property'],
+                  ['protected-static-get-method', 'protected-static-set-method'],
+                  ['private-static-property', 'private-static-accessor-property'],
+                  ['private-static-get-method', 'private-static-set-method'],
+                  'static-block',
                   ['property', 'accessor-property'],
-                  'constructor',
-                  'static-method',
-                  'protected-method',
-                  'private-method',
-                  'method',
                   ['get-method', 'set-method'],
+                  ['protected-property', 'protected-accessor-property'],
+                  ['protected-get-method', 'protected-set-method'],
+                  ['private-property', 'private-accessor-property'],
+                  ['private-get-method', 'private-set-method'],
+                  'constructor',
+                  ['static-method', 'static-function-property'],
+                  ['protected-static-method', 'protected-static-function-property'],
+                  ['private-static-method', 'private-static-function-property'],
+                  ['method', 'function-property'],
+                  ['protected-method', 'protected-function-property'],
+                  ['private-method', 'private-function-property'],
                   'unknown',
                 ],
                 customGroups: [],
@@ -689,7 +874,7 @@ Determines the matcher used for patterns in the `partitionByComment` and `custom
   ]}
   type="config-type"
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Version

@@ -807,11 +807,23 @@ function quux(foo) {
 
 quux(0);
 
+function quux() {
+  const foo = 1;
+  /** {@link foo} */
+  const bar = foo;
+  console.log(bar);
+}
+
+quux();
+
 /**
  * @import BadImportIgnoredByThisRule
  */
 /**
  * @import LinterDef, { Sth as Something, Another as Another2 } from "eslint"
+ */
+/**
+ * @import LinterDef2, * as LinterDef3 from "eslint"
  */
 /**
  * @import { Linter } from "eslint"
@@ -828,6 +840,12 @@ quux(0);
 
 /**
  * @type {LinterDef}
+ */
+/**
+ * @type {LinterDef2}
+ */
+/**
+ * @type {LinterDef3}
  */
 /**
  * @type {Something}

@@ -18,7 +18,7 @@ keywords:
 import CodeExample from '../../components/CodeExample.svelte'
 import Important from '../../components/Important.astro'
 import CodeTabs from '../../components/CodeTabs.svelte'
-import { dedent } from 'ts-dedent'
+import dedent from 'dedent'
 
 Enforce sorted intersection types in TypeScript.
 
@@ -67,7 +67,7 @@ If you use the [`sort-type-constituents`](https://typescript-eslint.io/rules/sor
     } & Employee
   `}
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Options
@@ -80,54 +80,101 @@ This rule accepts an options object with the following properties:
 
 Specifies the sorting method.
 
-- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”).
-- `'natural'` — Sort items in a natural order (e.g., “item2” < “item10”).
-- `'line-length'` — Sort items by the length of the code line (shorter lines first).
+- `'alphabetical'` — Sort items alphabetically (e.g., “a” < “b” < “c”) using [localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare).
+- `'natural'` — Sort items in a [natural](https://github.com/yobacca/natural-orderby) order (e.g., “item2” < “item10”).
+- `'line-length'` — Sort items by code line length (shorter lines first).
+- `'custom'` — Sort items using the alphabet specified in the [`alphabet`](#alphabet) option.
+- `'unsorted'` — Do not sort items. [`grouping`](#groups) and [`newlines behavior`](#newlinesbetween) are still enforced.
 
 ### order
 
 <sub>default: `'asc'`</sub>
 
-Determines whether the sorted items should be in ascending or descending order.
+Specifies whether to sort items in ascending or descending order.
 
 - `'asc'` — Sort items in ascending order (A to Z, 1 to 9).
 - `'desc'` — Sort items in descending order (Z to A, 9 to 1).
+
+### fallbackSort
+
+<sub>
+  type:
+  ```
+  {
+    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    order?: 'asc' | 'desc'
+  }
+  ```
+</sub>
+<sub>default: `{ type: 'unsorted' }`</sub>
+
+Specifies fallback sort options for elements that are equal according to the primary sort
+[`type`](#type).
+
+Example: enforce alphabetical sort between two elements with the same length.
+```ts
+{
+  type: 'line-length',
+  order: 'desc',
+  fallbackSort: { type: 'alphabetical', order: 'asc' }
+}
+```
+
+### alphabet
+
+<sub>default: `''`</sub>
+
+Used only when the [`type`](#type) option is set to `'custom'`. Specifies the custom alphabet for sorting.
+
+Use the `Alphabet` utility class from `eslint-plugin-perfectionist/alphabet` to quickly generate a custom alphabet.
+
+Example: `0123456789abcdef...`
 
 ### ignoreCase
 
 <sub>default: `true`</sub>
 
-Controls whether sorting should be case-sensitive or not.
+Specifies whether sorting should be case-sensitive.
 
 - `true` — Ignore case when sorting alphabetically or naturally (e.g., “A” and “a” are the same).
-- `false` — Consider case when sorting (e.g., “A” comes before “a”).
+- `false` — Consider case when sorting (e.g., “a” comes before “A”).
 
 ### specialCharacters
 
 <sub>default: `keep`</sub>
 
-Controls whether special characters should be trimmed, removed or kept before sorting.
+Specifies whether to trim, remove, or keep special characters before sorting.
 
 - `'keep'` — Keep special characters when sorting (e.g., “_a” comes before “a”).
 - `'trim'` — Trim special characters when sorting alphabetically or naturally (e.g., “_a” and “a” are the same).
 - `'remove'` — Remove special characters when sorting (e.g., “/a/b” and “ab” are the same).
 
+### locales
+
+<sub>default: `'en-US'`</sub>
+
+Specifies the sorting locales. Refer To [String.prototype.localeCompare() - locales](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare#locales).
+
+- `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
+- `string[]` — An array of BCP 47 language tags.
+
 ### partitionByComment
 
 <sub>default: `false`</sub>
 
-Allows you to use comments to separate the members of intersection types into logical groups. This can help in organizing and maintaining large enums by creating partitions within the enum based on comments.
+Enables the use of comments to separate the members of intersection types into logical groups. This can help in organizing and maintaining large intersection types by creating partitions based on comments.
 
 - `true` — All comments will be treated as delimiters, creating partitions.
--	`false` — Comments will not be used as delimiters.
-- `string` — A glob pattern to specify which comments should act as delimiters.
-- `string[]` — A list of glob patterns to specify which comments should act as delimiters.
+- `false` — Comments will not be used as delimiters.
+- `RegExpPattern = string | { pattern: string; flags: string}` — A regexp pattern to specify which comments should act as delimiters.
+- `RegExpPattern[]` — A list of regexp patterns to specify which comments should act as delimiters.
+- `{ block: boolean | RegExpPattern | RegExpPattern[]; line: boolean | RegExpPattern | RegExpPattern[] }` — Specify which block and line comments should act as delimiters.
 
 ### partitionByNewLine
 
 <sub>default: `false`</sub>
 
-When `true`, the rule will not sort the members of an intersection type if there is an empty line between them. This can be useful for keeping logically separated groups of members in their defined order.
+When `true`, the rule will not sort the members of an intersection type if there is an empty line between them. This helps maintain the defined order of logically separated groups of members.
 
 ```ts
 type Employee =
@@ -145,6 +192,22 @@ type Employee =
 
 Each group of intersection types (separated by empty lines) is treated independently, and the order within each group is preserved.
 
+### newlinesBetween
+
+<sub>default: `'ignore'`</sub>
+
+Specifies how to handle new lines between intersection type groups.
+
+- `ignore` — Do not report errors related to new lines between intersection type groups.
+- `always` — Enforce one new line between each group, and forbid new lines inside a group.
+- `never` — No new lines are allowed in intersection types.
+
+You can also enforce the newline behavior between two specific groups through the `groups` options.
+
+See the [`groups`](#newlines-between-groups) option.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
 ### groups
 
 <sub>
@@ -152,7 +215,7 @@ Each group of intersection types (separated by empty lines) is treated independe
 </sub>
 <sub>default: `[]`</sub>
 
-Allows you to specify a list of intersection type groups for sorting. Groups help organize types into categories, making your type definitions more readable and maintainable.
+Specifies a list of intersection type groups for sorting. Groups help organize types into categories, making your type definitions more readable and maintainable.
 
 Predefined groups:
 
@@ -263,14 +326,24 @@ type Example =
 }
 ```
 
-### matcher
+#### Newlines between groups
 
-<sub>default: `'minimatch'`</sub>
+You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
 
-Determines the matcher used for patterns in the `partitionByComment` option.
+See the [`newlinesBetween`](#newlinesbetween) option.
 
-- `'minimatch'` — Use the [minimatch](https://github.com/isaacs/minimatch) library for pattern matching.
-- `'regex'` — Use regular expressions for pattern matching.
+This feature is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+```ts
+{
+  newlinesBetween: 'always',
+  groups: [
+    'a',
+    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    'b',
+  ]
+}
+```
 
 ## Usage
 
@@ -292,11 +365,12 @@ Determines the matcher used for patterns in the `partitionByComment` option.
                 {
                   type: 'alphabetical',
                   order: 'asc',
+                  fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
+                  partitionByComment: false,
                   partitionByNewLine: false,
-                  partitionByNewLine: false,
-                  matcher: 'minimatch',
+                  newlinesBetween: 'ignore',
                   groups: [],
                 },
               ],
@@ -320,11 +394,12 @@ Determines the matcher used for patterns in the `partitionByComment` option.
               {
                 type: 'alphabetical',
                 order: 'asc',
+                fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
-                partitionByNewLine: false,
                 partitionByComment: false,
-                matcher: 'minimatch',
+                partitionByNewLine: false,
+                newlinesBetween: 'ignore',
                 groups: [],
               },
             ],
@@ -337,7 +412,7 @@ Determines the matcher used for patterns in the `partitionByComment` option.
   ]}
   type="config-type"
   client:load
-  lang="ts"
+  lang="tsx"
 />
 
 ## Version

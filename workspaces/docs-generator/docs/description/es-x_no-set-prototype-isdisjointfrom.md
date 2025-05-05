@@ -28,6 +28,34 @@ a.isDisjointFrom(b)
 
 </eslint-playground>
 
+## 🔧 Options
+
+This rule has an option.
+
+```jsonc
+{
+  "rules": {
+    "es-x/no-set-prototype-isdisjointfrom": [
+      "error",
+      {
+        "aggressive": false,
+        "allowTestedProperty": false
+      }
+    ]
+  }
+}
+```
+
+### aggressive: boolean
+
+Configure the aggressive mode for only this rule.
+This is prior to the `settings['es-x'].aggressive` setting.
+
+### allowTestedProperty: boolean
+
+Configure the allowTestedProperty mode for only this rule.
+This is prior to the `settings['es-x'].allowTestedProperty` setting.
+
 ## 🚀 Version
 
 This rule was introduced in v7.7.0.

@@ -1,6 +1,6 @@
 {
   "name": "eslint-9",
-  "version": "9.24.0",
+  "version": "9.26.0",
   "patterns": [
     {
       "patternId": "accessor-pairs",
@@ -2537,6 +2537,34 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_prefer-signals",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "preferReadonlySignalProperties",
+          "default": true
+        },
+        {
+          "name": "preferInputSignals",
+          "default": true
+        },
+        {
+          "name": "preferQuerySignals",
+          "default": true
+        },
+        {
+          "name": "useTypeChecking",
+          "default": false
+        },
+        {
+          "name": "additionalSignalCreationFunctions",
+          "default": []
+        }
+      ],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_prefer-standalone",
       "level": "Warning",
       "category": "BestPractice",
@@ -2554,6 +2582,13 @@
       "patternId": "@angular-eslint_relative-url-prefix",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_require-lifecycle-on-prototype",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -2744,7 +2779,49 @@
       "enabled": false
     },
     {
-      "patternId": "@lwc_lwc_no-unsupported-ssr-properties",
+      "patternId": "@lwc_lwc_ssr-no-host-mutation-in-connected-callback",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-restricted-browser-globals",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-unsupported-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-node-env",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-unsupported-node-api",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-static-imports-of-user-specific-scoped-modules",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-form-factor",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -2824,6 +2901,13 @@
       "patternId": "@shopify_no-ancestor-directory-import",
       "level": "Info",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@shopify_no-context-menu",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -3218,6 +3302,10 @@
         {
           "name": "offsetTernaryExpressions",
           "default": false
+        },
+        {
+          "name": "offsetTernaryExpressionsOffsetCallExpressions",
+          "default": true
         },
         {
           "name": "ignoreComments",
@@ -3925,6 +4013,10 @@
         {
           "name": "int32Hint",
           "default": false
+        },
+        {
+          "name": "ignoreTypes",
+          "default": false
         }
       ],
       "enabled": false
@@ -4068,6 +4160,13 @@
     },
     {
       "patternId": "@tanstack_query_infinite-query-property-order",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@tanstack_query_no-void-query-fn",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -5426,6 +5525,13 @@
       "enabled": false
     },
     {
+      "patternId": "@vitest_prefer-describe-function-title",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@vitest_prefer-to-contain",
       "level": "Warning",
       "category": "BestPractice",
@@ -5434,6 +5540,27 @@
     },
     {
       "patternId": "@vitest_prefer-expect-assertions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_valid-expect-in-promise",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-strict-boolean-matchers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_require-mock-type-parameters",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -6253,6 +6380,20 @@
       "patternId": "cypress_no-debug",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "cypress_no-xpath",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "cypress_no-chained-get",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -7395,6 +7536,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-dataview-prototype-getfloat16-setfloat16",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-date-now",
       "level": "Error",
       "category": "ErrorProne",
@@ -7437,6 +7585,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-dynamic-import-options",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-error-cause",
       "level": "Error",
       "category": "ErrorProne",
@@ -7459,6 +7614,13 @@
     },
     {
       "patternId": "es-x_no-export-ns-from",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-float16array",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7507,6 +7669,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-import-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-import-meta",
       "level": "Error",
       "category": "ErrorProne",
@@ -7536,6 +7705,13 @@
     },
     {
       "patternId": "es-x_no-intl-displaynames",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-durationformat",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7619,7 +7795,98 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-iterator",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-drop",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-every",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-filter",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-find",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-flatmap",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-foreach",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-map",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-reduce",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-some",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-take",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-prototype-toarray",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-json",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-json-modules",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7731,6 +7998,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-math-f16round",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-math-fround",
       "level": "Error",
       "category": "ErrorProne",
@@ -7809,6 +8083,482 @@
     },
     {
       "patternId": "es-x_no-new-target",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-array-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-array-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-arraybuffer-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-arraybuffer-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-atomics-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-bigint-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-bigint-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-boolean-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-boolean-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-dataview-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-dataview-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-date-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-date-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-finalizationregistry-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-finalizationregistry-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-function-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-collator-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-collator-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-datetimeformat-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-datetimeformat-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-displaynames-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-displaynames-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-durationformat-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-durationformat-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-listformat-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-listformat-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-locale-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-locale-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-numberformat-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-numberformat-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-pluralrules-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-pluralrules-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-relativetimeformat-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-relativetimeformat-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-segmenter-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-intl-segmenter-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-iterator-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-iterator-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-json-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-map-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-map-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-math-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-number-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-number-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-object-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-promise-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-promise-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-proxy-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-reflect-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-regexp-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-regexp-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-set-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-set-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-sharedarraybuffer-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-sharedarraybuffer-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-string-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-string-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-symbol-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-symbol-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-typed-array-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-typed-array-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-weakmap-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-weakmap-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-weakref-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-weakref-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-weakset-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-weakset-prototype-properties",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8116,6 +8866,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-promise-try",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-promise-withresolvers",
       "level": "Error",
       "category": "ErrorProne",
@@ -8158,7 +8915,21 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-regexp-escape",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-regexp-lookbehind-assertions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-regexp-modifiers",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8523,6 +9294,13 @@
     },
     {
       "patternId": "es-x_no-trailing-commas",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-trailing-dynamic-import-commas",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8928,6 +9706,13 @@
     },
     {
       "patternId": "functional_no-classes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "functional_no-class-inheritance",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -11933,7 +12718,7 @@
       "category": "ErrorProne",
       "parameters": [
         {
-          "name": "ignoreSkipped",
+          "name": "ignorePending",
           "default": false
         }
       ],
@@ -11947,7 +12732,7 @@
       "enabled": false
     },
     {
-      "patternId": "mocha_no-async-describe",
+      "patternId": "mocha_no-async-suite",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -12045,13 +12830,6 @@
       "enabled": false
     },
     {
-      "patternId": "mocha_no-skipped-tests",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "mocha_no-synchronous-tests",
       "level": "Warning",
       "category": "BestPractice",
@@ -12073,28 +12851,40 @@
       "enabled": false
     },
     {
-      "patternId": "mocha_valid-suite-description",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "mocha_valid-test-description",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "mocha_no-empty-description",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "mocha_consistent-spacing-between-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "mocha_consistent-interface",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [
+        {
+          "name": "interface",
+          "default": "BDD"
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "mocha_valid-suite-title",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "mocha_valid-test-title",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "mocha_no-empty-title",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -12246,6 +13036,10 @@
         {
           "name": "allowAtRootLevel",
           "default": false
+        },
+        {
+          "name": "ignores",
+          "default": []
         }
       ],
       "enabled": false
@@ -12454,6 +13248,13 @@
       "enabled": false
     },
     {
+      "patternId": "perfectionist_sort-heritage-clauses",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "perfectionist_sort-array-includes",
       "level": "Warning",
       "category": "BestPractice",
@@ -12496,6 +13297,13 @@
       "enabled": false
     },
     {
+      "patternId": "perfectionist_sort-decorators",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "perfectionist_sort-interfaces",
       "level": "Warning",
       "category": "BestPractice",
@@ -12504,6 +13312,13 @@
     },
     {
       "patternId": "perfectionist_sort-jsx-props",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "perfectionist_sort-modules",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -12700,6 +13515,18 @@
     },
     {
       "patternId": "playwright_no-skipped-test",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [
+        {
+          "name": "allowConditional",
+          "default": false
+        }
+      ],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_no-slowed-test",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [
@@ -12963,6 +13790,13 @@
     },
     {
       "patternId": "promise_prefer-await-to-then",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "promise_prefer-catch",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -16802,6 +17636,13 @@
       "enabled": false
     },
     {
+      "patternId": "storybook_meta-satisfies-type",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "storybook_no-redundant-story-name",
       "level": "Warning",
       "category": "BestPractice",
@@ -17277,6 +18118,10 @@
         {
           "name": "ignorePropertyPatterns",
           "default": []
+        },
+        {
+          "name": "allowUnusedNestedProperties",
+          "default": false
         }
       ],
       "enabled": false
@@ -17942,13 +18787,6 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_no-array-push-push",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "unicorn_no-array-reduce",
       "level": "Warning",
       "category": "BestPractice",
@@ -18027,13 +18865,6 @@
     },
     {
       "patternId": "unicorn_no-keyword-prefix",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "unicorn_no-length-as-slice-end",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18152,6 +18983,20 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-unnecessary-array-flat-depth",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-unnecessary-array-splice-count",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-unnecessary-await",
       "level": "Warning",
       "category": "BestPractice",
@@ -18160,6 +19005,13 @@
     },
     {
       "patternId": "unicorn_no-unnecessary-polyfills",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-unnecessary-slice-end",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18376,6 +19228,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_prefer-import-meta-properties",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_prefer-includes",
       "level": "Warning",
       "category": "BestPractice",
@@ -18517,6 +19376,13 @@
     },
     {
       "patternId": "unicorn_prefer-set-size",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-single-call",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18666,6 +19532,27 @@
       "patternId": "unicorn_throw-new-error",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-instanceof-array",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-length-as-slice-end",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-array-push-push",
+      "level": "Info",
+      "category": "CodeStyle",
       "parameters": [],
       "enabled": false
     },
@@ -18879,6 +19766,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue_define-props-destructuring",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_dot-location",
       "level": "Info",
       "category": "CodeStyle",
@@ -18924,20 +19818,7 @@
       "patternId": "vue_html-button-has-type",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "button",
-          "default": true
-        },
-        {
-          "name": "submit",
-          "default": true
-        },
-        {
-          "name": "reset",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -19104,10 +19985,6 @@
         {
           "name": "unnamedParam",
           "default": "always"
-        },
-        {
-          "name": "ignoreJSX",
-          "default": false
         }
       ],
       "enabled": false
@@ -19407,35 +20284,24 @@
       "enabled": false
     },
     {
+      "patternId": "vue_no-implicit-coercion",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_no-import-compiler-macros",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_no-irregular-whitespace",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "skipComments",
-          "default": false
-        },
-        {
-          "name": "skipStrings",
-          "default": true
-        },
-        {
-          "name": "skipTemplates",
-          "default": false
-        },
-        {
-          "name": "skipRegExps",
-          "default": false
-        },
-        {
-          "name": "skipHTMLAttributeValues",
-          "default": false
-        },
-        {
-          "name": "skipHTMLTextContents",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -19831,23 +20697,9 @@
       "enabled": false
     },
     {
-      "patternId": "vue_no-v-for-template-key",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "vue_no-v-html",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "vue_no-v-model-argument",
-      "level": "Error",
-      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -20009,8 +20861,8 @@
     },
     {
       "patternId": "vue_quote-props",
-      "level": "Info",
-      "category": "CodeStyle",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -20074,28 +20926,7 @@
       "patternId": "vue_require-macro-variable-name",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "defineProps",
-          "default": "props"
-        },
-        {
-          "name": "defineEmits",
-          "default": "emit"
-        },
-        {
-          "name": "defineSlots",
-          "default": "slots"
-        },
-        {
-          "name": "useSlots",
-          "default": "slots"
-        },
-        {
-          "name": "useAttrs",
-          "default": "attrs"
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -20225,22 +21056,6 @@
         {
           "name": "unnamedParam",
           "default": "asc"
-        },
-        {
-          "name": "caseSensitive",
-          "default": true
-        },
-        {
-          "name": "minKeys",
-          "default": 2
-        },
-        {
-          "name": "natural",
-          "default": false
-        },
-        {
-          "name": "runOutsideVue",
-          "default": true
         }
       ],
       "enabled": false
@@ -20386,13 +21201,6 @@
       "enabled": false
     },
     {
-      "patternId": "vue_valid-model-definition",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "vue_valid-next-tick",
       "level": "Error",
       "category": "ErrorProne",
@@ -20401,13 +21209,6 @@
     },
     {
       "patternId": "vue_valid-template-root",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "vue_valid-v-bind-sync",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -20861,14 +21662,28 @@
       "patternId": "wdio_no-debug",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "instances",
+          "default": [
+            "browser"
+          ]
+        }
+      ],
       "enabled": false
     },
     {
       "patternId": "wdio_no-pause",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "instances",
+          "default": [
+            "browser"
+          ]
+        }
+      ],
       "enabled": false
     },
     {
