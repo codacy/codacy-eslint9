@@ -31,7 +31,7 @@ async function main() {
     await docGenerator.downloadPluginDocs({
       packageName: "@shopify/eslint-plugin",
       relativeUrl: "/Shopify/web-configs/refs/tags/main/packages/eslint-plugin/docs/rules/",
-      versionPrefix: "@shopify/eslint-plugin@"
+      versionPrefix: "%40shopify/eslint-plugin%40"
     })
     await sleep(500)
 
