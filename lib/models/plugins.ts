@@ -53,6 +53,7 @@ const packageNames: string[] = [
   "eslint-plugin-nuxt",
   "eslint-plugin-perfectionist",
   "eslint-plugin-playwright",
+  "eslint-plugin-prettier",
   "eslint-plugin-promise",
   "eslint-plugin-react",
   "eslint-plugin-react-hooks",

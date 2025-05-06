@@ -13607,6 +13607,17 @@
     "timeToFix": 5
   },
   {
+    "parameters": [
+      {
+        "name": "singleQuote",
+        "description": "singleQuote"
+      }
+    ],
+    "patternId": "prettier_prettier",
+    "title": "Prettier: Prettier",
+    "timeToFix": 5
+  },
+  {
     "parameters": [],
     "patternId": "promise_param-names",
     "title": "Promise: Param names",

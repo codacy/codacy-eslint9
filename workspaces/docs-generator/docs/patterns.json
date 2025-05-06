@@ -13754,6 +13754,18 @@
       "enabled": false
     },
     {
+      "patternId": "prettier_prettier",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [
+        {
+          "name": "singleQuote",
+          "default": "true"
+        }
+      ],
+      "enabled": false
+    },
+    {
       "patternId": "promise_param-names",
       "level": "Warning",
       "category": "BestPractice",

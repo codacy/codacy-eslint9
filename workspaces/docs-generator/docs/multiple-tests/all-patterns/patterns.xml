@@ -1761,6 +1761,7 @@
   <module name="playwright_valid-expect" />
   <module name="playwright_valid-expect-in-promise" />
   <module name="playwright_valid-title" />
+  <module name="prettier_prettier" />
   <module name="promise_param-names" />
   <module name="promise_no-return-wrap" />
   <module name="promise_always-return" />
