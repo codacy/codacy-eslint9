@@ -115,7 +115,7 @@ export class DocsGenerator {
 
       //TCE-1254 develop parameters for prettier
       const patternParameters = patternId === "prettier/prettier"
-      ? [new ParameterSpec("singleQuote", "true")]
+      ? [new ParameterSpec("singleQuote", true)]
       : DocsGenerator.generateParameters(patternId, meta?.schema);
 
       patterns.push(new PatternSpec(
@@ -183,7 +183,7 @@ export class DocsGenerator {
 
       //TCE-1254 develop parameters for prettier
       const descriptionParameters = patternId === "prettier/prettier"
-          ? [new ParameterSpec("singleQuote", "true")]
+          ? [new ParameterSpec("singleQuote", true)]
           : DocsGenerator.generateParameters(patternId, meta?.schema);
 
       const mapDescriptionParameters = descriptionParameters.map(

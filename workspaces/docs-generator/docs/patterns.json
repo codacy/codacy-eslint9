@@ -13760,7 +13760,7 @@
       "parameters": [
         {
           "name": "singleQuote",
-          "default": "true"
+          "default": true
         }
       ],
       "enabled": false
