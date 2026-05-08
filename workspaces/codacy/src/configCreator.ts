@@ -35,7 +35,8 @@ function generateFilesToAnalyze(
     "**/*.js",
     "**/*.jsx",
     "**/*.json",
-    "**/*.svelte"
+    "**/*.svelte",
+    "**/*.vue"
   ]
   const files = codacyrc?.files && codacyrc.files.length
     ? codacyrc.files
@@ -111,7 +112,7 @@ async function generateEslintOptions(
     if (nonTypescriptPatterns.length > 0) {
       // Configuration for non-TypeScript files
       options.overrideConfig?.push({
-        files: ["*.@(ts|tsx|js|jsx|mjs|cjs)"],
+        files: ["*.@(ts|tsx|js|jsx|mjs|cjs|vue)"],
         rules: convertPatternsToEslintRules(nonTypescriptPatterns),
       });
     }
@@ -172,7 +173,7 @@ async function generateEslintOptions(
     if (nonTypescriptPatterns.length > 0) {
       // Configuration for non-TypeScript files
       options.overrideConfig?.push({
-        files: ["*.@(ts|tsx|js|jsx|mjs|cjs)"],
+        files: ["*.@(ts|tsx|js|jsx|mjs|cjs|vue)"],
         rules: convertPatternsToEslintRules(nonTypescriptPatterns),
       });
     }

@@ -3,6 +3,7 @@
 
 import type { TSESLint } from '@typescript-eslint/utils';
 import tseslint from 'typescript-eslint';
+import vue from 'vue-eslint-parser';
 
 export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
   {
@@ -90,15 +91,15 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
     settings: {
       "node": {
         "paths": ["/src"],
-        "extensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".node", ".mjs", ".cjs", ".mts", ".cts"],
-        "tryExtensions": [".ts", ".tsx", ".js", ".jsx", ".json", ".node", ".mjs", ".cjs", ".mts", ".cts"]
+        "extensions": [".vue",".ts", ".tsx", ".js", ".jsx", ".json", ".node", ".mjs", ".cjs", ".mts", ".cts"],
+        "tryExtensions": [".vue",".ts", ".tsx", ".js", ".jsx", ".json", ".node", ".mjs", ".cjs", ".mts", ".cts"]
       },
       "import/parsers": {
         "@typescript-eslint/parser": [".ts", ".tsx"]
       },
       "import/resolver": {
         "node": {
-          "extensions": [".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".mts", ".cts", ".node"]
+          "extensions": [".vue",".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".mts", ".cts", ".node"]
         },
         "typescript": {
           "alwaysTryTypes": true
@@ -201,20 +202,18 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
     rules: {
       "json/json": "off"
     }
+  },
+    {
+        "files": ["**/*.vue"],
+        languageOptions: {
+          parser: vue,
+          parserOptions: {
+            parser: tseslint.parser,
+            sourceType: "module",
+            extraFileExtensions: [".vue"]
+          }
+        }
   }
-  // JSX with Babel
-  // https://www.npmjs.com/package/@babel/eslint-parser
-  // "When should I use @babel/eslint-parser?"
-  // {
-  //   "files": ["**/*.jsx"],
-  //   "parser": "@babel/eslint-parser",
-  //   "parserOptions": {
-  //     "babelOptions": {
-  //       "presets": ["@babel/preset-env"]
-  //     },
-  //     "requireConfigFile": false
-  //   }
-  // }
     
 ]
 

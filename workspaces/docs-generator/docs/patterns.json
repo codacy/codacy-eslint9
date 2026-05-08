@@ -1,6 +1,6 @@
 {
   "name": "eslint-9",
-  "version": "9.38.0",
+  "version": "9.39.4",
   "patterns": [
     {
       "patternId": "accessor-pairs",

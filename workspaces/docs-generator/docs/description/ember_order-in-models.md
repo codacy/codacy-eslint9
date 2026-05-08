@@ -21,26 +21,16 @@ const rules = {
   'ember/order-in-models': [
     2,
     {
-      order: [
-        'spread',
-        'attribute',
-        'relationship',
-        'single-line-function',
-        'multi-line-function'
-      ]
-    }
-  ]
+      order: ['spread', 'attribute', 'relationship', 'single-line-function', 'multi-line-function'],
+    },
+  ],
 };
 ```
 
 If you want some of properties to be treated equally in order you can group them into arrays, like so:
 
 ```js
-order: [
-  'attribute',
-  'relationship',
-  ['single-line-function', 'multi-line-function']
-];
+order: ['attribute', 'relationship', ['single-line-function', 'multi-line-function']];
 ```
 
 ### Custom Properties
@@ -49,7 +39,7 @@ If you would like to specify ordering for a property type that is not listed, yo
 
 ### Additional Properties
 
-You can find the full list of properties [here](../../lib/utils/property-order.js#L10).
+You can find the full list of properties [in property-order.js](../../lib/utils/property-order.js#L10).
 
 ## Description
 
@@ -60,6 +50,8 @@ You should write code grouped and ordered in this way:
 3. Single line computed properties
 4. Multiline computed properties
 5. Other structures (custom methods etc.)
+
+This rule checks ordering only; it does not enforce indentation or other whitespace formatting.
 
 ## Examples
 
@@ -76,7 +68,7 @@ export default Model.extend({
   mood: computed('health', 'hunger', function () {
     const result = this.health * this.hunger;
     return result;
-  })
+  }),
 });
 ```
 
@@ -92,12 +84,6 @@ export default Model.extend({
 
   behaviors: hasMany('behaviour'),
 
-  shape: attr('string')
+  shape: attr('string'),
 });
 ```
-
-## Help Wanted
-
-| Issue | Link |
-| :-- | :-- |
-| ❌ Missing native JavaScript class support | [#560](https://github.com/ember-cli/eslint-plugin-ember/issues/560) |
