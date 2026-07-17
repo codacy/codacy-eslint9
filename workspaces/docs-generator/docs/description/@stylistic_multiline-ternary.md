@@ -1,11 +1,9 @@
 ---
-title: multiline-ternary
-rule_type: layout
 related_rules:
   - operator-linebreak
 ---
 
-# js/multiline-ternary
+# multiline-ternary
 
 JavaScript allows operands of ternary expressions to be separated by newlines, which can improve the readability of your program.
 
@@ -51,7 +49,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 ::: incorrect
 
 ```js
-/*eslint multiline-ternary: ["error", "always"]*/
+/* eslint @stylistic/multiline-ternary: ["error", "always"] */
 
 foo > bar ? value1 : value2;
 
@@ -69,7 +67,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 ::: correct
 
 ```js
-/*eslint multiline-ternary: ["error", "always"]*/
+/* eslint @stylistic/multiline-ternary: ["error", "always"] */
 
 foo > bar ?
     value1 :
@@ -97,7 +95,7 @@ Examples of **incorrect** code for this rule with the `"always-multiline"` optio
 ::: incorrect
 
 ```js
-/*eslint multiline-ternary: ["error", "always-multiline"]*/
+/* eslint @stylistic/multiline-ternary: ["error", "always-multiline"] */
 
 foo > bar ? value1 :
     value2;
@@ -116,7 +114,7 @@ Examples of **correct** code for this rule with the `"always-multiline"` option:
 ::: correct
 
 ```js
-/*eslint multiline-ternary: ["error", "always-multiline"]*/
+/* eslint @stylistic/multiline-ternary: ["error", "always-multiline"] */
 
 foo > bar ? value1 : value2;
 
@@ -155,7 +153,7 @@ Examples of **incorrect** code for this rule with the `"never"` option:
 ::: incorrect
 
 ```js
-/*eslint multiline-ternary: ["error", "never"]*/
+/* eslint @stylistic/multiline-ternary: ["error", "never"] */
 
 foo > bar ? value :
     value2;
@@ -176,7 +174,7 @@ Examples of **correct** code for this rule with the `"never"` option:
 ::: correct
 
 ```js
-/*eslint multiline-ternary: ["error", "never"]*/
+/* eslint @stylistic/multiline-ternary: ["error", "never"] */
 
 foo > bar ? value1 : value2;
 

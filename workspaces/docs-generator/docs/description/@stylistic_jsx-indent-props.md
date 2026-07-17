@@ -1,4 +1,4 @@
-# jsx/jsx-indent-props
+# jsx-indent-props
 
 Enforce props indentation in JSX.
 
@@ -8,24 +8,27 @@ This rule is aimed to enforce consistent indentation style. The default style is
 
 Examples of **incorrect** code for this rule:
 
+::: incorrect
+
 ```jsx
-// 2 spaces indentation
+/* eslint @stylistic/jsx-indent-props: "error" */
+
 <Hello
   firstName="John"
-/>
+/>;
 
-// no indentation
 <Hello
 firstName="John"
-/>
+/>;
 
-// 1 tab indentation
 <Hello
-  firstName="John"
-/>
+	firstName="John"
+/>;
 ```
 
-## Rule Options
+:::
+
+## Options
 
 It takes an option as the second parameter which can either be the indent mode or an object to define further settings.
 The indent mode can be `"tab"` for tab-based indentation, a positive number for space indentations or `"first"` for aligning the first prop for each line with the tag's first prop.
@@ -34,87 +37,139 @@ If the second parameter is an object, it can be used to specify the indent mode 
 
 ```js
 ...
-"@stylistic/jsx/jsx-indent-props": [<enabled>, 'tab'|<number>|'first'|<object>]
+"@stylistic/jsx-indent-props": [<enabled>, 'tab'|<number>|'first'|<object>]
 ...
 ```
 
 Examples of **incorrect** code for this rule:
 
+::: incorrect
+
 ```jsx
-// 2 spaces indentation
-// [2, 2]
+/* eslint @stylistic/jsx-indent-props: ["error", 2] */
+
 <Hello
     firstName="John"
 />
+```
 
-// tab indentation
-// [2, 'tab']
+:::
+
+::: incorrect
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", "tab"] */
+
 <Hello
   firstName="John"
 />
+```
 
-// aligned with first prop
-// [2, 'first']
+:::
+
+::: incorrect
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", "first"] */
+
 <Hello
   firstName="John"
     lastName="Doe"
 />
 ```
 
+:::
+
 Examples of **correct** code for this rule:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", 2] */
 
-// 2 spaces indentation
-// [2, 2]
 <Hello
   firstName="John"
-/>
+/>;
 
 <Hello
-  firstName="John" />
+  firstName="John" />;
+```
 
-// tab indentation
-// [2, 'tab']
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", "tab"] */
+
 <Hello
-  firstName="John"
+	firstName="John"
 />
+```
 
-// no indentation
-// [2, 0]
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", 0] */
+
 <Hello
 firstName="John"
 />
+```
 
-// aligned with first prop
-// [2, 'first']
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", "first"] */
+
 <Hello
   firstName="John"
   lastName="Doe"
-/>
+/>;
 
 <Hello
        firstName="John"
        lastName="Doe"
-/>
+/>;
 
 <Hello firstName="Jane"
-       lastName="Doe" />
+       lastName="Doe" />;
+```
 
-// indent level increase on ternary operator (default setting)
-// [2, 2]
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", 2] */
+
+true
 ? <Hello
     firstName="John"
     lastName="Doe"
   />
+: <Hello />;
+```
 
-// no indent level increase on ternary operator
-// [2, { indentMode: 2, ignoreTernaryOperator: true} ]
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-indent-props: ["error", { indentMode: 2, ignoreTernaryOperator: true }] */
+true
 ? <Hello
   firstName="John"
   lastName="Doe"
 />
+: <Hello />;
 ```
+
+:::
 
 ## When Not To Use It
 

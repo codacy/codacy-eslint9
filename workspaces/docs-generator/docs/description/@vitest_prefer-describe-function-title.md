@@ -1,4 +1,8 @@
-# Enforce using a function as a describe title over an equivalent string (`vitest/prefer-describe-function-title`)
+# vitest/prefer-describe-function-title
+
+📝 Enforce using a function as a describe title over an equivalent string.
+
+⚠️ This rule _warns_ in the 🌐 `all` config.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -11,16 +15,16 @@ This rule aims to enforce passing a named function to `describe()` instead of an
 Passing named functions means the correct title will be used even if the function is renamed.
 This rule will report if a string is passed to a `describe()` block if:
 
-* The string matches a function imported into the file
-* That function's name also matches the test file's name
+- The string matches a function imported into the file
+- That function's name also matches the test file's name
 
 Examples of **incorrect** code for this rule:
 
 ```ts
 // myFunction.test.js
-import { myFunction } from "./myFunction"
+import { myFunction } from './myFunction'
 
-describe("myFunction", () => {
+describe('myFunction', () => {
   // ...
 })
 ```
@@ -29,7 +33,7 @@ Examples of **correct** code for this rule:
 
 ```ts
 // myFunction.test.js
-import { myFunction } from "./myFunction"
+import { myFunction } from './myFunction'
 
 describe(myFunction, () => {
   // ...

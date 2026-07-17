@@ -15,9 +15,15 @@
 
 # `@angular-eslint/component-class-suffix`
 
-Classes decorated with @Component must have suffix "Component" (or custom) in their name. See more at https://angular.dev/style-guide#style-02-03
+Classes decorated with @Component must have suffix "Component" (or custom) in their name. Note: As of v20, this is no longer recommended by the Angular Team.
 
 - Type: suggestion
+
+<br>
+
+## Rationale
+
+Historically, appending 'Component' to component class names was recommended to make component files easily identifiable. However, as of Angular v20, the Angular Team no longer recommends this convention, favoring simpler class names. This rule remains available for teams that have established this naming pattern and wish to maintain consistency in their existing codebase.
 
 <br>
 
@@ -268,7 +274,7 @@ class TestDirective {}
 
 ```ts
 @Pipe({
-  selector: 'sg-test-pipe'
+  name: 'sg-test-pipe'
 })
 class TestPipe {}
 ```

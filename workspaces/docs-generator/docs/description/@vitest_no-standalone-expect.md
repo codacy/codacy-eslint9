@@ -1,6 +1,8 @@
-# Disallow using `expect` outside of `it` or `test` blocks (`vitest/no-standalone-expect`)
+# vitest/no-standalone-expect
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+📝 Disallow using `expect` outside of `it` or `test` blocks.
+
+💼⚠️ This rule is enabled in the ✅ `recommended` config. This rule _warns_ in the 🌐 `all` config.
 
 <!-- end auto-generated rule header -->
 
@@ -9,6 +11,14 @@
 This rule aims to prevent the use of `expect` outside of `it` or `test` blocks.
 
 ### Options
+
+<!-- begin auto-generated rule options list -->
+
+| Name                           | Description                                                 | Type     |
+| :----------------------------- | :---------------------------------------------------------- | :------- |
+| `additionalTestBlockFunctions` | Additional functions that should be treated as test blocks. | String[] |
+
+<!-- end auto-generated rule options list -->
 
 ```json
 {

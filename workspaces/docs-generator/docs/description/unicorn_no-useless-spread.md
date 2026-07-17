@@ -1,4 +1,6 @@
-# Disallow unnecessary spread
+# no-useless-spread
+
+📝 Disallow unnecessary spread.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -12,6 +14,7 @@
   - Spread an array literal as elements of an array literal
   - Spread an array literal as arguments of a call or a `new` call
   - Spread an object literal as properties of an object literal
+  - Spread an iterable as the only argument to a collection constructor that accepts a single iterable argument
   - Use spread syntax to clone an array created inline
 
 - The following builtins accept an iterable, so it's unnecessary to convert the iterable to an array:
@@ -74,6 +77,13 @@ const set = new Set(iterable);
 
 ```js
 // ❌
+const set = new Set(...iterable);
+```
+
+The `new Set(...iterable)`, `new Map(...iterable)`, `new WeakSet(...iterable)`, and `new WeakMap(...iterable)` cases are intentionally not autofixed because the correct replacement depends on the iterable value. Pass the intended single iterable argument directly.
+
+```js
+// ❌
 const results = await Promise.all([...iterable]);
 
 // ✅
@@ -101,20 +111,6 @@ function * foo() {
 ```
 
 ```js
-// ❌
-function foo(bar) {
-	return [
-		...bar.map(x => x * 2),
-	];
-}
-
-// ✅
-function foo(bar) {
-	return bar.map(x => x * 2);
-}
-```
-
-```js
 // ✅
 const array = [...foo, bar];
 ```
@@ -133,3 +129,7 @@ foo(foo, ...bar);
 // ✅
 const object = new Foo(...foo, bar);
 ```
+
+## Sparse arrays
+
+This rule assumes dense arrays. Sparse arrays are unsupported: array spread turns empty slots into `undefined`, while methods like `Array#concat()` preserve them. Disable this rule where sparse arrays are intentional.

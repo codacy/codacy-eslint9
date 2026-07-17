@@ -1,4 +1,6 @@
-# Prefer the spread operator over `Array.from(…)`, `Array#concat(…)`, `Array#{slice,toSpliced}()` and `String#split('')`
+# prefer-spread
+
+📝 Prefer the spread operator over `Array.from(…)`, `Array#concat(…)`, `Array#{slice,toSpliced}()` and `String#split('')`.
 
 💼🚫 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config). This rule is _disabled_ in the ☑️ `unopinionated` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
@@ -14,6 +16,7 @@ Enforces the use of [the spread operator (`...`)](https://developer.mozilla.org/
 	Convert `Iterable` to `Array`.
 
 	This rule adds on to the built-in [prefer-spread](https://eslint.org/docs/rules/prefer-spread) rule, which only flags uses of `.apply()`. Does not enforce for `TypedArray.from()`.
+	Multi-spread array literals like `Array.from([...foo, ...bar])` are handled by [`prefer-iterator-concat`](https://github.com/sindresorhus/eslint-plugin-unicorn/tree/refs/tags/main/docs/rules/prefer-iterator-concat.md).
 
 - `Array#concat(…)`
 

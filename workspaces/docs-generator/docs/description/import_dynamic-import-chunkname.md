@@ -1,5 +1,7 @@
 # import/dynamic-import-chunkname
 
+💡 This rule is manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
+
 <!-- end auto-generated rule header -->
 
 This rule reports any dynamic imports without a webpackChunkName specified in a leading block comment in the proper format.
@@ -13,7 +15,7 @@ You can also configure the regex format you'd like to accept for the webpackChun
 
  ```javascript
 {
-  "dynamic-import-chunkname": [2, {
+  "import/dynamic-import-chunkname": [2, {
     importFunctions: ["dynamicImport"],
     webpackChunknameFormat: "[a-zA-Z0-57-9-/_]+",
     allowEmpty: false
@@ -56,6 +58,13 @@ import(
   // webpackChunkName: "someModule"
   'someModule',
 );
+
+// chunk names are disallowed when eager mode is set
+import(
+  /* webpackMode: "eager" */
+  /* webpackChunkName: "someModule" */
+  'someModule',
+)
 ```
 
 ### valid

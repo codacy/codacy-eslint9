@@ -1,8 +1,10 @@
-# Prevent abbreviations
+# prevent-abbreviations
+
+📝 Prevent abbreviations.
 
 💼🚫 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config). This rule is _disabled_ in the ☑️ `unopinionated` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
-🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
 <!-- end auto-generated rule header -->
 <!-- Do not manually modify this header. Run: `npm run fix:eslint-docs` -->
@@ -13,7 +15,9 @@ This rule can also be used to replace terms, disallow words, etc. See the [`repl
 
 You can find the default replacements [here](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/rules/shared/abbreviations.js).
 
-This rule is fixable only for variable names with exactly one replacement defined.
+This rule is automatically fixable only for variable names with exactly one replacement defined. Ambiguous variable names and checked property names can be manually fixed with editor suggestions when the rename is local to source text. Filename reports and exported-name property reports do not provide editor suggestions.
+
+Parameter names do not provide autofixes or editor suggestions when the function has an attached JSDoc `@param` comment, as those name references are not normal variable references and would otherwise be left stale. TypeScript type predicate and assertion signature parameter references are updated when the parameter is renamed.
 
 ## Examples
 

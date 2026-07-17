@@ -1,4 +1,6 @@
-# Enforce including a hint with external snapshots (`vitest/prefer-snapshot-hint`)
+# vitest/prefer-snapshot-hint
+
+📝 Enforce including a hint with external snapshots.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -22,53 +24,52 @@ Examples of **incorrect** code for this rule with the `always` option:
 
 ```ts
 const snapshotOutput = ({ stdout, stderr }) => {
-  expect(stdout).toMatchSnapshot();
-  expect(stderr).toMatchSnapshot();
-};
+  expect(stdout).toMatchSnapshot()
+  expect(stderr).toMatchSnapshot()
+}
 
 describe('cli', () => {
   describe('--version flag', () => {
     it('prints the version', async () => {
-      snapshotOutput(await runCli(['--version']));
-    });
-  });
+      snapshotOutput(await runCli(['--version']))
+    })
+  })
 
   describe('--config flag', () => {
     it('reads the config', async () => {
       const { stdout, parsedConfig } = await runCli([
         '--config',
         'vitest.config.js',
-      ]);
+      ])
 
-      expect(stdout).toMatchSnapshot();
-      expect(parsedConfig).toMatchSnapshot();
-    });
+      expect(stdout).toMatchSnapshot()
+      expect(parsedConfig).toMatchSnapshot()
+    })
 
     it('prints nothing to stderr', async () => {
-      const { stderr } = await runCli(['--config', 'vitest.config.js']);
+      const { stderr } = await runCli(['--config', 'vitest.config.js'])
 
-      expect(stderr).toMatchSnapshot();
-    });
+      expect(stderr).toMatchSnapshot()
+    })
 
     describe('when the file does not exist', () => {
       it('throws an error', async () => {
         await expect(
           runCli(['--config', 'does-not-exist.js']),
-        ).rejects.toThrowErrorMatchingSnapshot();
-      });
-    });
-  });
-});
+        ).rejects.toThrowErrorMatchingSnapshot()
+      })
+    })
+  })
+})
 ```
-
 
 Examples of **correct** code for this rule with the `always` option:
 
 ```ts
 const snapshotOutput = ({ stdout, stderr }, hints) => {
-  expect(stdout).toMatchSnapshot({}, `stdout: ${hints.stdout}`);
-  expect(stderr).toMatchSnapshot({}, `stderr: ${hints.stderr}`);
-};
+  expect(stdout).toMatchSnapshot({}, `stdout: ${hints.stdout}`)
+  expect(stderr).toMatchSnapshot({}, `stderr: ${hints.stderr}`)
+}
 
 describe('cli', () => {
   describe('--version flag', () => {
@@ -76,34 +77,33 @@ describe('cli', () => {
       snapshotOutput(await runCli(['--version']), {
         stdout: 'version string',
         stderr: 'empty',
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('--config flag', () => {
     it('reads the config', async () => {
-      const { stdout } = await runCli(['--config', 'vitest.config.js']);
+      const { stdout } = await runCli(['--config', 'vitest.config.js'])
 
-      expect(stdout).toMatchSnapshot({}, 'stdout: config settings');
-    });
+      expect(stdout).toMatchSnapshot({}, 'stdout: config settings')
+    })
 
     it('prints nothing to stderr', async () => {
-      const { stderr } = await runCli(['--config', 'vitest.config.js']);
+      const { stderr } = await runCli(['--config', 'vitest.config.js'])
 
-      expect(stderr).toMatchInlineSnapshot();
-    });
+      expect(stderr).toMatchInlineSnapshot()
+    })
 
     describe('when the file does not exist', () => {
       it('throws an error', async () => {
         await expect(
           runCli(['--config', 'does-not-exist.js']),
-        ).rejects.toThrowErrorMatchingSnapshot('stderr: config error');
-      });
-    });
-  });
-});
+        ).rejects.toThrowErrorMatchingSnapshot('stderr: config error')
+      })
+    })
+  })
+})
 ```
-
 
 #### `multi` (default)
 
@@ -111,44 +111,44 @@ Examples of **incorrect** code for the `'multi'` option:
 
 ```ts
 const snapshotOutput = ({ stdout, stderr }) => {
-  expect(stdout).toMatchSnapshot();
-  expect(stderr).toMatchSnapshot();
-};
+  expect(stdout).toMatchSnapshot()
+  expect(stderr).toMatchSnapshot()
+}
 
 describe('cli', () => {
   describe('--version flag', () => {
     it('prints the version', async () => {
-      snapshotOutput(await runCli(['--version']));
-    });
-  });
+      snapshotOutput(await runCli(['--version']))
+    })
+  })
 
   describe('--config flag', () => {
     it('reads the config', async () => {
       const { stdout, parsedConfig } = await runCli([
         '--config',
         'vitest.config.js',
-      ]);
+      ])
 
-      expect(stdout).toMatchSnapshot();
-      expect(parsedConfig).toMatchSnapshot();
-    });
+      expect(stdout).toMatchSnapshot()
+      expect(parsedConfig).toMatchSnapshot()
+    })
 
     it('prints nothing to stderr', async () => {
-      const { stderr } = await runCli(['--config', 'vitest.config.js']);
+      const { stderr } = await runCli(['--config', 'vitest.config.js'])
 
-      expect(stderr).toMatchSnapshot();
-    });
-  });
-});
+      expect(stderr).toMatchSnapshot()
+    })
+  })
+})
 ```
 
 Examples of **correct** code for the `'multi'` option:
 
 ```ts
 const snapshotOutput = ({ stdout, stderr }, hints) => {
-  expect(stdout).toMatchSnapshot({}, `stdout: ${hints.stdout}`);
-  expect(stderr).toMatchSnapshot({}, `stderr: ${hints.stderr}`);
-};
+  expect(stdout).toMatchSnapshot({}, `stdout: ${hints.stdout}`)
+  expect(stderr).toMatchSnapshot({}, `stderr: ${hints.stderr}`)
+}
 
 describe('cli', () => {
   describe('--version flag', () => {
@@ -156,30 +156,30 @@ describe('cli', () => {
       snapshotOutput(await runCli(['--version']), {
         stdout: 'version string',
         stderr: 'empty',
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('--config flag', () => {
     it('reads the config', async () => {
-      const { stdout } = await runCli(['--config', 'vitest.config.js']);
+      const { stdout } = await runCli(['--config', 'vitest.config.js'])
 
-      expect(stdout).toMatchSnapshot();
-    });
+      expect(stdout).toMatchSnapshot()
+    })
 
     it('prints nothing to stderr', async () => {
-      const { stderr } = await runCli(['--config', 'vitest.config.js']);
+      const { stderr } = await runCli(['--config', 'vitest.config.js'])
 
-      expect(stderr).toMatchInlineSnapshot();
-    });
+      expect(stderr).toMatchInlineSnapshot()
+    })
 
     describe('when the file does not exist', () => {
       it('throws an error', async () => {
         await expect(
           runCli(['--config', 'does-not-exist.js']),
-        ).rejects.toThrowErrorMatchingSnapshot();
-      });
-    });
-  });
-});
+        ).rejects.toThrowErrorMatchingSnapshot()
+      })
+    })
+  })
+})
 ```

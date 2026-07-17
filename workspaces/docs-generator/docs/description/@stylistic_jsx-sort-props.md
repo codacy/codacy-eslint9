@@ -1,4 +1,7 @@
-# jsx/jsx-sort-props
+# jsx-sort-props
+
+> [!NOTE] Deprecation
+> This rule is deprecated. Please use the [`sort-jsx-props`](https://perfectionist.dev/rules/sort-jsx-props) rule from the [`eslint-plugin-perfectionist`](https://perfectionist.dev) package instead.
 
 Enforce props alphabetical sorting.
 
@@ -10,22 +13,34 @@ This rule checks all JSX components and verifies that all props are sorted alpha
 
 Examples of **incorrect** code for this rule:
 
+::: incorrect
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: "error" */
+
 <Hello lastName="Smith" firstName="John" />;
 ```
 
+:::
+
 Examples of **correct** code for this rule:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: "error" */
+
 <Hello firstName="John" lastName="Smith" />;
 <Hello tel={5555555} {...this.props} firstName="John" lastName="Smith" />;
 ```
 
-## Rule Options
+:::
+
+## Options
 
 ```js
 ...
-"@stylistic/jsx/jsx-sort-props": [<enabled>, {
+"@stylistic/jsx-sort-props": [<enabled>, {
   "callbacksLast": <boolean>,
   "shorthandFirst": <boolean>,
   "shorthandLast": <boolean>,
@@ -44,33 +59,57 @@ When `true` the rule ignores the case-sensitivity of the props order.
 
 Examples of **correct** code for this rule
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "ignoreCase": true }] */
+
 <Hello name="John" Number="2" />;
 ```
+
+:::
 
 ### `callbacksLast`
 
 When `true`, callbacks must be listed after all other props, even if `shorthandLast` is set :
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "callbacksLast": true }] */
+
 <Hello tel={5555555} onClick={this._handleClick} />
 ```
+
+:::
 
 ### `shorthandFirst`
 
 When `true`, short hand props must be listed before all other props, but still respecting the alphabetical order:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "shorthandFirst": true }] */
+
 <Hello active validate name="John" tel={5555555} />
 ```
+
+:::
 
 ### `shorthandLast`
 
 When `true`, short hand props must be listed after all other props (unless `callbacksLast` is set), but still respecting the alphabetical order:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "shorthandLast": true }] */
+
 <Hello name="John" tel={5555555} active validate />
 ```
+
+:::
 
 ### `multiline`
 
@@ -84,63 +123,139 @@ Enforced sorting for multiline props
 
 Defaults to `ignore`.
 
+::: correct
+
 ```jsx
-// 'jsx-sort-props': [1, { multiline: 'first' }]
+/* eslint @stylistic/jsx-sort-props: ["error", { "multiline": "first" }] */
+
 <Hello
   classes={{
     greetings: classes.greetings,
   }}
   active
-  validate
   name="John"
   tel={5555555}
+  validate
 />
+```
 
-// 'jsx-sort-props': [1, { multiline: 'last' }]
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "multiline": "last" }] */
+
 <Hello
   active
-  validate
   name="John"
   tel={5555555}
+  validate
   classes={{
     greetings: classes.greetings,
   }}
 />
 ```
+
+:::
 
 ### `noSortAlphabetically`
 
 When `true`, alphabetical order is **not** enforced:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "noSortAlphabetically": true }] */
+
 <Hello tel={5555555} name="John" />
 ```
+
+:::
 
 ### `reservedFirst`
 
 This can be a boolean or an array option.
 
-When `reservedFirst` is defined, React reserved props (`children`, `dangerouslySetInnerHTML` - **only for DOM components**, `key`, and `ref`) must be listed before all other props, but still respecting the alphabetical order:
+When `reservedFirst` is `true`, the default reserved props are [`children`, `dangerouslySetInnerHTML` (only for DOM components), `key`, `ref`]. These props must be listed before all other props, but still respecting the alphabetical order:
+
+::: correct
 
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "reservedFirst": true }] */
+
 <Hello key={0} ref={johnRef} name="John">
   <div dangerouslySetInnerHTML={{__html: 'ESLint Plugin React!'}} ref={dangerDivRef} />
 </Hello>
 ```
 
-If given as an array, the array's values will override the default list of reserved props. **Note**: the values in the array may only be a **subset** of React reserved props.
+:::
+
+If given as an array, the array's values will override the default list of reserved props.
+These props will respect the order specified in the array:
+
+::: incorrect
+
+```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "reservedFirst": ["v-if", "v-for"] }] */
+
+<App a v-for={i in list} v-if={list} b />
+```
+
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "reservedFirst": ["v-if", "v-for"] }] */
+
+<App v-if={list} v-for={i in list} a b />
+```
+
+:::
 
 With `reservedFirst: ["key"]`, the following will **not** warn:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "reservedFirst": ["key"] }] */
+
 <Hello key={'uuid'} name="John" ref={johnRef} />
 ```
+
+:::
+
+### `reservedLast`
+
+This can be an array option. These props must be listed after all other props.
+These will respect the order specified in the array:
+
+::: incorrect
+
+```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "reservedLast": ["v-slot"] }] */
+
+<App v-slot={{ foo }} onClick={onClick} />
+```
+
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-sort-props: ["error", { "reservedLast": ["v-slot"] }] */
+
+<App onClick={onClick} v-slot={{ foo }} />
+```
+
+:::
 
 ### `locale`
 
 Defaults to `"auto"`, meaning, the locale of the current environment.
 
-Any other string provided here may be passed to `String.prototype.localeCompare` - note that an unknown or invalid locale may throw an exception and crash.
+Any other string provided here may be passed to [`String.prototype.localeCompare`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare) - note that an unknown or invalid locale may throw an exception and crash.
 
 ## When Not To Use It
 

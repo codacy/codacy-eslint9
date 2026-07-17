@@ -1,4 +1,6 @@
-# Enforce a maximum number of expect per test (`vitest/max-expects`)
+# vitest/max-expects
+
+📝 Enforce a maximum number of expect per test.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -24,6 +26,14 @@ test('foo', () => {
 ```
 
 ### Options
+
+<!-- begin auto-generated rule options list -->
+
+| Name  | Description                                         | Type   |
+| :---- | :-------------------------------------------------- | :----- |
+| `max` | Maximum number of `expect` calls allowed in a test. | Number |
+
+<!-- end auto-generated rule options list -->
 
 > Default: `5`
 

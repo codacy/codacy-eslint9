@@ -1,4 +1,6 @@
-# Require escape sequences to use uppercase or lowercase values
+# escape-case
+
+📝 Require escape sequences to use uppercase or lowercase values.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -8,6 +10,8 @@
 <!-- Do not manually modify this header. Run: `npm run fix:eslint-docs` -->
 
 Enforces a consistent escaped value style by defining escape sequence values with uppercase or lowercase characters. The default style is uppercase, which promotes readability by making the escaped value more distinguishable from the identifier.
+
+Tagged template literals are ignored because tag functions can observe the raw escape sequences.
 
 ## Examples
 

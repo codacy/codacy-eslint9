@@ -1,6 +1,8 @@
-# Suggest using `find(All)By*` query instead of `waitFor` + `get(All)By*` to wait for elements (`testing-library/prefer-find-by`)
+# testing-library/prefer-find-by
 
-💼 This rule is enabled in the following configs: `angular`, `dom`, `marko`, `react`, `svelte`, `vue`.
+📝 Suggest using `find(All)By*` query instead of `waitFor` + `get(All)By*` to wait for elements.
+
+💼 This rule is enabled in the following configs: ![badge-angular](https://img.shields.io/badge/-Angular-black?style=flat-square&logo=angular&logoColor=white&labelColor=DD0031&color=black) `angular`, ![badge-dom](https://img.shields.io/badge/%F0%9F%90%99-DOM-black?style=flat-square) `dom`, ![badge-marko](https://img.shields.io/badge/-Marko-black?style=flat-square&logo=marko&logoColor=white&labelColor=2596BE&color=black) `marko`, ![badge-react](https://img.shields.io/badge/-React-black?style=flat-square&logo=react&logoColor=white&labelColor=61DAFB&color=black) `react`, ![badge-svelte](https://img.shields.io/badge/-Svelte-black?style=flat-square&logo=svelte&logoColor=white&labelColor=FF3E00&color=black) `svelte`, ![badge-vue](https://img.shields.io/badge/-Vue-black?style=flat-square&logo=vue.js&logoColor=white&labelColor=4FC08D&color=black) `vue`.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -41,6 +43,12 @@ const submitButton = await waitFor(() =>
 const submitButton = await waitFor(() =>
 	expect(queryByLabel('button', { name: /submit/i })).not.toBeFalsy()
 );
+
+// unnecessary usage of waitFor with findBy*, which already includes waiting logic
+await waitFor(async () => {
+	const button = await findByRole('button', { name: 'Submit' });
+	expect(button).toBeInTheDocument();
+});
 ```
 
 Examples of **correct** code for this rule:

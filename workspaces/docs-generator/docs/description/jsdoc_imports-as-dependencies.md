@@ -40,6 +40,11 @@ The following patterns are considered problems:
  * @type {null|import('@sth/pkg').SomeApi}
  */
 // Message: import points to package which is not found in dependencies
+
+/**
+ * @type {null|import('sinon').SomeApi}
+ */
+// Message: import points to package which is not found in dependencies
 ````
 
 
@@ -94,6 +99,14 @@ The following patterns are not considered problems:
 
 /**
  * @type {null|import('node:fs').PathLike}
+ */
+
+/**
+ * @type {null|import('playwright').SomeApi}
+ */
+
+/**
+ * @type {null|import('ts-api-utils').SomeApi}
  */
 ````
 

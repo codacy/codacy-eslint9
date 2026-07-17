@@ -1,6 +1,10 @@
-# Enforce using type parameters with vitest mock functions (`vitest/require-mock-type-parameters`)
+# vitest/require-mock-type-parameters
+
+📝 Enforce using type parameters with vitest mock functions.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
+
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
 <!-- end auto-generated rule header -->
 
@@ -32,11 +36,22 @@ test('foo', () => {
 
 ## Options
 
+<!-- begin auto-generated rule options list -->
+
+| Name                   | Description                                                       | Type    |
+| :--------------------- | :---------------------------------------------------------------- | :------ |
+| `checkImportFunctions` | Also require type parameters for `importActual` and `importMock`. | Boolean |
+
+<!-- end auto-generated rule options list -->
+
 ```json
 {
-  "vitest/require-hook": ["error", {
-	"checkImportFunctions": false
-  }]
+  "vitest/require-mock-type-parameters": [
+    "error",
+    {
+      "checkImportFunctions": false
+    }
+  ]
 }
 ```
 

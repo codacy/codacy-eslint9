@@ -1,4 +1,6 @@
-# Disallow `new Array()`
+# no-new-array
+
+📝 Disallow `new Array()`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -34,11 +36,15 @@ const array = [onlyElement];
 ```
 
 ```js
+const items = ['foo', 'bar'];
+
 // ❌
-const array = new Array(...unknownArgumentsList);
+const array = new Array(...items);
 ```
 
 ```js
+const items = ['foo', 'bar'];
+
 // ✅
 const array = [...items];
 ```

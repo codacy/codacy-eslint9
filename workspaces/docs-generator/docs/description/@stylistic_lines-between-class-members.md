@@ -1,12 +1,10 @@
 ---
-title: lines-between-class-members
-rule_type: layout
 related_rules:
   - padded-blocks
   - padding-line-between-statements
 ---
 
-# js/lines-between-class-members
+# lines-between-class-members
 
 This rule improves readability by enforcing lines between class members. It will not check empty lines before the first member and after the last member, since that is already taken care of by padded-blocks.
 
@@ -17,7 +15,7 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "always"] */
 class MyClass {
   x;
   foo() {
@@ -36,7 +34,7 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "always"] */
 class MyClass {
   x;
 
@@ -57,7 +55,7 @@ Examples of additional **correct** code for this rule:
 ::: correct
 
 ```js
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "always"] */
 class MyClass {
   x = 1
 
@@ -67,7 +65,7 @@ class MyClass {
 
 :::
 
-### Options
+## Options
 
 This rule has two options, first option can be string or object, second option is object.
 
@@ -85,13 +83,17 @@ Second option is an object with a property named `exceptAfterSingleLine`:
 
 - `"exceptAfterSingleLine": false`(default) **do not** skip checking empty lines after single-line class members
 - `"exceptAfterSingleLine": true` skip checking empty lines after single-line class members
+- `"exceptAfterOverload": true` (default) - Skip checking empty lines after overload class members
+- `"exceptAfterOverload": false` - **do not** skip checking empty lines after overload class members
 
-Examples of **incorrect** code for this rule with the string option:
+### always
+
+Examples of **incorrect** code for this rule with the `"always"` option:
 
 ::: incorrect
 
 ```js
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "always"] */
 class Foo{
   x;
   bar(){}
@@ -101,27 +103,12 @@ class Foo{
 
 :::
 
-::: incorrect
-
-```js
-/* eslint lines-between-class-members: ["error", "never"]*/
-class Bar{
-  x;
-
-  bar(){}
-
-  baz(){}
-}
-```
-
-:::
-
-Examples of **correct** code for this rule with the string option:
+Examples of **correct** code for this rule with the `"always"` option:
 
 ::: correct
 
 ```js
-/* eslint lines-between-class-members: ["error", "always"]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "always"] */
 class Foo{
   x;
 
@@ -133,10 +120,31 @@ class Foo{
 
 :::
 
+### never
+
+Examples of **incorrect** code for this rule with the `"never"` option:
+
+::: incorrect
+
+```js
+/* eslint @stylistic/lines-between-class-members: ["error", "never"] */
+class Bar{
+  x;
+
+  bar(){}
+
+  baz(){}
+}
+```
+
+:::
+
+Examples of **correct** code for this rule with the `"never"` option:
+
 ::: correct
 
 ```js
-/* eslint lines-between-class-members: ["error", "never"]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "never"] */
 class Bar{
   x;
   bar(){}
@@ -145,6 +153,8 @@ class Bar{
 ```
 
 :::
+
+### enforce
 
 Examples of **incorrect** code for this rule with the array of configurations option:
 
@@ -152,14 +162,14 @@ Examples of **incorrect** code for this rule with the array of configurations op
 
 ```js
 // disallows blank lines between methods
-/*eslint lines-between-class-members: [
+/* eslint @stylistic/lines-between-class-members: [
     "error",
     {
       enforce: [
         { blankLine: "never", prev: "method", next: "method" }
       ]
     },
-]*/
+] */
 
 class MyClass {
   constructor(height, width) {
@@ -186,7 +196,7 @@ class MyClass {
 
 ```js
 // requires blank lines around fields, disallows blank lines between methods
-/*eslint lines-between-class-members: [
+/* eslint @stylistic/lines-between-class-members: [
     "error",
     {
       enforce: [
@@ -195,7 +205,7 @@ class MyClass {
         { blankLine: "never", prev: "method", next: "method" }
       ]
     },
-]*/
+] */
 
 class MyClass {
   constructor(height, width) {
@@ -222,14 +232,14 @@ Examples of **correct** code for this rule with the array of configurations opti
 
 ```js
 // disallows blank lines between methods
-/*eslint lines-between-class-members: [
+/* eslint @stylistic/lines-between-class-members: [
     "error",
     {
       enforce: [
         { blankLine: "never", prev: "method", next: "method" }
       ]
     },
-]*/
+] */
 
 class MyClass {
   constructor(height, width) {
@@ -255,7 +265,7 @@ class MyClass {
 
 ```js
 // requires blank lines around fields, disallows blank lines between methods
-/*eslint lines-between-class-members: [
+/* eslint @stylistic/lines-between-class-members: [
     "error",
     {
       enforce: [
@@ -264,7 +274,7 @@ class MyClass {
         { blankLine: "never", prev: "method", next: "method" }
       ]
     },
-]*/
+] */
 
 class MyClass {
   constructor(height, width) {
@@ -291,7 +301,7 @@ Examples of **correct** code for this rule with the object option:
 ::: correct
 
 ```js
-/* eslint lines-between-class-members: ["error", "always", { "exceptAfterSingleLine": true }]*/
+/* eslint @stylistic/lines-between-class-members: ["error", "always", { "exceptAfterSingleLine": true }] */
 class Foo{
   x; // single line class member
   bar(){} // single line class member
@@ -308,7 +318,7 @@ class Foo{
 ::: correct
 
 ```js
-/*eslint lines-between-class-members: [
+/* eslint @stylistic/lines-between-class-members: [
     "error",
     {
       enforce: [
@@ -318,7 +328,7 @@ class Foo{
       ]
     },
     { exceptAfterSingleLine: true }
-]*/
+] */
 
 class MyClass {
   constructor(height, width) {
@@ -334,6 +344,50 @@ class MyClass {
   }
 
   method2() {}
+}
+```
+
+:::
+
+Examples of **correct** code for the `{ "exceptAfterOverload": true }` option:
+
+::: correct
+
+```ts
+/* eslint @stylistic/lines-between-class-members: ["error", "always", { "exceptAfterOverload": true }] */
+
+class foo {
+  bar(a: string): void;
+  bar(a: string, b: string): void;
+  bar(a: string, b: string) {}
+
+  baz() {}
+
+  qux() {}
+}
+```
+
+:::
+
+### exceptAfterOverload
+
+Examples of **correct** code for the `{ "exceptAfterOverload": false }` option:
+
+::: correct
+
+```ts
+/* eslint @stylistic/lines-between-class-members: ["error", "always", { "exceptAfterOverload": false }] */
+
+class foo {
+  bar(a: string): void;
+
+  bar(a: string, b: string): void;
+
+  bar(a: string, b: string) {}
+
+  baz() {}
+
+  qux() {}
 }
 ```
 

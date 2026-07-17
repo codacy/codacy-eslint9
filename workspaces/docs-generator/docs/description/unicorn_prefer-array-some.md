@@ -1,4 +1,6 @@
-# Prefer `.some(…)` over `.filter(…).length` check and `.{find,findLast,findIndex,findLastIndex}(…)`
+# prefer-array-some
+
+📝 Prefer `.some(…)` over `.filter(…).length` check and `.{find,findLast,findIndex,findLastIndex}(…)`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -15,7 +17,7 @@ We only check `.filter().length > 0` and `.filter().length !== 0`. These two non
 
 - Using [`Array#find()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) or [`Array#findLast()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast) to ensure at least one element in the array passes a given check.
 
-- Comparing the result of [`Array#find()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)  or [`Array#findLast()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast) with `undefined`.
+- Comparing the result of [`Array#find()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) or [`Array#findLast()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast) with `undefined`.
 
 - Using [`Array#findIndex()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) or [`Array#findLastIndex()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex) to ensure at least one element in the array passes a given check.
 
@@ -59,34 +61,62 @@ if (array.some(element => isUnicorn(element))) {
 
 ```js
 // ❌
-const foo = array.find(element => isUnicorn(element)) ? bar : baz;
+const foo = unicorns.find(unicorn => unicorn.isRainbow) ? bar : baz;
+```
 
+```js
 // ✅
-const foo = array.find(element => isUnicorn(element)) || bar;
+const foo = unicorns.some(unicorn => unicorn.isRainbow) ? bar : baz;
 ```
 
 ```js
 // ❌
 const hasUnicorn = array.findLast(element => isUnicorn(element)) !== undefined;
+```
 
+```js
+// ✅
+const hasUnicorn = array.some(element => isUnicorn(element));
+```
+
+```js
 // ❌
 const hasUnicorn = array.findLast(element => isUnicorn(element)) != null;
+```
 
+```js
+// ✅
+const hasUnicorn = array.some(element => isUnicorn(element));
+```
+
+```js
 // ❌
 const hasUnicorn = array.findIndex(element => isUnicorn(element)) !== -1;
+```
 
+```js
+// ✅
+const hasUnicorn = array.some(element => isUnicorn(element));
+```
+
+```js
 // ❌
 const hasUnicorn = array.findLastIndex(element => isUnicorn(element)) !== -1;
 ```
 
 ```js
+// ✅
+const hasUnicorn = array.some(element => isUnicorn(element));
+```
+
+```js
 // ❌
-const foo = array.findLast(element => isUnicorn(element)) ? bar : baz;
+const foo = unicorns.findLast(unicorn => unicorn.isRainbow) ? bar : baz;
 ```
 
 ```js
 // ✅
-const foo = array.findLast(element => isUnicorn(element)) || bar;
+const foo = unicorns.some(unicorn => unicorn.isRainbow) ? bar : baz;
 ```
 
 ```vue
@@ -106,5 +136,8 @@ const foo = array.findLast(element => isUnicorn(element)) || bar;
 <template>
 	<!-- ❌ -->
 	<div v-if="array.findLast(element => isUnicorn(element))">Vue</div>
+
+	<!-- ✅ -->
+	<div v-if="array.some(element => isUnicorn(element))">Vue</div>
 </template>
 ```

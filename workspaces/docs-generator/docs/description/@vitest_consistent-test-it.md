@@ -1,4 +1,6 @@
-# Enforce using test or it but not both (`vitest/consistent-test-it`)
+# vitest/consistent-test-it
+
+📝 Enforce using test or it but not both.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -6,17 +8,17 @@
 
 <!-- end auto-generated rule header -->
 
-### Rule Details
+## Rule Details
 
 Examples of **incorrect** code for this rule:
 
 ```js
 test('it works', () => {
-	// ...
+  // ...
 })
 
 it('it works', () => {
-	// ...
+  // ...
 })
 ```
 
@@ -24,36 +26,39 @@ Examples of **correct** code for this rule:
 
 ```js
 test('it works', () => {
-	// ...
+  // ...
 })
 ```
 
 ```js
 test('it works', () => {
-	// ...
+  // ...
 })
 ```
 
-#### Options
+### Options
+
+<!-- begin auto-generated rule options list -->
+
+| Name             | Description                                        | Type   | Choices      |
+| :--------------- | :------------------------------------------------- | :----- | :----------- |
+| `fn`             | Preferred global test function keyword.            | String | `test`, `it` |
+| `withinDescribe` | Preferred test function keyword inside `describe`. | String | `test`, `it` |
+
+<!-- end auto-generated rule options list -->
 
 ```json
 {
-   "type":"object",
-   "properties":{
-      "fn":{
-         "enum":[
-            "it",
-            "test"
-         ]
-      },
-      "withinDescribe":{
-         "enum":[
-            "it",
-            "test"
-         ]
-      }
-   },
-   "additionalProperties":false
+  "type": "object",
+  "properties": {
+    "fn": {
+      "enum": ["it", "test"]
+    },
+    "withinDescribe": {
+      "enum": ["it", "test"]
+    }
+  },
+  "additionalProperties": false
 }
 ```
 
@@ -68,23 +73,25 @@ Decides whether to prefer `test` or `it` when used within a `describe` block.
 ```js
 /*eslint vitest/consistent-test-it: ["error", {"fn": "test"}]*/
 
-test('it works', () => { // <-- Valid
-	// ...
+test('it works', () => {
+  // <-- Valid
+  // ...
 })
 
-test.only('it works', () => { // <-- Valid
-	// ...
+test.only('it works', () => {
+  // <-- Valid
+  // ...
 })
 
-
-it('it works', () => { // <-- Invalid
-	// ...
+it('it works', () => {
+  // <-- Invalid
+  // ...
 })
 
-it.only('it works', () => { // <-- Invalid
-	// ...
+it.only('it works', () => {
+  // <-- Invalid
+  // ...
 })
 ```
 
 The default configuration is top level `test` and all tests nested with `describe` to use `it`.
-

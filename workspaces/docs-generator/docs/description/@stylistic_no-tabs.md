@@ -1,9 +1,7 @@
 ---
-title: no-tabs
-rule_type: layout
 ---
 
-# js/no-tabs
+# no-tabs
 
 Some style guides don't allow the use of tab characters at all, including within comments.
 
@@ -16,14 +14,16 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-var a \t= 2;
+/* eslint @stylistic/no-tabs: "error" */
+
+var a 	= 2;
 
 /**
-* \t\t it's a test function
-*/
+ * 		it's a test function
+ */
 function test(){}
 
-var x = 1; // \t test
+var x = 1; // 	test
 ```
 
 :::
@@ -33,11 +33,13 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
+/* eslint @stylistic/no-tabs: "error" */
+
 var a = 2;
 
 /**
-* it's a test function
-*/
+ * it's a test function
+ */
 function test(){}
 
 var x = 1; // test
@@ -45,7 +47,7 @@ var x = 1; // test
 
 :::
 
-### Options
+## Options
 
 This rule has an optional object option with the following properties:
 
@@ -58,13 +60,13 @@ Examples of **correct** code for this rule with the `allowIndentationTabs: true`
 ::: correct
 
 ```js
-/* eslint no-tabs: ["error", { allowIndentationTabs: true }] */
+/* eslint @stylistic/no-tabs: ["error", { allowIndentationTabs: true }] */
 
 function test() {
-\tdoSomething();
+	doSomething();
 }
 
-\t// comment with leading indentation tab
+	// comment with leading indentation tab
 ```
 
 :::

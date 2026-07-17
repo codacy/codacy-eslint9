@@ -1,13 +1,11 @@
 ---
-title: comma-style
-rule_type: layout
 related_rules:
   - operator-linebreak
 further_reading:
   - 'https://gist.github.com/isaacs/357981'
 ---
 
-# js/comma-style
+# comma-style
 
 The Comma Style rule enforces styles for comma-separated lists. There are two comma styles primarily used in JavaScript:
 
@@ -35,7 +33,6 @@ This rule has a string option:
 This rule also accepts an additional `exceptions` object:
 
 - `"exceptions"` has properties whose names correspond to node types in the abstract syntax tree (AST) of JavaScript code:
-
   - `"ArrayExpression": true` ignores comma style in array literals
   - `"ArrayPattern": true` ignores comma style in array patterns of destructuring
   - `"ArrowFunctionExpression": true` ignores comma style in the parameters of arrow function expressions
@@ -69,7 +66,7 @@ This rule also accepts an additional `exceptions` object:
   - `"TSTypeParameterDeclaration": true` ignores comma style in the type parameters of TypeScript type parameter declarations
   - `"TSTypeParameterInstantiation": true` ignores comma style in the type arguments of TypeScript type parameter instantiations
 
-A way to determine the node types as defined by [ESTree](https://github.com/estree/estree) and [@typescript-eslint/parser](https://typescript-eslint.io/packages/parser/) is to use [AST Explorer](https://astexplorer.net/) with the espree parser or @typescript-eslint/parser.
+A way to determine the node types as defined by [ESTree](https://github.com/estree/estree) and [@typescript-eslint/parser](https://typescript-eslint.io/packages/parser/) is to use [AST Explorer](https://ast-explorer.dev/) with the espree parser or @typescript-eslint/parser.
 
 ### last
 
@@ -78,7 +75,7 @@ Examples of **incorrect** code for this rule with the default `"last"` option:
 :::incorrect
 
 ```js
-/*eslint comma-style: ["error", "last"]*/
+/* eslint @stylistic/comma-style: ["error", "last"] */
 
 var foo = 1
 ,
@@ -105,7 +102,7 @@ Examples of **correct** code for this rule with the default `"last"` option:
 :::correct
 
 ```js
-/*eslint comma-style: ["error", "last"]*/
+/* eslint @stylistic/comma-style: ["error", "last"] */
 
 var foo = 1, bar = 2;
 
@@ -132,7 +129,7 @@ Examples of **incorrect** code for this rule with the `"first"` option:
 :::incorrect
 
 ```js
-/*eslint comma-style: ["error", "first"]*/
+/* eslint @stylistic/comma-style: ["error", "first"] */
 
 var foo = 1,
     bar = 2;
@@ -155,7 +152,7 @@ Examples of **correct** code for this rule with the `"first"` option:
 :::correct
 
 ```js
-/*eslint comma-style: ["error", "first"]*/
+/* eslint @stylistic/comma-style: ["error", "first"] */
 
 var foo = 1, bar = 2;
 
@@ -184,7 +181,7 @@ Examples of **incorrect** code for this rule with sample `"first", { "exceptions
 :::incorrect
 
 ```js
-/*eslint comma-style: ["error", "first", { "exceptions": { "ArrayExpression": true, "ObjectExpression": true } }]*/
+/* eslint @stylistic/comma-style: ["error", "first", { "exceptions": { "ArrayExpression": true, "ObjectExpression": true } }] */
 
 var o = {},
     a = [];
@@ -197,7 +194,7 @@ Examples of **correct** code for this rule with sample `"first", { "exceptions":
 :::correct
 
 ```js
-/*eslint comma-style: ["error", "first", { "exceptions": { "ArrayExpression": true, "ObjectExpression": true } }]*/
+/* eslint @stylistic/comma-style: ["error", "first", { "exceptions": { "ArrayExpression": true, "ObjectExpression": true } }] */
 
 var o = {fst:1,
          snd: [1,

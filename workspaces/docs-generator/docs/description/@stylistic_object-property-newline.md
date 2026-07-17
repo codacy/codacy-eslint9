@@ -1,6 +1,4 @@
 ---
-title: object-property-newline
-rule_type: layout
 related_rules:
   - brace-style
   - comma-dangle
@@ -8,7 +6,7 @@ related_rules:
   - object-curly-spacing
 ---
 
-# js/object-property-newline
+# object-property-newline
 
 This rule permits you to restrict the locations of property specifications in object literals. You may prohibit any part of any property specification from appearing on the same line as any part of any other property specification. You may make this prohibition absolute, or, by invoking an object option, you may allow an exception, permitting an object literal to have all parts of all of its property specifications on a single line.
 
@@ -66,25 +64,27 @@ const newObject = {
 
 Another benefit of this rule is specificity of diffs when a property is changed:
 
-```diff
-// More specific
+Less specific:
+
+```js
+var obj = { foo: "foo", bar: "bar", baz: "baz" }; // [!code --]
+var obj = { foo: "foo", bar: "bazz", baz: "baz" }; // [!code ++]
+```
+
+More specific:
+
+```js
  var obj = {
      foo: "foo",
--    bar: "bar",
-+    bar: "bazz",
+     bar: "bar", // [!code --]
+     bar: "bazz", // [!code ++]
      baz: "baz"
  };
 ```
 
-```diff
-// Less specific
--var obj = { foo: "foo", bar: "bar", baz: "baz" };
-+var obj = { foo: "foo", bar: "bazz", baz: "baz" };
-```
-
 ### Optional Exception
 
-The rule offers one object option, `allowAllPropertiesOnSameLine` (a deprecated synonym is `allowMultiplePropertiesPerLine`). If you set it to `true`, object literals such as the first two above, with all property specifications on the same line, will be permitted, but one like
+The rule offers one object option, `allowAllPropertiesOnSameLine`. If you set it to `true`, object literals such as the first two above, with all property specifications on the same line, will be permitted, but one like
 
 ```js
 const newObject = {
@@ -187,7 +187,7 @@ Examples of **incorrect** code for this rule, with no object option or with `all
 ::: incorrect
 
 ```js
-/*eslint object-property-newline: "error"*/
+/* eslint @stylistic/object-property-newline: "error" */
 
 const obj0 = { foo: "foo", bar: "bar", baz: "baz" };
 
@@ -227,7 +227,7 @@ Examples of **correct** code for this rule, with no object option or with `allow
 ::: correct
 
 ```js
-/*eslint object-property-newline: "error"*/
+/* eslint @stylistic/object-property-newline: "error" */
 
 const obj1 = {
     foo: "foo",
@@ -261,7 +261,7 @@ Examples of additional **correct** code for this rule with the `{ "allowAllPrope
 ::: correct
 
 ```js
-/*eslint object-property-newline: ["error", { "allowAllPropertiesOnSameLine": true }]*/
+/* eslint @stylistic/object-property-newline: ["error", { "allowAllPropertiesOnSameLine": true }] */
 
 const obj = { foo: "foo", bar: "bar", baz: "baz" };
 

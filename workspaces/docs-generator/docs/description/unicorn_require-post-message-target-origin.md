@@ -1,4 +1,6 @@
-# Enforce using the `targetOrigin` argument with `window.postMessage()`
+# require-post-message-target-origin
+
+📝 Enforce using the `targetOrigin` argument with `window.postMessage()`.
 
 🚫 This rule is _disabled_ in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -16,9 +18,7 @@ This rule cannot distinguish between `window.postMessage()` and other calls like
 ```js
 // ❌
 window.postMessage(message);
-```
 
-```js
 // ✅
 window.postMessage(message, 'https://example.com');
 ```

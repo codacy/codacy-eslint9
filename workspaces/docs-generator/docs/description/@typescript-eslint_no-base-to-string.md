@@ -80,12 +80,12 @@ const errorMessage = 'Found unexpected value: ' + JSON.stringify(o);
 
 <!-- insert option description -->
 
-This is useful for types missing `toString()` or `toLocaleString()` (but actually has `toString()` or `toLocaleString()`).
-There are some types missing `toString()` or `toLocaleString()` in old versions of TypeScript, like `RegExp`, `URL`, `URLSearchParams` etc.
+This is useful for types whose type definitions do not declare `toString()` or `toLocaleString()`, even though the values have a useful implementation at runtime.
+This can happen in older versions of TypeScript, where types like `RegExp`, `URL`, and `URLSearchParams` were missing those declarations.
 
-The following patterns are considered correct with the default options `{ ignoredTypeNames: ["RegExp"] }`:
+The following patterns are considered correct with the default options:
 
-```ts option='{ "ignoredTypeNames": ["RegExp"] }' showPlaygroundButton
+```ts showPlaygroundButton
 `${/regex/}`;
 '' + /regex/;
 /regex/.toString();
@@ -93,6 +93,21 @@ let value = /regex/;
 value.toString();
 let text = `${value}`;
 String(/regex/);
+
+'' + new Error('error');
+`${new URL('https://example.com')}`;
+String(new URLSearchParams({ key: 'value' }));
+```
+
+### `checkUnknown`
+
+<!-- insert option description -->
+
+The following patterns are considered incorrect with the options `{ checkUnknown: true }`:
+
+```ts option='{ "checkUnknown": true }' showPlaygroundButton
+declare const x: unknown;
+String(x);
 ```
 
 ## When Not To Use It

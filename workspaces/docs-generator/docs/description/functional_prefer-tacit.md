@@ -1,9 +1,11 @@
 <!-- markdownlint-disable -->
 <!-- begin auto-generated rule header -->
 
-# Replaces `x => f(x)` with just `f` (`functional/prefer-tacit`)
+# functional/prefer-tacit
 
-⚠️🚫 This rule _warns_ in the 🎨 `stylistic` config. This rule is _disabled_ in the `disableTypeChecked` config.
+📝 Replaces `x => f(x)` with just `f`.
+
+⚠️ This rule _warns_ in the 🎨 `stylistic` config.
 
 💡 This rule is manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 

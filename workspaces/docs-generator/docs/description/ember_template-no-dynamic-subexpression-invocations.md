@@ -1,0 +1,63 @@
+# ember/template-no-dynamic-subexpression-invocations
+
+<!-- end auto-generated rule header -->
+
+Disallow dynamic helper invocations.
+
+Dynamic helper invocations (where the helper name comes from a property or argument) make code harder to understand and can have performance implications. Use explicit helper names instead.
+
+## Rule Details
+
+This rule disallows invoking helpers dynamically using `this` or `@` properties.
+
+## Examples
+
+### Incorrect ❌
+
+```gjs
+<template>
+  {{(this.helper "arg")}}
+</template>
+```
+
+```gjs
+<template>
+  {{(@helperName "value")}}
+</template>
+```
+
+### Correct ✅
+
+```gjs
+<template>
+  {{format-date this.date}}
+</template>
+```
+
+```gjs
+<template>
+  {{(upper-case this.name)}}
+</template>
+```
+
+```gjs
+<template>
+  {{this.formattedData}}
+</template>
+```
+
+```gjs
+{{! Body-position dynamic helpers are allowed }}
+<template>
+  {{this.formatter this.data}}
+</template>
+```
+
+## Related Rules
+
+- [template-no-implicit-this](https://github.com/ember-cli/eslint-plugin-ember/tree/refs/heads/master/docs/rules/template-no-implicit-this.md)
+
+## References
+
+- [Ember Guides - Template Helpers](https://guides.emberjs.com/release/components/helper-functions/)
+- [eslint-plugin-ember template-no-dynamic-subexpression-invocations](https://github.com/ember-cli/eslint-plugin-ember/blob/master/docs/rules/template-no-dynamic-subexpression-invocations.md)

@@ -1,11 +1,9 @@
 ---
-title: jsx-quotes
-rule_type: layout
 related_rules:
   - quotes
 ---
 
-# js/jsx-quotes
+# jsx-quotes
 
 JSX attribute values can contain string literals, which are delimited with single or double quotes.
 
@@ -37,10 +35,10 @@ This rule has a string option:
 
 Examples of **incorrect** code for this rule with the default `"prefer-double"` option:
 
-:::incorrect { "ecmaFeatures": { "jsx": true } }
+::: incorrect { "ecmaFeatures": { "jsx": true } }
 
 ```jsx
-/*eslint jsx-quotes: ["error", "prefer-double"]*/
+/* eslint @stylistic/jsx-quotes: ["error", "prefer-double"] */
 
 <a b='c' />;
 ```
@@ -49,10 +47,10 @@ Examples of **incorrect** code for this rule with the default `"prefer-double"` 
 
 Examples of **correct** code for this rule with the default `"prefer-double"` option:
 
-:::correct { "ecmaFeatures": { "jsx": true } }
+::: correct { "ecmaFeatures": { "jsx": true } }
 
 ```jsx
-/*eslint jsx-quotes: ["error", "prefer-double"]*/
+/* eslint @stylistic/jsx-quotes: ["error", "prefer-double"] */
 
 <a b="c" />;
 <a b='"' />;
@@ -64,10 +62,10 @@ Examples of **correct** code for this rule with the default `"prefer-double"` op
 
 Examples of **incorrect** code for this rule with the `"prefer-single"` option:
 
-:::incorrect { "ecmaFeatures": { "jsx": true } }
+::: incorrect { "ecmaFeatures": { "jsx": true } }
 
 ```jsx
-/*eslint jsx-quotes: ["error", "prefer-single"]*/
+/* eslint @stylistic/jsx-quotes: ["error", "prefer-single"] */
 
 <a b="c" />;
 ```
@@ -76,10 +74,10 @@ Examples of **incorrect** code for this rule with the `"prefer-single"` option:
 
 Examples of **correct** code for this rule with the `"prefer-single"` option:
 
-:::correct { "ecmaFeatures": { "jsx": true } }
+::: correct { "ecmaFeatures": { "jsx": true } }
 
 ```jsx
-/*eslint jsx-quotes: ["error", "prefer-single"]*/
+/* eslint @stylistic/jsx-quotes: ["error", "prefer-single"] */
 
 <a b='c' />;
 <a b="'" />;

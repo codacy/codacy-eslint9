@@ -122,17 +122,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -164,7 +171,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -190,17 +197,64 @@ Specifies whether to use the export alias as the name for sorting instead of the
 - `true` — Use the export alias for sorting.
 - `false` — Use the local name for sorting.
 
-### [DEPRECATED] groupKind
+### useConfigurationIf
 
-<sub>default: `'mixed'`</sub>
+<sub>
+  type:
+  ```ts
+  {
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
+  }
+  ```
+</sub>
+<sub>default: `{}`</sub>
 
-Use the [groups](#groups) option with the `value` and `type` modifiers instead.
+Specifies filters to match a particular options configuration for a given named export declaration.
 
-Groups named exports by their kind, determining whether value exports should come before or after type exports.
+The first matching options configuration will be used. If no configuration matches, the default options configuration will be used.
 
-- `mixed` — Do not group named exports by their kind; export statements are sorted together regardless of their type.
-- `values-first` — Group all value exports before type exports.
-- `types-first` — Group all type exports before value exports.
+- `allNamesMatchPattern` — A regexp pattern that all named export names must match. If [`ignoreAlias`](#ignorealias)
+is `true`, the pattern will be tested against the export aliases, otherwise against the local names.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-named-exports': [
+    'error',
+    {
+      groups: ['r', 'g', 'b'], // Sort colors by RGB
+      customGroups: [
+        {
+          elementNamePattern: '^r$',
+          groupName: 'r',
+        },
+        {
+          elementNamePattern: '^g$',
+          groupName: 'g',
+        },
+        {
+          elementNamePattern: '^b$',
+          groupName: 'b',
+        },
+      ],
+      useConfigurationIf: {
+        allNamesMatchPattern: '^[rgb]$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching an `ExportNamedDeclaration` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
 
 ### partitionByComment
 
@@ -244,24 +298,59 @@ Each group of members (separated by empty lines) is treated independently, and t
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
-See the [`groups`](#newlines-between-groups) option.
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
 
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
@@ -283,8 +372,8 @@ The only selector possible for this rule is `export`.
 
 #### Modifiers
 
-- `value` — Matches value exports.
-- `type` — Matches type exports.
+- `'value'` — Matches value exports.
+- `'type'` — Matches type exports.
 
 Example: `type-export`.
 
@@ -292,8 +381,26 @@ Example: `type-export`.
 
 ##### The `unknown` group
 
-Members that don’t fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
+Members that don't fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
 it will automatically be added to the end of the list.
+
+##### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'myCustomGroup1',
+    { group: 'myCustomGroup2', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
 
 ##### Newlines between groups
 
@@ -305,10 +412,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
@@ -331,12 +438,12 @@ interface CustomGroupDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   selector?: string
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
-
 ```
+
 A named export will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -347,7 +454,7 @@ interface CustomGroupAnyOfDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       selector?: string
       elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
@@ -362,10 +469,10 @@ A named export will match a `CustomGroupAnyOfDefinition` group if it matches all
 - `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
 - `selector` — Filter on the `selector` of the element.
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -398,10 +505,10 @@ Custom groups have a higher priority than any predefined group.
                   ignoreAlias: false,
                   ignoreCase: true,
                   specialCharacters: 'keep',
-                  groupKind: 'mixed',
                   partitionByNewLine: false,
                   partitionByComment: false,
                   newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   groups: [],
                   customGroups: [],
                 },
@@ -430,10 +537,10 @@ Custom groups have a higher priority than any predefined group.
                 ignoreAlias: false,
                 ignoreCase: true,
                 specialCharacters: 'keep',
-                groupKind: 'mixed',
                 partitionByNewLine: false,
                 partitionByComment: false,
                 newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 groups: [],
                 customGroups: [],
               },
@@ -457,4 +564,4 @@ This rule was introduced in [v0.4.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-named-exports.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-named-exports.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-named-exports.test.ts)

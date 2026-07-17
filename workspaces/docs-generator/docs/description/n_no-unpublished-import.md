@@ -1,4 +1,6 @@
-# Disallow `import` declarations which import private modules (`n/no-unpublished-import`)
+# n/no-unpublished-import
+
+📝 Disallow `import` declarations which import private modules.
 
 💼 This rule is enabled in the following [configs](https://github.com/eslint-community/eslint-plugin-n#-configs): 🟢 `recommended-module`, ✅ `recommended-script`.
 
@@ -49,6 +51,11 @@ Please see the shared settings documentation for more information.
 #### convertPath
 
 This can be configured in the rule options or as a shared setting [`settings.convertPath`](https://github.com/eslint-community/eslint-plugin-n/tree/master/docs/shared-settings.md#convertpath).
+Please see the shared settings documentation for more information.
+
+#### tryExtensions
+
+This can be configured in the rule options or as a shared setting [`settings.tryExtensions`](https://github.com/eslint-community/eslint-plugin-n/tree/master/docs/shared-settings.md#tryextensions).
 Please see the shared settings documentation for more information.
 
 ### ignoreTypeImport

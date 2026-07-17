@@ -1,4 +1,6 @@
-# Enforce using the built-in quality matchers (`vitest/prefer-equality-matcher`)
+# vitest/prefer-equality-matcher
+
+📝 Enforce using the built-in equality matchers.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -13,11 +15,9 @@ This rule aims to enforce the use of the built-in equality matchers.
 Examples of **incorrect** code for this rule:
 
 ```ts
- // bad 
-  expect(1 == 1).toBe(1)
-  
+// bad
+expect(1 == 1).toBe(1)
 
- // bad
-  expect(1).toEqual(1)
-
+// bad
+expect(1).toEqual(1)
 ```

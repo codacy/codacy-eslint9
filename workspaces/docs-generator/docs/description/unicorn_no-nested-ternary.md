@@ -1,4 +1,6 @@
-# Disallow nested ternary expressions
+# no-nested-ternary
+
+📝 Disallow nested ternary expressions.
 
 💼🚫 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config). This rule is _disabled_ in the ☑️ `unopinionated` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
@@ -26,7 +28,7 @@ const foo = i > 5 ? true : (i < 100 ? true : (i < 1000 ? true : false));
 
 ```js
 // ✅
-const foo = i > 5 ? (i < 100 ? true : false) : (i < 100 ? true : false);
+const foo = i > 5 || i < 100 || i < 1000;
 ```
 
 ## Partly fixable

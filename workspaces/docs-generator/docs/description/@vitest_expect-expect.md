@@ -1,11 +1,10 @@
-# Enforce having expectation in test body (`vitest/expect-expect`)
+# vitest/expect-expect
 
-💼 This rule is enabled in the ✅ `recommended` config.
+📝 Enforce having expectation in test body.
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+💼⚠️ This rule is enabled in the ✅ `recommended` config. This rule _warns_ in the 🌐 `all` config.
 
 <!-- end auto-generated rule header -->
-
 
 ## Rule Details
 
@@ -15,7 +14,7 @@ Examples of **incorrect** code for this rule:
 
 ```js
 test('myLogic', () => {
-	console.log('myLogic')
+  console.log('myLogic')
 })
 
 test('myLogic', () => {})
@@ -36,6 +35,15 @@ If you're using Vitest's [type-testing feature](https://github.com/vitest-dev/es
 
 ## Options
 
+<!-- begin auto-generated rule options list -->
+
+| Name                           | Description                                                 | Type     |
+| :----------------------------- | :---------------------------------------------------------- | :------- |
+| `additionalTestBlockFunctions` | Additional functions that should be treated as test blocks. | String[] |
+| `assertFunctionNames`          | List of function names treated as assertions.               | String[] |
+
+<!-- end auto-generated rule options list -->
+
 ### `assertFunctionNames`
 
 ```json
@@ -52,19 +60,16 @@ If you're using Vitest's [type-testing feature](https://github.com/vitest-dev/es
 
 An array of strings that are the names of the functions that are used for assertions. Function names can also be wildcard patterns like `expect*`,`function.**.expect` or `expect.anything`.
 
-
 The following is an example of correct code for this rule with the option `assertFunctionNames`:
 
 ```js
 import CheckForMe from 'check-for-me'
 test('myLogic', () => {
- expect("myLogic").toBe("myOutput")
+  expect('myLogic').toBe('myOutput')
 })
 ```
 
-
 ### `additionalTestBlockFunctions`
-
 
 ```json
 {
@@ -85,8 +90,8 @@ The following is an example of correct code for this rule with the option `addit
 import CheckForMe from 'check-for-me'
 checkForMe('myLogic', () => {
   checkForMe('myLogic', () => {
-	const actual = myLogic()
-	expect(actual).toBe(true)
+    const actual = myLogic()
+    expect(actual).toBe(true)
   })
 })
 ```

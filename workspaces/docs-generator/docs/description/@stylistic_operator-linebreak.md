@@ -1,11 +1,9 @@
 ---
-title: operator-linebreak
-rule_type: layout
 related_rules:
   - comma-style
 ---
 
-# js/operator-linebreak
+# operator-linebreak
 
 When a statement is too long to fit on a single line, line breaks are generally inserted next to the operators separating expressions. The first style coming to mind would be to place the operator at the end of the line, following the English punctuation rules.
 
@@ -36,6 +34,7 @@ String option:
 - `"after"` requires linebreaks to be placed after the operator
 - `"before"` requires linebreaks to be placed before the operator
 - `"none"` disallows linebreaks on either side of the operator
+- `"ignore"` ignores linebreaks on either side of the operator (only in `overrides`)
 
 Object option:
 
@@ -50,7 +49,7 @@ Examples of **incorrect** code for this rule with the `"after"` option:
 ::: incorrect
 
 ```js
-/*eslint operator-linebreak: ["error", "after"]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after"] */
 
 foo = 1
 +
@@ -88,7 +87,7 @@ Examples of **correct** code for this rule with the `"after"` option:
 ::: correct
 
 ```js
-/*eslint operator-linebreak: ["error", "after"]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after"] */
 
 foo = 1 + 2;
 
@@ -127,7 +126,7 @@ Examples of **incorrect** code for this rule with the `"before"` option:
 ::: incorrect
 
 ```js
-/*eslint operator-linebreak: ["error", "before"]*/
+/* eslint @stylistic/operator-linebreak: ["error", "before"] */
 
 foo = 1 +
       2;
@@ -161,7 +160,7 @@ Examples of **correct** code for this rule with the `"before"` option:
 ::: correct
 
 ```js
-/*eslint operator-linebreak: ["error", "before"]*/
+/* eslint @stylistic/operator-linebreak: ["error", "before"] */
 
 foo = 1 + 2;
 
@@ -200,7 +199,7 @@ Examples of **incorrect** code for this rule with the `"none"` option:
 ::: incorrect
 
 ```js
-/*eslint operator-linebreak: ["error", "none"]*/
+/* eslint @stylistic/operator-linebreak: ["error", "none"] */
 
 foo = 1 +
       2;
@@ -249,7 +248,7 @@ Examples of **correct** code for this rule with the `"none"` option:
 ::: correct
 
 ```js
-/*eslint operator-linebreak: ["error", "none"]*/
+/* eslint @stylistic/operator-linebreak: ["error", "none"] */
 
 foo = 1 + 2;
 
@@ -281,7 +280,7 @@ Examples of additional **incorrect** code for this rule with the `{ "overrides":
 ::: incorrect
 
 ```js
-/*eslint operator-linebreak: ["error", "after", { "overrides": { "+=": "before" } }]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after", { "overrides": { "+=": "before" } }] */
 
 var thing = 'thing';
 thing +=
@@ -295,7 +294,7 @@ Examples of additional **correct** code for this rule with the `{ "overrides": {
 ::: correct
 
 ```js
-/*eslint operator-linebreak: ["error", "after", { "overrides": { "+=": "before" } }]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after", { "overrides": { "+=": "before" } }] */
 
 var thing = 'thing';
 thing
@@ -309,7 +308,7 @@ Examples of additional **correct** code for this rule with the `{ "overrides": {
 ::: correct
 
 ```js
-/*eslint operator-linebreak: ["error", "after", { "overrides": { "?": "ignore", ":": "ignore" } }]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after", { "overrides": { "?": "ignore", ":": "ignore" } }] */
 
 answer = everything ?
   42
@@ -329,7 +328,7 @@ Examples of **incorrect** code for this rule with the default `"after", { "overr
 ::: incorrect
 
 ```js
-/*eslint operator-linebreak: ["error", "after", { "overrides": { "?": "before", ":": "before" } }]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after", { "overrides": { "?": "before", ":": "before" } }] */
 
 foo = 1
 +
@@ -357,7 +356,7 @@ Examples of **correct** code for this rule with the default `"after", { "overrid
 ::: correct
 
 ```js
-/*eslint operator-linebreak: ["error", "after", { "overrides": { "?": "before", ":": "before" } }]*/
+/* eslint @stylistic/operator-linebreak: ["error", "after", { "overrides": { "?": "before", ":": "before" } }] */
 
 foo = 1 + 2;
 

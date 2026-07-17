@@ -1,10 +1,14 @@
-# jsx/jsx-first-prop-new-line
+# jsx-first-prop-new-line
 
 Enforce proper position of the first property in JSX.
 
 ## Rule Details
 
-This rule checks whether the first property of all JSX elements is correctly placed. There are the possible configurations:
+This rule checks whether the first property of all JSX elements is correctly placed.
+
+## Options
+
+There are the possible configurations:
 
 - `always`: The first property should always be placed on a new line.
 - `never` : The first property should never be placed on a new line, e.g. should always be on the same line as the Component opening tag.
@@ -12,97 +16,145 @@ This rule checks whether the first property of all JSX elements is correctly pla
 - `multiprop`: The first property should never be placed on a new line unless there are multiple properties.
 - `multiline-multiprop`: The first property should always be placed on a new line if the JSX tag takes up multiple lines and there are multiple properties. This is the `default` value.
 
+### always
+
 Examples of **incorrect** code for this rule, when configured with `"always"`:
 
+::: incorrect
+
 ```jsx
-<Hello personal={true} />
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "always"] */
+
+<Hello personal={true} />;
 
 <Hello personal={true}
     foo="bar"
-/>
+/>;
 ```
+
+:::
 
 Examples of **correct** code for this rule, when configured with `"always"`:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "always"] */
+
 <Hello
-    personal />
+    personal />;
 
 <Hello
     personal
-/>
+/>;
 ```
+
+:::
+
+### never
 
 Examples of **incorrect** code for this rule, when configured with `"never"`:
 
+::: incorrect
+
 ```jsx
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "never"] */
+
 <Hello
-    personal />
+    personal />;
 
 <Hello
     personal
-/>
+/>;
 ```
+
+:::
 
 Examples of **correct** code for this rule, when configured with `"never"`:
 
+::: correct
+
 ```jsx
-<Hello personal={true} />
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "never"] */
+
+<Hello personal={true} />;
 
 <Hello personal={true}
     foo="bar"
-/>
+/>;
 ```
+
+:::
+
+### multiline
 
 Examples of **incorrect** code for this rule, when configured with `"multiline"`:
 
-```jsx
-<Hello personal
-    prop />
-```
+::: incorrect
 
 ```jsx
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "multiline"] */
+
+<Hello personal
+    prop />;
+
 <Hello foo={{
-}} />
+}} />;
 ```
+
+:::
 
 Examples of **correct** code for this rule, when configured with `"multiline"`:
 
+::: correct
+
 ```jsx
-<Hello personal={true} />
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "multiline"] */
+
+<Hello personal={true} />;
 
 <Hello
     personal={true}
     foo="bar"
-/>
+/>;
 ```
+
+:::
+
+### multiline-multiprop
 
 Examples of **incorrect** code for this rule, when configured with `"multiline-multiprop"`:
 
+::: incorrect
+
 ```jsx
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "multiline-multiprop"] */
+
 <Hello foo={{
     }}
-    bar />
+    bar />;
 ```
+
+:::
 
 Examples of **correct** code for this rule, when configured with `"multiline-multiprop"`:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-first-prop-new-line: ["error", "multiline-multiprop"] */
+
 <Hello foo={{
-}} />
+}} />;
 
 <Hello
     foo={{
     }}
     bar
-/>
+/>;
 ```
 
-## Rule Options
-
-```jsx
-"@stylistic/jsx/jsx-first-prop-new-line": `"always" | "never" | "multiline" | "multiprop" | "multiline-multiprop"`
-```
+:::
 
 ## When Not To Use It
 

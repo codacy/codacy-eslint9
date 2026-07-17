@@ -1,9 +1,7 @@
 ---
-title: linebreak-style
-rule_type: layout
 ---
 
-# js/linebreak-style
+# linebreak-style
 
 When developing with a lot of people all having different editors, VCS applications and operating systems it may occur that
 different line endings are written by either of the mentioned (might especially happen when using the windows and mac versions of SourceTree together).
@@ -17,7 +15,9 @@ Many versioning systems (like git and subversion) can automatically ensure the c
 
 This rule enforces consistent line endings independent of operating system, VCS, or editor used across your codebase.
 
-### Options
+This rule is also applicable to CSS, Markdown, JSON files, and other non-JavaScript/TypeScript files parsed by ESLint language plugins such as [@eslint/css](https://github.com/eslint/css) and [@eslint/markdown](https://github.com/eslint/markdown).
+
+## Options
 
 This rule has a string option:
 
@@ -31,7 +31,7 @@ Examples of **incorrect** code for this rule with the default `"unix"` option:
 ::: incorrect
 
 ```js
-/*eslint linebreak-style: ["error", "unix"]*/
+/* eslint @stylistic/linebreak-style: ["error", "unix"] */
 
 var a = 'a'; // \r\n
 
@@ -44,7 +44,7 @@ Examples of **correct** code for this rule with the default `"unix"` option:
 ::: correct
 
 ```js
-/*eslint linebreak-style: ["error", "unix"]*/
+/* eslint @stylistic/linebreak-style: ["error", "unix"] */
 
 var a = 'a', // \n
     b = 'b'; // \n
@@ -63,7 +63,7 @@ Examples of **incorrect** code for this rule with the `"windows"` option:
 ::: incorrect
 
 ```js
-/*eslint linebreak-style: ["error", "windows"]*/
+/* eslint @stylistic/linebreak-style: ["error", "windows"] */
 
 var a = 'a'; // \n
 ```
@@ -75,7 +75,7 @@ Examples of **correct** code for this rule with the `"windows"` option:
 ::: correct
 
 ```js
-/*eslint linebreak-style: ["error", "windows"]*/
+/* eslint @stylistic/linebreak-style: ["error", "windows"] */
 
 var a = 'a', // \r\n
     b = 'b'; // \r\n
@@ -87,7 +87,7 @@ function foo(params) { // \r\n
 
 :::
 
-### Using this rule with version control systems
+## Using this rule with version control systems
 
 Version control systems sometimes have special behavior for linebreaks. To make it easy for developers to contribute to your codebase from different platforms, you may want to configure your VCS to handle linebreaks appropriately.
 

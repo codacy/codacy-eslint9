@@ -1,4 +1,6 @@
-# Prefer JavaScript modules (ESM) over CommonJS
+# prefer-module
+
+📝 Prefer JavaScript modules (ESM) over CommonJS.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -71,6 +73,11 @@ Prefer using the [JavaScript module](https://developer.mozilla.org/en-US/docs/We
 'use strict';
 
 // …
+
+// ✅
+// (Remove the 'use strict' directive. JavaScript modules are in strict mode by default)
+
+// …
 ```
 
 ```js
@@ -80,9 +87,7 @@ if (foo) {
 }
 
 // …
-```
 
-```js
 // ✅
 function run() {
 	if (foo) {
@@ -98,10 +103,14 @@ run();
 ```js
 // ❌
 const file = path.join(__dirname, 'foo.js');
+```
 
+```js
 // ✅
 const file = path.join(import.meta.dirname, 'foo.js');
+```
 
+```js
 // ✅
 const file = path.join(path.dirname(url.fileURLToPath(import.meta.url)), 'foo.js');
 ```
@@ -109,7 +118,9 @@ const file = path.join(path.dirname(url.fileURLToPath(import.meta.url)), 'foo.js
 ```js
 // ❌
 const content = fs.readFileSync(__filename, 'utf8');
+```
 
+```js
 // ✅
 const content = fs.readFileSync(import.meta.filename, 'utf8');
 ```

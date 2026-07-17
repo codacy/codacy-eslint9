@@ -1,4 +1,6 @@
-# Enforce using `vi.spyOn` (`vitest/prefer-spy-on`)
+# vitest/prefer-spy-on
+
+📝 Enforce using `vi.spyOn`.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -11,13 +13,13 @@
 This rule triggers a warning if an object's property is overwritten with a vitest mock.
 
 ```ts
-Date.now = vi.fn();
-Date.now = vi.fn(() => 10);
+Date.now = vi.fn()
+Date.now = vi.fn(() => 10)
 ```
 
 These patterns would not be considered warnings:
 
 ```ts
-vi.spyOn(Date, 'now');
-vi.spyOn(Date, 'now').mockImplementation(() => 10);
+vi.spyOn(Date, 'now')
+vi.spyOn(Date, 'now').mockImplementation(() => 10)
 ```

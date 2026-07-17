@@ -57,7 +57,7 @@ let myObject: object = "Type 'string' is not assignable to type 'object'.";
 ## When Not To Use It
 
 If your project is a rare one that intentionally deals with the class equivalents of primitives, it might not be worthwhile to use this rule.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Further Reading
 
@@ -66,6 +66,7 @@ You might consider using [ESLint disable comments](https://eslint.org/docs/lates
 
 ## Related To
 
+- [Revamping the `ban-types` rule](/blog/revamping-the-ban-types-rule)
 - [`no-empty-object-type`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-empty-object-type.mdx)
 - [`no-restricted-types`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-restricted-types.mdx)
 - [`no-unsafe-function-type`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-unsafe-function-type.mdx)

@@ -297,7 +297,7 @@ console.log({ foo: 42, ...(await awaitData()) });
 
 This rule can be difficult to enable on large existing projects that set up many misused Promises.
 Alternately, if you're not worried about crashes from floating or misused Promises -such as if you have global unhandled Promise handlers registered- then in some cases it may be safe to not use this rule.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Further Reading
 
@@ -305,4 +305,5 @@ You might consider using [ESLint disable comments](https://eslint.org/docs/lates
 
 ## Related To
 
-- [`no-floating-promises`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-floating-promises.mdx)
+- [`strict-void-return`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/strict-void-return.mdx) - A superset of this rule's `checksVoidReturn` option which also checks for non-Promise values.
+- [`no-floating-promises`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-floating-promises.mdx) - Warns about unhandled promises in _statement_ positions.

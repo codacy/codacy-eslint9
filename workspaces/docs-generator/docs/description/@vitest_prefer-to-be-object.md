@@ -1,13 +1,16 @@
-# Enforce using toBeObject() (`vitest/prefer-to-be-object`)
+# vitest/prefer-to-be-object
+
+📝 Enforce using toBeObject().
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
 <!-- end auto-generated rule header -->
+
 ```js
-expectTypeOf({}).not.toBeInstanceOf(Object);
+expectTypeOf({}).not.toBeInstanceOf(Object)
 
 // should be
-expectTypeOf({}).not.toBeObject();
+expectTypeOf({}).not.toBeObject()
 ```

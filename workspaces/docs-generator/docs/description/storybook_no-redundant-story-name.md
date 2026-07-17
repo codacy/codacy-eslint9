@@ -16,7 +16,7 @@ Examples of **incorrect** code for this rule:
 export const PrimaryButton = {
   // no need for this, as Storybook will resolve to this name already
   name: 'Primary Button',
-}
+};
 ```
 
 Examples of **correct** code for this rule:
@@ -24,9 +24,9 @@ Examples of **correct** code for this rule:
 ```js
 export const PrimaryButton = {
   name: 'I am the primary',
-}
+};
 ```
 
 ## When Not To Use It
 
-When you set a custom name for a story, it will make sure that the resolved story name will always be that same name, regardless if you rename the export later on. If that is your reason to keep story names set even if they are redundant, you should turn this rule off.
+When you set a custom name for a story, it will ensure that the resolved story name will always be that same name, regardless of whether you rename the export later on. If that is your reason for keeping story names set, even if they are redundant, you should turn this rule off.

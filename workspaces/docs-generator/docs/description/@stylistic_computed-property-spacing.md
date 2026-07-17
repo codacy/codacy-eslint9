@@ -1,20 +1,16 @@
 ---
-title: computed-property-spacing
-rule_type: layout
 related_rules:
   - array-bracket-spacing
   - comma-spacing
   - space-in-parens
 ---
 
-# js/computed-property-spacing
+# computed-property-spacing
 
 While formatting preferences are very personal, a number of style guides require
 or disallow spaces between computed properties in the following situations:
 
 ```js
-/*eslint-env es6*/
-
 var obj = { prop: "value" };
 var a = "prop";
 var x = obj[a]; // computed property in object member expression
@@ -56,8 +52,7 @@ Examples of **incorrect** code for this rule with the default `"never"` option:
 ::: incorrect
 
 ```js
-/*eslint computed-property-spacing: ["error", "never"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "never"] */
 
 obj[foo ]
 obj[ 'foo']
@@ -66,6 +61,8 @@ obj[foo[ bar ]]
 
 const { [ a ]: someProp } = obj;
 ({ [ b ]: anotherProp } = anotherObj);
+
+type Foo = A[ B ]
 ```
 
 :::
@@ -75,8 +72,7 @@ Examples of **correct** code for this rule with the default `"never"` option:
 ::: correct
 
 ```js
-/*eslint computed-property-spacing: ["error", "never"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "never"] */
 
 obj[foo]
 obj['foo']
@@ -85,6 +81,8 @@ obj[foo[bar]]
 
 const { [a]: someProp } = obj;
 ({ [b]: anotherProp } = anotherObj);
+
+type Foo = A[B]
 ```
 
 :::
@@ -96,8 +94,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 ::: incorrect
 
 ```js
-/*eslint computed-property-spacing: ["error", "always"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "always"] */
 
 obj[foo]
 var x = {[b]: a}
@@ -107,6 +104,7 @@ obj[foo[ bar ]]
 var x = {[ b]: a}
 const { [a]: someProp } = obj;
 ({ [b ]: anotherProp } = anotherObj);
+type Foo = A[B]
 ```
 
 :::
@@ -116,8 +114,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 ::: correct
 
 ```js
-/*eslint computed-property-spacing: ["error", "always"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "always"] */
 
 obj[ foo ]
 obj[ 'foo' ]
@@ -125,11 +122,12 @@ var x = {[ b ]: a}
 obj[ foo[ bar ] ]
 const { [ a ]: someProp } = obj;
 ({ [ b ]: anotherProp } = anotherObj);
+type Foo = A[ B ]
 ```
 
 :::
 
-#### enforceForClassMembers
+### enforceForClassMembers
 
 With `enforceForClassMembers` set to `true` (default), the rule also disallows/enforces spaces inside of computed keys of class methods, getters and setters.
 
@@ -138,8 +136,7 @@ Examples of **incorrect** code for this rule with `"never"` and `{ "enforceForCl
 ::: incorrect
 
 ```js
-/*eslint computed-property-spacing: ["error", "never", { "enforceForClassMembers": true }]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "never", { "enforceForClassMembers": true }] */
 
 class Foo {
   [a ]() {}
@@ -162,8 +159,7 @@ Examples of **correct** code for this rule with `"never"` and `{ "enforceForClas
 ::: correct
 
 ```js
-/*eslint computed-property-spacing: ["error", "never", { "enforceForClassMembers": true }]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "never", { "enforceForClassMembers": true }] */
 
 class Foo {
   [a]() {}
@@ -186,8 +182,7 @@ Examples of **correct** code for this rule with `"never"` and `{ "enforceForClas
 ::: correct
 
 ```js
-/*eslint computed-property-spacing: ["error", "never", { "enforceForClassMembers": false }]*/
-/*eslint-env es6*/
+/* eslint @stylistic/computed-property-spacing: ["error", "never", { "enforceForClassMembers": false }] */
 
 class Foo {
   [a ]() {}

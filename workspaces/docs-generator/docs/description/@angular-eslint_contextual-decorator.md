@@ -15,9 +15,15 @@
 
 # `@angular-eslint/contextual-decorator`
 
-Ensures that classes use contextual decorators in its body
+Ensures that classes use contextual decorators in their body
 
 - Type: suggestion
+
+<br>
+
+## Rationale
+
+Angular decorators like @Input(), @Output(), @ViewChild(), and @HostBinding() are only meaningful in specific class types. For example, @Input() and @Output() only work in @Component or @Directive classes because they define the component/directive's API. Using these decorators in @Injectable() classes or @Pipe() classes will not work as expected, as Angular does not process these decorators in those contexts. This rule prevents bugs by ensuring decorators are only used where Angular will recognize and process them.
 
 <br>
 
@@ -985,6 +991,66 @@ class Test {
   }
 
   clickHandler(): void {}
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/contextual-decorator": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Service()
+class Test {
+  @Input() label: string;
+  ~~~~~~~~
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/contextual-decorator": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Service()
+class Test {
+  @Output() emitter = new EventEmitter<void>();
+  ~~~~~~~~~
 }
 ```
 
@@ -2873,6 +2939,41 @@ class Test {
   ) {}
 
   clickHandler(): void {}
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/contextual-decorator": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Service()
+class Test {
+  constructor(
+    @Optional() testBase: TestBase,
+    @Inject(LOCALE_ID) private readonly localeId: string,
+    @Self() public readonly test: Test,
+    @SkipSelf() protected readonly parentTest: ParentTest,
+    @Host() private readonly host: DynamicHost,
+  ) {}
 }
 ```
 

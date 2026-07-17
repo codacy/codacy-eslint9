@@ -21,6 +21,16 @@ test.describe('skip test conditionally', async ({ browserName }) => {
 })
 ```
 
+With the `disallowFixme` option enabled, the following are also incorrect:
+
+```javascript
+test.fixme('temporarily disabled', async ({ page }) => {})
+
+test.fixme() // marks all tests in the file as fixme
+
+test.describe.fixme('skip this describe', () => {})
+```
+
 Examples of **correct** code for this rule:
 
 ```javascript
@@ -39,7 +49,8 @@ test.describe('two tests', () => {
   "playwright/no-skipped-test": [
     "error",
     {
-      "allowConditional": false
+      "allowConditional": false,
+      "disallowFixme": false
     }
   ]
 }
@@ -52,10 +63,29 @@ Setting this option to `true` will allow using `test.skip()` to
 This can be helpful if you want to prevent usage of `test.skip` being added by
 mistake but still allow conditional tests based on browser/environment setup.
 
+Examples of **incorrect** code for the `{ "allowConditional": true }` option:
+
+```javascript
+test.skip('foo', ({}) => {
+  expect(1).toBe(1)
+})
+
+test('foo', ({}) => {
+  test.skip()
+  expect(1).toBe(1)
+})
+```
+
 Example of **correct** code for the `{ "allowConditional": true }` option:
 
 ```javascript
 test('foo', ({ browserName }) => {
   test.skip(browserName === 'firefox', 'Still working on it')
+  expect(1).toBe(1)
 })
 ```
+
+### `disallowFixme`
+
+Setting this option to `true` will also disallow the `.fixme()` annotation
+(`test.fixme()`, `test.describe.fixme()`, etc.). Default is `false`.

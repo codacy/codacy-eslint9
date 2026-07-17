@@ -1,9 +1,7 @@
 ---
-title: function-paren-newline
-rule_type: layout
 ---
 
-# js/function-paren-newline
+# function-paren-newline
 
 Many style guides require or disallow newlines inside of function parentheses.
 
@@ -11,7 +9,7 @@ Many style guides require or disallow newlines inside of function parentheses.
 
 This rule enforces consistent line breaks inside parentheses of function parameters or arguments.
 
-### Options
+## Options
 
 This rule has a single option, which can either be a string or an object.
 
@@ -40,12 +38,14 @@ Example configurations:
 }
 ```
 
+### always
+
 Examples of **incorrect** code for this rule with the `"always"` option:
 
 ::: incorrect
 
 ```js
-/* eslint function-paren-newline: ["error", "always"] */
+/* eslint @stylistic/function-paren-newline: ["error", "always"] */
 
 function foo(bar, baz) {}
 
@@ -63,7 +63,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 ::: correct
 
 ```js
-/* eslint function-paren-newline: ["error", "always"] */
+/* eslint @stylistic/function-paren-newline: ["error", "always"] */
 
 function foo(
   bar,
@@ -87,12 +87,14 @@ foo(
 
 :::
 
+### never
+
 Examples of **incorrect** code for this rule with the `"never"` option:
 
 ::: incorrect
 
 ```js
-/* eslint function-paren-newline: ["error", "never"] */
+/* eslint @stylistic/function-paren-newline: ["error", "never"] */
 
 function foo(
   bar,
@@ -121,7 +123,7 @@ Examples of **correct** code for this rule with the `"never"` option:
 ::: correct
 
 ```js
-/* eslint function-paren-newline: ["error", "never"] */
+/* eslint @stylistic/function-paren-newline: ["error", "never"] */
 
 function foo(bar, baz) {}
 
@@ -140,12 +142,14 @@ foo(bar,
 
 :::
 
+### multiline
+
 Examples of **incorrect** code for this rule with the default `"multiline"` option:
 
 ::: incorrect
 
 ```js
-/* eslint function-paren-newline: ["error", "multiline"] */
+/* eslint @stylistic/function-paren-newline: ["error", "multiline"] */
 
 function foo(bar,
   baz
@@ -176,7 +180,7 @@ Examples of **correct** code for this rule with the default `"multiline"` option
 ::: correct
 
 ```js
-/* eslint function-paren-newline: ["error", "multiline"] */
+/* eslint @stylistic/function-paren-newline: ["error", "multiline"] */
 
 function foo(bar, baz) {}
 
@@ -202,12 +206,14 @@ foo(function() {
 
 :::
 
+### consistent
+
 Examples of **incorrect** code for this rule with the `"consistent"` option:
 
 ::: incorrect
 
 ```js
-/* eslint function-paren-newline: ["error", "consistent"] */
+/* eslint @stylistic/function-paren-newline: ["error", "consistent"] */
 
 function foo(bar,
   baz
@@ -238,7 +244,7 @@ Examples of **correct** code for this rule with the `"consistent"` option:
 ::: correct
 
 ```js
-/* eslint function-paren-newline: ["error", "consistent"] */
+/* eslint @stylistic/function-paren-newline: ["error", "consistent"] */
 
 function foo(bar,
   baz) {}
@@ -263,12 +269,14 @@ foo(
 
 :::
 
+### multiline-arguments
+
 Examples of **incorrect** code for this rule with the `"multiline-arguments"` option:
 
 ::: incorrect
 
 ```js
-/* eslint function-paren-newline: ["error", "multiline-arguments"] */
+/* eslint @stylistic/function-paren-newline: ["error", "multiline-arguments"] */
 
 function foo(bar,
   baz
@@ -299,7 +307,7 @@ Examples of **correct** code for this rule with the consistent `"multiline-argum
 ::: correct
 
 ```js
-/* eslint function-paren-newline: ["error", "multiline-arguments"] */
+/* eslint @stylistic/function-paren-newline: ["error", "multiline-arguments"] */
 
 function foo(
   bar,
@@ -321,12 +329,14 @@ foo(
 
 :::
 
+### minItems
+
 Examples of **incorrect** code for this rule with the `{ "minItems": 3 }` option:
 
 ::: incorrect
 
 ```js
-/* eslint function-paren-newline: ["error", { "minItems": 3 }] */
+/* eslint @stylistic/function-paren-newline: ["error", { "minItems": 3 }] */
 
 function foo(
   bar,
@@ -357,7 +367,7 @@ Examples of **correct** code for this rule with the `{ "minItems": 3 }` option:
 ::: correct
 
 ```js
-/* eslint function-paren-newline: ["error", { "minItems": 3 }] */
+/* eslint @stylistic/function-paren-newline: ["error", { "minItems": 3 }] */
 
 function foo(bar, baz) {}
 

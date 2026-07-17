@@ -1,4 +1,6 @@
-# Prefer using `structuredClone` to create a deep clone
+# prefer-structured-clone
+
+📝 Prefer using `structuredClone` to create a deep clone.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -54,4 +56,10 @@ Example:
 /* eslint unicorn/prefer-structured-clone: ["error", {"functions": ["utils.clone"]}] */
 // ❌
 const clone = utils.clone(foo);
+```
+
+```js
+/* eslint unicorn/prefer-structured-clone: ["error", {"functions": ["utils.clone"]}] */
+// ✅
+const clone = structuredClone(foo);
 ```

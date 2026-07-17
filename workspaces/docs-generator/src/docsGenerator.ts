@@ -3,7 +3,7 @@
 import { EOL } from "node:os"
 import path from "node:path"
 
-import { type RuleInfo, rules as rulesStylistic } from "@eslint-stylistic/metadata"
+import { type RuleInfo, rules as rulesStylistic } from "@eslint-stylistic/metadata/dist/index.mjs"
 import axios from "axios"
 import {
   DescriptionEntry,

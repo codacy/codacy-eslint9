@@ -1,6 +1,6 @@
 {
   "name": "eslint-9",
-  "version": "9.39.4",
+  "version": "9.39.5",
   "patterns": [
     {
       "patternId": "accessor-pairs",
@@ -2401,6 +2401,13 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_computed-must-return",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_consistent-component-styles",
       "level": "Warning",
       "category": "BestPractice",
@@ -2436,6 +2443,13 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_inject-at-top",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_no-async-lifecycle-method",
       "level": "Error",
       "category": "ErrorProne",
@@ -2450,9 +2464,9 @@
       "enabled": false
     },
     {
-      "patternId": "@angular-eslint_no-conflicting-lifecycle",
-      "level": "Warning",
-      "category": "BestPractice",
+      "patternId": "@angular-eslint_no-developer-preview",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -2471,9 +2485,23 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_no-experimental",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_no-forward-ref",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_no-implicit-take-until-destroyed",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -2548,6 +2576,13 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_no-uncalled-signals",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_pipe-prefix",
       "level": "Warning",
       "category": "BestPractice",
@@ -2555,7 +2590,49 @@
       "enabled": false
     },
     {
+      "patternId": "@angular-eslint_prefer-host-metadata-property",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_prefer-inject",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@angular-eslint_prefer-on-push-component-change-detection",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_prefer-output-emitter-ref",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_prefer-output-readonly",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_prefer-service-decorator",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_prefer-signal-model",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -2597,13 +2674,6 @@
       "enabled": false
     },
     {
-      "patternId": "@angular-eslint_prefer-output-readonly",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "@angular-eslint_relative-url-prefix",
       "level": "Warning",
       "category": "BestPractice",
@@ -2629,12 +2699,23 @@
         {
           "name": "requireMeaning",
           "default": false
+        },
+        {
+          "name": "requireCustomId",
+          "default": false
         }
       ],
       "enabled": false
     },
     {
       "patternId": "@angular-eslint_runtime-localize",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@angular-eslint_sort-keys-in-type-decorator",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -2769,6 +2850,13 @@
       "enabled": false
     },
     {
+      "patternId": "@lwc_lwc_newer-version-available",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@lwc_lwc_no-rest-parameter",
       "level": "Info",
       "category": "CodeStyle",
@@ -2847,6 +2935,13 @@
     },
     {
       "patternId": "@lwc_lwc_ssr-no-form-factor",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@lwc_lwc_ssr-no-disallowed-lwc-imports",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -3131,10 +3226,6 @@
         {
           "name": "unnamedParam",
           "default": "always"
-        },
-        {
-          "name": "requireForBlockBody",
-          "default": false
         }
       ],
       "enabled": false
@@ -3143,16 +3234,7 @@
       "patternId": "@stylistic_arrow-spacing",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "before",
-          "default": true
-        },
-        {
-          "name": "after",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3175,10 +3257,6 @@
         {
           "name": "unnamedParam",
           "default": "1tbs"
-        },
-        {
-          "name": "allowSingleLine",
-          "default": false
         }
       ],
       "enabled": false
@@ -3199,16 +3277,7 @@
       "patternId": "@stylistic_comma-spacing",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "before",
-          "default": false
-        },
-        {
-          "name": "after",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3231,10 +3300,6 @@
         {
           "name": "unnamedParam",
           "default": "never"
-        },
-        {
-          "name": "enforceForClassMembers",
-          "default": true
         }
       ],
       "enabled": false
@@ -3260,13 +3325,6 @@
     },
     {
       "patternId": "@stylistic_eol-last",
-      "level": "Info",
-      "category": "CodeStyle",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@stylistic_func-call-spacing",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -3317,30 +3375,6 @@
           "default": 2
         },
         {
-          "name": "SwitchCase",
-          "default": 0
-        },
-        {
-          "name": "flatTernaryExpressions",
-          "default": false
-        },
-        {
-          "name": "offsetTernaryExpressions",
-          "default": false
-        },
-        {
-          "name": "offsetTernaryExpressionsOffsetCallExpressions",
-          "default": true
-        },
-        {
-          "name": "ignoreComments",
-          "default": false
-        },
-        {
-          "name": "tabLength",
-          "default": 4
-        },
-        {
           "name": "VariableDeclarator",
           "default": 1
         },
@@ -3383,6 +3417,10 @@
         {
           "name": "ImportDeclaration",
           "default": 1
+        },
+        {
+          "name": "offsetTernaryExpressions",
+          "default": false
         },
         {
           "name": "ignoredNodes",
@@ -3462,6 +3500,13 @@
       "enabled": false
     },
     {
+      "patternId": "@stylistic_jsx-indent",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@stylistic_jsx-indent-props",
       "level": "Info",
       "category": "CodeStyle",
@@ -3479,16 +3524,7 @@
       "patternId": "@stylistic_jsx-newline",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "prevent",
-          "default": false
-        },
-        {
-          "name": "allowMultilines",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3513,6 +3549,13 @@
       "enabled": false
     },
     {
+      "patternId": "@stylistic_exp-jsx-props-style",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@stylistic_jsx-quotes",
       "level": "Info",
       "category": "CodeStyle",
@@ -3528,32 +3571,14 @@
       "patternId": "@stylistic_jsx-self-closing-comp",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "component",
-          "default": true
-        },
-        {
-          "name": "html",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
       "patternId": "@stylistic_jsx-sort-props",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "multiline",
-          "default": "ignore"
-        },
-        {
-          "name": "locale",
-          "default": "auto"
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3581,16 +3606,7 @@
       "patternId": "@stylistic_keyword-spacing",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "before",
-          "default": true
-        },
-        {
-          "name": "after",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3611,32 +3627,7 @@
       "patternId": "@stylistic_lines-around-comment",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "beforeBlockComment",
-          "default": true
-        },
-        {
-          "name": "afterBlockComment",
-          "default": false
-        },
-        {
-          "name": "beforeLineComment",
-          "default": false
-        },
-        {
-          "name": "afterLineComment",
-          "default": false
-        },
-        {
-          "name": "allowBlockStart",
-          "default": false
-        },
-        {
-          "name": "allowBlockEnd",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3647,16 +3638,15 @@
         {
           "name": "unnamedParam",
           "default": "always"
-        },
-        {
-          "name": "exceptAfterSingleLine",
-          "default": false
-        },
-        {
-          "name": "exceptAfterOverload",
-          "default": true
         }
       ],
+      "enabled": false
+    },
+    {
+      "patternId": "@stylistic_exp-list-style",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3670,12 +3660,7 @@
       "patternId": "@stylistic_max-statements-per-line",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "max",
-          "default": 1
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3700,10 +3685,6 @@
         {
           "name": "unnamedParam",
           "default": "always"
-        },
-        {
-          "name": "ignoreJSX",
-          "default": false
         }
       ],
       "enabled": false
@@ -3719,28 +3700,14 @@
       "patternId": "@stylistic_newline-per-chained-call",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "ignoreChainWithDepth",
-          "default": 2
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
       "patternId": "@stylistic_no-confusing-arrow",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "allowParens",
-          "default": true
-        },
-        {
-          "name": "onlyOneSimpleParam",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3768,12 +3735,7 @@
       "patternId": "@stylistic_no-mixed-operators",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "allowSamePrecedence",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3787,16 +3749,7 @@
       "patternId": "@stylistic_no-multi-spaces",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "ignoreEOLComments",
-          "default": false
-        },
-        {
-          "name": "includeTabs",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3810,28 +3763,14 @@
       "patternId": "@stylistic_no-tabs",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "allowIndentationTabs",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
       "patternId": "@stylistic_no-trailing-spaces",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "skipBlankLines",
-          "default": false
-        },
-        {
-          "name": "ignoreComments",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3871,16 +3810,7 @@
       "patternId": "@stylistic_object-property-newline",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "allowAllPropertiesOnSameLine",
-          "default": false
-        },
-        {
-          "name": "allowMultiplePropertiesPerLine",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -3975,16 +3905,7 @@
       "patternId": "@stylistic_semi-spacing",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "before",
-          "default": false
-        },
-        {
-          "name": "after",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -4034,32 +3955,14 @@
       "patternId": "@stylistic_space-infix-ops",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "int32Hint",
-          "default": false
-        },
-        {
-          "name": "ignoreTypes",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
       "patternId": "@stylistic_space-unary-ops",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "words",
-          "default": true
-        },
-        {
-          "name": "nonwords",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -4078,16 +3981,7 @@
       "patternId": "@stylistic_switch-colon-spacing",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [
-        {
-          "name": "before",
-          "default": false
-        },
-        {
-          "name": "after",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -4133,10 +4027,6 @@
         {
           "name": "unnamedParam",
           "default": "outside"
-        },
-        {
-          "name": "functionPrototypeMethods",
-          "default": false
         }
       ],
       "enabled": false
@@ -4198,6 +4088,20 @@
       "enabled": false
     },
     {
+      "patternId": "@tanstack_query_mutation-property-order",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@tanstack_query_prefer-query-options",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_adjacent-overload-signatures",
       "level": "Warning",
       "category": "BestPractice",
@@ -4222,12 +4126,7 @@
       "patternId": "@typescript-eslint_ban-ts-comment",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "minimumDescriptionLength",
-          "default": 3
-        }
-      ],
+      "parameters": [],
       "enabled": true
     },
     {
@@ -4248,12 +4147,7 @@
       "patternId": "@typescript-eslint_class-methods-use-this",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "enforceForClassFields",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -4314,28 +4208,7 @@
       "patternId": "@typescript-eslint_dot-notation",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "allowIndexSignaturePropertyAccess",
-          "default": false
-        },
-        {
-          "name": "allowKeywords",
-          "default": true
-        },
-        {
-          "name": "allowPattern",
-          "default": ""
-        },
-        {
-          "name": "allowPrivateClassPropertyAccess",
-          "default": false
-        },
-        {
-          "name": "allowProtectedClassPropertyAccess",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": true
     },
     {
@@ -4617,12 +4490,7 @@
       "patternId": "@typescript-eslint_no-meaningless-void-operator",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "checkNever",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": true
     },
     {
@@ -4794,6 +4662,13 @@
       "enabled": true
     },
     {
+      "patternId": "@typescript-eslint_no-unnecessary-type-conversion",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": true
+    },
+    {
       "patternId": "@typescript-eslint_no-unnecessary-type-parameters",
       "level": "Error",
       "category": "ErrorProne",
@@ -4878,6 +4753,13 @@
       "enabled": true
     },
     {
+      "patternId": "@typescript-eslint_no-unused-private-class-members",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_no-unused-vars",
       "level": "Error",
       "category": "ErrorProne",
@@ -4895,6 +4777,13 @@
       "patternId": "@typescript-eslint_no-useless-constructor",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": true
+    },
+    {
+      "patternId": "@typescript-eslint_no-useless-default-assignment",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": true
     },
@@ -5137,6 +5026,13 @@
       "enabled": false
     },
     {
+      "patternId": "@typescript-eslint_strict-void-return",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@typescript-eslint_switch-exhaustiveness-check",
       "level": "Warning",
       "category": "BestPractice",
@@ -5179,58 +5075,16 @@
       "enabled": true
     },
     {
-      "patternId": "@vitest_prefer-lowercase-title",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "ignoreTopLevelDescribe",
-          "default": false
-        },
-        {
-          "name": "lowercaseFirstCharacterOnly",
-          "default": true
-        }
-      ],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_max-nested-describe",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_no-identical-title",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_no-focused-tests",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "fixable",
-          "default": true
-        }
-      ],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_no-conditional-tests",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_expect-expect",
+      "patternId": "@vitest_consistent-each-for",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_consistent-test-filename",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -5242,46 +5096,37 @@
       "enabled": false
     },
     {
-      "patternId": "@vitest_prefer-to-be",
+      "patternId": "@vitest_consistent-vitest-vi",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_no-hooks",
+      "patternId": "@vitest_expect-expect",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_no-restricted-vi-methods",
+      "patternId": "@vitest_hoisted-apis-on-top",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_consistent-test-filename",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "pattern",
-          "default": ".*\\.test\\.[tj]sx?$"
-        },
-        {
-          "name": "allTestPattern",
-          "default": ".*\\.(test|spec)\\.[tj]sx?$"
-        }
-      ],
       "enabled": false
     },
     {
       "patternId": "@vitest_max-expects",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_max-nested-describe",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -5314,6 +5159,13 @@
       "enabled": false
     },
     {
+      "patternId": "@vitest_no-conditional-tests",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@vitest_no-disabled-tests",
       "level": "Warning",
       "category": "BestPractice",
@@ -5328,7 +5180,35 @@
       "enabled": false
     },
     {
-      "patternId": "@vitest_no-large-snapshots",
+      "patternId": "@vitest_no-focused-tests",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_no-hooks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_no-identical-title",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_no-import-node-test",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_no-importing-vitest-globals",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -5342,6 +5222,13 @@
       "enabled": false
     },
     {
+      "patternId": "@vitest_no-large-snapshots",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@vitest_no-mocks-import",
       "level": "Error",
       "category": "ErrorProne",
@@ -5350,6 +5237,13 @@
     },
     {
       "patternId": "@vitest_no-restricted-matchers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_no-restricted-vi-methods",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -5377,7 +5271,28 @@
       "enabled": false
     },
     {
-      "patternId": "@vitest_no-import-node-test",
+      "patternId": "@vitest_no-unneeded-async-expect-function",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-called-exactly-once-with",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-called-once",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-called-times",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -5391,31 +5306,129 @@
       "enabled": false
     },
     {
-      "patternId": "@vitest_valid-title",
+      "patternId": "@vitest_prefer-comparison-matcher",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "ignoreTypeOfDescribeName",
-          "default": false
-        },
-        {
-          "name": "allowArguments",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_valid-expect",
+      "patternId": "@vitest_prefer-describe-function-title",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-each",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "alwaysAwait",
-          "default": false
-        }
-      ],
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-equality-matcher",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-expect-assertions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-expect-resolves",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-expect-type-of",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-hooks-in-order",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-hooks-on-top",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-import-in-mock",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-importing-vitest-globals",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-lowercase-title",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-mock-promise-shorthand",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-mock-return-shorthand",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-snapshot-hint",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-spy-on",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-strict-boolean-matchers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-strict-equal",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
       "enabled": false
     },
     {
@@ -5440,105 +5453,28 @@
       "enabled": false
     },
     {
+      "patternId": "@vitest_prefer-to-be",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-to-contain",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_prefer-to-have-been-called-times",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "@vitest_prefer-to-have-length",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-equality-matcher",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-strict-equal",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-expect-resolves",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-each",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-hooks-on-top",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-hooks-in-order",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_require-local-test-context-for-concurrent-snapshots",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-mock-promise-shorthand",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-vi-mocked",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-snapshot-hint",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_valid-describe-callback",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_require-top-level-describe",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_require-to-throw-message",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_require-hook",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -5552,37 +5488,72 @@
       "enabled": false
     },
     {
-      "patternId": "@vitest_prefer-spy-on",
+      "patternId": "@vitest_prefer-vi-mocked",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_prefer-comparison-matcher",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_prefer-describe-function-title",
+      "patternId": "@vitest_require-awaited-expect-poll",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_prefer-to-contain",
+      "patternId": "@vitest_require-hook",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_prefer-expect-assertions",
+      "patternId": "@vitest_require-local-test-context-for-concurrent-snapshots",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_require-mock-type-parameters",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_require-test-timeout",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_require-to-throw-message",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_require-top-level-describe",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_unbound-method",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_valid-describe-callback",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -5594,14 +5565,21 @@
       "enabled": false
     },
     {
-      "patternId": "@vitest_prefer-strict-boolean-matchers",
+      "patternId": "@vitest_valid-expect",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "@vitest_require-mock-type-parameters",
+      "patternId": "@vitest_valid-title",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "@vitest_warn-todo",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -6217,6 +6195,13 @@
       "enabled": false
     },
     {
+      "patternId": "backbone_events-sort",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "backbone_initialize-on-top",
       "level": "Info",
       "category": "CodeStyle",
@@ -6350,26 +6335,21 @@
       "enabled": false
     },
     {
-      "patternId": "cypress_no-assigning-return-values",
+      "patternId": "cypress_assertion-before-screenshot",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "cypress_unsafe-to-chain-command",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "methods",
-          "default": []
-        }
-      ],
+      "patternId": "cypress_no-and",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "cypress_no-unnecessary-waiting",
+      "patternId": "cypress_no-assigning-return-values",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -6390,14 +6370,14 @@
       "enabled": false
     },
     {
-      "patternId": "cypress_assertion-before-screenshot",
+      "patternId": "cypress_no-chained-get",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "cypress_require-data-selectors",
+      "patternId": "cypress_no-debug",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -6418,24 +6398,36 @@
       "enabled": false
     },
     {
-      "patternId": "cypress_no-debug",
-      "level": "Warning",
-      "category": "BestPractice",
+      "patternId": "cypress_no-unnecessary-waiting",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
       "patternId": "cypress_no-xpath",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "cypress_require-data-selectors",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "cypress_no-chained-get",
+      "patternId": "cypress_unsafe-to-chain-command",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "methods",
+          "default": []
+        }
+      ],
       "enabled": false
     },
     {
@@ -6564,6 +6556,13 @@
       "patternId": "ember_no-attrs-snapshot",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_no-builtin-form-components",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -6822,6 +6821,13 @@
       "enabled": false
     },
     {
+      "patternId": "ember_no-modifier-argument-destructuring",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "ember_no-new-mixins",
       "level": "Warning",
       "category": "BestPractice",
@@ -6998,6 +7004,13 @@
     },
     {
       "patternId": "ember_no-test-this-render",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_no-tracked-built-ins",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -7181,7 +7194,952 @@
       "enabled": false
     },
     {
+      "patternId": "ember_template-attribute-indentation",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-attribute-order",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-block-indentation",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-builtin-component-arguments",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-deprecated-inline-view-helper",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-deprecated-render-helper",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-eol-last",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-linebreak-style",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-link-href-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-link-rel-noopener",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-modifier-name-case",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-abstract-roles",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-accesskey-attribute",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-action-modifiers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-action-on-submit-button",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-action",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-args-paths",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-arguments-for-html-elements",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-aria-hidden-body",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-aria-unsupported-elements",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-array-prototype-extensions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-at-ember-render-modifiers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-attrs-in-components",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-autofocus-attribute",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-bare-strings",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-bare-yield",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-block-params-for-html-elements",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-builtin-form-components",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-capital-arguments",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-chained-this",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-class-bindings",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-curly-component-invocation",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-debugger",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-deprecated",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-duplicate-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-duplicate-id",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-duplicate-landmark-elements",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-dynamic-subexpression-invocations",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-element-event-actions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-empty-headings",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-extra-mut-helper-argument",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-forbidden-elements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-heading-inside-button",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-html-comments",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-implicit-this",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-index-component-invocation",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-inline-event-handlers",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-inline-linkto",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-inline-styles",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-input-block",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-input-tagname",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-invalid-aria-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-invalid-interactive",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-invalid-link-text",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-invalid-link-title",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-invalid-meta",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-invalid-role",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-jsx-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "ember_template-no-let-reference",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-link-to-positional-params",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-link-to-tagname",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-log",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-model-argument-in-route-templates",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-multiple-empty-lines",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-mut-helper",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-negated-condition",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-nested-interactive",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-nested-landmark",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-nested-splattributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-obscure-array-access",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-obsolete-elements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-only-default-slot",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-outlet-outside-routes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-page-title-component",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-passed-in-event-handlers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-pointer-down-event-binding",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-positional-data-test-selectors",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-positive-tabindex",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-potential-path-strings",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-quoteless-attributes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-redundant-fn",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-redundant-role",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-restricted-invocations",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-route-action",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-scope-outside-table-headings",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-shadowed-elements",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-splattributes-with-class",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-template-lint-directives",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-this-in-template-only-components",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-trailing-spaces",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-triple-curlies",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unavailable-this",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unbalanced-curlies",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unbound",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unknown-arguments-for-builtin-components",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unnecessary-component-helper",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unnecessary-concat",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unnecessary-curly-parens",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unnecessary-curly-strings",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unsupported-role-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-unused-block-params",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-valueless-arguments",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-whitespace-for-layout",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-whitespace-within-word",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-with",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-yield-block-params-to-else-inverse",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-yield-only",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-no-yield-to-default",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-quotes",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-aria-activedescendant-tabindex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-button-type",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-context-role",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-each-key",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-form-method",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-has-block-helper",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-iframe-src-attribute",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-iframe-title",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-input-label",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-input-type",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-lang-attribute",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-mandatory-role-attributes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-media-caption",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-presentational-children",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-splattributes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-strict-mode",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-valid-alt-text",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-valid-form-groups",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-require-valid-named-block-naming-format",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-self-closing-void-elements",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-simple-modifiers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-simple-unless",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-sort-invocations",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-splat-attributes-only",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-style-concatenation",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-table-groups",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "ember_template-template-length",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -7270,6 +8228,13 @@
     },
     {
       "patternId": "es-x_no-array-from",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-array-fromasync",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7486,7 +8451,21 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-asyncdisposablestack",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-atomics",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-atomics-pause",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7605,6 +8584,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-date-prototype-totemporalinstant",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-default-parameters",
       "level": "Error",
       "category": "ErrorProne",
@@ -7613,6 +8599,13 @@
     },
     {
       "patternId": "es-x_no-destructuring",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-disposablestack",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7634,6 +8627,13 @@
     },
     {
       "patternId": "es-x_no-error-cause",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-error-iserror",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7780,6 +8780,62 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-intl-locale-prototype-firstdayofweek",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-getcalendars",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-getcollations",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-gethourcycles",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-getnumberingsystems",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-gettextinfo",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-gettimezones",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-intl-locale-prototype-getweekinfo",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-intl-numberformat-prototype-formatrange",
       "level": "Error",
       "category": "ErrorProne",
@@ -7837,6 +8893,13 @@
     },
     {
       "patternId": "es-x_no-iterator",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-concat",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7920,6 +8983,20 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-iterator-zip",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-iterator-zipkeyed",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-json",
       "level": "Error",
       "category": "ErrorProne",
@@ -7927,7 +9004,28 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-json-israwjson",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-json-modules",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-json-parse-reviver-context-parameter",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-json-rawjson",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -7984,6 +9082,20 @@
     },
     {
       "patternId": "es-x_no-map-groupby",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-map-prototype-getorinsert",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-map-prototype-getorinsertcomputed",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8102,6 +9214,13 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-math-sumprecise",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-math-tanh",
       "level": "Error",
       "category": "ErrorProne",
@@ -8152,6 +9271,20 @@
     },
     {
       "patternId": "es-x_no-nonstandard-arraybuffer-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-asyncdisposablestack-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-asyncdisposablestack-prototype-properties",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8215,6 +9348,27 @@
     },
     {
       "patternId": "es-x_no-nonstandard-date-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-disposablestack-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-disposablestack-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-error-properties",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -8544,6 +9698,132 @@
     },
     {
       "patternId": "es-x_no-nonstandard-symbol-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-duration-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-duration-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-instant-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-instant-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-now-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plaindate-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plaindate-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plaindatetime-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plaindatetime-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plainmonthday-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plainmonthday-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plaintime-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plaintime-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plainyearmonth-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-plainyearmonth-prototype-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-zoneddatetime-properties",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-nonstandard-temporal-zoneddatetime-prototype-properties",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -9306,7 +10586,35 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-suppressederror",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-symbol",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-symbol-asyncdispose",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-symbol-dispose",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-symbol-matchall",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -9321,6 +10629,13 @@
     },
     {
       "patternId": "es-x_no-template-literals",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-temporal",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -9362,7 +10677,56 @@
       "enabled": false
     },
     {
+      "patternId": "es-x_no-uint8array-frombase64",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-uint8array-fromhex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-uint8array-prototype-setfrombase64",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-uint8array-prototype-setfromhex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-uint8array-prototype-tobase64",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-uint8array-prototype-tohex",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "es-x_no-unicode-codepoint-escapes",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-using-declarations",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -9377,6 +10741,20 @@
     },
     {
       "patternId": "es-x_no-weak-set",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-weakmap-prototype-getorinsert",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "es-x_no-weakmap-prototype-getorinsertcomputed",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -9432,11 +10810,25 @@
       "enabled": true
     },
     {
-      "patternId": "eslint-plugin_no-meta-schema-default",
+      "patternId": "eslint-plugin_no-matching-violation-suggest-message-ids",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
+    },
+    {
+      "patternId": "eslint-plugin_no-meta-replaced-by",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": true
+    },
+    {
+      "patternId": "eslint-plugin_no-meta-schema-default",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": true
     },
     {
       "patternId": "eslint-plugin_no-missing-message-ids",
@@ -9534,30 +10926,20 @@
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": false
+      "enabled": true
     },
     {
       "patternId": "eslint-plugin_require-meta-docs-description",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "pattern",
-          "default": "^(enforce|require|disallow)"
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
       "patternId": "eslint-plugin_require-meta-docs-recommended",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "allowNonBoolean",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": false
     },
     {
@@ -9571,12 +10953,7 @@
       "patternId": "eslint-plugin_require-meta-fixable",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "catchNoFixerButFixableProperty",
-          "default": false
-        }
-      ],
+      "parameters": [],
       "enabled": true
     },
     {
@@ -9591,18 +10968,13 @@
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": false
+      "enabled": true
     },
     {
       "patternId": "eslint-plugin_require-meta-schema",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [
-        {
-          "name": "requireSchemaPropertyWhenOptionless",
-          "default": true
-        }
-      ],
+      "parameters": [],
       "enabled": true
     },
     {
@@ -9613,6 +10985,20 @@
       "enabled": true
     },
     {
+      "patternId": "eslint-plugin_require-test-case-name",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "eslint-plugin_require-test-error-positions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "eslint-plugin_test-case-property-ordering",
       "level": "Warning",
       "category": "BestPractice",
@@ -9621,6 +11007,13 @@
     },
     {
       "patternId": "eslint-plugin_test-case-shorthand-strings",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "eslint-plugin_unique-test-case-names",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -10039,6 +11432,10 @@
           "default": true
         },
         {
+          "name": "sortTypesGroup",
+          "default": false
+        },
+        {
           "name": "named",
           "default": false
         },
@@ -10119,6 +11516,13 @@
     },
     {
       "patternId": "import_no-empty-named-blocks",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "import_enforce-node-protocol-usage",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -10293,6 +11697,13 @@
       "enabled": false
     },
     {
+      "patternId": "jest_no-error-equal",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jest_no-export",
       "level": "Warning",
       "category": "BestPractice",
@@ -10384,6 +11795,20 @@
       "enabled": false
     },
     {
+      "patternId": "jest_no-unnecessary-assertion",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jest_no-unneeded-async-expect-function",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jest_no-untyped-mock-factory",
       "level": "Warning",
       "category": "BestPractice",
@@ -10468,6 +11893,13 @@
       "enabled": false
     },
     {
+      "patternId": "jest_prefer-ending-with-an-expect",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jest_prefer-equality-matcher",
       "level": "Warning",
       "category": "BestPractice",
@@ -10524,12 +11956,23 @@
         {
           "name": "ignoreTopLevelDescribe",
           "default": false
+        },
+        {
+          "name": "ignoreTodos",
+          "default": false
         }
       ],
       "enabled": false
     },
     {
       "patternId": "jest_prefer-mock-promise-shorthand",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jest_prefer-mock-return-shorthand",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -10565,6 +12008,20 @@
     },
     {
       "patternId": "jest_prefer-to-contain",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jest_prefer-to-have-been-called-times",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jest_prefer-to-have-been-called",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -10620,6 +12077,13 @@
       "enabled": false
     },
     {
+      "patternId": "jest_valid-expect-with-promise",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jest_valid-expect",
       "level": "Warning",
       "category": "BestPractice",
@@ -10629,6 +12093,13 @@
           "default": false
         }
       ],
+      "enabled": false
+    },
+    {
+      "patternId": "jest_valid-mock-module-path",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
       "enabled": false
     },
     {
@@ -10830,7 +12301,12 @@
       "patternId": "jsdoc_check-alignment",
       "level": "Info",
       "category": "CodeStyle",
-      "parameters": [],
+      "parameters": [
+        {
+          "name": "innerIndent",
+          "default": 1
+        }
+      ],
       "enabled": false
     },
     {
@@ -10964,6 +12440,13 @@
       "enabled": false
     },
     {
+      "patternId": "jsdoc_escape-inline-tags",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsdoc_implements-on-classes",
       "level": "Warning",
       "category": "BestPractice",
@@ -11081,6 +12564,27 @@
       "enabled": false
     },
     {
+      "patternId": "jsdoc_prefer-import-tag",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_reject-any-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_reject-function-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsdoc_require-asterisk-prefix",
       "level": "Info",
       "category": "CodeStyle",
@@ -11162,6 +12666,10 @@
       "category": "BestPractice",
       "parameters": [
         {
+          "name": "checkAllFunctionExpressions",
+          "default": false
+        },
+        {
           "name": "checkConstructors",
           "default": true
         },
@@ -11186,14 +12694,36 @@
           "default": false
         },
         {
+          "name": "exemptOverloadedImplementations",
+          "default": false
+        },
+        {
           "name": "fixerMessage",
           "default": ""
         },
         {
           "name": "require",
           "default": {}
+        },
+        {
+          "name": "skipInterveningOverloadedDeclarations",
+          "default": true
         }
       ],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_require-next-description",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_require-next-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
       "enabled": false
     },
     {
@@ -11282,6 +12812,13 @@
       "enabled": false
     },
     {
+      "patternId": "jsdoc_require-rejects",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsdoc_require-returns",
       "level": "Warning",
       "category": "BestPractice",
@@ -11336,6 +12873,13 @@
       "enabled": false
     },
     {
+      "patternId": "jsdoc_require-tags",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsdoc_require-template",
       "level": "Warning",
       "category": "BestPractice",
@@ -11343,7 +12887,28 @@
       "enabled": false
     },
     {
+      "patternId": "jsdoc_require-template-description",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsdoc_require-throws",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_require-throws-description",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_require-throws-type",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -11394,6 +12959,20 @@
       "enabled": false
     },
     {
+      "patternId": "jsdoc_require-yields-description",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_require-yields-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "jsdoc_sort-tags",
       "level": "Warning",
       "category": "BestPractice",
@@ -11409,6 +12988,41 @@
     },
     {
       "patternId": "jsdoc_text-escaping",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_ts-method-signature-style",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_ts-no-empty-object-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_ts-no-unnecessary-template-expression",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_ts-prefer-function-type",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "jsdoc_type-formatting",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -12211,6 +13825,13 @@
       "patternId": "lit_prefer-nothing",
       "level": "Info",
       "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "lit_prefer-query-decorators",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -13086,6 +14707,13 @@
       "enabled": false
     },
     {
+      "patternId": "n_no-top-level-await",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "n_no-unpublished-bin",
       "level": "Error",
       "category": "ErrorProne",
@@ -13156,6 +14784,13 @@
       "enabled": false
     },
     {
+      "patternId": "n_prefer-global_crypto",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "n_prefer-global_process",
       "level": "Warning",
       "category": "BestPractice",
@@ -13191,6 +14826,13 @@
       "enabled": false
     },
     {
+      "patternId": "n_prefer-global_timers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "n_prefer-node-protocol",
       "level": "Warning",
       "category": "BestPractice",
@@ -13220,6 +14862,20 @@
     },
     {
       "patternId": "n_hashbang",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "n_no-hide-core-modules",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "n_shebang",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -13283,6 +14939,20 @@
     },
     {
       "patternId": "perfectionist_sort-intersection-types",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "perfectionist_sort-import-attributes",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "perfectionist_sort-export-attributes",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -13415,6 +15085,20 @@
       "enabled": false
     },
     {
+      "patternId": "perfectionist_sort-arrays",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_consistent-spacing-between-blocks",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "playwright_expect-expect",
       "level": "Error",
       "category": "ErrorProne",
@@ -13467,6 +15151,13 @@
       "patternId": "playwright_no-duplicate-hooks",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_no-duplicate-slow",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -13548,7 +15239,21 @@
       "enabled": false
     },
     {
+      "patternId": "playwright_no-restricted-locators",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "playwright_no-restricted-matchers",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_no-restricted-roles",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -13561,6 +15266,10 @@
       "parameters": [
         {
           "name": "allowConditional",
+          "default": false
+        },
+        {
+          "name": "disallowFixme",
           "default": false
         }
       ],
@@ -13593,6 +15302,13 @@
       "enabled": false
     },
     {
+      "patternId": "playwright_no-unused-locators",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "playwright_no-useless-await",
       "level": "Error",
       "category": "ErrorProne",
@@ -13603,6 +15319,13 @@
       "patternId": "playwright_no-useless-not",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_no-wait-for-navigation",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -13736,6 +15459,20 @@
       "enabled": false
     },
     {
+      "patternId": "playwright_require-tags",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_require-to-pass-timeout",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "playwright_require-to-throw-message",
       "level": "Warning",
       "category": "BestPractice",
@@ -13767,6 +15504,13 @@
       "patternId": "playwright_valid-expect-in-promise",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "playwright_valid-test-tags",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -14822,14 +16566,14 @@
       "enabled": false
     },
     {
-      "patternId": "react-hooks_component-hook-factories",
+      "patternId": "react-hooks_preserve-manual-memoization",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "react-hooks_preserve-manual-memoization",
+      "patternId": "react-hooks_memo-dependencies",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -14865,6 +16609,13 @@
     },
     {
       "patternId": "react-hooks_memoized-effect-dependencies",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "react-hooks_exhaustive-effect-dependencies",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -14949,20 +16700,6 @@
     },
     {
       "patternId": "react-hooks_rule-suppression",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "react-hooks_automatic-effect-dependencies",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "react-hooks_fire",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -16105,6 +17842,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_no-floating-point-equality",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_prefer-while",
       "level": "Warning",
       "category": "BestPractice",
@@ -16127,8 +17871,8 @@
     },
     {
       "patternId": "sonarjs_no-hardcoded-ip",
-      "level": "Error",
-      "category": "ErrorProne",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -16255,13 +17999,6 @@
       "patternId": "sonarjs_no-skipped-tests",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-one-iteration-loop",
-      "level": "Error",
-      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -16567,6 +18304,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_no-fixed-wait-in-tests",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_no-incomplete-assertions",
       "level": "Warning",
       "category": "BestPractice",
@@ -16826,13 +18570,6 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_super-invocation",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "sonarjs_no-all-duplicated-branches",
       "level": "Error",
       "category": "ErrorProne",
@@ -16876,13 +18613,6 @@
     },
     {
       "patternId": "sonarjs_no-misleading-array-reverse",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-invalid-await",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17036,13 +18766,6 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_os-command",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "sonarjs_no-redundant-optional",
       "level": "Warning",
       "category": "BestPractice",
@@ -17072,13 +18795,6 @@
     },
     {
       "patternId": "sonarjs_unverified-certificate",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-unsafe-unzip",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -17169,13 +18885,6 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-intrusive-permissions",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "sonarjs_insecure-jwt-token",
       "level": "Error",
       "category": "ErrorProne",
@@ -17184,13 +18893,6 @@
     },
     {
       "patternId": "sonarjs_x-powered-by",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_hidden-files",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -17218,20 +18920,6 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_no-mixed-content",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_frame-ancestors",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "sonarjs_no-mime-sniff",
       "level": "Error",
       "category": "ErrorProne",
@@ -17253,20 +18941,6 @@
       "enabled": false
     },
     {
-      "patternId": "sonarjs_confidential-information-logging",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "sonarjs_no-ip-forward",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "sonarjs_empty-string-repetition",
       "level": "Error",
       "category": "ErrorProne",
@@ -17277,6 +18951,13 @@
       "patternId": "sonarjs_regex-complexity",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-incompatible-assertion-types",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -17344,6 +19025,20 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_prefer-specific-assertions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-trivial-assertions",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_test-check-exception",
       "level": "Warning",
       "category": "BestPractice",
@@ -17352,6 +19047,13 @@
     },
     {
       "patternId": "sonarjs_stable-tests",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_parameterized-tests",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17596,6 +19298,13 @@
       "enabled": false
     },
     {
+      "patternId": "sonarjs_hardcoded-secret-signatures",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "sonarjs_jsx-no-leaked-render",
       "level": "Error",
       "category": "ErrorProne",
@@ -17667,6 +19376,139 @@
     },
     {
       "patternId": "sonarjs_no-async-constructor",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_review-blockchain-mnemonic",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_dynamically-constructed-templates",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-session-cookies-on-static-assets",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_dompurify-unsafe-config",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-duplicate-test-title",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_async-test-assertions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-empty-test-title",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_hooks-before-test-cases",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-forced-browser-interaction",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_assertions-in-test-cases",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_synchronous-suite-callback",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_super-linear-regex",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_prefer-native-lodash-alternative",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-default-utility-imports",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_memoize-cache-key",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-debug-commands-in-ui-tests",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-mixed-completion-style",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_no-interpolation-in-inline-snapshots",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "sonarjs_explicit-test-skip",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -17892,6 +19734,13 @@
       "enabled": false
     },
     {
+      "patternId": "storybook_no-renderer-packages",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "storybook_no-stories-of",
       "level": "Error",
       "category": "ErrorProne",
@@ -17941,13 +19790,6 @@
       "enabled": false
     },
     {
-      "patternId": "suitescript_script-type",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "suitescript_api-version",
       "level": "Error",
       "category": "ErrorProne",
@@ -17955,23 +19797,9 @@
       "enabled": false
     },
     {
-      "patternId": "suitescript_no-invalid-modules",
+      "patternId": "suitescript_entry-points",
       "level": "Error",
       "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "suitescript_no-extra-modules",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "suitescript_no-log-module",
-      "level": "Warning",
-      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -17997,14 +19825,35 @@
       "enabled": false
     },
     {
-      "patternId": "suitescript_entry-points",
+      "patternId": "suitescript_no-extra-modules",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
+      "patternId": "suitescript_no-invalid-modules",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "suitescript_no-log-module",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "suitescript_no-module-extensions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "suitescript_script-type",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -18116,9 +19965,30 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_max-lines-per-block",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_mustache-spacing",
       "level": "Info",
       "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_no-add-event-listener",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_no-at-const-tags",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -18221,9 +20091,16 @@
       "enabled": false
     },
     {
-      "patternId": "svelte_no-navigation-without-base",
+      "patternId": "svelte_no-navigation-without-resolve",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_no-nested-style-tag",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -18317,6 +20194,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_no-top-level-browser-globals",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_no-trailing-spaces",
       "level": "Info",
       "category": "CodeStyle",
@@ -18404,6 +20288,13 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_prefer-derived-over-derived-by",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_prefer-destructured-store-props",
       "level": "Warning",
       "category": "BestPractice",
@@ -18418,6 +20309,20 @@
       "enabled": false
     },
     {
+      "patternId": "svelte_prefer-svelte-reactivity",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_prefer-writable-derived",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "svelte_require-each-key",
       "level": "Warning",
       "category": "BestPractice",
@@ -18426,6 +20331,13 @@
     },
     {
       "patternId": "svelte_require-event-dispatcher-types",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "svelte_require-event-prefix",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18524,27 +20436,27 @@
     },
     {
       "patternId": "tailwindcss_classnames-order",
-      "level": "Info",
-      "category": "CodeStyle",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
       "patternId": "tailwindcss_enforces-negative-arbitrary-values",
-      "level": "Info",
-      "category": "BestPractice",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
     {
       "patternId": "tailwindcss_enforces-shorthand",
-      "level": "Info",
+      "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
     {
-      "patternId": "tailwindcss_migration-from-tailwind-2",
+      "patternId": "tailwindcss_important-modifier-suffix",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -18552,7 +20464,14 @@
     },
     {
       "patternId": "tailwindcss_no-arbitrary-value",
-      "level": "Info",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "tailwindcss_no-custom-classname",
+      "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
       "enabled": false
@@ -18565,16 +20484,9 @@
       "enabled": false
     },
     {
-      "patternId": "tailwindcss_no-custom-classname",
-      "level": "Info",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "tailwindcss_no-unnecessary-arbitrary-value",
-      "level": "Info",
-      "category": "BestPractice",
+      "level": "Error",
+      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -18758,6 +20670,13 @@
       "enabled": false
     },
     {
+      "patternId": "testing-library_no-test-id-queries",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "testing-library_no-unnecessary-act",
       "level": "Error",
       "category": "ErrorProne",
@@ -18842,6 +20761,13 @@
       "enabled": false
     },
     {
+      "patternId": "testing-library_prefer-user-event-setup",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "testing-library_render-result-naming-convention",
       "level": "Warning",
       "category": "BestPractice",
@@ -18849,21 +20775,7 @@
       "enabled": false
     },
     {
-      "patternId": "typescript-sort-keys_interface",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "typescript-sort-keys_string-enum",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "unicorn_better-regex",
+      "patternId": "unicorn_better-dom-traversing",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -18880,6 +20792,13 @@
       "patternId": "unicorn_consistent-assert",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_consistent-compound-words",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -18919,9 +20838,30 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_consistent-json-file-read",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_consistent-template-literal-escape",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_custom-error-definition",
       "level": "Error",
       "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_dom-node-dataset",
+      "level": "Warning",
+      "category": "BestPractice",
       "parameters": [],
       "enabled": false
     },
@@ -18980,6 +20920,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_isolated-functions",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_new-for-builtins",
       "level": "Warning",
       "category": "BestPractice",
@@ -19015,7 +20962,21 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-array-fill-with-reference-type",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-array-for-each",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-array-from-fill",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19064,6 +21025,27 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-blob-to-file",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-canvas-to-image",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-confusing-array-splice",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-console-spaces",
       "level": "Warning",
       "category": "BestPractice",
@@ -19078,7 +21060,21 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-duplicate-set-values",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-empty-file",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-exports-in-scripts",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19106,6 +21102,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-incorrect-query-selector",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-instanceof-builtins",
       "level": "Error",
       "category": "ErrorProne",
@@ -19114,6 +21117,13 @@
     },
     {
       "patternId": "unicorn_no-invalid-fetch-options",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-invalid-file-input-accept",
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
@@ -19134,6 +21144,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-late-current-target-access",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-lonely-if",
       "level": "Warning",
       "category": "BestPractice",
@@ -19144,6 +21161,13 @@
       "patternId": "unicorn_no-magic-array-flat-depth",
       "level": "Warning",
       "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-manually-wrapped-comments",
+      "level": "Info",
+      "category": "CodeStyle",
       "parameters": [],
       "enabled": false
     },
@@ -19239,6 +21263,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-this-outside-of-class",
+      "level": "Error",
+      "category": "ErrorProne",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-typeof-undefined",
       "level": "Warning",
       "category": "BestPractice",
@@ -19261,6 +21292,13 @@
     },
     {
       "patternId": "unicorn_no-unnecessary-await",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-unnecessary-nested-ternary",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19295,6 +21333,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_no-unused-array-method-return",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-unused-properties",
       "level": "Warning",
       "category": "BestPractice",
@@ -19317,6 +21362,13 @@
     },
     {
       "patternId": "unicorn_no-useless-fallback-in-spread",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_no-useless-iterator-to-array",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19414,6 +21466,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_prefer-array-last-methods",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_prefer-array-some",
       "level": "Warning",
       "category": "BestPractice",
@@ -19484,13 +21543,6 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_prefer-dom-node-dataset",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "unicorn_prefer-dom-node-remove",
       "level": "Warning",
       "category": "BestPractice",
@@ -19519,7 +21571,21 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_prefer-get-or-insert-computed",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_prefer-global-this",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-https",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19540,7 +21606,21 @@
       "enabled": false
     },
     {
-      "patternId": "unicorn_prefer-json-parse-buffer",
+      "patternId": "unicorn_prefer-includes-over-repeated-comparisons",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-iterator-concat",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-iterator-to-array-at-end",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19555,6 +21635,13 @@
     },
     {
       "patternId": "unicorn_prefer-logical-operator-over-ternary",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-math-abs",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19652,6 +21739,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_prefer-queue-microtask",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_prefer-reflect-apply",
       "level": "Warning",
       "category": "BestPractice",
@@ -19687,7 +21781,21 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_prefer-simple-condition-first",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_prefer-single-call",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-split-limit",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19701,7 +21809,28 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_prefer-string-match-all",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-string-pad-start-end",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_prefer-string-raw",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-string-repeat",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19792,6 +21921,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_require-css-escape",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_require-module-attributes",
       "level": "Warning",
       "category": "BestPractice",
@@ -19807,6 +21943,13 @@
     },
     {
       "patternId": "unicorn_require-number-to-fixed-digits-argument",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_require-passive-events",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -19834,6 +21977,13 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_switch-case-break-position",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_template-indent",
       "level": "Warning",
       "category": "BestPractice",
@@ -19855,6 +22005,20 @@
       "enabled": false
     },
     {
+      "patternId": "unicorn_try-complexity",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_better-regex",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "unicorn_no-instanceof-array",
       "level": "Info",
       "category": "CodeStyle",
@@ -19870,6 +22034,20 @@
     },
     {
       "patternId": "unicorn_no-array-push-push",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-json-parse-buffer",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "unicorn_prefer-dom-node-dataset",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -20568,6 +22746,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue_no-duplicate-class-names",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_no-empty-component-block",
       "level": "Warning",
       "category": "BestPractice",
@@ -20631,6 +22816,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue_no-literals-in-template",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_no-lone-template",
       "level": "Error",
       "category": "ErrorProne",
@@ -20674,6 +22866,20 @@
     },
     {
       "patternId": "vue_no-mutating-props",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_no-negated-condition",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_no-negated-v-if-condition",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -20905,6 +23111,13 @@
     },
     {
       "patternId": "vue_no-undef-components",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_no-undef-directives",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -21151,6 +23364,13 @@
       "enabled": false
     },
     {
+      "patternId": "vue_prefer-single-event-payload",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vue_prefer-template",
       "level": "Warning",
       "category": "BestPractice",
@@ -21166,6 +23386,13 @@
     },
     {
       "patternId": "vue_prefer-use-template-ref",
+      "level": "Warning",
+      "category": "BestPractice",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vue_prefer-v-model",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -21646,6 +23873,34 @@
       "enabled": false
     },
     {
+      "patternId": "vuetify_custom-deprecated-components",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_custom-deprecated-events",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_custom-deprecated-props",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_custom-deprecated-slots",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
       "patternId": "vuetify_grid-unknown-attributes",
       "level": "Info",
       "category": "CodeStyle",
@@ -21654,6 +23909,13 @@
     },
     {
       "patternId": "vuetify_icon-button-variant",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-border-prop",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -21703,6 +23965,55 @@
     },
     {
       "patternId": "vuetify_no-deprecated-slots",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-deprecated-snackbar",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-deprecated-typography",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-elevation-overflow",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-elevation-prop",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-legacy-grid-props",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-legacy-utilities",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "vuetify_no-rounded-prop",
       "level": "Info",
       "category": "CodeStyle",
       "parameters": [],
@@ -21971,41 +24282,6 @@
       "enabled": false
     },
     {
-      "patternId": "wdio_await-expect",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "wdio_no-debug",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "instances",
-          "default": [
-            "browser"
-          ]
-        }
-      ],
-      "enabled": false
-    },
-    {
-      "patternId": "wdio_no-pause",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [
-        {
-          "name": "instances",
-          "default": [
-            "browser"
-          ]
-        }
-      ],
-      "enabled": false
-    },
-    {
       "patternId": "xss_no-location-href-assign",
       "level": "Warning",
       "category": "Security",
@@ -22182,6 +24458,22 @@
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
+      "enabled": false
+    },
+    {
+      "patternId": "yml_no-trailing-spaces",
+      "level": "Info",
+      "category": "CodeStyle",
+      "parameters": [
+        {
+          "name": "skipBlankLines",
+          "default": false
+        },
+        {
+          "name": "ignoreComments",
+          "default": false
+        }
+      ],
       "enabled": false
     },
     {

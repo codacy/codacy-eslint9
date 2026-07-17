@@ -1,11 +1,9 @@
 ---
-title: nonblock-statement-body-position
-rule_type: layout
 further_reading:
   - 'https://jscs-dev.github.io/rule/requireNewlineBeforeSingleStatementsInIf'
 ---
 
-# js/nonblock-statement-body-position
+# nonblock-statement-body-position
 
 When writing `if`, `else`, `while`, `do-while`, and `for` statements, the body can be a single statement instead of a block. It can be useful to enforce a consistent location for these single statements.
 
@@ -36,7 +34,7 @@ This rule aims to enforce a consistent location for single-line statements.
 
 Note that this rule does not enforce the usage of single-line statements in general. If you would like to disallow single-line statements, use the [`curly`](https://eslint.org/docs/latest/rules/curly) rule instead.
 
-### Options
+## Options
 
 This rule accepts a string option:
 
@@ -49,12 +47,14 @@ Additionally, the rule accepts an optional object option with an `"overrides"` k
 - `"beside", { "overrides": { "while": "below" } }` requires all single-line statements to appear on the same line as their parent, unless the parent is a `while` statement, in which case the single-line statement must not be on the same line.
 - `"below", { "overrides": { "do": "any" } }` disallows all single-line statements from appearing on the same line as their parent, unless the parent is a `do-while` statement, in which case the position of the single-line statement is not enforced.
 
+### beside
+
 Examples of **incorrect** code for this rule with the default `"beside"` option:
 
 ::: incorrect
 
 ```js
-/* eslint nonblock-statement-body-position: ["error", "beside"] */
+/* eslint @stylistic/nonblock-statement-body-position: ["error", "beside"] */
 
 if (foo)
   bar();
@@ -80,7 +80,7 @@ Examples of **correct** code for this rule with the default `"beside"` option:
 ::: correct
 
 ```js
-/* eslint nonblock-statement-body-position: ["error", "beside"] */
+/* eslint @stylistic/nonblock-statement-body-position: ["error", "beside"] */
 
 if (foo) bar();
 else baz();
@@ -100,12 +100,14 @@ if (foo) { // block statements are always allowed with this rule
 
 :::
 
+### below
+
 Examples of **incorrect** code for this rule with the `"below"` option:
 
 ::: incorrect
 
 ```js
-/* eslint nonblock-statement-body-position: ["error", "below"] */
+/* eslint @stylistic/nonblock-statement-body-position: ["error", "below"] */
 
 if (foo) bar();
 else baz();
@@ -124,7 +126,7 @@ Examples of **correct** code for this rule with the `"below"` option:
 ::: correct
 
 ```js
-/* eslint nonblock-statement-body-position: ["error", "below"] */
+/* eslint @stylistic/nonblock-statement-body-position: ["error", "below"] */
 
 if (foo)
   bar();
@@ -150,12 +152,14 @@ if (foo) {
 
 :::
 
+### overrides
+
 Examples of **incorrect** code for this rule with the `"beside", { "overrides": { "while": "below" } }` rule:
 
 ::: incorrect
 
 ```js
-/* eslint nonblock-statement-body-position: ["error", "beside", { "overrides": { "while": "below" } }] */
+/* eslint @stylistic/nonblock-statement-body-position: ["error", "beside", { "overrides": { "while": "below" } }] */
 
 if (foo)
   bar();
@@ -170,7 +174,7 @@ Examples of **correct** code for this rule with the `"beside", { "overrides": { 
 ::: correct
 
 ```js
-/* eslint nonblock-statement-body-position: ["error", "beside", { "overrides": { "while": "below" } }] */
+/* eslint @stylistic/nonblock-statement-body-position: ["error", "beside", { "overrides": { "while": "below" } }] */
 
 if (foo) bar();
 

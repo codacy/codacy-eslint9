@@ -35,7 +35,7 @@ That includes the following cases:
 declare const promise: Promise<number>;
 const spreadPromise = { ...promise };
 
-declare function getObject(): Record<string, strings>;
+declare function getObject(): Record<string, string>;
 const getObjectSpread = { ...getObject };
 
 declare const map: Map<string, number>;
@@ -61,7 +61,7 @@ const instanceSpread = { ...instance };
 declare const promise: Promise<number>;
 const spreadPromise = { ...(await promise) };
 
-declare function getObject(): Record<string, strings>;
+declare function getObject(): Record<string, string>;
 const getObjectSpread = { ...getObject() };
 
 declare const map: Map<string, number>;
@@ -116,11 +116,24 @@ const spreadBrandedString = [...brandedString];
 
 <!--/tabs-->
 
+#### Examples
+
+If you intentionally spread over strings, you can use `allow` to explicitly allowlist them:
+
+```ts option='{"allow":[{ "from": "lib", "name": "string" }]}'
+/* eslint @typescript-eslint/no-misused-spread: {"allow":[{ "from": "lib", "name": "string" }]} */
+declare const unbrandedString: string;
+
+const spreadUnbrandedString = [...unbrandedString];
+```
+
+See the shared [`TypeOrValueSpecifier` format](/packages/type-utils/type-or-value-specifier) for more information.
+
 ## When Not To Use It
 
 If your application intentionally works with raw data in unusual ways, such as directly manipulating class prototype chains, you might not want this rule.
 
-If your use cases for unusual spreads only involve a few types, you might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) and/or the [`allow` option](#allow) instead of completely disabling this rule.
+If your use cases for unusual spreads only involve a few types, you might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) and/or the [`allow` option](#allow) instead of completely disabling this rule.
 
 ## Further Reading
 

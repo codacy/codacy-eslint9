@@ -1,4 +1,6 @@
-# Require non-empty specifier list in import and export statements
+# require-module-specifiers
+
+📝 Require non-empty specifier list in import and export statements.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -8,6 +10,8 @@
 <!-- Do not manually modify this header. Run: `npm run fix:eslint-docs` -->
 
 Enforce non-empty specifier list in `import` and `export` statements. Use a [side-effect import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#import_a_module_for_its_side_effects_only) if needed, or remove the statement.
+
+A single bare `export {}` is allowed when the file has no runtime import/export declarations. TypeScript uses it to distinguish modules from scripts. This exception ignores explicit type-only imports and exports.
 
 ## Examples
 
@@ -37,5 +41,9 @@ import 'foo';
 
 ```js
 // ❌
-export {}
+import 'foo';
+export {};
+
+// ✅
+import 'foo';
 ```

@@ -10,7 +10,15 @@ since: v6.0.0
 
 > enforce `v-slot` directive style
 
-- :gear: This rule is included in all of `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue2-strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/recommended"`, `*.configs["flat/recommended"]`, `"plugin:vue/vue2-recommended"` and `*.configs["flat/vue2-recommended"]`.
+- :gear: This rule is included in the following preset configs:
+  - `*.configs["flat/strongly-recommended"]`
+  - `*.configs["flat/vue2-strongly-recommended"]`
+  - `*.configs["flat/recommended"]`
+  - `*.configs["flat/vue2-recommended"]`
+  - `"plugin:vue/strongly-recommended"`
+  - `"plugin:vue/vue2-strongly-recommended"`
+  - `"plugin:vue/recommended"`
+  - `"plugin:vue/vue2-recommended"`
 - :wrench: The `--fix` option on the [command line](https://eslint.org/docs/user-guide/command-line-interface#fix-problems) can automatically fix some of the problems reported by this rule.
 
 ## :book: Rule Details
@@ -69,7 +77,7 @@ Each value means:
 - `"longform"` ... use `v-slot:` directive notation. E.g. `v-slot:default`, `v-slot:named`, ...
 - `"v-slot"` ... use `v-slot` without that argument. This is shorter than `#default` shorthand.
 
-And a string option is supported to be consistent to similar `vue/v-bind-style` and `vue/v-on-style`.
+And a string option is supported to be consistent to similar [`vue/v-bind-style`](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/v-bind-style.md) and [`vue/v-on-style`](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/v-on-style.md).
 
 - `["error", "longform"]` is same as `["error", { atComponent: "longform", default: "longform", named: "longform" }]`.
 - `["error", "shorthand"]` is same as `["error", { atComponent: "shorthand", default: "shorthand", named: "shorthand" }]`.
@@ -114,5 +122,5 @@ This rule was introduced in eslint-plugin-vue v6.0.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/v-slot-style.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/v-slot-style.js)
+- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/v-slot-style.ts)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/v-slot-style.test.ts)

@@ -1,4 +1,6 @@
-# Prefer `Array#toSorted()` over `Array#sort()`
+# no-array-sort
+
+📝 Prefer `Array#toSorted()` over `Array#sort()`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -53,6 +55,9 @@ Pass `allowExpressionStatement: false` to forbid `Array#sort()` even if it's an 
 /* eslint unicorn/no-array-sort: ["error", {"allowExpressionStatement": false}] */
 // ❌
 array.sort();
+
+// ✅
+const sortedArray = array.toSorted();
 ```
 
 ## Related rules

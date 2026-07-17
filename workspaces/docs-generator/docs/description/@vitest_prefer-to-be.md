@@ -1,4 +1,6 @@
-# Enforce using toBe() (`vitest/prefer-to-be`)
+# vitest/prefer-to-be
+
+📝 Enforce using toBe().
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -6,7 +8,7 @@
 
 <!-- end auto-generated rule header -->
 
-### Correct 
+### Correct
 
 ```ts
 import { test } from 'vitest'
@@ -16,7 +18,7 @@ test('foo', () => {
 })
 ```
 
-### Incorrect 
+### Incorrect
 
 ```ts
 import { test } from 'vitest'
@@ -25,4 +27,3 @@ test('foo', () => {
   expect(1).toEqual(1)
 })
 ```
-	

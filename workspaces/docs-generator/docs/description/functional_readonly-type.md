@@ -1,9 +1,11 @@
 <!-- markdownlint-disable -->
 <!-- begin auto-generated rule header -->
 
-# Require consistently using either `readonly` keywords or `Readonly<T>` (`functional/readonly-type`)
+# functional/readonly-type
 
-💼🚫 This rule is enabled in the 🎨 `stylistic` config. This rule is _disabled_ in the `disableTypeChecked` config.
+📝 Require consistently using either `readonly` keywords or `Readonly<T>`.
+
+💼 This rule is enabled in the 🎨 `stylistic` config.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

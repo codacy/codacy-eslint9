@@ -1,4 +1,6 @@
-# Prefer using `Object.fromEntries(…)` to transform a list of key-value pairs into an object
+# prefer-object-from-entries
+
+📝 Prefer using `Object.fromEntries(…)` to transform a list of key-value pairs into an object.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -71,4 +73,10 @@ Example:
 /* eslint unicorn/prefer-object-from-entries: ["error", {"functions": ["utils.fromPairs"]}] */
 // ❌
 const object = utils.fromPairs(pairs);
+```
+
+```js
+/* eslint unicorn/prefer-object-from-entries: ["error", {"functions": ["utils.fromPairs"]}] */
+// ✅
+const object = Object.fromEntries(pairs);
 ```

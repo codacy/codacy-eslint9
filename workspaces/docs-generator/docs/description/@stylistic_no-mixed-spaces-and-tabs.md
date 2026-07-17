@@ -1,11 +1,9 @@
 ---
-title: no-mixed-spaces-and-tabs
-rule_type: layout
 further_reading:
   - 'https://www.emacswiki.org/emacs/SmartTabs'
 ---
 
-# js/no-mixed-spaces-and-tabs
+# no-mixed-spaces-and-tabs
 
 Most code conventions require either tabs or spaces be used for indentation. As such, it's usually an error if a single line of code is indented with both tabs and spaces.
 
@@ -18,20 +16,15 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-/*eslint no-mixed-spaces-and-tabs: "error"*/
+/* eslint @stylistic/no-mixed-spaces-and-tabs: "error" */
 
 function add(x, y) {
-// --->..return x + y;
-
-      return x + y;
+	  return x + y;
 }
 
 function main() {
-// --->var x = 5,
-// --->....y = 7;
-
-    var x = 5,
-        y = 7;
+	var x = 5,
+	    y = 7;
 }
 ```
 
@@ -42,11 +35,10 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
-/*eslint no-mixed-spaces-and-tabs: "error"*/
+/* eslint @stylistic/no-mixed-spaces-and-tabs: "error" */
 
 function add(x, y) {
-// --->return x + y;
-    return x + y;
+	return x + y;
 }
 ```
 
@@ -65,14 +57,11 @@ Examples of **correct** code for this rule with the `"smart-tabs"` option:
 ::: correct
 
 ```js
-/*eslint no-mixed-spaces-and-tabs: ["error", "smart-tabs"]*/
+/* eslint @stylistic/no-mixed-spaces-and-tabs: ["error", "smart-tabs"] */
 
 function main() {
-// --->var x = 5,
-// --->....y = 7;
-
-    var x = 5,
-        y = 7;
+	var x = 5,
+	    y = 7;
 }
 ```
 

@@ -1,6 +1,4 @@
 ---
-title: comma-spacing
-rule_type: layout
 related_rules:
   - array-bracket-spacing
   - comma-style
@@ -11,12 +9,13 @@ related_rules:
   - space-after-keywords
   - space-unary-ops
   - space-return-throw-case
+  - type-generic-spacing
 further_reading:
   - 'https://www.crockford.com/code.html'
   - 'https://dojotoolkit.org/reference-guide/1.9/developer/styleguide.html'
 ---
 
-# js/comma-spacing
+# comma-spacing
 
 Spacing around commas improves readability of a list of items. Although most of the style guidelines for languages prescribe adding a space after a comma and not before it, it is subjective to the preferences of a project.
 
@@ -36,6 +35,7 @@ This rule does not apply in either of the following cases:
 - between comma and closing bracket `]`, to avoid conflicts with the [`array-bracket-spacing`](array-bracket-spacing) rule
 - between comma and closing brace `}`, to avoid conflicts with the [`object-curly-spacing`](object-curly-spacing) rule
 - between comma and closing parentheses `)`, to avoid conflicts with the [`space-in-parens`](space-in-parens) rule
+- between comma and closing angle bracket `>`, to avoid conflicts with the [`type-generic-spacing`](type-generic-spacing) rule
 
 ## Options
 
@@ -53,7 +53,7 @@ Examples of **incorrect** code for this rule with the default `{ "before": false
 :::incorrect
 
 ```js
-/*eslint comma-spacing: ["error", { "before": false, "after": true }]*/
+/* eslint @stylistic/comma-spacing: ["error", { "before": false, "after": true }] */
 
 var foo = 1 ,bar = 2;
 var arr = [1 , 2];
@@ -62,6 +62,8 @@ foo(a ,b);
 new Foo(a ,b);
 function baz(a ,b){}
 a ,b
+
+type Foo<T ,P> = Bar<T ,P>
 ```
 
 :::
@@ -70,8 +72,8 @@ Examples of **correct** code for this rule with the default `{ "before": false, 
 
 :::correct
 
-```js
-/*eslint comma-spacing: ["error", { "before": false, "after": true }]*/
+```ts
+/* eslint @stylistic/comma-spacing: ["error", { "before": false, "after": true }] */
 
 var foo = 1, bar = 2
     , baz = 3;
@@ -82,6 +84,8 @@ foo(a, b);
 new Foo(a, b);
 function qur(a, b){}
 a, b
+
+type Foo<T, P> = Bar<T, P>
 ```
 
 :::
@@ -90,8 +94,8 @@ Additional examples of **correct** code for this rule with the default `{ "befor
 
 :::correct
 
-```js
-/*eslint comma-spacing: ["error", { "before": false, "after": true }]*/
+```ts
+/* eslint @stylistic/comma-spacing: ["error", { "before": false, "after": true }] */
 
 // this rule does not enforce spacing between two commas
 var arr = [
@@ -114,6 +118,9 @@ import {foo, bar,} from "mod";
 
 // this rule does not enforce spacing before `)`
 foo(a, b,)
+
+// this rule does not enforce spacing before `>`
+type Foo<T, P,> = Bar<T, P>
 ```
 
 :::
@@ -125,7 +132,7 @@ Examples of **incorrect** code for this rule with the `{ "before": true, "after"
 :::incorrect
 
 ```js
-/*eslint comma-spacing: ["error", { "before": true, "after": false }]*/
+/* eslint @stylistic/comma-spacing: ["error", { "before": true, "after": false }] */
 
 var foo = 1, bar = 2;
 var arr = [1 , 2];
@@ -142,7 +149,7 @@ Examples of **correct** code for this rule with the `{ "before": true, "after": 
 :::correct
 
 ```js
-/*eslint comma-spacing: ["error", { "before": true, "after": false }]*/
+/* eslint @stylistic/comma-spacing: ["error", { "before": true, "after": false }] */
 
 var foo = 1 ,bar = 2 ,
     baz = true;

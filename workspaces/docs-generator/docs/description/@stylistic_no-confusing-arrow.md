@@ -1,12 +1,10 @@
 ---
-title: no-confusing-arrow
-rule_type: suggestion
 related_rules:
   - no-constant-condition
   - arrow-parens
 ---
 
-# js/no-confusing-arrow
+# no-confusing-arrow
 
 Arrow functions (`=>`) are similar in syntax to some comparison operators (`>`, `<`, `<=`, and `>=`). This rule warns against using the arrow function syntax in places where it could be confused with a comparison operator.
 
@@ -30,8 +28,7 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-/*eslint no-confusing-arrow: "error"*/
-/*eslint-env es6*/
+/* eslint @stylistic/no-confusing-arrow: "error" */
 
 var x = a => 1 ? 2 : 3;
 var x = (a) => 1 ? 2 : 3;
@@ -44,8 +41,8 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
-/*eslint no-confusing-arrow: "error"*/
-/*eslint-env es6*/
+/* eslint @stylistic/no-confusing-arrow: "error" */
+
 var x = a => (1 ? 2 : 3);
 var x = (a) => (1 ? 2 : 3);
 var x = (a) => {
@@ -71,6 +68,8 @@ This rule accepts two options argument with the following defaults:
 }
 ```
 
+### allowParens
+
 `allowParens` is a boolean setting that can be `true`(default) or `false`:
 
 1. `true` relaxes the rule and accepts parenthesis as a valid "confusion-preventing" syntax.
@@ -81,13 +80,15 @@ Examples of **incorrect** code for this rule with the `{"allowParens": false}` o
 ::: incorrect
 
 ```js
-/*eslint no-confusing-arrow: ["error", {"allowParens": false}]*/
-/*eslint-env es6*/
+/* eslint @stylistic/no-confusing-arrow: ["error", {"allowParens": false}] */
+
 var x = a => (1 ? 2 : 3);
 var x = (a) => (1 ? 2 : 3);
 ```
 
 :::
+
+### onlyOneSimpleParam
 
 `onlyOneSimpleParam` is a boolean setting that can be `true` or `false`(default):
 
@@ -99,8 +100,8 @@ Examples of **correct** code for this rule with the `{"onlyOneSimpleParam": true
 ::: correct
 
 ```js
-/*eslint no-confusing-arrow: ["error", {"onlyOneSimpleParam": true}]*/
-/*eslint-env es6*/
+/* eslint @stylistic/no-confusing-arrow: ["error", {"onlyOneSimpleParam": true}] */
+
 () => 1 ? 2 : 3;
 (a, b) => 1 ? 2 : 3;
 (a = b) => 1 ? 2 : 3;

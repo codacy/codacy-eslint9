@@ -19,8 +19,8 @@ This rule reports when function overload signatures can be replaced by a single 
 #### ❌ Incorrect
 
 ```ts
-function x(x: number): void;
-function x(x: string): void;
+function x(y: number): void;
+function x(y: string): void;
 ```
 
 ```ts
@@ -31,7 +31,7 @@ function y(...x: number[]): void;
 #### ✅ Correct
 
 ```ts
-function x(x: number | string): void;
+function x(y: number | string): void;
 ```
 
 ```ts

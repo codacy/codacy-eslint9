@@ -50,11 +50,12 @@ identity = value => value;
 ## When Not To Use It
 
 If your project is still onboarding to TypeScript, it might be difficult to fully replace all unsafe `Function` types with more precise function types.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Related To
 
 - [Avoiding `any`s with Linting and TypeScript](/blog/avoiding-anys)
+- [Revamping the `ban-types` rule](/blog/revamping-the-ban-types-rule)
 - [`no-empty-object-type`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-empty-object-type.mdx)
 - [`no-restricted-types`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-restricted-types.mdx)
 - [`no-unsafe-call`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-unsafe-call.mdx)

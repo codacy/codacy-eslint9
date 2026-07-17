@@ -1,4 +1,6 @@
-# Enforce using `test.todo` (`vitest/prefer-todo`)
+# vitest/prefer-todo
+
+📝 Enforce using `test.todo`.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -13,7 +15,7 @@ When tests are empty it's better to mark them as `test.todo` as it will be highl
 The following pattern is considered a warning:
 
 ```js
-test('foo');
+test('foo')
 test('foo', () => {})
 test.skip('foo', () => {})
 ```
@@ -21,5 +23,5 @@ test.skip('foo', () => {})
 The following pattern is not considered a warning:
 
 ```js
-test.todo('foo');
+test.todo('foo')
 ```

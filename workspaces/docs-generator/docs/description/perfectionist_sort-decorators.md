@@ -143,17 +143,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -185,7 +192,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -244,10 +251,67 @@ Enables the use of comments to separate class decorators into logical groups.
 - `RegExpPattern[]` — A list of regexp patterns to specify which comments should act as delimiters.
 - `{ block: boolean | RegExpPattern | RegExpPattern[]; line: boolean | RegExpPattern | RegExpPattern[] }` — Specify which block and line comments should act as delimiters.
 
+### partitionByNewLine
+
+<sub>default: `false`</sub>
+
+When `true`, the rule will not sort the decorators if there is an empty line between them.
+
+### newlinesBetween
+
+<sub>
+  type: `number | 'ignore'`
+</sub>
+<sub>default: `'ignore'`</sub>
+
+Specifies how to handle newlines between groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
+
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
@@ -255,7 +319,7 @@ Specifies a list of decorator groups for sorting.
 
 Predefined groups:
 
-- `'unknown'` — Decorators that don’t fit into any group specified in the `groups` option.
+- `'unknown'` — Decorators that don't fit into any group specified in the `groups` option.
 
 If the `unknown` group is not specified in the `groups` option, it will automatically be added to the end of the list.
 
@@ -267,25 +331,130 @@ Within a given group, members will be sorted according to the `type`, `order`, `
 Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
 All members of the groups in the array will be sorted together as if they were part of a single group.
 
-### customGroups
+##### Group with overridden settings
 
-<sub>
-  type: `{ [groupName: string]: string | string[] }`
-</sub>
-<sub>default: `{}`</sub>
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
 
-You can define your own groups and use regex to match specific decorators.
-
-Each key of `customGroups` represents a group name which you can then use in the `groups` option. The value for each key can either be of type:
-- `string` — A decorator's name matching the value will be marked as part of the group referenced by the key.
-- `string[]` — A decorator's name matching any of the values of the array will be marked as part of the group referenced by the key.
-The order of values in the array does not matter.
-
-Custom group matching takes precedence over predefined group matching.
-
-#### Example for class decorators
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
 
 ```ts
+{
+  groups: [
+    'myCustomGroup1',
+    { group: 'myCustomGroup2', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
+
+#### Newlines between groups
+
+You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
+
+See the [`newlinesBetween`](#newlinesbetween) option.
+
+This feature is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+```ts
+{
+  newlinesBetween: 1,
+  groups: [
+    'a',
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
+    'b',
+  ]
+}
+```
+
+### customGroups
+
+<Important title="Migrating from the old API">
+Support for the object-based `customGroups` option has been removed.
+
+Migrating from the old to the current API is easy:
+
+Old API:
+```ts
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+```
+
+Current API:
+```ts
+[
+  {
+    "groupName": "key1",
+    "elementNamePattern": "value1"
+  },
+  {
+    "groupName": "key2",
+    "elementNamePattern": "value2"
+  }
+]
+```
+</Important>
+
+<sub>
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
+</sub>
+<sub>default: `[]`</sub>
+
+Defines custom groups to match specific decorators.
+
+A custom group definition may follow one of the two following interfaces:
+
+```ts
+interface CustomGroupDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+}
+```
+
+A declaration will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
+
+or:
+
+```ts
+interface CustomGroupAnyOfDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  anyOf: Array<{
+      selector?: string
+      elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  }>
+}
+```
+
+A declaration will match a `CustomGroupAnyOfDefinition` group if it matches all the filters of at least one of the `anyOf` items.
+
+#### Attributes
+
+- `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
+- `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
+- `type` — Overrides the [`type`](#type) option for that custom group.
+- `order` — Overrides the [`order`](#order) option for that custom group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
+
+#### Match importance
+
+The `customGroups` list is ordered:
+The first custom group definition that matches an element will be used.
+
+Custom groups have a higher priority than any predefined group.
+
+#### Example for class decorators
 
 Put all error-related decorators at the bottom:
 
@@ -300,15 +469,18 @@ class MyClass {
 
 `groups` and `customGroups` configuration:
 
-```js
+```ts
  {
    groups: [
      'unknown',
      'error'          // [!code ++]
    ],
-+  customGroups: {    // [!code ++]
-+    error: '.*Error' // [!code ++]
-+  }                  // [!code ++]
++  customGroups: [    // [!code ++]
++    {                // [!code ++]
++      groupName: 'error', // [!code ++]
++      elementNamePattern: 'Error', // [!code ++]
++    }                // [!code ++]
++  ]                  // [!code ++]
  }
 ```
 
@@ -335,8 +507,12 @@ class MyClass {
                   fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
+                  partitionByNewLine: false,
+                  partitionByComment: false,
+                  newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   groups: [],
-                  customGroups: {},
+                  customGroups: [],
                   sortOnClasses: true,
                   sortOnMethods: true,
                   sortOnAccessors: true,
@@ -367,8 +543,12 @@ class MyClass {
                 fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
+                partitionByNewLine: false,
+                partitionByComment: false,
+                newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 groups: [],
-                customGroups: {},
+                customGroups: [],
                 sortOnClasses: true,
                 sortOnMethods: true,
                 sortOnAccessors: true,
@@ -395,4 +575,4 @@ This rule was introduced in [v4.0.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-decorators.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-decorators.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-decorators.test.ts)

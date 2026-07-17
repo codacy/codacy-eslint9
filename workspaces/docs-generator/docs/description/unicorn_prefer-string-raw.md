@@ -1,4 +1,6 @@
-# Prefer using the `String.raw` tag to avoid escaping `\`
+# prefer-string-raw
+
+📝 Prefer using the `String.raw` tag to avoid escaping `\`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -33,4 +35,14 @@ const file = `C:\\windows\\temp\\myapp-${process.pid}.log`;
 
 // ✅
 const file = String.raw`C:\windows\temp\myapp-${process.pid}.log`;
+```
+
+[`String.raw`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/raw) should not be used if the string does not contain any `\`.
+
+```js
+// ❌
+const noBackslash = String.raw`foobar`
+
+// ✅
+const noBackslash = 'foobar'
 ```

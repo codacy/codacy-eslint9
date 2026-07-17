@@ -1,4 +1,6 @@
-# Disallow comparing `undefined` using `typeof`
+# no-typeof-undefined
+
+📝 Disallow comparing `undefined` using `typeof`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -42,9 +44,9 @@ if (foo.bar !== undefined) {}
 Type: `boolean`\
 Default: `false`
 
-The rule ignores variables not defined in the file by default.
+The rule ignores variables not defined in the file by default. If the variable was never defined, checking for its existence without `typeof` will cause a `ReferenceError`.
 
-Set it to `true` to check all variables.
+Set it to `true` to accept this risk and check all variables.
 
 ```js
 /* eslint unicorn/no-typeof-undefined: ["error", {"checkGlobalVariables": true}] */
@@ -52,6 +54,12 @@ Set it to `true` to check all variables.
 // ❌
 if (typeof undefinedVariable === 'undefined') {}
 
+// ✅
+if (globalThis.undefinedVariable === undefined) {}
+
 // ❌
 if (typeof Array === 'undefined') {}
+
+// ✅
+if (Array === undefined) {}
 ```

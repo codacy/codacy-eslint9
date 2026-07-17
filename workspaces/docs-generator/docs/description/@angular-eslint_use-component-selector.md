@@ -21,6 +21,12 @@ Component selector must be declared
 
 <br>
 
+## Rationale
+
+Every component should have a selector that defines how it's used in templates. Omitting the selector makes the component unusable in templates and can only be used with dynamic component loading or routing, which is rarely the intent. When debugging, components without selectors are harder to identify in the component tree and browser DevTools. If a component is truly only meant for dynamic loading (like a modal or route component), you can disable this rule for that component, but in most cases, every component should have a meaningful selector.
+
+<br>
+
 ## Rule Options
 
 The rule does not have any configuration options.
@@ -35,34 +41,6 @@ The rule does not have any configuration options.
 
 <details>
 <summary>❌ - Toggle examples of <strong>incorrect</strong> code for this rule</summary>
-
-<br>
-
-#### Default Config
-
-```json
-{
-  "rules": {
-    "@angular-eslint/use-component-selector": [
-      "error"
-    ]
-  }
-}
-```
-
-<br>
-
-#### ❌ Invalid Code
-
-```ts
-@Component()
-~~~~~~~~~~~~
-class Test {}
-```
-
-<br>
-
----
 
 <br>
 
@@ -271,6 +249,66 @@ class Test {}
 ```ts
 @Component({
   selector: `sg-bar-foo`
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-component-selector": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+const selector = 'sg-bar-foo';
+@Component({
+  selector,
+})
+class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-component-selector": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+const selectorVar = 'sg-bar-foo';
+@Component({
+  selector: selectorVar,
 })
 class Test {}
 ```

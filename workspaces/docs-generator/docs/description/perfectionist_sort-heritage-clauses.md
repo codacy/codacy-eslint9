@@ -86,17 +86,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -128,7 +135,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -145,10 +152,155 @@ Specifies the sorting locales. Refer To [String.prototype.localeCompare() - loca
 - `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
 - `string[]` — An array of BCP 47 language tags.
 
+### useConfigurationIf
+
+<sub>
+  type:
+  ```ts
+  {
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
+  }
+  ```
+</sub>
+<sub>default: `{}`</sub>
+
+Specifies filters to match a particular options configuration for a given heritage clause declaration.
+
+The first matching options configuration will be used. If no configuration matches, the default options configuration will be used.
+
+- `allNamesMatchPattern` — A regexp pattern that all heritage clause names must match.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-heritage-clauses': [
+    'error',
+    {
+      groups: ['r', 'g', 'b'], // Sort colors by RGB
+      customGroups: [
+        {
+          elementNamePattern: '^r$',
+          groupName: 'r',
+        },
+        {
+          elementNamePattern: '^g$',
+          groupName: 'g',
+        },
+        {
+          elementNamePattern: '^b$',
+          groupName: 'b',
+        },
+      ],
+      useConfigurationIf: {
+        allNamesMatchPattern: '^[rgb]$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching a `ClassDeclaration` or `TSInterfaceDeclaration` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort heritage clauses of classes (only interfaces).
+```ts
+{
+  'perfectionist/sort-heritage-clauses': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'ClassDeclaration',
+      },
+      type: 'unsorted'
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+### partitionByComment
+
+<sub>default: `false`</sub>
+
+Enables the use of comments to separate heritage clauses into logical groups.
+
+- `true` — All comments will be treated as delimiters, creating partitions.
+- `false` — Comments will not be used as delimiters.
+- `RegExpPattern = string | { pattern: string; flags: string}` — A regexp pattern to specify which comments should act as delimiters.
+- `RegExpPattern[]` — A list of regexp patterns to specify which comments should act as delimiters.
+- `{ block: boolean | RegExpPattern | RegExpPattern[]; line: boolean | RegExpPattern | RegExpPattern[] }` — Specify which block and line comments should act as delimiters.
+
+### partitionByNewLine
+
+<sub>default: `false`</sub>
+
+When `true`, the rule will not sort the heritage clauses if there is an empty line between them.
+
+### newlinesBetween
+
+<sub>
+  type: `number | 'ignore'`
+</sub>
+<sub>default: `'ignore'`</sub>
+
+Specifies how to handle newlines between groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
+
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
@@ -156,7 +308,7 @@ Specifies a list of heritage clause groups for sorting.
 
 Predefined groups:
 
-- `'unknown'` — Heritage Clauses that don’t fit into any group specified in the `groups` option.
+- `'unknown'` — Heritage Clauses that don't fit into any group specified in the `groups` option.
 
 If the `unknown` group is not specified in the `groups` option, it will automatically be added to the end of the list.
 
@@ -168,21 +320,128 @@ Within a given group, members will be sorted according to the `type`, `order`, `
 Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
 All members of the groups in the array will be sorted together as if they were part of a single group.
 
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'myCustomGroup1',
+    { group: 'myCustomGroup2', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
+
+#### Newlines between groups
+
+You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
+
+See the [`newlinesBetween`](#newlinesbetween) option.
+
+This feature is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+```ts
+{
+  newlinesBetween: 1,
+  groups: [
+    'a',
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
+    'b',
+  ]
+}
+```
+
 ### customGroups
 
+<Important title="Migrating from the old API">
+Support for the object-based `customGroups` option has been removed.
+
+Migrating from the old to the current API is easy:
+
+Old API:
+```ts
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+```
+
+Current API:
+```ts
+[
+  {
+    "groupName": "key1",
+    "elementNamePattern": "value1"
+  },
+  {
+    "groupName": "key2",
+    "elementNamePattern": "value2"
+  }
+]
+```
+</Important>
+
 <sub>
-  type: `{ [groupName: string]: string | string[] }`
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
 </sub>
-<sub>default: `{}`</sub>
+<sub>default: `[]`</sub>
 
-You can define your own groups and use regex to match specific heritage clauses.
+Defines custom groups to match specific heritage clauses.
 
-Each key of `customGroups` represents a group name which you can then use in the `groups` option. The value for each key can either be of type:
-- `string` — A heritage clause's name matching the value will be marked as part of the group referenced by the key.
-- `string[]` — A heritage clause's name matching any of the values of the array will be marked as part of the group referenced by the key.
-The order of values in the array does not matter.
+A custom group definition may follow one of the two following interfaces:
 
-Custom group matching takes precedence over predefined group matching.
+```ts
+interface CustomGroupDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+}
+```
+
+A declaration will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
+
+or:
+
+```ts
+interface CustomGroupAnyOfDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  anyOf: Array<{
+      selector?: string
+      elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  }>
+}
+```
+
+A declaration will match a `CustomGroupAnyOfDefinition` group if it matches all the filters of at least one of the `anyOf` items.
+
+#### Attributes
+
+- `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
+- `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
+- `type` — Overrides the [`type`](#type) option for that custom group.
+- `order` — Overrides the [`order`](#order) option for that custom group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
+
+#### Match importance
+
+The `customGroups` list is ordered:
+The first custom group definition that matches an element will be used.
+
+Custom groups have a higher priority than any predefined group.
 
 #### Example
 
@@ -196,15 +455,18 @@ interface Interface extends WithId, Logged, StartupService {
 
 `groups` and `customGroups` configuration:
 
-```js
+```ts
  {
    groups: [
      'withIdInterface',         // [!code ++]
      'unknown'
    ],
-+  customGroups: {              // [!code ++]
-+    withIdInterface: '^WithId' // [!code ++]
-+  }                            // [!code ++]
++  customGroups: [                    // [!code ++]
++    {                                // [!code ++]
++       groupName: 'withIdInterface', // [!code ++]
++       elementNamePattern: '^WithId' // [!code ++]
++    }                                // [!code ++]
++  ]                                  // [!code ++]
  }
 ```
 
@@ -231,8 +493,12 @@ interface Interface extends WithId, Logged, StartupService {
                   fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
+                  partitionByComment: false,
+                  partitionByNewLine: false,
+                  newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   groups: [],
-                  customGroups: {}
+                  customGroups: [],
                 },
               ],
             },
@@ -258,8 +524,12 @@ interface Interface extends WithId, Logged, StartupService {
                 fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
+                partitionByComment: false,
+                partitionByNewLine: false,
+                newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 groups: [],
-                customGroups: {}
+                customGroups: [],
               },
             ],
           },
@@ -281,4 +551,4 @@ This rule was introduced in [v4.0.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-heritage-clauses.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-heritage-clauses.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-heritage-clauses.test.ts)

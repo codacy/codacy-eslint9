@@ -1,11 +1,9 @@
 ---
-title: generator-star-spacing
-rule_type: layout
 further_reading:
   - 'https://leanpub.com/understandinges6/read/#leanpub-auto-generators'
 ---
 
-# js/generator-star-spacing
+# generator-star-spacing
 
 Generators are a new type of function in ECMAScript 6 that can return multiple values over time.
 These special functions are indicated by placing an `*` after the `function` keyword.
@@ -13,8 +11,6 @@ These special functions are indicated by placing an `*` after the `function` key
 Here is an example of a generator function:
 
 ```js
-/*eslint-env es6*/
-
 function* generator() {
     yield "44";
     yield "55";
@@ -24,8 +20,6 @@ function* generator() {
 This is also valid:
 
 ```js
-/*eslint-env es6*/
-
 function *generator() {
     yield "44";
     yield "55";
@@ -35,8 +29,6 @@ function *generator() {
 This is valid as well:
 
 ```js
-/*eslint-env es6*/
-
 function * generator() {
     yield "44";
     yield "55";
@@ -86,7 +78,8 @@ Additionally, this rule allows further configurability via overrides per functio
 
 - `named` provides overrides for named functions
 - `anonymous` provides overrides for anonymous functions
-- `method` provides overrides for class methods or property function shorthand
+- `method` provides overrides for class methods or property function shorthands (for backward compatibility)
+- `shorthand` provides overrides for property function shorthands
 
 An example of a configuration with overrides:
 
@@ -103,8 +96,6 @@ In the example configuration above, the top level `"before"` and `"after"` optio
 the rule, while the `"anonymous"` and `"method"` options override the default behavior.
 Overrides can be either an object with `"before"` and `"after"`, or a shorthand string as above.
 
-## Examples
-
 ### before
 
 Examples of **correct** code for this rule with the `"before"` option:
@@ -112,8 +103,7 @@ Examples of **correct** code for this rule with the `"before"` option:
 ::: correct
 
 ```js
-/*eslint generator-star-spacing: ["error", {"before": true, "after": false}]*/
-/*eslint-env es6*/
+/* eslint @stylistic/generator-star-spacing: ["error", {"before": true, "after": false}] */
 
 function *generator() {}
 
@@ -131,8 +121,7 @@ Examples of **correct** code for this rule with the `"after"` option:
 ::: correct
 
 ```js
-/*eslint generator-star-spacing: ["error", {"before": false, "after": true}]*/
-/*eslint-env es6*/
+/* eslint @stylistic/generator-star-spacing: ["error", {"before": false, "after": true}] */
 
 function* generator() {}
 
@@ -150,8 +139,7 @@ Examples of **correct** code for this rule with the `"both"` option:
 ::: correct
 
 ```js
-/*eslint generator-star-spacing: ["error", {"before": true, "after": true}]*/
-/*eslint-env es6*/
+/* eslint @stylistic/generator-star-spacing: ["error", {"before": true, "after": true}] */
 
 function * generator() {}
 
@@ -169,8 +157,7 @@ Examples of **correct** code for this rule with the `"neither"` option:
 ::: correct
 
 ```js
-/*eslint generator-star-spacing: ["error", {"before": false, "after": false}]*/
-/*eslint-env es6*/
+/* eslint @stylistic/generator-star-spacing: ["error", {"before": false, "after": false}] */
 
 function*generator() {}
 
@@ -186,13 +173,13 @@ Examples of **incorrect** code for this rule with overrides present:
 ::: incorrect
 
 ```js
-/*eslint generator-star-spacing: ["error", {
+/* eslint @stylistic/generator-star-spacing: ["error", {
     "before": false,
     "after": true,
     "anonymous": "neither",
-    "method": {"before": true, "after": true}
-}]*/
-/*eslint-env es6*/
+    "method": {"before": true, "after": true},
+    "shorthand": {"before": true, "after": true}
+}] */
 
 function * generator() {}
 
@@ -210,13 +197,13 @@ Examples of **correct** code for this rule with overrides present:
 ::: correct
 
 ```js
-/*eslint generator-star-spacing: ["error", {
+/* eslint @stylistic/generator-star-spacing: ["error", {
     "before": false,
     "after": true,
     "anonymous": "neither",
-    "method": {"before": true, "after": true}
-}]*/
-/*eslint-env es6*/
+    "method": {"before": true, "after": true},
+    "shorthand": {"before": true, "after": true}
+}] */
 
 function* generator() {}
 

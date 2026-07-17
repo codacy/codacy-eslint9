@@ -1,4 +1,6 @@
-# Disallow useless case in switch statements
+# no-useless-switch-case
+
+📝 Disallow useless case in switch statements.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -15,6 +17,13 @@ An empty case before the last default case is useless.
 // ❌
 switch (foo) {
 	case 1:
+	default:
+		handleDefaultCase();
+		break;
+}
+
+// ✅
+switch (foo) {
 	default:
 		handleDefaultCase();
 		break;

@@ -1,11 +1,9 @@
 ---
-title: no-mixed-operators
-rule_type: suggestion
 related_rules:
   - no-extra-parens
 ---
 
-# js/no-mixed-operators
+# no-mixed-operators
 
 Enclosing complex expressions by parentheses clarifies the developer's intention, which makes the code more readable.
 This rule warns when different operators are used consecutively without parentheses in an expression.
@@ -42,7 +40,7 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-/*eslint no-mixed-operators: "error"*/
+/* eslint @stylistic/no-mixed-operators: "error" */
 
 var foo = a && b < 0 || c > 0 || d + 1 === 0;
 var foo = a + b * c;
@@ -55,7 +53,7 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
-/*eslint no-mixed-operators: "error"*/
+/* eslint @stylistic/no-mixed-operators: "error" */
 
 var foo = a || b || c;
 var foo = a && b && c;
@@ -117,7 +115,7 @@ Examples of **incorrect** code for this rule with `{"groups": [["&", "|", "^", "
 ::: incorrect
 
 ```js
-/*eslint no-mixed-operators: ["error", {"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}] */
 
 var foo = a && b < 0 || c > 0 || d + 1 === 0;
 var foo = a & b | c;
@@ -128,7 +126,7 @@ var foo = a & b | c;
 ::: incorrect
 
 ```js
-/*eslint no-mixed-operators: ["error", {"groups": [["&&", "||", "?:"]]}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"groups": [["&&", "||", "?:"]]}] */
 
 var foo = a || b ? c : d;
 
@@ -144,7 +142,7 @@ Examples of **correct** code for this rule with `{"groups": [["&", "|", "^", "~"
 ::: correct
 
 ```js
-/*eslint no-mixed-operators: ["error", {"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"groups": [["&", "|", "^", "~", "<<", ">>", ">>>"], ["&&", "||"]]}] */
 
 var foo = a || b > 0 || c + 1 === 0;
 var foo = a && b > 0 && c + 1 === 0;
@@ -162,7 +160,7 @@ var foo = (a + b) * c;
 ::: correct
 
 ```js
-/*eslint no-mixed-operators: ["error", {"groups": [["&&", "||", "?:"]]}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"groups": [["&&", "||", "?:"]]}] */
 
 var foo = (a || b) ? c : d;
 var foo = a || (b ? c : d);
@@ -182,7 +180,7 @@ Examples of **correct** code for this rule with `{"allowSamePrecedence": true}` 
 ::: correct
 
 ```js
-/*eslint no-mixed-operators: ["error", {"allowSamePrecedence": true}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"allowSamePrecedence": true}] */
 
 // + and - belong to the same default group; they have the same precedence.
 var foo = a + b - c;
@@ -195,7 +193,7 @@ Examples of **incorrect** code for this rule with `{"allowSamePrecedence": false
 ::: incorrect
 
 ```js
-/*eslint no-mixed-operators: ["error", {"allowSamePrecedence": false}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"allowSamePrecedence": false}] */
 
 // + and - belong to the same default group; they have the same precedence.
 var foo = a + b - c;
@@ -208,7 +206,7 @@ Examples of **correct** code for this rule with `{"allowSamePrecedence": false}`
 ::: correct
 
 ```js
-/*eslint no-mixed-operators: ["error", {"allowSamePrecedence": false}]*/
+/* eslint @stylistic/no-mixed-operators: ["error", {"allowSamePrecedence": false}] */
 
 // + and - belong to the same default group; they have the same precedence.
 var foo = (a + b) - c;

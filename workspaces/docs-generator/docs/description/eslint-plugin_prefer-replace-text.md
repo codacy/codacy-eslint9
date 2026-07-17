@@ -1,4 +1,6 @@
-# Require using `replaceText()` instead of `replaceTextRange()` (`eslint-plugin/prefer-replace-text`)
+# eslint-plugin/prefer-replace-text
+
+📝 Require using `replaceText()` instead of `replaceTextRange()`.
 
 <!-- end auto-generated rule header -->
 
@@ -15,7 +17,7 @@ module.exports = {
   create(context) {
     context.report({
       fix(fixer) {
-        // error, can be written: return fixer.replaceText([node, '']);
+        // error, can be written: return fixer.replaceText(node, '');
         return fixer.replaceTextRange([node.range[0], node.range[1]], '');
       },
     });

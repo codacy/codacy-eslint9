@@ -1,4 +1,6 @@
-# Prefer `vi.mocked()` over `fn as Mock` (`vitest/prefer-vi-mocked`)
+# vitest/prefer-vi-mocked
+
+📝 Require `vi.mocked()` over `fn as Mock`.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -22,18 +24,18 @@ Restricted types:
 The following patterns are warnings:
 
 ```typescript
-(foo as Mock).mockReturnValue(1);
-const mock = (foo as Mock).mockReturnValue(1);
-(foo as unknown as Mock).mockReturnValue(1);
-(Obj.foo as Mock).mockReturnValue(1);
-([].foo as Mock).mockReturnValue(1);
+;(foo as Mock).mockReturnValue(1)
+const mock = (foo as Mock).mockReturnValue(1)
+;(foo as unknown as Mock).mockReturnValue(1)
+;(Obj.foo as Mock).mockReturnValue(1)
+;([].foo as Mock).mockReturnValue(1)
 ```
 
 The following patterns are not warnings:
 
 ```js
-vi.mocked(foo).mockReturnValue(1);
-const mock = vi.mocked(foo).mockReturnValue(1);
-vi.mocked(Obj.foo).mockReturnValue(1);
-vi.mocked([].foo).mockReturnValue(1);
+vi.mocked(foo).mockReturnValue(1)
+const mock = vi.mocked(foo).mockReturnValue(1)
+vi.mocked(Obj.foo).mockReturnValue(1)
+vi.mocked([].foo).mockReturnValue(1)
 ```

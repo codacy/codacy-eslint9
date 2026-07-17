@@ -12,7 +12,7 @@ since: v7.0.0
 
 ## :book: Rule Details
 
-This rule aims to prevent duplicate attribute inheritance.  
+This rule aims to prevent duplicate attribute inheritance.\
 This rule suggests applying `inheritAttrs: false` when it detects `v-bind="$attrs"` being used.
 
 <eslint-code-block :rules="{'vue/no-duplicate-attr-inheritance': ['error', { checkMultiRootNodes: false }]}">
@@ -90,4 +90,4 @@ This rule was introduced in eslint-plugin-vue v7.0.0
 ## :mag: Implementation
 
 - [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/no-duplicate-attr-inheritance.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-duplicate-attr-inheritance.js)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-duplicate-attr-inheritance.test.ts)

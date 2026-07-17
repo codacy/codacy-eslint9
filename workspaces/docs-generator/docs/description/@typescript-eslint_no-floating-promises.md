@@ -135,7 +135,7 @@ Placing the [`void` operator](https://developer.mozilla.org/en-US/docs/Web/JavaS
 
 :::warning
 Voiding a Promise doesn't handle it or change the runtime behavior.
-The outcome is just ignored, like disabling the rule with an [ESLint disable comment](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1).
+The outcome is just ignored, like disabling the rule with an [ESLint disable comment](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments).
 Such Promise rejections will still be unhandled.
 :::
 
@@ -252,7 +252,7 @@ unsafe('...', () => {});
 
 #### ✅ Correct
 
-```ts option='{"allowForKnownSafeCalls":[{"from":"file","name":"safe","path":"input.ts"}]}' skipValidation
+```ts option='{"allowForKnownSafeCalls":[{"from":"file","name":"safe","path":"input.ts"}]}'
 declare function safe(...args: unknown[]): Promise<void>;
 
 safe('...', () => {});
@@ -264,7 +264,7 @@ safe('...', () => {});
 
 This rule can be difficult to enable on large existing projects that set up many floating Promises.
 Alternately, if you're not worried about crashes from floating or misused Promises -such as if you have global unhandled Promise handlers registered- then in some cases it may be safe to not use this rule.
-You might consider using `void`s and/or [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using `void`s and/or [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Related To
 

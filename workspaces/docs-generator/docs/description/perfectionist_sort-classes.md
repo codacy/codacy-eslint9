@@ -179,17 +179,22 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -197,6 +202,18 @@ Example: enforce alphabetical sort between two elements with the same length.
   type: 'line-length',
   order: 'desc',
   fallbackSort: { type: 'alphabetical', order: 'asc' }
+}
+```
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
+
+Example: enforce subgroup ordering for getters and setters.
+```ts
+{
+  groups: [['get-method', 'set-method']],
+  type: 'alphabetical',
+  order: 'desc',
+  fallbackSort: { type: 'subgroup-order', order: 'asc' }
 }
 ```
 
@@ -221,7 +238,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -285,19 +302,53 @@ class User {
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between class member groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines between object type groups.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed in object types.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
-
-See the [`groups`](#newlines-between-groups) option.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesBetweenOverloadSignatures
+
+<sub>
+  type: `number | 'ignore'`
+</sub>
+<sub>default: `0`</sub>
+
+Specifies how to handle newlines between overload signatures and the implementation of the same method.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each overload signature.
 
 ### ignoreCallbackDependenciesPatterns
 
@@ -320,27 +371,126 @@ class User {
 
 Without `ignoreCallbackDependenciesPatterns: ['^computed$']`, `role` and `username` would be sorted before `fullName` as it depends on them.
 
+### useConfigurationIf
+
+<sub>
+  type:
+  ```ts
+  {
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
+  }
+  ```
+</sub>
+<sub>default: `{}`</sub>
+
+Specifies filters to match a particular options configuration for a given class.
+
+The first matching options configuration will be used. If no configuration matches, the default options configuration will be used.
+
+- `allNamesMatchPattern` — A regexp pattern that all class keys must match (index signatures and static blocks are ignored).
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-classes': [
+    'error',
+    {
+      groups: ['r', 'g', 'b'], // Sort colors by RGB
+      customGroups: [
+        {
+          groupName: 'r',
+          elementNamePattern: '^r$',
+        },
+        {
+          groupName: 'g',
+          elementNamePattern: '^g$',
+        },
+        {
+          groupName: 'b',
+          elementNamePattern: '^b$',
+        },
+      ],
+      useConfigurationIf: {
+        allNamesMatchPattern: '^[rgb]$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching a `ClassBody` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort classes that are exported.
+```ts
+{
+  'perfectionist/sort-classes': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'ExportNamedDeclaration ClassBody',
+      },
+      type: 'unsorted'
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>
   default:
-  ```
+  ```ts
   [
     'index-signature',
-    'static-property',
+    ['static-property', 'static-accessor-property'],
+    ['static-get-method', 'static-set-method'],
+    ['protected-static-property', 'protected-static-accessor-property'],
+    ['protected-static-get-method', 'protected-static-set-method'],
+    ['private-static-property', 'private-static-accessor-property'],
+    ['private-static-get-method', 'private-static-set-method'],
     'static-block',
-    ['protected-property', 'protected-accessor-property'],
-    ['private-property', 'private-accessor-property'],
     ['property', 'accessor-property'],
-    'constructor',
-    'static-method',
-    'protected-method',
-    'private-method',
-    'method',
     ['get-method', 'set-method'],
+    ['protected-property', 'protected-accessor-property'],
+    ['protected-get-method', 'protected-set-method'],
+    ['private-property', 'private-accessor-property'],
+    ['private-get-method', 'private-set-method'],
+    'constructor',
+    ['static-method', 'static-function-property'],
+    ['protected-static-method', 'protected-static-function-property'],
+    ['private-static-method', 'private-static-function-property'],
+    ['method', 'function-property'],
+    ['protected-method', 'protected-function-property'],
+    ['private-method', 'private-function-property'],
     'unknown',
   ]
   ```
@@ -416,7 +566,7 @@ The `private` modifier will currently match any of the following:
 Elements that are not `protected` nor `private` will be matched with the `public` modifier, even if the keyword is not present.
 
 ##### The `unknown` group
-Members that don’t fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
+Members that don't fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
 the members will remain in their original order.
 
 ##### Behavior when multiple groups match an element
@@ -590,6 +740,24 @@ abstract class Example extends BaseExample {
 }
 ```
 
+##### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'property',
+    { group: 'method', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
+
 ##### Newlines between groups
 
 You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
@@ -600,10 +768,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
@@ -654,7 +822,7 @@ interface CustomGroupDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   selector?: string
   modifiers?: string[]
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
@@ -662,6 +830,7 @@ interface CustomGroupDefinition {
   decoratorNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
 ```
+
 A class member will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -672,7 +841,7 @@ interface CustomGroupAnyOfDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       selector?: string
       modifiers?: string[]
@@ -693,10 +862,10 @@ A class member will match a `CustomGroupAnyOfDefinition` group if it matches all
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
 - `elementValuePattern` — Only for non-function properties. If entered, will check that the value of the property matches the pattern entered.
 - `decoratorNamePattern` — If entered, will check that at least one `decorator` matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -708,7 +877,7 @@ you must write a custom group definition that does the same as what the predefin
 
 Example:
 
-```js
+```ts
  {
    groups: [
     'static-block',
@@ -756,6 +925,14 @@ Example:
  }
 ```
 
+### useExperimentalDependencyDetection
+
+<sub>default: `true`</sub>
+
+Specifies whether to use a new experimental dependency detection logic, with reduced false positives.
+
+- `true` — Use the new experimental dependency detection logic.
+- `false` — Use the legacy dependency detection logic.
 
 ## Usage
 
@@ -783,6 +960,7 @@ Example:
                   partitionByComment: false,
                   partitionByNewLine: false,
                   newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   ignoreCallbackDependenciesPatterns: [],
                   groups: [
                     'index-signature',
@@ -809,6 +987,8 @@ Example:
                     'unknown',
                   ],
                   customGroups: [],
+                  useConfigurationIf: {},
+                  useExperimentalDependencyDetection: true,
                 },
               ],
             },
@@ -837,6 +1017,7 @@ Example:
                 partitionByComment: false,
                 partitionByNewLine: false,
                 newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 ignoreCallbackDependenciesPatterns: [],
                 groups: [
                   'index-signature',
@@ -863,6 +1044,8 @@ Example:
                   'unknown',
                 ],
                 customGroups: [],
+                useConfigurationIf: {},
+                useExperimentalDependencyDetection: true,
               },
             ],
           },
@@ -884,4 +1067,4 @@ This rule was introduced in [v0.11.0](https://github.com/azat-io/eslint-plugin-p
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-classes.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-classes.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-classes.test.ts)

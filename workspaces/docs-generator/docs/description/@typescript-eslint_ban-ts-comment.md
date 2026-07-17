@@ -6,11 +6,11 @@ description: 'Disallow `@ts-<directive>` comments or require descriptions after 
 >
 > See **https://typescript-eslint.io/rules/ban-ts-comment** for documentation.
 
-TypeScript provides several directive comments that can be used to alter how it processes files.
+TypeScript provides several comment directives that can be used to alter how it processes files.
 Using these to suppress TypeScript compiler errors reduces the effectiveness of TypeScript overall.
 Instead, it's generally better to correct the types of code, to make directives unnecessary.
 
-The directive comments supported by TypeScript are:
+The comment directives supported by TypeScript are:
 
 ```ts
 // @ts-expect-error
@@ -19,11 +19,11 @@ The directive comments supported by TypeScript are:
 // @ts-check
 ```
 
-This rule lets you set which directive comments you want to allow in your codebase.
+This rule lets you set which comment directives you want to allow in your codebase.
 
 ## Options
 
-By default, only `@ts-check` is allowed, as it enables rather than suppresses errors.
+By default, `@ts-check` is allowed, as it enables rather than suppresses errors, and `@ts-expect-error` is allowed when it includes a description. `@ts-ignore` and `@ts-nocheck` are reported.
 
 ### `ts-expect-error`, `ts-ignore`, `ts-nocheck`, `ts-check` directives
 
@@ -152,7 +152,7 @@ if (false) {
 ## When Not To Use It
 
 If your project or its dependencies were not architected with strong type safety in mind, it can be difficult to always adhere to proper TypeScript semantics.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Further Reading
 
