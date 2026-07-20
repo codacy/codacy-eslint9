@@ -11448,13 +11448,6 @@
   },
   {
     "parameters": [],
-    "patternId": "import_enforce-node-protocol-usage",
-    "title": "Import: Enforce node protocol usage",
-    "description": "Enforce either using, or omitting, the `node:` protocol when importing Node.js builtin modules.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "import_exports-last",
     "title": "Import: Exports last",
     "description": "Ensure all exports appear after other statements.",
@@ -14935,13 +14928,6 @@
     "patternId": "perfectionist_sort-maps",
     "title": "Perfectionist: Sort maps",
     "description": "Enforce sorted Map elements.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "perfectionist_sort-arrays",
-    "title": "Perfectionist: Sort arrays",
-    "description": "Enforce sorted arrays.",
     "timeToFix": 5
   },
   {

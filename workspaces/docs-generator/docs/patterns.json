@@ -11522,13 +11522,6 @@
       "enabled": false
     },
     {
-      "patternId": "import_enforce-node-protocol-usage",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "import_exports-last",
       "level": "Warning",
       "category": "BestPractice",
@@ -15079,13 +15072,6 @@
     },
     {
       "patternId": "perfectionist_sort-maps",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "perfectionist_sort-arrays",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],

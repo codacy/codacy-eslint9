@@ -1537,7 +1537,6 @@
   <module name="import_dynamic-import-chunkname" />
   <module name="import_no-import-module-exports" />
   <module name="import_no-empty-named-blocks" />
-  <module name="import_enforce-node-protocol-usage" />
   <module name="import_exports-last" />
   <module name="import_no-deprecated" />
   <module name="jasmine_no-suite-dupes" />
@@ -1993,7 +1992,6 @@
   <module name="perfectionist_sort-enums" />
   <module name="perfectionist_sort-sets" />
   <module name="perfectionist_sort-maps" />
-  <module name="perfectionist_sort-arrays" />
   <module name="playwright_consistent-spacing-between-blocks" />
   <module name="playwright_expect-expect" />
   <module name="playwright_max-expects" />
@@ -3242,10 +3240,6 @@
   <module name="vuejs-accessibility_no-static-element-interactions" />
   <module name="vuejs-accessibility_role-has-required-aria-props" />
   <module name="vuejs-accessibility_tabindex-no-positive" />
-  <module name="wdio_wdio_await-expect" />
-  <module name="wdio_wdio_no-debug" />
-  <module name="wdio_wdio_no-pause" />
-  <module name="wdio_wdio_no-floating-promise" />
   <module name="xss_no-location-href-assign" />
   <module name="yml_block-mapping-colon-indicator-newline" />
   <module name="yml_block-mapping-question-indicator-newline" />

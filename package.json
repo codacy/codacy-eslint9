@@ -30,7 +30,6 @@
   ],
   "dependencies": {
     "@dword-design/eslint-plugin-import-alias": "8.1.8",
-    "@eslint-stylistic/metadata": "5.10.0",
     "@eslint/compat": "2.1.0",
     "@next/eslint-plugin-next": "16.2.10",
     "@nx/eslint-plugin": "23.1.0",
