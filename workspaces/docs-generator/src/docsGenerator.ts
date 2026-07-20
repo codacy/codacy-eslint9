@@ -171,37 +171,39 @@ export class DocsGenerator {
     )
   }
 
-  private async generateDescriptionEntries(): Promise<DescriptionEntry[]> {
-    const descriptions: DescriptionEntry[] = []
-    const rules = await this.rules
-    Object.entries(rules).forEach(([patternId, ruleModule]) => {
-      const meta = getRuleMeta(ruleModule);
-      const description = meta?.docs?.description
-        ? capitalize(meta.docs.description)
-        : undefined
-      const timeToFix = 5
+private async generateDescriptionEntries(): Promise<DescriptionEntry[]> {
+  const descriptions: DescriptionEntry[] = []
+  const rules = await this.rules
+  Object.entries(rules).forEach(([patternId, ruleModule]) => {
+    const meta = getRuleMeta(ruleModule);
+    if (meta === undefined) return;
 
-      //TCE-1254 develop parameters for prettier
-      const descriptionParameters = patternId === "prettier/prettier"
-          ? [new ParameterSpec("singleQuote", true)]
-          : DocsGenerator.generateParameters(patternId, meta?.schema);
+    const description = meta?.docs?.description
+      ? capitalize(meta.docs.description)
+      : undefined
+    const timeToFix = 5
 
-      const mapDescriptionParameters = descriptionParameters.map(
-        (p) => new DescriptionParameter(p.name, p.name)
-      );
-      
-      descriptions.push(new DescriptionEntry(
-        patternIdToCodacy(patternId),
-        patternTitle(patternId),
-        description,
-        timeToFix,
-        mapDescriptionParameters
-      ))
-    })
+    //TCE-1254 develop parameters for prettier
+    const descriptionParameters = patternId === "prettier/prettier"
+        ? [new ParameterSpec("singleQuote", true)]
+        : DocsGenerator.generateParameters(patternId, meta?.schema);
 
-    console.log("Number of descriptions: ", descriptions.length)
-    return descriptions
-  }
+    const mapDescriptionParameters = descriptionParameters.map(
+      (p) => new DescriptionParameter(p.name, p.name)
+    );
+
+    descriptions.push(new DescriptionEntry(
+      patternIdToCodacy(patternId),
+      patternTitle(patternId),
+      description,
+      timeToFix,
+      mapDescriptionParameters
+    ))
+  })
+
+  console.log("Number of descriptions: ", descriptions.length)
+  return descriptions
+}
 
   static fromEslintSchemaToParameters(
     patternId: string,

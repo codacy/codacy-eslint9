@@ -24055,30 +24055,6 @@
   },
   {
     "parameters": [],
-    "patternId": "wdio_await-expect",
-    "title": "Wdio: Await expect",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "wdio_no-debug",
-    "title": "Wdio: No debug",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "wdio_no-pause",
-    "title": "Wdio: No pause",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "wdio_no-floating-promise",
-    "title": "Wdio: No floating promise",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "xss_no-location-href-assign",
     "title": "Xss: No location href assign",
     "description": "Disallow location.href assignment (prevent possible XSS)",

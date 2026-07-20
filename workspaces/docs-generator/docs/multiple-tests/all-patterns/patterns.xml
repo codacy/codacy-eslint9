@@ -3242,10 +3242,10 @@
   <module name="vuejs-accessibility_no-static-element-interactions" />
   <module name="vuejs-accessibility_role-has-required-aria-props" />
   <module name="vuejs-accessibility_tabindex-no-positive" />
-  <module name="wdio_await-expect" />
-  <module name="wdio_no-debug" />
-  <module name="wdio_no-pause" />
-  <module name="wdio_no-floating-promise" />
+  <module name="wdio_wdio_await-expect" />
+  <module name="wdio_wdio_no-debug" />
+  <module name="wdio_wdio_no-pause" />
+  <module name="wdio_wdio_no-floating-promise" />
   <module name="xss_no-location-href-assign" />
   <module name="yml_block-mapping-colon-indicator-newline" />
   <module name="yml_block-mapping-question-indicator-newline" />
