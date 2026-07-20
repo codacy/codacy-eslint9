@@ -25,6 +25,7 @@ import { fromSchemaArray } from "lib/utils/namedParameters.ts"
 import { rulesToUnnamedParametersDefaults } from "lib/utils/rulesToUnnamedParametersDefaults.ts"
 import { toolName, toolVersion } from "lib/utils/metadata.ts"
 import { TerminalColor, wrapConsoleTextInColor } from "lib/utils/logging.ts"
+import { defaultPatternIds } from "lib/models/defaultPatterns.ts"
 
 export class DocsGenerator {
   private docsDirectory = "./docs";
@@ -127,44 +128,9 @@ export class DocsGenerator {
   return new Specification(toolName, toolVersion, patterns)
 }
 
-  static isDefaultPattern(patternId: string, ruleModule: TSESLint.LooseRuleDefinition): boolean {
-    function prefixSplit(patternId: string): string {
-      const p = patternId.split("/")[0]
-      return p !== patternId ? p : ""
-    }
-
-    // The following arrays represents groups of default rules.
-    // Each entry is an object where:
-    //   - The key is the prefix identifying the plugin name (e.g. '@stylistic', '@typescript-eslint', 'security')
-    //     ESLint core rules are represented by an empty prefix ("");
-    //   - The value is either 'recommended' or 'all', which determines whether all rules or only the recommended rules in the group are included.
-    type prefixSet = { [key: string]: "recommended" | "all" }
-    const defaultPrefixes = [
-      { "": "recommended" },
-      { "@stylistic": "recommended" },
-      { "@typescript-eslint": "recommended" },
-      { "eslint-plugin": "recommended" }
-    ] as prefixSet[]
-    const securityPrefixes = [
-      { "security": "recommended" },
-      { "security-node": "recommended" },
-      { "xss": "all" }
-    ] as prefixSet[]
-
-    const prefixes = [...defaultPrefixes, ...securityPrefixes]
-    const prefix = prefixSplit(patternId)
-    const meta = getRuleMeta(ruleModule)
-
-    // Exclude "@typescript-eslint/no-unsafe-*" as defaults for now
-    if (patternId.startsWith("@typescript-eslint/no-unsafe-")) {
-      return false
-    }
-
-    return prefixes.some((p) =>
-      p[prefix] === "all"
-      || p[prefix] === "recommended" && meta?.docs?.recommended
-    )
-  }
+  static isDefaultPattern(patternId: string, _ruleModule: TSESLint.LooseRuleDefinition): boolean {
+  return defaultPatternIds.has(patternIdToCodacy(patternId))
+}
 
 private async generateDescriptionEntries(): Promise<DescriptionEntry[]> {
   const descriptions: DescriptionEntry[] = []

@@ -307,10 +307,8 @@
   <module name="@angular-eslint_inject-at-top" />
   <module name="@angular-eslint_no-async-lifecycle-method" />
   <module name="@angular-eslint_no-attribute-decorator" />
-  <module name="@angular-eslint_no-developer-preview" />
   <module name="@angular-eslint_no-duplicates-in-metadata-arrays" />
   <module name="@angular-eslint_no-empty-lifecycle-method" />
-  <module name="@angular-eslint_no-experimental" />
   <module name="@angular-eslint_no-forward-ref" />
   <module name="@angular-eslint_no-implicit-take-until-destroyed" />
   <module name="@angular-eslint_no-input-prefix" />
@@ -323,7 +321,6 @@
   <module name="@angular-eslint_no-outputs-metadata-property" />
   <module name="@angular-eslint_no-pipe-impure" />
   <module name="@angular-eslint_no-queries-metadata-property" />
-  <module name="@angular-eslint_no-uncalled-signals" />
   <module name="@angular-eslint_pipe-prefix" />
   <module name="@angular-eslint_prefer-host-metadata-property" />
   <module name="@angular-eslint_prefer-inject" />
@@ -710,7 +707,6 @@
   <module name="@vitest_require-test-timeout" />
   <module name="@vitest_require-to-throw-message" />
   <module name="@vitest_require-top-level-describe" />
-  <module name="@vitest_unbound-method" />
   <module name="@vitest_valid-describe-callback" />
   <module name="@vitest_valid-expect-in-promise" />
   <module name="@vitest_valid-expect" />
@@ -1561,7 +1557,6 @@
   <module name="jest_no-disabled-tests" />
   <module name="jest_no-done-callback" />
   <module name="jest_no-duplicate-hooks" />
-  <module name="jest_no-error-equal" />
   <module name="jest_no-export" />
   <module name="jest_no-focused-tests" />
   <module name="jest_no-hooks" />
@@ -1575,7 +1570,6 @@
   <module name="jest_no-standalone-expect" />
   <module name="jest_no-test-prefixes" />
   <module name="jest_no-test-return-statement" />
-  <module name="jest_no-unnecessary-assertion" />
   <module name="jest_no-unneeded-async-expect-function" />
   <module name="jest_no-untyped-mock-factory" />
   <module name="jest_padding-around-after-all-blocks" />
@@ -1614,7 +1608,6 @@
   <module name="jest_require-top-level-describe" />
   <module name="jest_valid-describe-callback" />
   <module name="jest_valid-expect-in-promise" />
-  <module name="jest_valid-expect-with-promise" />
   <module name="jest_valid-expect" />
   <module name="jest_valid-mock-module-path" />
   <module name="jest_valid-title" />

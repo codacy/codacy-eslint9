@@ -2464,13 +2464,6 @@
       "enabled": false
     },
     {
-      "patternId": "@angular-eslint_no-developer-preview",
-      "level": "Error",
-      "category": "ErrorProne",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "@angular-eslint_no-duplicates-in-metadata-arrays",
       "level": "Warning",
       "category": "BestPractice",
@@ -2481,13 +2474,6 @@
       "patternId": "@angular-eslint_no-empty-lifecycle-method",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@angular-eslint_no-experimental",
-      "level": "Error",
-      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -2570,13 +2556,6 @@
     },
     {
       "patternId": "@angular-eslint_no-queries-metadata-property",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@angular-eslint_no-uncalled-signals",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -4666,7 +4645,7 @@
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "@typescript-eslint_no-unnecessary-type-parameters",
@@ -4785,7 +4764,7 @@
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "@typescript-eslint_no-useless-empty-export",
@@ -5540,13 +5519,6 @@
       "patternId": "@vitest_require-top-level-describe",
       "level": "Warning",
       "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "@vitest_unbound-method",
-      "level": "Error",
-      "category": "ErrorProne",
       "parameters": [],
       "enabled": false
     },
@@ -10821,14 +10793,14 @@
       "level": "Error",
       "category": "ErrorProne",
       "parameters": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "eslint-plugin_no-meta-schema-default",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "eslint-plugin_no-missing-message-ids",
@@ -10926,7 +10898,7 @@
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "eslint-plugin_require-meta-docs-description",
@@ -10968,7 +10940,7 @@
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
-      "enabled": true
+      "enabled": false
     },
     {
       "patternId": "eslint-plugin_require-meta-schema",
@@ -11690,13 +11662,6 @@
       "enabled": false
     },
     {
-      "patternId": "jest_no-error-equal",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
       "patternId": "jest_no-export",
       "level": "Warning",
       "category": "BestPractice",
@@ -11782,13 +11747,6 @@
     },
     {
       "patternId": "jest_no-test-return-statement",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "jest_no-unnecessary-assertion",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],
@@ -12064,13 +12022,6 @@
     },
     {
       "patternId": "jest_valid-expect-in-promise",
-      "level": "Warning",
-      "category": "BestPractice",
-      "parameters": [],
-      "enabled": false
-    },
-    {
-      "patternId": "jest_valid-expect-with-promise",
       "level": "Warning",
       "category": "BestPractice",
       "parameters": [],

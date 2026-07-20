@@ -2462,13 +2462,6 @@
   },
   {
     "parameters": [],
-    "patternId": "@angular-eslint_no-developer-preview",
-    "title": "@angular eslint: No developer preview",
-    "description": "Disallow using code which is marked as developer preview",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "@angular-eslint_no-duplicates-in-metadata-arrays",
     "title": "@angular eslint: No duplicates in metadata arrays",
     "description": "Ensures that metadata arrays do not contain duplicate entries.",
@@ -2479,13 +2472,6 @@
     "patternId": "@angular-eslint_no-empty-lifecycle-method",
     "title": "@angular eslint: No empty lifecycle method",
     "description": "Disallows declaring empty lifecycle methods",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@angular-eslint_no-experimental",
-    "title": "@angular eslint: No experimental",
-    "description": "Disallow using code which is marked as experimental",
     "timeToFix": 5
   },
   {
@@ -2570,13 +2556,6 @@
     "patternId": "@angular-eslint_no-queries-metadata-property",
     "title": "@angular eslint: No queries metadata property",
     "description": "Disallows usage of the `queries` metadata property.",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@angular-eslint_no-uncalled-signals",
-    "title": "@angular eslint: No uncalled signals",
-    "description": "Warns user about unintentionally doing logic on the signal, rather than the signal's value",
     "timeToFix": 5
   },
   {
@@ -5530,13 +5509,6 @@
     "patternId": "@vitest_require-top-level-describe",
     "title": "@vitest: Require top level describe",
     "description": "Enforce that all tests are in a top-level describe",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "@vitest_unbound-method",
-    "title": "@vitest: Unbound method",
-    "description": "Enforce unbound methods are called with their expected scope",
     "timeToFix": 5
   },
   {
@@ -11607,13 +11579,6 @@
   },
   {
     "parameters": [],
-    "patternId": "jest_no-error-equal",
-    "title": "Jest: No error equal",
-    "description": "Disallow using equality matchers on error types",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
     "patternId": "jest_no-export",
     "title": "Jest: No export",
     "description": "Disallow using `exports` in files containing tests",
@@ -11701,13 +11666,6 @@
     "patternId": "jest_no-test-return-statement",
     "title": "Jest: No test return statement",
     "description": "Disallow explicitly returning from tests",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jest_no-unnecessary-assertion",
-    "title": "Jest: No unnecessary assertion",
-    "description": "Disallow unnecessary assertions based on types",
     "timeToFix": 5
   },
   {
@@ -11983,13 +11941,6 @@
     "patternId": "jest_valid-expect-in-promise",
     "title": "Jest: Valid expect in promise",
     "description": "Require promises that have expectations in their chain to be valid",
-    "timeToFix": 5
-  },
-  {
-    "parameters": [],
-    "patternId": "jest_valid-expect-with-promise",
-    "title": "Jest: Valid expect with promise",
-    "description": "Require that `resolve` and `reject` modifiers are present (and only) for promise-like types",
     "timeToFix": 5
   },
   {
