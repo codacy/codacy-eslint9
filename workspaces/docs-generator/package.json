@@ -11,11 +11,15 @@
   "dependencies": {
     "@types/semver": "7.7.1",
     "axios": "1.18.1",
-    "fs-extra": "11.3.6",
+    "fs-extra": "^11.3.0",
+    "codacy-seed": "2.2.7",
     "jsonschema": "1.5.0",
     "svelte": "5.56.5",
     "ts-node": "10.9.2",
-    "tsconfig-paths": "4.2.0",
-    "codacy-seed": "2.2.7"
+    "tsconfig-paths": "4.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@eslint-stylistic/metadata": "5.10.0"
   }
 }
