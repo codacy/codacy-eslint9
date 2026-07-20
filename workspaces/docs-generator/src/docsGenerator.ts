@@ -121,14 +121,14 @@ export class DocsGenerator {
       securitySubcategory,
       scanType,
       patternParameters,
-      DocsGenerator.isDefaultPattern(patternId, ruleModule)
+      DocsGenerator.isDefaultPattern(patternId)
     ));
   })
 
   return new Specification(toolName, toolVersion, patterns)
 }
 
-  static isDefaultPattern(patternId: string, _ruleModule: TSESLint.LooseRuleDefinition): boolean {
+  static isDefaultPattern(patternId: string): boolean {
   return defaultPatternIds.has(patternIdToCodacy(patternId))
 }
 

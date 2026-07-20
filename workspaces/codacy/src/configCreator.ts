@@ -251,10 +251,10 @@ async function retrieveCodacyPatterns(set: "recommended" | "all" = "recommended"
   const patterns: Pattern[] = [];
   const allRules = await getAllRules(true);
   Object.entries(allRules)
-    .filter(([patternId, rule]) =>
+    .filter(([patternId]) =>
       // problems with the path generated (win vs nix) for this specific pattern
       (!DEBUG || patternId != "spellcheck_spell-checker")
-      && (set !== "recommended" || DocsGenerator.isDefaultPattern(patternIdToEslint(patternId), rule))
+      && (set !== "recommended" || DocsGenerator.isDefaultPattern(patternIdToEslint(patternId)))
     )
     .forEach(([patternId, rule]) => {
       const pattern = new Pattern(
