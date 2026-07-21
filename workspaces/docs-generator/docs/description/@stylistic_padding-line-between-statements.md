@@ -1,9 +1,7 @@
 ---
-title: padding-line-between-statements
-rule_type: layout
 ---
 
-# js/padding-line-between-statements
+# padding-line-between-statements
 
 This rule requires or disallows blank lines between the given 2 kinds of statements.
 Properly blank lines help developers to understand the code.
@@ -11,10 +9,10 @@ Properly blank lines help developers to understand the code.
 For example, the following configuration requires a blank line between a variable declaration and a `return` statement.
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: "var", next: "return" }
-]*/
+] */
 
 function foo() {
     var a = 1;
@@ -44,7 +42,6 @@ You can supply any number of configurations. If a statement pair matches multipl
 ```
 
 - `LINEBREAK_TYPE` is one of the following.
-
   - `"any"` just ignores the statement pair.
   - `"never"` disallows blank lines.
   - `"always"` requires one or more blank lines. Note it does not count lines that comments exist as blank lines.
@@ -73,37 +70,50 @@ You can supply any number of configurations. If a statement pair matches multipl
   - `"iife"` is immediately invoked function expression statements. This matches calls on a function expression, optionally prefixed with a unary operator.
   - `"import"` is `import` declarations.
   - `"let"` is `let` variable declarations, both single-line and multiline.
-  - `"multiline-block-like"` is block like statements. This is the same as `block-like` type, but only if the block is multiline.
-  - `"multiline-const"` is multiline `const` variable declarations.
-  - `"multiline-export"` is multiline `export` declarations.
-  - `"multiline-expression"` is expression statements. This is the same as `expression` type, but only if the statement is multiline.
-  - `"multiline-let"` is multiline `let` variable declarations.
-  - `"multiline-var"` is multiline `var` variable declarations.
   - `"return"` is `return` statements.
-  - `"singleline-const"` is single-line `const` variable declarations.
-  - `"singleline-export"` is single-line `export` declarations.
-  - `"singleline-let"` is single-line `let` variable declarations.
-  - `"singleline-var"` is single-line `var` variable declarations.
   - `"switch"` is `switch` statements.
   - `"throw"` is `throw` statements.
   - `"try"` is `try` statements.
+  - `"using"` is `using` and `await using` variable declarations, both single-line and multiline.
   - `"var"` is `var` variable declarations, both single-line and multiline.
   - `"while"` is `while` loop statements.
   - `"with"` is `with` statements.
+  - `"enum"` is `enum` declarations.
+  - `"interface"` is `interface` declarations.
+  - `"type"` is `type alias` declarations.
+  - `"function-overload"` is function overloads.
+
+- `STATEMENT_TYPE` can also be `{ "selector": AST_SELECTOR, "lineMode"?: "any" | "singleline" | "multiline" }`.
+  - `AST_SELECTOR` is an [ESLint selector](https://eslint.org/docs/latest/extend/selectors).
+  - `lineMode` limits selector matches by statement line mode. It defaults to `"any"`.
+    - `"singleline"` matches only single-line statements.
+    - `"multiline"` matches only multiline statements.
+  - This can be used as an escape hatch for project-specific statement matching.
+
+> [!NOTE]
+>
+> `STATEMENT_TYPE` following can add `singleline-` or `multiline-` prefix:
+>
+> `block-like`, `expression`, `return`, `export`, `var`, `let`, `const`, `using`, `type`.
+>
+> For example:
+>
+> - `"singleline-var"` is single-line `var` variable declarations.
+> - `"multiline-var"` is multiline `var` variable declarations.
 
 ## Examples
 
-This configuration would require blank lines before all `return` statements, like the [newline-before-return](newline-before-return) rule.
+This configuration would require blank lines before all `return` statements, like the [newline-before-return](https://eslint.org/docs/latest/rules/newline-before-return) rule.
 
 Examples of **incorrect** code for the `[{ blankLine: "always", prev: "*", next: "return" }]` configuration:
 
 ::: incorrect
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: "*", next: "return" }
-]*/
+] */
 
 function foo() {
     bar();
@@ -118,10 +128,10 @@ Examples of **correct** code for the `[{ blankLine: "always", prev: "*", next: "
 ::: correct
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: "*", next: "return" }
-]*/
+] */
 
 function foo1() {
     bar();
@@ -138,18 +148,18 @@ function foo2() {
 
 ---
 
-This configuration would require blank lines after every sequence of variable declarations, like the [newline-after-var](newline-after-var) rule.
+This configuration would require blank lines after every sequence of variable declarations, like the [newline-after-var](https://eslint.org/docs/latest/rules/newline-after-var) rule.
 
 Examples of **incorrect** code for the `[{ blankLine: "always", prev: ["const", "let", "var"], next: "*"}, { blankLine: "any", prev: ["const", "let", "var"], next: ["const", "let", "var"]}]` configuration:
 
 ::: incorrect
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: ["const", "let", "var"], next: "*"},
     { blankLine: "any",    prev: ["const", "let", "var"], next: ["const", "let", "var"]}
-]*/
+] */
 
 function foo1() {
     var a = 0;
@@ -181,11 +191,11 @@ Examples of **correct** code for the `[{ blankLine: "always", prev: ["const", "l
 ::: correct
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: ["const", "let", "var"], next: "*"},
     { blankLine: "any",    prev: ["const", "let", "var"], next: ["const", "let", "var"]}
-]*/
+] */
 
 function foo1() {
     var a = 0;
@@ -222,18 +232,18 @@ class C {
 
 ---
 
-This configuration would require blank lines after all directive prologues, like the [lines-around-directive](lines-around-directive) rule.
+This configuration would require blank lines after all directive prologues, like the [lines-around-directive](https://eslint.org/docs/latest/rules/lines-around-directive) rule.
 
 Examples of **incorrect** code for the `[{ blankLine: "always", prev: "directive", next: "*" }, { blankLine: "any", prev: "directive", next: "directive" }]` configuration:
 
 ::: incorrect
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: "directive", next: "*" },
     { blankLine: "any",    prev: "directive", next: "directive" }
-]*/
+] */
 
 "use strict";
 foo();
@@ -246,11 +256,11 @@ Examples of **correct** code for the `[{ blankLine: "always", prev: "directive",
 ::: correct
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: "directive", next: "*" },
     { blankLine: "any",    prev: "directive", next: "directive" }
-]*/
+] */
 
 "use strict";
 "use asm";
@@ -269,10 +279,10 @@ Examples of **incorrect** code for the `[{ blankLine: "always", prev: ["case", "
 ::: incorrect
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: ["case", "default"], next: "*" }
-]*/
+] */
 
 switch (foo) {
     case 1:
@@ -294,10 +304,10 @@ Examples of **correct** code for the `[{ blankLine: "always", prev: ["case", "de
 ::: correct
 
 ```js
-/*eslint padding-line-between-statements: [
+/* eslint @stylistic/padding-line-between-statements: [
     "error",
     { blankLine: "always", prev: ["case", "default"], next: "*" }
-]*/
+] */
 
 switch (foo) {
     case 1:

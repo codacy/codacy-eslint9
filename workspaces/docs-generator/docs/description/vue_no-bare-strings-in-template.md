@@ -72,7 +72,7 @@ If you want to report these string literals, enable the [vue/no-useless-v-bind] 
 }
 ```
 
-- `allowlist` ... An array of allowed strings or regular expression patterns (e.g. `/\d+/` to allow numbers).
+- `allowlist` ... An array of allowed strings or regular expression patterns (e.g. `"/\d+/"` to allow numbers).
 - `attributes` ... An object whose keys are tag name or patterns and value is an array of attributes to check for that tag name.
 - `directives` ... An array of directive names to check literal value.
 
@@ -90,5 +90,5 @@ This rule was introduced in eslint-plugin-vue v7.0.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/no-bare-strings-in-template.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-bare-strings-in-template.js)
+- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/no-bare-strings-in-template.ts)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-bare-strings-in-template.test.ts)

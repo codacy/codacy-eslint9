@@ -45,7 +45,7 @@ async function main() {
     await docGenerator.downloadPluginDocs({
       packageName: "@tanstack/eslint-plugin-query",
       relativeUrl: "/TanStack/query/main/docs/eslint/",
-      versionPrefix: "v",
+      versionPrefix: "@tanstack/eslint-plugin-query@",
     })
     await sleep(500)
 
@@ -171,7 +171,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-import",
-      relativeUrl: "/un-es/eslint-plugin-i/fork-release/docs/rules/",
+      relativeUrl: "/import-js/eslint-plugin-import/refs/tags/main/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)
@@ -347,7 +347,7 @@ async function main() {
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-security",
       relativeUrl: "/eslint-community/eslint-plugin-security/main/docs/rules/",
-      versionPrefix: "v",
+      versionPrefix: "eslint-plugin-security-v",
     })
     await sleep(500)
 
@@ -374,7 +374,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-storybook",
-      relativeUrl: "/storybookjs/eslint-plugin-storybook/master/docs/rules/",
+      relativeUrl: "/storybookjs/storybook/refs/tags/master/code/lib/eslint-plugin/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)
@@ -403,13 +403,6 @@ async function main() {
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-testing-library",
       relativeUrl: "/testing-library/eslint-plugin-testing-library/main/docs/rules/",
-      versionPrefix: "v",
-    })
-    await sleep(500)
-
-    await docGenerator.downloadPluginDocs({
-      packageName: "eslint-plugin-typescript-sort-keys",
-      relativeUrl: "/infctr/eslint-plugin-typescript-sort-keys/master/docs/rules/",
       versionPrefix: "v",
     })
     await sleep(500)
@@ -464,7 +457,7 @@ async function main() {
 
     await docGenerator.downloadPluginDocs({
       packageName: "eslint-plugin-wdio",
-      relativeUrl: "/webdriverio/webdriverio/main/packages/eslint-plugin-wdio/docs/rules/",
+      relativeUrl: "/webdriverio/webdriverio/refs/tags/main/packages/eslint-plugin-wdio/docs/rules/",
       versionPrefix: "v",
     })
 

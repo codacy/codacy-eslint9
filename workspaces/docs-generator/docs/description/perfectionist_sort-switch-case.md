@@ -171,7 +171,7 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
     type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
     order?: 'asc' | 'desc'
@@ -180,8 +180,9 @@ Specifies whether to sort items in ascending or descending order.
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -213,7 +214,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -299,5 +300,5 @@ This rule was introduced in [v3.0.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-switch-case.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-switch-case.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-switch-case.test.ts)
 

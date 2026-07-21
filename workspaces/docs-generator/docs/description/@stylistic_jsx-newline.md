@@ -1,4 +1,4 @@
-# jsx/jsx-newline
+# jsx-newline
 
 Require or prevent a new line after jsx elements and expressions
 
@@ -6,11 +6,11 @@ Require or prevent a new line after jsx elements and expressions
 
 This is a stylistic rule intended to make JSX code more readable by requiring or preventing lines between adjacent JSX elements and expressions.
 
-## Rule Options
+## Options
 
 ```json5
 ...
-"@stylistic/jsx/jsx-newline": [<enabled>, { "prevent": <boolean>, "allowMultilines": <boolean> }]
+"@stylistic/jsx-newline": [<enabled>, { "prevent": <boolean>, "allowMultilines": <boolean> }]
 ...
 ```
 
@@ -18,25 +18,25 @@ This is a stylistic rule intended to make JSX code more readable by requiring or
 - prevent: optional boolean. If `true` prevents empty lines between adjacent JSX elements and expressions. Defaults to `false`.
 - allowMultilines: optional boolean. If `true` and `prevent` is also equal to `true`, it allows newlines after multiline JSX elements and expressions. Defaults to `false`.
 
-## Examples
+### prevent
 
 Examples of **incorrect** code for this rule, when configured with `{ "prevent": false }`:
 
+::: incorrect
+
 ```jsx
+/* eslint @stylistic/jsx-newline: ["error", { "prevent": false }] */
+
 <div>
   <Button>{data.label}</Button>
   <List />
-</div>
-```
+</div>;
 
-```jsx
 <div>
   <Button>{data.label}</Button>
   {showSomething === true && <Something />}
-</div>
-```
+</div>;
 
-```jsx
 <div>
   {showSomething === true && <Something />}
   {showSomethingElse === true ? (
@@ -44,12 +44,18 @@ Examples of **incorrect** code for this rule, when configured with `{ "prevent":
   ) : (
     <ErrorMessage />
   )}
-</div>
+</div>;
 ```
+
+:::
 
 Examples of **correct** code for this rule, when configured with `{ "prevent": false }`:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-newline: ["error", { "prevent": false }] */
+
 <div>
   <Button>{data.label}</Button>
 
@@ -73,10 +79,16 @@ Examples of **correct** code for this rule, when configured with `{ "prevent": f
   )}
 </div>
 ```
+
+:::
 
 Examples of **incorrect** code for this rule, when configured with `{ "prevent": true }`:
 
+::: incorrect
+
 ```jsx
+/* eslint @stylistic/jsx-newline: ["error", { "prevent": true }] */
+
 <div>
   <Button>{data.label}</Button>
 
@@ -101,23 +113,25 @@ Examples of **incorrect** code for this rule, when configured with `{ "prevent":
 </div>
 ```
 
+:::
+
 Examples of **correct** code for this rule, when configured with `{ "prevent": true }`:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-newline: ["error", { "prevent": true }] */
+
 <div>
   <Button>{data.label}</Button>
   <List />
-</div>
-```
+</div>;
 
-```jsx
 <div>
   <Button>{data.label}</Button>
   {showSomething === true && <Something />}
-</div>
-```
+</div>;
 
-```jsx
 <div>
   {showSomething === true && <Something />}
   {showSomethingElse === true ? (
@@ -125,12 +139,20 @@ Examples of **correct** code for this rule, when configured with `{ "prevent": t
   ) : (
     <ErrorMessage />
   )}
-</div>
+</div>;
 ```
+
+:::
+
+### allowMultilines
 
 Examples of **incorrect** code for this rule, when configured with `{ "prevent": true, "allowMultilines": true }`:
 
+::: incorrect
+
 ```jsx
+/* eslint @stylistic/jsx-newline: ["error", { "prevent": true, "allowMultilines": true }] */
+
 <div>
   {showSomething === true && <Something />}
 
@@ -142,14 +164,22 @@ Examples of **incorrect** code for this rule, when configured with `{ "prevent":
   )}
 </div>
 ```
+
+:::
 
 Examples of **correct** code for this rule, when configured with `{ "prevent": true, "allowMultilines": true }`:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-newline: ["error", { "prevent": true, "allowMultilines": true }] */
+
 <div>
   {showSomething === true && <Something />}
 
-  <Button>Button 3</Button>
+  <Button>
+    Button 3
+  </Button>
 
   {showSomethingElse === true ? (
     <SomethingElse />
@@ -158,6 +188,8 @@ Examples of **correct** code for this rule, when configured with `{ "prevent": t
   )}
 </div>
 ```
+
+:::
 
 ## When Not To Use It
 

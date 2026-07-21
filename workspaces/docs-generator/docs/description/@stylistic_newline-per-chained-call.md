@@ -1,9 +1,7 @@
 ---
-title: newline-per-chained-call
-rule_type: layout
 ---
 
-# js/newline-per-chained-call
+# newline-per-chained-call
 
 Chained method calls on a single line without line breaks are harder to read, so some developers place a newline character after each method call in the chain to make it more readable and easy to maintain.
 
@@ -38,19 +36,19 @@ Another argument in favor of this style is that it improves the clarity of diffs
 
 Less clear:
 
-```diff
--d3.select("body").selectAll("p").style("color", "white");
-+d3.select("body").selectAll("p").style("color", "blue");
+```js
+d3.select("body").selectAll("p").style("color", "white"); // [!code --]
+d3.select("body").selectAll("p").style("color", "blue"); // [!code ++]
 ```
 
 More clear:
 
-```diff
+```js
 d3
     .select("body")
     .selectAll("p")
--    .style("color", "white");
-+    .style("color", "blue");
+    .style("color", "white"); // [!code --]
+    .style("color", "blue"); // [!code ++]
 ```
 
 ## Rule Details
@@ -70,7 +68,7 @@ Examples of **incorrect** code for this rule with the default `{ "ignoreChainWit
 ::: incorrect
 
 ```js
-/*eslint newline-per-chained-call: ["error", { "ignoreChainWithDepth": 2 }]*/
+/* eslint @stylistic/newline-per-chained-call: ["error", { "ignoreChainWithDepth": 2 }] */
 
 _.chain({}).map(foo).filter(bar).value();
 
@@ -93,7 +91,7 @@ Examples of **correct** code for this rule with the default `{ "ignoreChainWithD
 ::: correct
 
 ```js
-/*eslint newline-per-chained-call: ["error", { "ignoreChainWithDepth": 2 }]*/
+/* eslint @stylistic/newline-per-chained-call: ["error", { "ignoreChainWithDepth": 2 }] */
 
 _
   .chain({})

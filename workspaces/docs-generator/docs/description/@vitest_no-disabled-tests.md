@@ -1,6 +1,8 @@
-# Disallow disabled tests (`vitest/no-disabled-tests`)
+# vitest/no-disabled-tests
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+📝 Disallow disabled tests.
+
+⚠️ This rule _warns_ in the following configs: 🌐 `all`, ✅ `recommended`.
 
 <!-- end auto-generated rule header -->
 

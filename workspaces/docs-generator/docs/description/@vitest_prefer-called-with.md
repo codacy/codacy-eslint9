@@ -1,4 +1,6 @@
-# Enforce using `toBeCalledWith()` or `toHaveBeenCalledWith()` (`vitest/prefer-called-with`)
+# vitest/prefer-called-with
+
+📝 Enforce using `toBeCalledWith()` or `toHaveBeenCalledWith()`.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -8,7 +10,7 @@
 
 ## Rule Details
 
-This rule aims to enforce the use of `toBeCalledWith()` or `toHaveBeenCalledWith()` over `toBeCalled()` or `toHaveBeenCalled()`.
+This rule aims to enforce the use of `toBeCalledWith()` or `toHaveBeenCalledWith()` over `toBeCalled()` or `toHaveBeenCalled()`, and `toHaveBeenCalledExactlyOnceWith()` over `toHaveBeenCalledOnce()`.
 
 Examples of **incorrect** code for this rule:
 
@@ -18,6 +20,7 @@ test('foo', () => {
   mock('foo')
   expect(mock).toBeCalled()
   expect(mock).toHaveBeenCalled()
+  expect(mock).toHaveBeenCalledOnce()
 })
 ```
 
@@ -29,5 +32,6 @@ test('foo', () => {
   mock('foo')
   expect(mock).toBeCalledWith('foo')
   expect(mock).toHaveBeenCalledWith('foo')
+  expect(mock).toHaveBeenCalledExactlyOnceWith('foo')
 })
 ```

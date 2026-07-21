@@ -34,11 +34,20 @@ const blacklistRegexes: RegExp[] = [
   /import\/no-amd/,
   /import\/no-commonjs/,
   /import\/no-mutable-exports/,
+  /import\/enforce-node-protocol-usage/,
   /xss\/no-mixed-html/,
   /unused-imports\/.*-ts/,
   /yml\/sort-sequence-values/,
   /jest\/unbound-method/,
-  /angular\/di-unused/
+  /angular\/di-unused/,
+  /perfectionist\/sort-arrays/,
+  /@angular-eslint\/no-developer-preview/,
+  /@angular-eslint\/no-experimental/,
+  /@angular-eslint\/no-uncalled-signals/,
+  /@vitest\/unbound-method/,
+  /jest\/no-error-equal/,
+  /jest\/no-unnecessary-assertion/,
+  /jest\/valid-expect-with-promise/,
 ]
 
 const documentationBlacklistRegexes: RegExp[] = [

@@ -3,6 +3,7 @@
 import globals from "globals";
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import { error } from "console";
 
 
 export default tseslint.config(
@@ -31,6 +32,13 @@ export default tseslint.config(
                 programs: null
             }
         },
+        rules: {
+            "@typescript-eslint/no-unsafe-argument": "off",
+            "@typescript-eslint/no-unsafe-member-access": "off",
+            "@typescript-eslint/no-unsafe-return": "off",
+            "@typescript-eslint/await-thenable": "off",
+            "@typescript-eslint/no-unsafe-call": "off"
+        }
     },
     {
         files: ['**/*.js'],

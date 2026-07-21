@@ -1,4 +1,6 @@
-# Require toThrow() to be called with an error message (`vitest/require-to-throw-message`)
+# vitest/require-to-throw-message
+
+📝 Require toThrow() to be called with an error message.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -12,13 +14,13 @@ The following patterns are considered warnings:
 ```js
 test('foo', () => {
   expect(() => {
-	throw new Error('foo')
+    throw new Error('foo')
   }).toThrow()
 })
 
 test('foo', () => {
   expect(() => {
-	throw new Error('foo')
+    throw new Error('foo')
   }).toThrowError()
 })
 ```
@@ -28,13 +30,13 @@ The following patterns are not considered warnings:
 ```js
 test('foo', () => {
   expect(() => {
-	throw new Error('foo')
+    throw new Error('foo')
   }).toThrow('foo')
 })
 
 test('foo', () => {
   expect(() => {
-	throw new Error('foo')
+    throw new Error('foo')
   }).toThrowError('foo')
 })
 ```

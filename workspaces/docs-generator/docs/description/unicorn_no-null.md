@@ -1,4 +1,6 @@
-# Disallow the use of the `null` literal
+# no-null
+
+📝 Disallow the use of the `null` literal.
 
 💼🚫 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config). This rule is _disabled_ in the ☑️ `unopinionated` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
@@ -41,6 +43,26 @@ if (foo === null) {}
 
 Type: `object`
 
+### checkArguments
+
+Type: `boolean`\
+Default: `true`
+
+Disallow the use of `null` as a direct function call or constructor argument. Pass `checkArguments: false` to disable checking them.
+
+```js
+/* eslint unicorn/no-null: ["error", {"checkArguments": true}] */
+// ❌
+foo(null);
+```
+
+```js
+/* eslint unicorn/no-null: ["error", {"checkArguments": false}] */
+// ✅
+foo(null);
+new HttpResponse(null);
+```
+
 ### checkStrictEquality
 
 Type: `boolean`\
@@ -51,6 +73,10 @@ Strict equality(`===`) and strict inequality(`!==`) is ignored by default.
 ```js
 /* eslint unicorn/no-null: ["error", {"checkStrictEquality": true}] */
 // ❌
+if (foo === null) {}
+
+// ✅
+// eslint-disable-next-line unicorn/no-null
 if (foo === null) {}
 ```
 

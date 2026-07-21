@@ -1,4 +1,6 @@
-# Disallow useless `undefined`
+# no-useless-undefined
+
+📝 Disallow useless `undefined`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -106,6 +108,9 @@ Disallow the use of `undefined` at the end of function call arguments. Pass `che
 // ❌
 /* eslint unicorn/no-useless-undefined: ["error", {"checkArguments": true}] */
 foo(bar, baz, undefined);
+
+// ✅
+foo(bar, baz);
 ```
 
 ```js
@@ -125,6 +130,12 @@ Disallow the use of `undefined` as arrow function body. Pass `checkArrowFunction
 /* eslint unicorn/no-useless-undefined: ["error", {"checkArrowFunctionBody": true}] */
 // ❌
 const foo = () => undefined;
+```
+
+```js
+/* eslint unicorn/no-useless-undefined: ["error", {"checkArrowFunctionBody": true}] */
+// ✅
+const foo = () => {};
 ```
 
 ```js

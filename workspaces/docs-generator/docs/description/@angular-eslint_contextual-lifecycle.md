@@ -21,6 +21,12 @@ Ensures that lifecycle methods are used in a correct context
 
 <br>
 
+## Rationale
+
+Angular lifecycle hooks are only invoked for specific class types. For example, ngOnInit(), ngOnChanges(), and ngOnDestroy() are only called for components and directives, not for services (@Injectable), pipes (@Pipe), or modules (@NgModule). Defining these lifecycle methods in the wrong class type gives a false impression that they will be called, leading to bugs where initialization or cleanup logic never executes. This rule ensures lifecycle methods are only used where Angular will actually invoke them.
+
+<br>
+
 ## Rule Options
 
 The rule does not have any configuration options.
@@ -805,6 +811,66 @@ class Test {
 #### ❌ Invalid Code
 
 ```ts
+@Service()
+class Test {
+  ngOnInit() { console.log('ngOnInit'); }
+  ~~~~~~~~
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/contextual-lifecycle": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Service()
+class Test {
+  ngAfterViewInit() { console.log('ngAfterViewInit'); }
+  ~~~~~~~~~~~~~~~
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/contextual-lifecycle": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
 @Pipe()
 class Test implements DoCheck {
   constructor() {}
@@ -1374,6 +1440,35 @@ class Test {
 
 ```ts
 @Pipe()
+class Test {
+  ngOnDestroy() { console.log('OnDestroy'); }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/contextual-lifecycle": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Service()
 class Test {
   ngOnDestroy() { console.log('OnDestroy'); }
 }

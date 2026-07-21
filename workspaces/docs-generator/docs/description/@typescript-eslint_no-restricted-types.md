@@ -62,6 +62,7 @@ If you have no need to ban specific types from being used in type annotations, y
 
 ## Related To
 
+- [Revamping the `ban-types` rule](/blog/revamping-the-ban-types-rule)
 - [`no-empty-object-type`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-empty-object-type.mdx)
 - [`no-unsafe-function-type`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-unsafe-function-type.mdx)
 - [`no-wrapper-object-types`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-wrapper-object-types.mdx)

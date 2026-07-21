@@ -8,7 +8,7 @@ description: 'Require that function overload signatures be consecutive.'
 
 Function overload signatures represent multiple ways a function can be called, potentially with different return types.
 It's typical for an interface or type alias describing a function to place all overload signatures next to each other.
-If Signatures placed elsewhere in the type are easier to be missed by future developers reading the code.
+If signatures placed elsewhere in the type are easier to be missed by future developers reading the code.
 
 ## Examples
 
@@ -94,7 +94,7 @@ export function foo(sn: string | number): void;
 
 It can sometimes be useful to place overload signatures alongside other meaningful parts of a type.
 For example, if each of a function's overloads corresponds to a different property, you might wish to put each overloads next to its corresponding property.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Related To
 

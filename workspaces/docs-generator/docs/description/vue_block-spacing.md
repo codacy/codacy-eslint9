@@ -24,7 +24,7 @@ However, if neither is found, the rule cannot be used.
 - [@stylistic/block-spacing]
 - [block-spacing]
 
-[@stylistic/block-spacing]: https://eslint.style/rules/default/block-spacing
+[@stylistic/block-spacing]: https://eslint.style/rules/block-spacing
 [block-spacing]: https://eslint.org/docs/rules/block-spacing
 
 ## :rocket: Version
@@ -34,6 +34,6 @@ This rule was introduced in eslint-plugin-vue v5.2.0
 ## :mag: Implementation
 
 - [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/block-spacing.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/block-spacing.js)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/block-spacing.test.ts)
 
-<sup>Taken with ❤️ [from ESLint Stylistic](https://eslint.style/rules/ts/block-spacing)</sup>
+<sup>Taken with ❤️ [from ESLint Stylistic](https://eslint.style/rules/block-spacing)</sup>

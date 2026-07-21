@@ -72,7 +72,6 @@ const packageNames: string[] = [
   "eslint-plugin-tailwindcss",
   "eslint-plugin-test-selectors",
   "eslint-plugin-testing-library",
-  "eslint-plugin-typescript-sort-keys",
   "eslint-plugin-unicorn",
   "eslint-plugin-unused-imports",
   "eslint-plugin-vue",

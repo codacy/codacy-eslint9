@@ -1,9 +1,11 @@
 <!-- markdownlint-disable -->
 <!-- begin auto-generated rule header -->
 
-# Prefer property signatures over method signatures (`functional/prefer-property-signatures`)
+# functional/prefer-property-signatures
 
-💼🚫 This rule is enabled in the 🎨 `stylistic` config. This rule is _disabled_ in the `disableTypeChecked` config.
+📝 Prefer property signatures over method signatures.
+
+💼 This rule is enabled in the 🎨 `stylistic` config.
 
 💭 This rule requires [type information](https://typescript-eslint.io/linting/typed-linting).
 

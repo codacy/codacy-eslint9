@@ -1,4 +1,6 @@
-# Prefer `.at()` method for index access and `String#charAt()`
+# prefer-at
+
+📝 Prefer `.at()` method for index access and `String#charAt()`.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -63,6 +65,14 @@ const foo = array.at(array.length - 1);
 array[array.length - 1] = foo;
 ```
 
+```js
+// ✅
+// This rule intentionally ignores `arguments`, which is array-like but does not have `Array#at()`.
+function foo() {
+	return arguments[arguments.length - 1];
+}
+```
+
 ## Options
 
 Type: `object`
@@ -122,6 +132,12 @@ Example:
 /* eslint unicorn/prefer-at: ["error", {"getLastElementFunctions": ["utils.lastElement"]}] */
 // ❌
 const foo = utils.lastElement(bar);
+```
+
+```js
+/* eslint unicorn/prefer-at: ["error", {"getLastElementFunctions": ["utils.lastElement"]}] */
+// ✅
+const foo = bar.at(-1);
 ```
 
 ## Related rules

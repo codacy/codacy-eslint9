@@ -1,6 +1,8 @@
-# Disallow importing from __mocks__ directory (`vitest/no-mocks-import`)
+# vitest/no-mocks-import
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+📝 Disallow importing from **mocks** directory.
+
+💼⚠️ This rule is enabled in the ✅ `recommended` config. This rule _warns_ in the 🌐 `all` config.
 
 <!-- end auto-generated rule header -->
 

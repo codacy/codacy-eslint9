@@ -104,17 +104,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -146,7 +153,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -205,17 +212,38 @@ Each group of map members (separated by empty lines) is treated independently, a
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between map members.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines between map members.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed in maps.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
-See the [`groups`](#newlines-between-groups) option.
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
 
@@ -223,9 +251,14 @@ This option is only applicable when [`partitionByNewLine`](#partitionbynewline) 
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    allNamesMatchPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
   }
   ```
 </sub>
@@ -259,8 +292,29 @@ Example configuration:
         },
       ],
       useConfigurationIf: {
-        allNamesMatchPattern: '^r|g|b$',
+        allNamesMatchPattern: '^[rgb]$',
       },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching a `NewExpression` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort maps that are declared as `const` variables.
+```ts
+{
+  'perfectionist/sort-maps': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'VariableDeclaration[kind="const"] NewExpression',
+      },
+      type: 'unsorted'
     },
     {
       type: 'alphabetical' // Fallback configuration
@@ -272,7 +326,21 @@ Example configuration:
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
@@ -286,6 +354,24 @@ Within a given group, members will be sorted according to the `type`, `order`, `
 Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
 All members of the groups in the array will be sorted together as if they were part of a single group.
 
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'myCustomGroup1',
+    { group: 'myCustomGroup2', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
+
 #### Newlines between groups
 
 You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
@@ -296,10 +382,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
@@ -322,11 +408,11 @@ interface CustomGroupDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
-
 ```
+
 A map element will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -337,7 +423,7 @@ interface CustomGroupAnyOfDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
   }>
@@ -350,10 +436,10 @@ A map element will match a `CustomGroupAnyOfDefinition` group if it matches all 
 
 - `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -387,7 +473,8 @@ Custom groups have a higher priority than any predefined group.
                   specialCharacters: 'keep',
                   partitionByNewLine: false,
                   partitionByComment: false,
-                  newlinesBetween: false,
+                  newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   useConfigurationIf: {},
                   groups: [],
                   customGroups: [],
@@ -418,7 +505,8 @@ Custom groups have a higher priority than any predefined group.
                 specialCharacters: 'keep',
                 partitionByNewLine: false,
                 partitionByComment: false,
-                newlinesBetween: false,
+                newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 useConfigurationIf: {},
                 groups: [],
                 customGroups: [],
@@ -443,4 +531,4 @@ This rule was introduced in [v0.5.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-maps.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-maps.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-maps.test.ts)

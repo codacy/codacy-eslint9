@@ -1,9 +1,7 @@
 ---
-title: new-parens
-rule_type: layout
 ---
 
-# js/new-parens
+# new-parens
 
 JavaScript allows the omission of parentheses when invoking a function via the `new` keyword and the constructor has no arguments. However, some coders believe that omitting the parentheses is inconsistent with the rest of the language and thus makes code less clear.
 
@@ -29,7 +27,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 ::: incorrect
 
 ```js
-/*eslint new-parens: "error"*/
+/* eslint @stylistic/new-parens: "error" */
 
 var person = new Person;
 var person = new (Person);
@@ -42,7 +40,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 ::: correct
 
 ```js
-/*eslint new-parens: "error"*/
+/* eslint @stylistic/new-parens: "error" */
 
 var person = new Person();
 var person = new (Person)();
@@ -57,7 +55,7 @@ Examples of **incorrect** code for this rule with the `"never"` option:
 ::: incorrect
 
 ```js
-/*eslint new-parens: ["error", "never"]*/
+/* eslint @stylistic/new-parens: ["error", "never"] */
 
 var person = new Person();
 var person = new (Person)();
@@ -70,7 +68,7 @@ Examples of **correct** code for this rule with the `"never"` option:
 ::: correct
 
 ```js
-/*eslint new-parens: ["error", "never"]*/
+/* eslint @stylistic/new-parens: ["error", "never"] */
 
 var person = new Person;
 var person = (new Person);

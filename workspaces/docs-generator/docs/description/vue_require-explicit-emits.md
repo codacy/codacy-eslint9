@@ -10,7 +10,11 @@ since: v7.0.0
 
 > require `emits` option with name triggered by `$emit()`
 
-- :gear: This rule is included in all of `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/recommended"]`.
+- :gear: This rule is included in the following preset configs:
+  - `*.configs["flat/strongly-recommended"]`
+  - `*.configs["flat/recommended"]`
+  - `"plugin:vue/strongly-recommended"`
+  - `"plugin:vue/recommended"`
 - :bulb: Some problems reported by this rule are manually fixable by editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).
 
 ## :book: Rule Details
@@ -113,6 +117,7 @@ export default {
 ## :couple: Related Rules
 
 - [vue/no-unused-emit-declarations](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-unused-emit-declarations.md)
+- [vue/prefer-single-event-payload](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/prefer-single-event-payload.md)
 - [vue/require-explicit-slots](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/require-explicit-slots.md)
 
 ## :books: Further Reading
@@ -126,5 +131,5 @@ This rule was introduced in eslint-plugin-vue v7.0.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/require-explicit-emits.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/require-explicit-emits.js)
+- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/require-explicit-emits.ts)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/require-explicit-emits.test.ts)

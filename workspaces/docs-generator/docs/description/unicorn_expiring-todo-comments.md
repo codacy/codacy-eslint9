@@ -1,4 +1,6 @@
-# Add expiration conditions to TODO comments
+# expiring-todo-comments
+
+📝 Add expiration conditions to TODO comments.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -17,6 +19,8 @@ With this rule, a TODO can have a condition right from the beginning to define i
 
 This rule will ignore all TODOs without conditions. For more information, read the below [`eslint/no-warning-comments`](#disallow-warning-comments-no-warning-comments) section.
 
+This rule also supports CSS comments when linting CSS files with [`@eslint/css`](https://github.com/eslint/css).
+
 Quick overview of conditions:
 
 - Expire after a **specific date**.
@@ -30,6 +34,8 @@ Quick overview of conditions:
 ### Expiry Date
 
 Using a date as condition, a TODO will only work as long as this date is not met. This is especially useful when you either know when the action should take place or simply want to set boundaries for yourself.
+
+Date expiry checks are disabled by default. Set [`checkDates`](#checkdates) to `true` to enable them.
 
 ```js
 // TODO [2019-11-15]: Refactor this code before the sprint ends.
@@ -142,6 +148,17 @@ You can also use block comments to specify TODOs with conditions. Each line can 
  */
 ```
 
+### CSS
+
+When used with [`@eslint/css`](https://github.com/eslint/css), this rule can check CSS block comments too.
+
+```css
+/* TODO [2019-11-15]: Remove this fallback. */
+.outdated {
+	color: hotpink;
+}
+```
+
 ## Disallow Warning Comments (no-warning-comments)
 
 This rule implements [`eslint/no-warning-comments`](https://eslint.org/docs/rules/no-warning-comments).
@@ -182,11 +199,13 @@ Imagine you maintain a `main` branch at a version such as 10 and always keep wor
 - TODOs may or may not have a colon before the message such as
   `TODO [...]: message` or `TODO [...] message`.
 - If no proper argument is found, you'll be notified that the TODO is useless (See [`eslint/no-warning-comments`](#disallow-warning-comments-no-warning-comments)).
+- CSS comments are supported when using [`@eslint/css`](https://github.com/eslint/css).
 
 ## Examples
 
 ```js
 // ❌
+// With `checkDates: true`
 // TODO [2000-01-01]: I'll fix this next week.
 // TODO [2000-01-01, 2001-01-01]: Multiple dates won't work.
 
@@ -234,22 +253,41 @@ Imagine you maintain a `main` branch at a version such as 10 and always keep wor
 
 ## Options
 
-### ignoreDatesOnPullRequests
+### checkDates
 
 Type: `boolean`\
-Default: `true`
+Default: `false`
 
-Disables `Expiry Date` checks during pull requests.
+Whether to check expiration dates.
 
-Sometimes developers may send [Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) at a time when TODO expiry dates are triggered. This means that their code would fail to pass linting, causing a false-positive.
-
-By default, this rule will not trigger expiry dates while on Pull Requests so that the one responsible for the fix will be the maintainer not the contributor.
+This option does not disable date argument validation. For example, TODO comments with multiple dates are still reported as invalid.
 
 ```js
 "unicorn/expiring-todo-comments": [
 	"error",
 	{
-		"ignoreDatesOnPullRequests": true
+		"checkDates": false
+	}
+]
+```
+
+### checkDatesOnPullRequests
+
+Type: `boolean`\
+Default: `false`
+
+Whether to check expiration dates on pull requests.
+
+Sometimes developers may send [Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) at a time when TODO expiry dates are triggered. This means that their code would fail to pass linting, causing a false-positive.
+
+When date checks are enabled, this rule will not trigger expiry dates while on Pull Requests by default so that the one responsible for the fix will be the maintainer not the contributor.
+
+```js
+"unicorn/expiring-todo-comments": [
+	"error",
+	{
+		"checkDates": true,
+		"checkDatesOnPullRequests": true
 	}
 ]
 ```
@@ -343,6 +381,7 @@ Find tech debt that has grown up and gone to college by triggering the rule only
 "unicorn/expiring-todo-comments": [
 	"error",
 	{
+		"checkDates": true,
 		"date": "2000-01-01"
 	}
 ]
@@ -354,6 +393,7 @@ Prepare for the future by triggering the rule on known Y3K bugs:
 "unicorn/expiring-todo-comments": [
 	"error",
 	{
+		"checkDates": true,
 		"date": "3000-01-01"
 	}
 ]

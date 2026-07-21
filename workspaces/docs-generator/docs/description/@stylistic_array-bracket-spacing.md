@@ -1,20 +1,16 @@
 ---
-title: array-bracket-spacing
-rule_type: layout
 related_rules:
   - space-in-parens
   - object-curly-spacing
   - computed-property-spacing
 ---
 
-# js/array-bracket-spacing
+# array-bracket-spacing
 
 A number of style guides require or disallow spaces between array brackets and other tokens. This rule
 applies to both array literals and destructuring assignments (ECMAScript 6).
 
 ```js
-/*eslint-env es6*/
-
 var arr = [ 'foo', 'bar' ];
 var [ x, y ] = z;
 
@@ -57,8 +53,7 @@ Examples of **incorrect** code for this rule with the default `"never"` option:
 :::incorrect
 
 ```js
-/*eslint array-bracket-spacing: ["error", "never"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "never"] */
 
 var arr = [ 'foo', 'bar' ];
 var arr = ['foo', 'bar' ];
@@ -80,8 +75,7 @@ Examples of **correct** code for this rule with the default `"never"` option:
 :::correct
 
 ```js
-/*eslint array-bracket-spacing: ["error", "never"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "never"] */
 
 var arr = [];
 var arr = ['foo', 'bar', 'baz'];
@@ -113,8 +107,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 :::incorrect
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always"] */
 
 var arr = ['foo', 'bar'];
 var arr = ['foo', 'bar' ];
@@ -139,8 +132,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 :::correct
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always"] */
 
 var arr = [];
 var arr = [ 'foo', 'bar', 'baz' ];
@@ -172,7 +164,7 @@ Examples of **incorrect** code for this rule with the `"always", { "singleValue"
 :::incorrect
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always", { "singleValue": false }]*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always", { "singleValue": false }] */
 
 var foo = [ 'foo' ];
 var foo = [ 'foo'];
@@ -191,7 +183,7 @@ Examples of **correct** code for this rule with the `"always", { "singleValue": 
 :::correct
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always", { "singleValue": false }]*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always", { "singleValue": false }] */
 
 var foo = ['foo'];
 var foo = [1];
@@ -208,7 +200,7 @@ Examples of **incorrect** code for this rule with the `"always", { "objectsInArr
 :::incorrect
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always", { "objectsInArrays": false }]*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always", { "objectsInArrays": false }] */
 
 var arr = [ { 'foo': 'bar' } ];
 var arr = [ {
@@ -223,7 +215,7 @@ Examples of **correct** code for this rule with the `"always", { "objectsInArray
 :::correct
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always", { "objectsInArrays": false }]*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always", { "objectsInArrays": false }] */
 
 var arr = [{ 'foo': 'bar' }];
 var arr = [{
@@ -240,7 +232,7 @@ Examples of **incorrect** code for this rule with the `"always", { "arraysInArra
 :::incorrect
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always", { "arraysInArrays": false }]*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always", { "arraysInArrays": false }] */
 
 var arr = [ [ 1, 2 ], 2, 3, 4 ];
 var arr = [ [ 1, 2 ], 2, [ 3, 4 ] ];
@@ -253,7 +245,7 @@ Examples of **correct** code for this rule with the `"always", { "arraysInArrays
 :::correct
 
 ```js
-/*eslint array-bracket-spacing: ["error", "always", { "arraysInArrays": false }]*/
+/* eslint @stylistic/array-bracket-spacing: ["error", "always", { "arraysInArrays": false }] */
 
 var arr = [[ 1, 2 ], 2, 3, 4 ];
 var arr = [[ 1, 2 ], 2, [ 3, 4 ]];

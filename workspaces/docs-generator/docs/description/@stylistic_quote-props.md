@@ -1,12 +1,10 @@
 ---
-title: quote-props
-rule_type: suggestion
 further_reading:
   - 'https://kangax.github.io/compat-table/es5/#Reserved_words_as_property_names'
   - 'https://mathiasbynens.be/notes/javascript-properties'
 ---
 
-# js/quote-props
+# quote-props
 
 Object literal property names can be defined in two ways: using literals or using strings. For example, these two objects are equivalent:
 
@@ -67,7 +65,7 @@ Examples of **incorrect** code for this rule with the default `"always"` option:
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "always"]*/
+/* eslint @stylistic/quote-props: ["error", "always"] */
 
 var object = {
     foo: "bar",
@@ -82,8 +80,7 @@ Examples of **correct** code for this rule with the default `"always"` option:
 ::: correct
 
 ```js
-/*eslint quote-props: ["error", "always"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/quote-props: ["error", "always"] */
 
 var object1 = {
     "foo": "bar",
@@ -113,7 +110,7 @@ Examples of **incorrect** code for this rule with the `"as-needed"` option:
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "as-needed"]*/
+/* eslint @stylistic/quote-props: ["error", "as-needed"] */
 
 var object = {
     "a": 0,
@@ -130,8 +127,7 @@ Examples of **correct** code for this rule with the `"as-needed"` option:
 ::: correct
 
 ```js
-/*eslint quote-props: ["error", "as-needed"]*/
-/*eslint-env es6*/
+/* eslint @stylistic/quote-props: ["error", "as-needed"] */
 
 var object1 = {
     "a-b": 0,
@@ -163,7 +159,7 @@ Examples of **incorrect** code for this rule with the `"consistent"` option:
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "consistent"]*/
+/* eslint @stylistic/quote-props: ["error", "consistent"] */
 
 var object1 = {
     foo: "bar",
@@ -184,7 +180,7 @@ Examples of **correct** code for this rule with the `"consistent"` option:
 ::: correct
 
 ```js
-/*eslint quote-props: ["error", "consistent"]*/
+/* eslint @stylistic/quote-props: ["error", "consistent"] */
 
 var object1 = {
     "foo": "bar",
@@ -212,7 +208,7 @@ Examples of **incorrect** code for this rule with the `"consistent-as-needed"` o
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "consistent-as-needed"]*/
+/* eslint @stylistic/quote-props: ["error", "consistent-as-needed"] */
 
 var object1 = {
     foo: "bar",
@@ -233,7 +229,7 @@ Examples of **correct** code for this rule with the `"consistent-as-needed"` opt
 ::: correct
 
 ```js
-/*eslint quote-props: ["error", "consistent-as-needed"]*/
+/* eslint @stylistic/quote-props: ["error", "consistent-as-needed"] */
 
 var object1 = {
     "foo": "bar",
@@ -256,7 +252,7 @@ Examples of additional **incorrect** code for this rule with the `"as-needed", {
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "as-needed", { "keywords": true }]*/
+/* eslint @stylistic/quote-props: ["error", "as-needed", { "keywords": true }] */
 
 var x = {
     while: 1,
@@ -271,7 +267,7 @@ Examples of additional **incorrect** code for this rule with the `"consistent-as
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "consistent-as-needed", { "keywords": true }]*/
+/* eslint @stylistic/quote-props: ["error", "consistent-as-needed", { "keywords": true }] */
 
 var x = {
     "prop": 1,
@@ -288,7 +284,7 @@ Examples of additional **correct** code for this rule with the `"as-needed", { "
 ::: correct
 
 ```js
-/*eslint quote-props: ["error", "as-needed", { "keywords": true, "unnecessary": false }]*/
+/* eslint @stylistic/quote-props: ["error", "as-needed", { "keywords": true, "unnecessary": false }] */
 
 var x = {
     "while": 1,
@@ -305,7 +301,7 @@ Examples of additional **incorrect** code for this rule with the `"as-needed", {
 ::: incorrect
 
 ```js
-/*eslint quote-props: ["error", "as-needed", { "numbers": true }]*/
+/* eslint @stylistic/quote-props: ["error", "as-needed", { "numbers": true }] */
 
 var x = {
     100: 1

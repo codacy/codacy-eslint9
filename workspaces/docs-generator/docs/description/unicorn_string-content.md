@@ -1,4 +1,6 @@
-# Enforce better string content
+# string-content
+
+📝 Enforce better string content.
 
 🚫 This rule is _disabled_ in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -67,6 +69,24 @@ The example below:
 }
 ```
 
+Set `caseSensitive` to `false` to match regardless of case:
+
+```json
+{
+	"unicorn/string-content": [
+		"error",
+		{
+			"patterns": {
+				"end of day": {
+					"suggest": "EOD",
+					"caseSensitive": false
+				}
+			}
+		}
+	]
+}
+```
+
 The key of `patterns` is treated as a regex, so you must escape special characters.
 
 For example, if you want to enforce `...` → `…`:
@@ -76,6 +96,32 @@ For example, if you want to enforce `...` → `…`:
 	"patterns": {
 		"\\.\\.\\.": "…"
 	}
+}
+```
+
+### selectors
+
+Type: `string[]`
+Default: `[]`
+
+Only check string nodes matching one of these [ESLint selectors](https://eslint.org/docs/latest/extend/selectors). When empty, all supported string nodes are checked.
+
+The selector must match the string node itself: `Literal` for string literals and `TemplateElement` for template literal content.
+
+```json
+{
+	"unicorn/string-content": [
+		"error",
+		{
+			"patterns": {
+				"\\.\\.\\.": "…"
+			},
+			"selectors": [
+				"VariableDeclarator[id.name=\"description\"] > Literal",
+				"Property[key.name=\"description\"] > Literal"
+			]
+		}
+	]
 }
 ```
 

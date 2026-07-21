@@ -1,12 +1,11 @@
 ---
-title: dot-location
-rule_type: layout
 related_rules:
   - newline-after-var
   - dot-notation
+  - no-whitespace-before-property
 ---
 
-# js/dot-location
+# dot-location
 
 JavaScript allows you to place newlines before or after a dot in a member expression.
 
@@ -17,7 +16,7 @@ var a = universe.
         galaxy;
 
 var b = universe
-       .galaxy;
+        .galaxy;
 ```
 
 ## Rule Details
@@ -39,11 +38,20 @@ Examples of **incorrect** code for the default `"object"` option:
 
 ::: incorrect
 
-```js
-/*eslint dot-location: ["error", "object"]*/
+```tsx
+/* eslint @stylistic/dot-location: ["error", "object"] */
 
 var foo = object
 .property;
+
+type Foo = Obj
+  .Prop;
+
+type Bar = import('Obj')
+  .Prop;
+
+<Form
+  .Input />
 ```
 
 :::
@@ -52,8 +60,8 @@ Examples of **correct** code for the default `"object"` option:
 
 ::: correct
 
-```js
-/*eslint dot-location: ["error", "object"]*/
+```tsx
+/* eslint @stylistic/dot-location: ["error", "object"] */
 
 var foo = object.
 property;
@@ -64,6 +72,15 @@ var bar = (
 property;
 
 var baz = object.property;
+
+type Foo = Obj.
+  Prop;
+
+type Bar = import('Obj').
+  Prop;
+
+<Form.
+  Input />
 ```
 
 :::
@@ -76,11 +93,20 @@ Examples of **incorrect** code for the `"property"` option:
 
 ::: incorrect
 
-```js
-/*eslint dot-location: ["error", "property"]*/
+```tsx
+/* eslint @stylistic/dot-location: ["error", "property"] */
 
 var foo = object.
 property;
+
+type Foo = Obj.
+  Prop;
+
+type Bar = import('Obj').
+  Prop;
+
+<Form.
+  Input />
 ```
 
 :::
@@ -89,12 +115,21 @@ Examples of **correct** code for the `"property"` option:
 
 ::: correct
 
-```js
-/*eslint dot-location: ["error", "property"]*/
+```tsx
+/* eslint @stylistic/dot-location: ["error", "property"] */
 
 var foo = object
 .property;
 var bar = object.property;
+
+type Foo = Obj
+  .Prop;
+
+type Bar = import('Obj')
+  .Prop;
+
+<Form
+  .Input />
 ```
 
 :::

@@ -1,0 +1,21 @@
+# n/shebang
+
+📝 Require correct usage of hashbang.
+
+❌ This rule has been [deprecated](https://github.com/eslint-community/eslint-plugin-n/issues/196) since v17.0.0. It was replaced by [`n/hashbang`](https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/hashbang.md). This rule was deprecated in eslint-plugin-n v17.0.0. Please use 'n/hashbang'.
+
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+
+<!-- end auto-generated rule header -->
+
+When we make a CLI tool with Node.js, we add `bin` field to `package.json`, then we add a shebang the entry file.
+This rule suggests correct usage of shebang.
+
+## 📖 Rule Details
+
+The details for this rule can be found in [docs/rules/hashbang.md](https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/hashbang.md#-rule-details)
+
+## 🔎 Implementation
+
+- [Rule source](https://github.com/eslint-community/eslint-plugin-n/tree/master/lib/rules/shebang.js)
+- [Test source](https://github.com/eslint-community/eslint-plugin-n/tree/master/tests/lib/rules/shebang.js)

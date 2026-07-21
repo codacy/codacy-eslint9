@@ -1,4 +1,6 @@
-# Enforce strict equal over equal (`vitest/prefer-strict-equal`)
+# vitest/prefer-strict-equal
+
+📝 Enforce strict equal over equal.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -9,9 +11,8 @@
 ```ts
 // bad
 
-expect(something).toEqual(somethingElse);
+expect(something).toEqual(somethingElse)
 
 // good
-expect(something).toStrictEqual(somethingElse);
-
+expect(something).toStrictEqual(somethingElse)
 ```

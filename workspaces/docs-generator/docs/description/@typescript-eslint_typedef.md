@@ -6,6 +6,18 @@ description: 'Require type annotations in certain places.'
 >
 > See **https://typescript-eslint.io/rules/typedef** for documentation.
 
+:::caution
+
+This is an old, deprecated rule.
+It will be removed in a future major version of typescript-eslint.
+
+Requiring type annotations unnecessarily can be cumbersome to maintain and generally reduces code readability.
+TypeScript is often better at inferring types than easily written type annotations would allow.
+
+**Instead of enabling `typedef`, it is generally recommended to use the `--noImplicitAny` and `--strictPropertyInitialization` compiler options to enforce type annotations only when useful.**
+
+:::
+
 TypeScript cannot always infer types for all places in code.
 Some locations require type annotations for their types to be inferred.
 
@@ -26,15 +38,6 @@ class ContainsText {
 ```
 
 > To enforce type definitions existing on call signatures, use [`explicit-function-return-type`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/explicit-function-return-type.mdx), or [`explicit-module-boundary-types`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.mdx).
-
-:::caution
-
-Requiring type annotations unnecessarily can be cumbersome to maintain and generally reduces code readability.
-TypeScript is often better at inferring types than easily written type annotations would allow.
-
-**Instead of enabling `typedef`, it is generally recommended to use the `--noImplicitAny` and `--strictPropertyInitialization` compiler options to enforce type annotations only when useful.**
-
-:::
 
 ## Options
 

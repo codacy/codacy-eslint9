@@ -11,12 +11,10 @@ keywords:
   - typescript linting
   - union types sorting
   - typescript types
-  - typescript linting
   - typescript-eslint
   - typescript union types
   - typescript union type sorting
   - typescript union type members
-  - typescript union type sorting
   - typescript union type members sorting
 ---
 
@@ -119,17 +117,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -161,7 +166,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -214,48 +219,123 @@ Each group of union types (separated by empty lines) is treated independently, a
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between union type groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines between union type groups.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed in union types.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
-
-See the [`groups`](#newlines-between-groups) option.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### useConfigurationIf
+
+<sub>
+  type:
+  ```ts
+  {
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
+  }
+  ```
+</sub>
+<sub>default: `{}`</sub>
+
+Specifies filters to match a particular options configuration for a given union type.
+
+The first matching options configuration will be used. If no configuration matches, the default options configuration will be used.
+
+- `allNamesMatchPattern` — A regexp pattern that all union type members must match.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-union-types': [
+    'error',
+    {
+      groups: ['r', 'g', 'b'], // Sort colors by RGB
+      customGroups: [
+        {
+          elementNamePattern: '^r$',
+          groupName: 'r',
+        },
+        {
+          elementNamePattern: '^g$',
+          groupName: 'g',
+        },
+        {
+          elementNamePattern: '^b$',
+          groupName: 'b',
+        },
+      ],
+      useConfigurationIf: {
+        allNamesMatchPattern: '^[rgb]$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching a `TSUnionType` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
 
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
 Specifies a list of union type groups for sorting. Groups help organize types into categories, making your type definitions more readable and maintainable.
 
-Predefined groups:
-
-- `'conditional`' — Conditional types.
-- `'function`' — Function types.
-- `'import`' — Imported types.
-- `'intersection`' — Intersection types.
-- `'keyword`' — Keyword types.
-- `'literal`' — Literal types.
-- `'named`' — Named types.
-- `'object`' — Object types.
-- `'operator`' — Operator types.
-- `'tuple`' — Tuple types.
-- `'union`' — Union types.
-- `'nullish`' — Nullish types (`null` or `undefined`).
-- `'unknown`' — Types that don’t fit into any group entered by the user.
-
-If the `unknown` group is not specified in the `groups` option, it will automatically be added to the end of the list.
-
-Each union type will be assigned a single group specified in the `groups` option (or the `unknown` group if no match is found).
+Each member will be assigned a single group specified in the `groups` option (or the `unknown` group if no match is found).
 The order of items in the `groups` option determines how groups are ordered.
 
 Within a given group, members will be sorted according to the `type`, `order`, `ignoreCase`, etc. options.
@@ -263,9 +343,32 @@ Within a given group, members will be sorted according to the `type`, `order`, `
 Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
 All members of the groups in the array will be sorted together as if they were part of a single group.
 
+Predefined groups are characterized by a single selector.
+
+##### Selectors
+
+- `'conditional'` — Conditional types.
+- `'function'` — Function types.
+- `'import'` — Imported types.
+- `'intersection'` — Intersection types.
+- `'keyword'` — Keyword types.
+- `'literal'` — Literal types.
+- `'named'` — Named types.
+- `'object'` — Object types.
+- `'operator'` — Operator types.
+- `'tuple'` — Tuple types.
+- `'union'` — Union types.
+- `'nullish'` — Nullish types (`null` or `undefined`).
+- `'unknown'` — Types that don't fit into any group entered by the user.
+
+##### The `unknown` group
+
+Members that don't fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
+it will automatically be added to the end of the list.
+
 #### Example 1
 
-Using all predefined groups:
+Using all selectors:
 
 ```ts
 type Example =
@@ -300,7 +403,7 @@ type Example =
 
 `groups` option configuration:
 
-```js
+```ts
 {
   groups: [
     'conditional',
@@ -336,12 +439,30 @@ type Example =
 
 `groups` option configuration:
 
-```js
+```ts
 {
   groups: [
     'named',
     ['intersection', 'union'],
     'unknown',
+  ]
+}
+```
+
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'named',
+    { group: 'literal', type: 'unsorted' }, // Elements from this group will not be sorted
   ]
 }
 ```
@@ -356,14 +477,74 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
 ```
+
+### customGroups
+
+<sub>
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
+</sub>
+<sub>default: `[]`</sub>
+
+Defines custom groups to match specific union type members.
+
+A custom group definition may follow one of the two following interfaces:
+
+```ts
+interface CustomGroupDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  selector?: string
+  elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+}
+```
+
+A type member will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
+
+or:
+
+```ts
+interface CustomGroupAnyOfDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  anyOf: Array<{
+      selector?: string
+      elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  }>
+}
+```
+
+A type member will match a `CustomGroupAnyOfDefinition` group if it matches all the filters of at least one of the `anyOf` items.
+
+#### Attributes
+
+- `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
+- `selector` — Filter on the `selector` of the element.
+- `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
+- `type` — Overrides the [`type`](#type) option for that custom group.
+- `order` — Overrides the [`order`](#order) option for that custom group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
+
+#### Match importance
+
+The `customGroups` list is ordered:
+The first custom group definition that matches an element will be used.
+
+Custom groups have a higher priority than any predefined group.
 
 ## Usage
 
@@ -391,7 +572,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
                   partitionByComment: false,
                   partitionByNewLine: false,
                   newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
+                  useConfigurationIf: {},
                   groups: [],
+                  customGroups: [],
                 },
               ],
             },
@@ -420,7 +604,9 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
                 partitionByComment: false,
                 partitionByNewLine: false,
                 newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 groups: [],
+                customGroups: [],
               },
             ],
           },
@@ -442,4 +628,4 @@ This rule was introduced in [v0.4.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-union-types.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-union-types.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-union-types.test.ts)

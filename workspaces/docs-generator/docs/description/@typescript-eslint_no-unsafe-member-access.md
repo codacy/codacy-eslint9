@@ -61,11 +61,47 @@ arr[idx++];
 
 <!--/tabs-->
 
+## Options
+
+### `allowOptionalChaining`
+
+<!-- insert option description -->
+
+Examples of code for this rule with `{ allowOptionalChaining: true }`:
+
+<!--tabs-->
+
+#### ❌ Incorrect
+
+```ts
+declare const outer: any;
+
+outer.inner;
+outer.middle.inner;
+```
+
+#### ✅ Correct
+
+```ts option='{ "allowOptionalChaining": true }'
+declare const outer: any;
+
+outer?.inner;
+outer?.middle?.inner;
+```
+
+<!--/tabs-->
+
+:::caution
+We only recommend using `allowOptionalChaining` to help transition an existing project towards fully enabling `no-unsafe-member-access`.
+Optional chaining makes it safer than normal property accesses in that you won't get a runtime error if the parent value is `null` or `undefined`.
+However, it still results in an `any`-typed value, which is unsafe.
+:::
+
 ## When Not To Use It
 
 If your codebase has many existing `any`s or areas of unsafe code, it may be difficult to enable this rule.
 It may be easier to skip the `no-unsafe-*` rules pending increasing type safety in unsafe areas of your project.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Related To
 

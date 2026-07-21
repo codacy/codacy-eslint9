@@ -1,4 +1,6 @@
-# Move function definitions to the highest possible scope
+# consistent-function-scoping
+
+📝 Move function definitions to the highest possible scope.
 
 💼🚫 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config). This rule is _disabled_ in the ☑️ `unopinionated` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
 
@@ -19,22 +21,6 @@ export function doFoo(foo) {
 
 	return doBar;
 }
-
-function doFoo(foo) {
-	const doBar = bar => {
-		return bar === 'bar';
-	};
-}
-
-function doFoo() {
-	// Does not capture anything from the scope, can be moved to the outer scope
-	return bar => bar === 'bar';
-}
-
-// Arrow functions in return statements are now also flagged
-export function someAction() {
-	return dispatch => dispatch({type: 'SOME_TYPE'});
-}
 ```
 
 ```js
@@ -50,12 +36,49 @@ export function doFoo(foo) {
 
 ```js
 // ❌
+function doFoo() {
+	// Does not capture anything from the scope, can be moved to the outer scope
+	return bar => bar === 'bar';
+}
+```
+
+```js
+// ✅
+const doBar = bar => bar === 'bar';
+
+function doFoo() {
+	return doBar;
+}
+```
+
+```js
+// Arrow functions in return statements are also flagged
+// ❌
+export function someAction() {
+	return dispatch => dispatch({type: 'SOME_TYPE'});
+}
+```
+
+```js
+// Arrow functions in return statements are also flagged
+// ✅
+const handleDispatch = dispatch => dispatch({type: 'SOME_TYPE'});
+
+export function someAction() {
+	return handleDispatch;
+}
+```
+
+```js
+// ❌
 function doFoo(foo) {
 	const doBar = bar => {
 		return bar === 'bar';
 	};
 }
+```
 
+```js
 // ✅
 const doBar = bar => {
 	return bar === 'bar';
@@ -136,4 +159,16 @@ useEffect(() => {
 
 	getItems();
 }, [])
+```
+
+Functions inside `jest.mock()` factories are ignored because Jest restricts those factories from referencing out-of-scope variables:
+
+```js
+jest.mock('module', () => {
+	function createMock() {
+		return 'mock';
+	}
+
+	return createMock;
+});
 ```

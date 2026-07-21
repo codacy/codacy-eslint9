@@ -2,11 +2,10 @@
 description: Require a specific member delimiter style for interfaces and type literals.
 ---
 
-# ts/member-delimiter-style
+# member-delimiter-style
 
 TypeScript allows three delimiters between members in interfaces and type aliases:
 
-<!-- prettier-ignore -->
 ```ts
 interface Foo {
     // Semicolons (default, preferred in TypeScript):
@@ -108,9 +107,8 @@ Examples of code for this rule with the default config:
 
 ::: incorrect
 
-<!-- prettier-ignore -->
 ```ts
-/*eslint @stylistic/ts/member-delimiter-style: "error"*/
+/* eslint @stylistic/member-delimiter-style: "error" */
 
 // missing semicolon delimiter
 interface Foo {
@@ -137,11 +135,12 @@ type FooBar = { name: string, greet(): string }
 type FooBar = { name: string; greet(): string; }
 ```
 
+:::
+
 ::: correct
 
-<!-- prettier-ignore -->
 ```ts
-/*eslint @stylistic/ts/member-delimiter-style: "error"*/
+/* eslint @stylistic/member-delimiter-style: "error" */
 
 interface Foo {
     name: string;
@@ -159,6 +158,8 @@ type Bar = { name: string }
 
 type FooBar = { name: string; greet(): string }
 ```
+
+:::
 
 ## When Not To Use It
 

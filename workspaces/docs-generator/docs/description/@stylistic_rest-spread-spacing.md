@@ -1,11 +1,9 @@
 ---
-title: rest-spread-spacing
-rule_type: layout
 further_reading:
   - 'https://github.com/tc39/proposal-object-rest-spread'
 ---
 
-# js/rest-spread-spacing
+# rest-spread-spacing
 
 ES2015 introduced the rest and spread operators, which expand an iterable structure into its individual parts. Some examples of their usage are as follows:
 
@@ -58,13 +56,13 @@ This rule aims to enforce consistent spacing between rest and spread operators a
 }
 ```
 
-Please read the user guide's section on [configuring parser options](https://github.com/eslint-stylistic/eslint-stylistic/tree/use/configure#specifying-parser-options) to learn more.
+Please read the user guide's section on [configuring parser options](https://eslint.org/docs/latest/use/configure/parser#configure-parser-options) to learn more.
 
 ## Options
 
 This rule takes one option: a string with the value of `"never"` or `"always"`. The default value is `"never"`.
 
-### "never"
+### never
 
 When using the default `"never"` option, whitespace is not allowed between spread operators and their expressions.
 
@@ -83,7 +81,7 @@ Examples of **incorrect** code for this rule with `"never"`:
 ::: incorrect
 
 ```js
-/*eslint rest-spread-spacing: ["error", "never"]*/
+/* eslint @stylistic/rest-spread-spacing: ["error", "never"] */
 
 fn(... args);
 [... arr, 4, 5, 6];
@@ -100,7 +98,7 @@ Examples of **correct** code for this rule with `"never"`:
 ::: correct
 
 ```js
-/*eslint rest-spread-spacing: ["error", "never"]*/
+/* eslint @stylistic/rest-spread-spacing: ["error", "never"] */
 
 fn(...args);
 [...arr, 4, 5, 6];
@@ -112,7 +110,7 @@ let n = { x, y, ...z };
 
 :::
 
-### "always"
+### always
 
 When using the `"always"` option, whitespace is required between spread operators and their expressions.
 
@@ -125,7 +123,7 @@ Examples of **incorrect** code for this rule with `"always"`:
 ::: incorrect
 
 ```js
-/*eslint rest-spread-spacing:["error", "always"]*/
+/* eslint @stylistic/rest-spread-spacing:["error", "always"] */
 
 fn(...args);
 [...arr, 4, 5, 6];
@@ -142,7 +140,7 @@ Examples of **correct** code for this rule with `"always"`:
 ::: correct
 
 ```js
-/*eslint rest-spread-spacing: ["error", "always"]*/
+/* eslint @stylistic/rest-spread-spacing: ["error", "always"] */
 
 fn(... args);
 [... arr, 4, 5, 6];

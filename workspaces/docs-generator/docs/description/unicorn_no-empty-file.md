@@ -1,4 +1,6 @@
-# Disallow empty files
+# no-empty-file
+
+📝 Disallow empty files.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -70,3 +72,23 @@ const x = 0;
 	const x = 0;
 }
 ```
+
+## Options
+
+### allowComments
+
+Type: `boolean`\
+Default: `false`
+
+Allow files that only contain comments:
+
+```js
+'unicorn/no-empty-file': [
+	'error',
+	{
+		allowComments: true,
+	},
+]
+```
+
+This only allows normal line and block comments. Files with only a hashbang, directives, empty statements, or empty block statements are still reported.

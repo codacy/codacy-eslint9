@@ -1,110 +1,62 @@
-# Avoid unjustified arbitrary classnames (no-unnecessary-arbitrary-value)
+# Avoid unjustified arbitrary classnames
 
-Arbitrary values are handy but you should stick to regular classnames defined in the Tailwind CSS config file as much as you can.
+⚠️ This rule _warns_ in the ✅ `recommended` config.
+
+🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
+
+<!-- end auto-generated rule header -->
+
+Enable this rule if you want to avoid arbitrary classname when a [Tailwind CSS](https://tailwindcss.com/) preset alternative is defined.
 
 ## Rule Details
-
-Given the default configuration in which `h-auto` exists... There is no need to use an arbitrary classname.
 
 Examples of **incorrect** code for this rule:
 
 ```html
-<div class="h-[auto]">height</div>
+<video class="inset-[1px] aspect-[16/9] z-[123] m-[-8px]">player</video>
 ```
 
 Examples of **correct** code for this rule:
 
 ```html
-<div class="h-auto">height</div>
+<video class="inset-px aspect-video z-123 -m-2">player</video>
 ```
 
-### The rule can handle `0` values with or without their units
+Prior to `v4.1.0`, this rule _only flagged exact string matches_ between an arbitrary value and a preset. The rule is now smart enough to resolve unit conversions and spacing configurations (`rem` & `px`).
 
-Given the default configuration in which `h-0` exists... There is no need to use an arbitrary classname.
+The plugin will now suggest cleaner native alternatives for:
 
-Examples of **incorrect** code with `0` based value:
+- **Native presets:** Replaces `inset-[1px]` with `inset-px` (previously ignored).
+- **Unitless values:** Replaces `z-[123]` with `z-123`.
+- **Spacing-based values:** Replaces `m-[8px]` with `m-2` (`--spacing: 0.25rem; /* 4px */`).
 
-```html
-<div class="h-[0%]">Use `h-0` (`0px`) instead</div>
-```
+When it comes to [CSS specificity](https://css-tricks.com/specifics-on-css-specificity/), native presets, user presets, arbitrary value classnames, unitless values and spacing-based values all share the same score of `10` (since they are all declared via a single class name selector). Because their scores are identical, the order of declaration determines which style is applied: the CSS rule written last wins.
 
-Examples of **correct** code with `0` based value:
+The cascading order—from strongest (highest priority) to weakest (lowest priority)—is as follows:
 
-```html
-<div class="h-0">Use `h-0` (`0px`) instead</div>
-```
+1. **Native preset** (e.g. `inset-px`)
+2. **User preset** (e.g. `inset-preset`)
+3. **Arbitrary value** (e.g. `inset-[20px]`)
+4. **Generic** `<number>` (e.g. `inset-10`)
 
-### The rule can handle negative & double negative
+You can see this behavior in action in this [Tailwind CSS Play demo](https://play.tailwindcss.com/qNhD1AZLI6), which illustrates the order of declaration and its effects.
 
-Given the default configuration... There is no need to use an arbitrary classname.
+### How fixes are applied:
 
-Examples of **incorrect** code for negative arbitrary values:
+- The autofix feature will always apply the strongest available fix.
+- If multiple fixes are available, alternative options will be provided as suggestions.
 
-```html
-<div class="m-[-1.25rem] -z-[-10]">[Double] negative values</div>
-```
+### Why avoid unnecessary arbitrary classnames?
 
-Examples of **correct** code for negative arbitrary values:
+- 👯 Eliminate **redundant classes**
+- 🔍 Preserve **searchability and refactoring**
+- 🌈 Respect your **Design System**
+- ⚖️ **Less generated CSS**
 
-```html
-<div class="-m-5 z-10">[Double] negative values</div>
-```
+## Options
 
-### Options
+<!-- begin auto-generated rule options list -->
 
-```js
-...
-"tailwindcss/no-unnecessary-arbitrary-value": [<enabled>, {
-  "callees": Array<string>,
-  "config": <string>|<object>,
-  "skipClassAttribute": <boolean>,
-  "tags": Array<string>,
-}]
-...
-```
+<!-- end auto-generated rule options list -->
 
-### `callees` (default: `["classnames", "clsx", "ctl", "cva", "tv"]`)
-
-If you use some utility library like [@netlify/classnames-template-literals](https://github.com/netlify/classnames-template-literals), you can add its name to the list to make sure it gets parsed by this rule.
-
-For best results, gather the declarative classnames together, avoid mixing conditional classnames in between, move them at the end.
-
-### `ignoredKeys` (default: `["compoundVariants", "defaultVariants"]`)
-
-Using libraries like `cva`, some of its object keys are not meant to contain classnames in its value(s).
-You can specify which key(s) won't be parsed by the plugin using this setting.
-For example, `cva` has `compoundVariants` and `defaultVariants`.
-NB: As `compoundVariants` can have classnames inside its `class` property, you can also use a callee to make sure this inner part gets parsed while its parent is ignored.
-
-### `config` (default: generated by `tailwindcss/lib/lib/load-config`)
-
-By default the plugin will try to load the file returned by the official `loadConfig()` utility.
-
-This allows the plugin to use your customized `colors`, `spacing`, `screens`...
-
-You can provide another path or filename for your Tailwind CSS config file like `"config/tailwind.js"`.
-
-If the external file cannot be loaded (e.g. incorrect path or deleted file), an empty object `{}` will be used instead.
-
-It is also possible to directly inject a configuration as plain `object` like `{ prefix: "tw-", theme: { ... } }`.
-
-Finally, the plugin will [merge the provided configuration](https://tailwindcss.com/docs/configuration#referencing-in-java-script) with [Tailwind CSS's default configuration](https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/defaultConfig.stub.js).
-
-### `skipClassAttribute` (default: `false`)
-
-Set `skipClassAttribute` to `true` if you only want to lint the classnames inside one of the `callees`.
-While, this will avoid linting the `class` and `className` attributes, it will still lint matching `callees` inside of these attributes.
-
-### `tags` (default: `[]`)
-
-Optional, if you are using tagged templates, you should provide the tags in this array.
-
-### `classRegex` (default: `"^class(Name)?$"`)
-
-Optional, can be used to support custom attributes
-
-## Further Reading
-
-If there is exactly one equivalent regular classname, this rule will fix the issue for you by replacing the arbitrary classnames by their unique substitutes.
-
-But if there are several possible substitutes for an arbitrary classname, then you can manually perform the replacement.
+There are no specific options for this rule, yet it uses the general [settings](https://github.com/francoismassart/eslint-plugin-tailwindcss/tree/master/README.md#settings).

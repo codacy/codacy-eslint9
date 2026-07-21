@@ -1,9 +1,7 @@
 ---
-title: space-unary-ops
-rule_type: layout
 ---
 
-# js/space-unary-ops
+# space-unary-ops
 
 Some style guides require or disallow spaces before or after unary operators. This is mainly a stylistic issue, however, some JavaScript expressions can be written without spacing which makes it harder to read and maintain.
 
@@ -66,12 +64,14 @@ This rule has three options:
 
 In this case, spacing will be disallowed after a `new` operator and required before/after a `++` operator.
 
+For TypeScript non-null assertions (`value!`), you can use the special `ts-non-null` key in overrides to configure spacing separately from the `!` NOT operator.
+
 Examples of **incorrect** code for this rule with the default `{"words": true, "nonwords": false}` option:
 
 ::: incorrect
 
 ```js
-/*eslint space-unary-ops: "error"*/
+/* eslint @stylistic/space-unary-ops: "error" */
 
 typeof!foo;
 
@@ -95,8 +95,7 @@ foo --;
 ::: incorrect
 
 ```js
-/*eslint space-unary-ops: "error"*/
-/*eslint-env es6*/
+/* eslint @stylistic/space-unary-ops: "error" */
 
 function *foo() {
     yield(0)
@@ -108,7 +107,7 @@ function *foo() {
 ::: incorrect
 
 ```js
-/*eslint space-unary-ops: "error"*/
+/* eslint @stylistic/space-unary-ops: "error" */
 
 async function foo() {
     await(bar);
@@ -122,7 +121,7 @@ Examples of **correct** code for this rule with the `{"words": true, "nonwords":
 ::: correct
 
 ```js
-/*eslint space-unary-ops: "error"*/
+/* eslint @stylistic/space-unary-ops: "error" */
 
 // Word unary operator "typeof" is followed by a whitespace.
 typeof !foo;
@@ -154,8 +153,7 @@ foo--;
 ::: correct
 
 ```js
-/*eslint space-unary-ops: "error"*/
-/*eslint-env es6*/
+/* eslint @stylistic/space-unary-ops: "error" */
 
 function *foo() {
     yield (0)
@@ -167,7 +165,7 @@ function *foo() {
 ::: correct
 
 ```js
-/*eslint space-unary-ops: "error"*/
+/* eslint @stylistic/space-unary-ops: "error" */
 
 async function foo() {
     await (bar);

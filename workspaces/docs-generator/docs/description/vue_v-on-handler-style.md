@@ -203,6 +203,7 @@ This rule aims to enforce a consistent style in `v-on` event handlers:
 
 ## :couple: Related Rules
 
+- [vue/prefer-single-event-payload](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/prefer-single-event-payload.md)
 - [vue/v-on-style](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/v-on-style.md)
 - [vue/v-on-event-hyphenation](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/v-on-event-hyphenation.md)
 
@@ -221,4 +222,4 @@ This rule was introduced in eslint-plugin-vue v9.7.0
 ## :mag: Implementation
 
 - [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/v-on-handler-style.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/v-on-handler-style.js)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/v-on-handler-style.test.ts)

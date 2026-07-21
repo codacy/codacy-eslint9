@@ -20,7 +20,6 @@ Enforce sorted array values if the `includes` method is immediately called after
 
 By keeping arrays sorted, developers can quickly scan and verify the values, making the code more predictable and reducing the likelihood of errors. This practice simplifies debugging and enhances the overall clarity of the codebase.
 
-
 ## Try it out
 
 <CodeExample
@@ -144,17 +143,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -186,7 +192,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -202,18 +208,6 @@ Specifies the sorting locales. Refer To [String.prototype.localeCompare() - loca
 
 - `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
 - `string[]` — An array of BCP 47 language tags.
-
-### [DEPRECATED] groupKind
-
-<sub>default: `'literals-first'`</sub>
-
-Use the [groups](#groups) option with the `literal` and `spread` selectors instead. Make sure to set this option to `mixed`.
-
-Groups array elements by their kind, determining whether spread values should come before or after literal values.
-
-- `mixed` — Do not group array elements by their kind; spread values are sorted together with literal values.
-- `literals-first` — Group all literal values before spread values.
-- `spreads-first` — Group all spread values before literal values.
 
 ### partitionByComment
 
@@ -259,24 +253,55 @@ Each group of elements (separated by empty lines) is treated independently, and 
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
-See the [`groups`](#newlines-between-groups) option.
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
 
 ### useConfigurationIf
 
 <sub>
-  type: `{ allNamesMatchPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[] }`
+  type:
+  ```ts
+  {
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
+  }
+  ```
 </sub>
 <sub>default: `{}`</sub>
 
@@ -284,7 +309,7 @@ Specifies filters to match a particular options configuration for a given array.
 
 The first matching options configuration will be used. If no configuration matches, the default options configuration will be used.
 
-- `allNamesMatchPattern` — A regexp pattern that all array keys must match.
+- `allNamesMatchPattern` — A regexp pattern that all array elements must match.
 
 Example configuration:
 ```ts
@@ -308,8 +333,30 @@ Example configuration:
         },
       ],
       useConfigurationIf: {
-        allNamesMatchPattern: '^r|g|b$',
+        allNamesMatchPattern: '^[rgb]$',
       },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching an `ArrayExpression`
+ (`[a, b]`) or `NewExpression` (`new Array(a, b)`) node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort array-include elements that are declared as `const` variables.
+```ts
+{
+  'perfectionist/sort-array-includes': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'VariableDeclaration[kind="const"] ArrayExpression',
+      },
+      type: 'unsorted'
     },
     {
       type: 'alphabetical' // Fallback configuration
@@ -321,9 +368,23 @@ Example configuration:
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
-<sub>default: `[]`</sub>
+<sub>default: `['literal']`</sub>
 
 Specifies a list of groups for sorting. Groups help organize elements into categories.
 
@@ -337,10 +398,28 @@ All members of the groups in the array will be sorted together as if they were p
 
 Predefined groups are characterized by a selector.
 
-##### List of selectors
+##### Selectors
 
-- `literal` — Array elements that are not spread values.
-- `spread` — Array elements that are spread values.
+- `'literal'` — Array elements that are not spread values.
+
+**Note:** Spread elements (`...array`) are not sorted and act as partition boundaries. This ensures the original order of spread elements is preserved, which is important because reordering spread elements can change the resulting array values.
+
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'literal',
+  ]
+}
+```
 
 #### Newlines between groups
 
@@ -352,10 +431,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
@@ -368,7 +447,7 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 </sub>
 <sub>default: `[]`</sub>
 
-Defines custom groups to match specific object type members.
+Defines custom groups to match specific array elements.
 
 A custom group definition may follow one of the two following interfaces:
 
@@ -378,12 +457,12 @@ interface CustomGroupDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   selector?: string
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
-
 ```
+
 An array element will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -394,7 +473,7 @@ interface CustomGroupAnyOfDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       selector?: string
       elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
@@ -409,10 +488,10 @@ An array element will match a `CustomGroupAnyOfDefinition` group if it matches a
 - `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
 - `selector` — Filter on the `selector` of the element.
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -444,11 +523,12 @@ Custom groups have a higher priority than any predefined group.
                   fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
-                  groupKind: 'literals-first',
+                  partitionByComment: false,
                   partitionByNewLine: false,
                   newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   useConfigurationIf: {},
-                  groups: [],
+                  groups: ['literal'],
                   customGroups: [],
                 },
               ],
@@ -475,11 +555,12 @@ Custom groups have a higher priority than any predefined group.
                 fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
-                groupKind: 'literals-first',
+                partitionByComment: false,
                 partitionByNewLine: false,
                 newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 useConfigurationIf: {},
-                groups: [],
+                groups: ['literal'],
                 customGroups: [],
               },
             ],
@@ -502,4 +583,4 @@ This rule was introduced in [v0.5.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-array-includes.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-array-includes.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-array-includes.test.ts)

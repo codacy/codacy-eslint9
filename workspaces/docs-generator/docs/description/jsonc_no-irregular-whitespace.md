@@ -10,6 +10,8 @@ since: "v2.5.0"
 
 > disallow irregular whitespace
 
+- :gear: This rule is included in all of `configs["recommended-with-json"]`, `configs["recommended-with-json5"]` and `configs["recommended-with-jsonc"]`.
+
 ## :book: Rule Details
 
 This rule is aimed at catching invalid whitespace that is not a normal tab and space.

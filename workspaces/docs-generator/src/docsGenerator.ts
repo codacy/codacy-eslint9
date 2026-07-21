@@ -3,7 +3,7 @@
 import { EOL } from "node:os"
 import path from "node:path"
 
-import { type RuleInfo, rules as rulesStylistic } from "@eslint-stylistic/metadata"
+import { type RuleInfo, rules as rulesStylistic } from "@eslint-stylistic/metadata/dist/index.mjs"
 import axios from "axios"
 import {
   DescriptionEntry,
@@ -25,6 +25,7 @@ import { fromSchemaArray } from "lib/utils/namedParameters.ts"
 import { rulesToUnnamedParametersDefaults } from "lib/utils/rulesToUnnamedParametersDefaults.ts"
 import { toolName, toolVersion } from "lib/utils/metadata.ts"
 import { TerminalColor, wrapConsoleTextInColor } from "lib/utils/logging.ts"
+import { defaultPatternIds } from "lib/models/defaultPatterns.ts"
 
 export class DocsGenerator {
   private docsDirectory = "./docs";
@@ -71,9 +72,10 @@ export class DocsGenerator {
     return dependencies;
   }
 
-  private async getPatternIds(): Promise<string[]> {
-    return Object.keys(await this.rules);
-  }
+  private async getDocumentablePatternIds(): Promise<[string, TSESLint.LooseRuleDefinition][]> {
+  const rules = await this.rules;
+  return Object.entries(rules).filter(([, ruleModule]) => getRuleMeta(ruleModule) !== undefined);
+}
 
   static generateParameters(
     patternId: string,
@@ -100,108 +102,65 @@ export class DocsGenerator {
   }
 
   private async generatePatterns(): Promise<Specification> {
-    const rules = await this.rules
+  const documentableRules = await this.getDocumentablePatternIds()
 
-    const patterns: PatternSpec[] = []
-    Object.entries(rules).forEach(([patternId, ruleModule]) => {
-      const meta = getRuleMeta(ruleModule);
+  const patterns: PatternSpec[] = []
+  documentableRules.forEach(([patternId, ruleModule]) => {
+    const meta = getRuleMeta(ruleModule)!; // safe, already filtered
+    const type = meta?.type ?? meta?.docs?.category
+    const [level, category, securitySubcategory, scanType] = translateTypes(patternId, type)
 
-      if (meta === undefined) return;
-      const type = meta?.type ?? meta?.docs?.category
-      const [level, category, securitySubcategory, scanType] = translateTypes(
-        patternId,
-        type
-      )
-
-      //TCE-1254 develop parameters for prettier
-      const patternParameters = patternId === "prettier/prettier"
+    const patternParameters = patternId === "prettier/prettier"
       ? [new ParameterSpec("singleQuote", true)]
       : DocsGenerator.generateParameters(patternId, meta?.schema);
 
-      patterns.push(new PatternSpec(
-        patternIdToCodacy(patternId),
-        level,
-        category,
-        securitySubcategory,
-        scanType,
-        patternParameters,
-        DocsGenerator.isDefaultPattern(patternId, ruleModule)
-      ));
-    })
+    patterns.push(new PatternSpec(
+      patternIdToCodacy(patternId),
+      level,
+      category,
+      securitySubcategory,
+      scanType,
+      patternParameters,
+      DocsGenerator.isDefaultPattern(patternId)
+    ));
+  })
 
-    return new Specification(toolName, toolVersion, patterns)
-  }
+  return new Specification(toolName, toolVersion, patterns)
+}
 
-  static isDefaultPattern(patternId: string, ruleModule: TSESLint.LooseRuleDefinition): boolean {
-    function prefixSplit(patternId: string): string {
-      const p = patternId.split("/")[0]
-      return p !== patternId ? p : ""
-    }
+  static isDefaultPattern(patternId: string): boolean {
+  return defaultPatternIds.has(patternIdToCodacy(patternId))
+}
 
-    // The following arrays represents groups of default rules.
-    // Each entry is an object where:
-    //   - The key is the prefix identifying the plugin name (e.g. '@stylistic', '@typescript-eslint', 'security')
-    //     ESLint core rules are represented by an empty prefix ("");
-    //   - The value is either 'recommended' or 'all', which determines whether all rules or only the recommended rules in the group are included.
-    type prefixSet = { [key: string]: "recommended" | "all" }
-    const defaultPrefixes = [
-      { "": "recommended" },
-      { "@stylistic": "recommended" },
-      { "@typescript-eslint": "recommended" },
-      { "eslint-plugin": "recommended" }
-    ] as prefixSet[]
-    const securityPrefixes = [
-      { "security": "recommended" },
-      { "security-node": "recommended" },
-      { "xss": "all" }
-    ] as prefixSet[]
+private async generateDescriptionEntries(): Promise<DescriptionEntry[]> {
+  const descriptions: DescriptionEntry[] = []
+  const documentableRules = await this.getDocumentablePatternIds()
 
-    const prefixes = [...defaultPrefixes, ...securityPrefixes]
-    const prefix = prefixSplit(patternId)
-    const meta = getRuleMeta(ruleModule)
+  documentableRules.forEach(([patternId, ruleModule]) => {
+    const meta = getRuleMeta(ruleModule)!;
+    const description = meta?.docs?.description ? capitalize(meta.docs.description) : undefined
+    const timeToFix = 5
 
-    // Exclude "@typescript-eslint/no-unsafe-*" as defaults for now
-    if (patternId.startsWith("@typescript-eslint/no-unsafe-")) {
-      return false
-    }
+    const descriptionParameters = patternId === "prettier/prettier"
+        ? [new ParameterSpec("singleQuote", true)]
+        : DocsGenerator.generateParameters(patternId, meta?.schema);
 
-    return prefixes.some((p) =>
-      p[prefix] === "all"
-      || p[prefix] === "recommended" && meta?.docs?.recommended
-    )
-  }
+    const mapDescriptionParameters = descriptionParameters.map(
+      (p) => new DescriptionParameter(p.name, p.name)
+    );
 
-  private async generateDescriptionEntries(): Promise<DescriptionEntry[]> {
-    const descriptions: DescriptionEntry[] = []
-    const rules = await this.rules
-    Object.entries(rules).forEach(([patternId, ruleModule]) => {
-      const meta = getRuleMeta(ruleModule);
-      const description = meta?.docs?.description
-        ? capitalize(meta.docs.description)
-        : undefined
-      const timeToFix = 5
+    descriptions.push(new DescriptionEntry(
+      patternIdToCodacy(patternId),
+      patternTitle(patternId),
+      description,
+      timeToFix,
+      mapDescriptionParameters
+    ))
+  })
 
-      //TCE-1254 develop parameters for prettier
-      const descriptionParameters = patternId === "prettier/prettier"
-          ? [new ParameterSpec("singleQuote", true)]
-          : DocsGenerator.generateParameters(patternId, meta?.schema);
-
-      const mapDescriptionParameters = descriptionParameters.map(
-        (p) => new DescriptionParameter(p.name, p.name)
-      );
-      
-      descriptions.push(new DescriptionEntry(
-        patternIdToCodacy(patternId),
-        patternTitle(patternId),
-        description,
-        timeToFix,
-        mapDescriptionParameters
-      ))
-    })
-
-    console.log("Number of descriptions: ", descriptions.length)
-    return descriptions
-  }
+  console.log("Number of descriptions: ", descriptions.length)
+  return descriptions
+}
 
   static fromEslintSchemaToParameters(
     patternId: string,
@@ -343,17 +302,18 @@ export class DocsGenerator {
   }
 
   async createAllPatternsMultipleTestFiles(): Promise<void> {
-    console.log("Generate patterns.xml")
+  console.log("Generate patterns.xml")
 
-    const patternIds = await this.getPatternIds()
+  const documentableRules = await this.getDocumentablePatternIds()
+  const patternIds = documentableRules.map(([patternId]) => patternId)
 
-    const modules = patternIds
-      .map(patternId => `  <module name="${patternIdToCodacy(patternId)}" />`)
-      .join("\n")
+  const modules = patternIds
+    .map(patternId => `  <module name="${patternIdToCodacy(patternId)}" />`)
+    .join("\n")
 
-    const patternsJSFilename = path.resolve(this.docsDirectory, "multiple-tests", "all-patterns", "patterns.xml")
-    const patternsTSFilename = path.resolve(this.docsDirectory, "multiple-tests", "all-patterns-typescript", "patterns.xml")
-    const patternsXml = `<!-- This file is generated by generateDocs. Do not edit. -->
+  const patternsJSFilename = path.resolve(this.docsDirectory, "multiple-tests", "all-patterns", "patterns.xml")
+  const patternsTSFilename = path.resolve(this.docsDirectory, "multiple-tests", "all-patterns-typescript", "patterns.xml")
+  const patternsXml = `<!-- This file is generated by generateDocs. Do not edit. -->
 <module name="root">
   <module name="BeforeExecutionExclusionFileFilter">
     <property name="fileNamePattern" value=".*\\.json" />
@@ -361,30 +321,32 @@ export class DocsGenerator {
 ${modules}
 </module>
 `
-    await Promise.all([
-      writeFile(patternsJSFilename, patternsXml),
-      writeFile(patternsTSFilename, patternsXml)
-    ])
-  }
+  await Promise.all([
+    writeFile(patternsJSFilename, patternsXml),
+    writeFile(patternsTSFilename, patternsXml)
+  ])
+}
 
-  private async patternIdsWithoutPrefix(prefix: string): Promise<string[]> {
-    const longPrefix = prefix + "/"
+private async patternIdsWithoutPrefix(prefix: string): Promise<string[]> {
+  const longPrefix = prefix + "/"
 
-    const patternIds = await this.getPatternIds()
+  const documentableRules = await this.getDocumentablePatternIds()
 
-    return patternIds
-      .filter((patternId) => patternId.startsWith(longPrefix))
-      .map((patternId) => patternId.substring(longPrefix.length))
-  }
+  return documentableRules
+    .map(([patternId]) => patternId)
+    .filter((patternId) => patternId.startsWith(longPrefix))
+    .map((patternId) => patternId.substring(longPrefix.length))
+}
 
-  private async eslintPatternIds(): Promise<string[]> {
-    // We take all the patterns except those that have slashes because
-    // they come from third party plugins
-    const patternIds = await this.getPatternIds()
+private async eslintPatternIds(): Promise<string[]> {
+  // We take all the patterns except those that have slashes because
+  // they come from third party plugins
+  const documentableRules = await this.getDocumentablePatternIds()
 
-    return patternIds.filter((e) => !e.includes("/"))
-
-  }
+  return documentableRules
+    .map(([patternId]) => patternId)
+    .filter((patternId) => !patternId.includes("/"))
+}
 
   private convertFromGithubRawLink(url: string): string {
     const parsedUrl = new URL(url)

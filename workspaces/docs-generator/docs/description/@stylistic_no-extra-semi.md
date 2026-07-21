@@ -1,12 +1,10 @@
 ---
-title: no-extra-semi
-rule_type: suggestion
 related_rules:
   - semi
   - semi-spacing
 ---
 
-# js/no-extra-semi
+# no-extra-semi
 
 Typing mistakes and misunderstandings about where semicolons are required can lead to semicolons that are unnecessary. While not technically an error, extra semicolons can cause confusion when reading code.
 
@@ -21,7 +19,7 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-/*eslint no-extra-semi: "error"*/
+/* eslint @stylistic/no-extra-semi: "error" */
 
 var x = 5;;
 
@@ -49,7 +47,7 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
-/*eslint no-extra-semi: "error"*/
+/* eslint @stylistic/no-extra-semi: "error" */
 
 var x = 5;
 

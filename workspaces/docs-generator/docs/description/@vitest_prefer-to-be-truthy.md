@@ -1,6 +1,8 @@
-# Enforce using `toBeTruthy` (`vitest/prefer-to-be-truthy`)
+# vitest/prefer-to-be-truthy
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+📝 Enforce using `toBeTruthy`.
+
+🚫 This rule is _disabled_ in the 🌐 `all` config.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

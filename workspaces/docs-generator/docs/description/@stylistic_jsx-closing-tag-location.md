@@ -1,4 +1,4 @@
-# jsx/jsx-closing-tag-location
+# jsx-closing-tag-location
 
 Enforce the closing tag location for multiline JSX elements.
 
@@ -8,30 +8,38 @@ This rule checks all JSX multiline elements with children (non-self-closing) and
 
 Examples of **incorrect** code for this rule:
 
-```jsx
-<Hello>
-  marklar
-  </Hello>
-```
+::: incorrect
 
 ```jsx
+/* eslint @stylistic/jsx-closing-tag-location: "error" */
+
 <Hello>
-  marklar</Hello>
+  marklar
+  </Hello>;
+
+<Hello>
+  marklar</Hello>;
 ```
+
+:::
 
 Examples of **correct** code for this rule:
 
+::: correct
+
 ```jsx
+/* eslint @stylistic/jsx-closing-tag-location: "error" */
+
 <Hello>
   marklar
-</Hello>
+</Hello>;
+
+<Hello>marklar</Hello>;
 ```
 
-```jsx
-<Hello>marklar</Hello>
-```
+:::
 
-## Rule Options
+## Options
 
 There is one way to configure this rule.
 
@@ -39,7 +47,7 @@ The first form is a string shortcut corresponding to the `location` values speci
 
 ```json
 {
-  "@stylistic/jsx/jsx-closing-tag-location": ["error", "tag-aligned"]
+  "@stylistic/jsx-closing-tag-location": ["error", "tag-aligned"]
 }
 ```
 
@@ -54,47 +62,67 @@ Defaults to `tag-aligned`.
 
 Examples of **incorrect** code for this rule:
 
+::: incorrect
+
 ```jsx
-// 'jsx-closing-tag-location': 1
-// 'jsx-closing-tag-location': [1, 'tag-aligned']
+/* eslint @stylistic/jsx-closing-tag-location: ["error", "tag-aligned"] */
+
 <Say
   firstName="John"
   lastName="Smith">
   Hello
   </Say>;
 
-// 'jsx-closing-tag-location': [1, 'tag-aligned']
 const App = <Bar>
   Foo
 </Bar>;
+```
 
-// 'jsx-closing-tag-location': [1, 'line-aligned']
+:::
+
+::: incorrect
+
+```jsx
+/* eslint @stylistic/jsx-closing-tag-location: ["error", "line-aligned"] */
+
 const App = <Bar>
   Foo
             </Bar>;
 ```
 
+:::
+
 Examples of **correct** code for this rule:
 
+::: correct
+
 ```jsx
-// 'jsx-closing-tag-location': 1
-// 'jsx-closing-tag-location': [1, 'tag-aligned']
+/* eslint @stylistic/jsx-closing-tag-location: ["error", "tag-aligned"] */
+
 <Say
   firstName="John"
   lastName="Smith">
   Hello
 </Say>;
 
-// 'jsx-closing-tag-location': [1, 'tag-aligned']
 const App = <Bar>
   Foo
             </Bar>;
+```
 
-// 'jsx-closing-tag-location': [1, 'line-aligned']
+:::
+
+::: correct
+
+```jsx
+/* eslint @stylistic/jsx-closing-tag-location: ["error", "line-aligned"] */
+
 const App = <Bar>
   Foo
 </Bar>;
 ```
+
+:::
 
 ## When Not To Use It
 

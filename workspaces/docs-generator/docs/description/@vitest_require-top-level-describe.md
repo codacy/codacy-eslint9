@@ -1,4 +1,6 @@
-# Enforce that all tests are in a top-level describe (`vitest/require-top-level-describe`)
+# vitest/require-top-level-describe
+
+📝 Enforce that all tests are in a top-level describe.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -6,25 +8,30 @@
 
 This rule triggers warning if a test case (`test` and `it`) or a hook (`beforeAll`, `beforeEach`, `afterEach`, `afterAll`) is not located in a top-level `describe` block.
 
-
 ## Options
 
-This rule accepts an object with the following properties: 
+<!-- begin auto-generated rule options list -->
+
+| Name                           | Description                                                   | Type   |
+| :----------------------------- | :------------------------------------------------------------ | :----- |
+| `maxNumberOfTopLevelDescribes` | Maximum number of `describe` blocks allowed at the top level. | Number |
+
+<!-- end auto-generated rule options list -->
+
+This rule accepts an object with the following properties:
 
 - `maxNumberOfTopLevelDescribes`: The maximum number of top-level tests allowed in a file. Defaults to `Infinity`. Allowing any number of top-level describe blocks.
 
 ```json
 {
-	"vitest/require-top-level-describe": [
-		"error", 
-		{ 
-			"maxNumberOfTopLevelDescribes": 2 
-		}
-	]
+  "vitest/require-top-level-describe": [
+    "error",
+    {
+      "maxNumberOfTopLevelDescribes": 2
+    }
+  ]
 }
 ```
-
-
 
 The following patterns are considered warnings:
 
@@ -32,31 +39,24 @@ The following patterns are considered warnings:
 test('foo', () => {})
 
 beforeEach(() => {
-	describe('bar', () => {
-		test('baz', () => {})
-	})
+  describe('bar', () => {
+    test('baz', () => {})
+  })
 })
-
-
 ```
 
 The following patterns are not considered warnings:
 
 ```js
 describe('foo', () => {
-	test('bar', () => {})
+  test('bar', () => {})
 })
 
 describe('foo', () => {
-	beforeEach(() => {
-		describe('bar', () => {
-			test('baz', () => {})
-		})
-	})
+  beforeEach(() => {
+    describe('bar', () => {
+      test('baz', () => {})
+    })
+  })
 })
-
 ```
-
-
-
-

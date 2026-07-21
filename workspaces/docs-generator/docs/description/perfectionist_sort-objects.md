@@ -178,17 +178,25 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
+    sortBy?: 'name' | 'value'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -220,7 +228,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -236,6 +244,17 @@ Specifies the sorting locales. Refer To [String.prototype.localeCompare() - loca
 
 - `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
 - `string[]` — An array of BCP 47 language tags.
+
+### sortBy
+
+<sub>default: `'name'`</sub>
+
+Specifies whether to sort using object keys or values.
+
+- `name` — Use object keys.
+- `value` — Use object values.
+  - Functions and arrow functions are treated as empty strings.
+  - In destructured objects, only assigned values are considered. Other values are treated as empty strings.
 
 ### partitionByComment
 
@@ -253,9 +272,9 @@ Enables the use of comments to separate the keys of objects into logical groups.
 
 <sub>default: `false`</sub>
 
-When `true`, the rule will not sort the object’s keys if there is an empty line between them. This helps maintain the defined order of logically separated groups of keys.
+When `true`, the rule will not sort the object's keys if there is an empty line between them. This helps maintain the defined order of logically separated groups of keys.
 
-```js
+```ts
 const user = {
   // Group 1
   firstName: 'John',
@@ -271,21 +290,55 @@ const user = {
 };
 ```
 
-Each group of keys (separated by empty lines) is treated independently, and the order within each group is preserved.
+### partitionByComputedKey
+
+<sub>default: `false`</sub>
+
+Enables the use of computed keys to separate the keys of objects into logical groups.
+
+```ts
+const someObject = {
+  c: 1,
+  d: 2,
+  [computedProperty]: 3,
+  a: 4
+}
+```
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between object groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines between object groups.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed in objects.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
-See the [`groups`](#newlines-between-groups) option.
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
 
@@ -298,56 +351,35 @@ Specifies whether this rule should be applied to styled-components like librarie
 - `true` — Apply the rule to styled-components.
 - `false` — Disable the rule for styled-components.
 
-### [DEPRECATED] ignorePattern
-
-<sub>
-  type:
-  ```
-  {
-    allNamesMatchPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
-  }
-  ```
-</sub>
-<sub>default: `[]`</sub>
-
-Use the [useConfigurationIf.declarationMatchesPattern](#useconfigurationif) option alongside [type: unsorted](#type) instead.
-
-Specifies names or patterns for objects that should be ignored by this rule. This can be useful if you have specific objects that you do not want to sort.
-
-You can specify their names or a regexp pattern to ignore, for example: `'^User.+'` to ignore all object whose names begin with the word “User”.
-
-### [DEPRECATED] destructureOnly
-
-<sub>default: `false`</sub>
-
-Use the [objectDeclarations](#objectdeclarations) and [destructuredObjects](#destructuredobjects) options instead.
-
-Restricts sorting to objects that are part of a destructuring pattern. When set to `true`, the rule will apply sorting exclusively to destructured objects, leaving other object declarations unchanged.
-
-### objectDeclarations
-
-<sub>default: `true`</sub>
-
-Specifies whether to sort standard object declarations.
-
-### destructuredObjects
-
-<sub>
-  type: `boolean | { groups: boolean }`
-</sub>
-<sub>default: `true`</sub>
-
-Specifies whether to sort destructured objects.
-The `groups` attribute specifies whether to use groups to sort destructured objects.
-
 ### useConfigurationIf
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    allNamesMatchPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
-    callingFunctionNamePattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    callingFunctionNamePattern?:
+      | string
+      | string[]
+      | { pattern: string; flags?: string; scope?: 'shallow' | 'deep' }
+      | { pattern: string; flags?: string; scope?: 'shallow' | 'deep' }[]
+    declarationMatchesPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags?: string; scope?: 'shallow' | 'deep' }
+      | { pattern: string; flags?: string; scope?: 'shallow' | 'deep' }[]
+    declarationCommentMatchesPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags?: string; scope?: 'shallow' | 'deep' }
+      | { pattern: string; flags?: string; scope?: 'shallow' | 'deep' }[]
+    objectType?: 'destructured' | 'non-destructured'
+    hasNumericKeysOnly?: boolean
+    matchesAstSelector?: string
   }
   ```
 </sub>
@@ -366,13 +398,22 @@ Example configuration:
     'error',
     {
       groups: ['r', 'g', 'b'], // Sort colors by RGB
-      customGroups: {
-        r: '^r$',
-        g: '^g$',
-        b: '^b$',
-      },
+      customGroups: [
+        {
+          groupName: 'r',
+          elementNamePattern: '^r$',
+        },
+        {
+          groupName: 'g',
+          elementNamePattern: '^g$',
+        },
+        {
+          groupName: 'b',
+          elementNamePattern: '^b$',
+        },
+      ],
       useConfigurationIf: {
-        allNamesMatchPattern: '^r|g|b$',
+        allNamesMatchPattern: '^[rgb]$',
       },
     },
     {
@@ -383,7 +424,9 @@ Example configuration:
 ```
 
 - `callingFunctionNamePattern` — A regexp pattern for matching objects that are passed as arguments to a function with a specific name.
+With `scope: 'deep'`, this setting will also match any object found at any depth within the arguments of the function call.
 
+Example configuration:
 ```ts
 {
   'perfectionist/sort-objects': [
@@ -401,10 +444,131 @@ Example configuration:
 }
 ```
 
+- `declarationMatchesPattern` — A regexp pattern that the object's declaration name must match.
+With `scope: 'deep'`, this setting will also match to any object found at any depth within the declaration.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-objects': [
+    'error',
+    {
+      type: 'unsorted', // Do not sort metadata objects
+      useConfigurationIf: {
+        declarationMatchesPattern: '*metadata$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `declarationCommentMatchesPattern` — A regexp pattern to specify which comments above the object declaration should match.
+With `scope: 'deep'`, this setting will also match any object found at any depth within the arguments of the function call.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-objects': [
+    'error',
+    {
+      type: 'unsorted', // Don't sort objects with a "do not sort" comment
+      useConfigurationIf: {
+        declarationCommentMatchesPattern: '^do not sort$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `objectType` — Specifies what type of object to match.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-objects': [
+    'error',
+    {
+      type: 'unsorted', // Don't sort destructured objects
+      useConfigurationIf: {
+        objectType: 'destructured',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `hasNumericKeysOnly` — If `true`, matches only objects that have exclusively numeric keys.
+
+This option only detects unquoted numeric literal keys (e.g., `1`, `42`).
+Quoted strings like `"1"`, array-wrapped keys like `[1]`, or computed expressions are not detected as numeric keys.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-objects': [
+    'error',
+    {
+      type: 'natural', // Sort numeric keys naturally (by numeric value)
+      useConfigurationIf: {
+        hasNumericKeysOnly: true,
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching an `ObjectExpression` or `ObjectPattern` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort objects that are declared as `const` variables.
+```ts
+{
+  'perfectionist/sort-objects': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'VariableDeclaration[kind="const"] ObjectExpression',
+      },
+      type: 'unsorted'
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc'; sortBy?: 'name' | 'value' };
+          sortBy?: 'name' | 'value'
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
@@ -438,7 +602,7 @@ let user = {
 
 `groups` option configuration:
 
-```js
+```ts
 {
   groups: [
     'unknown',
@@ -446,24 +610,23 @@ let user = {
     'multiline-member',
   ]
 }
-
 ```
 
 #### Methods
 
-- Selectors: `method`, `member`.
-- Modifiers: `multiline`.
-- Example: `multiline-method`, `method`, `member`.
+- Selectors: `'method'`, `'member'`.
+- Modifiers: `'multiline'`.
+- Example: `'multiline-method'`, `'method'`, `'member'`.
 
 #### Properties
 
-- Selectors: `property`, `member`.
-- Modifiers: `multiline`.
-- Example: `multiline-property`, `property`, `member`.
+- Selectors: `'property'`, `'member'`.
+- Modifiers: `'multiline'`.
+- Example: `'multiline-property'`, `'property'`, `'member'`.
 
 ##### The `unknown` group
 
-Members that don’t fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
+Members that don't fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
 it will automatically be added to the end of the list.
 
 #### Important notes
@@ -486,12 +649,31 @@ interface Test {
 }
 ```
 
-`multilineMethod` can be matched by the following groups, from most to least important:
-- `multiline-method`.
-- `method`.
-- `multiline-member`.
-- `member`.
-- `unknown`.
+`'multilineMethod'` can be matched by the following groups, from most to least important:
+- `'multiline-method'`.
+- `'method'`.
+- `'multiline-member'`.
+- `'member'`.
+- `'unknown'`.
+
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `sortBy` — Overrides the [`sortBy`](#sortby) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'method',
+    { group: 'multiline-member', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
 
 ##### Newlines between groups
 
@@ -503,10 +685,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
@@ -543,7 +725,7 @@ Current API:
 </Important>
 
 <sub>
-  type: `{ [groupName: string]: string | string[] }`
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
 </sub>
 <sub>default: `[]`</sub>
 
@@ -556,15 +738,16 @@ interface CustomGroupDefinition {
   groupName: string
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
-  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc'; sortBy?: 'name' | 'value' }
+  sortBy?: 'name' | 'value'
+  newlinesInside?: number | 'ignore'
   selector?: string
   modifiers?: string[]
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
   elementValuePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
-
 ```
+
 An object will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -574,8 +757,9 @@ interface CustomGroupAnyOfDefinition {
   groupName: string
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
-  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc'; sortBy?: 'name' | 'value' }
+  sortBy?: 'name' | 'value'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       selector?: string
       modifiers?: string[]
@@ -594,10 +778,11 @@ An object will match a `CustomGroupAnyOfDefinition` group if it matches all the 
 - `modifiers` — Filter on the `modifiers` of the element. (All the modifiers of the element must be present in that list)
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
 - `elementValuePattern` — Only for non-function properties. If entered, will check that the value of the property matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
+- `sortBy` — Overrides the [`sortBy`](#sortby) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -627,7 +812,7 @@ let user = {
 
 `groups` and `customGroups` configuration:
 
-```js
+```ts
  {
    groups: [
 +    'top',                                  // [!code ++]
@@ -648,6 +833,15 @@ let user = {
 +  ]                                         // [!code ++]
  }
 ```
+
+### useExperimentalDependencyDetection
+
+<sub>default: `true`</sub>
+
+Specifies whether to use a new experimental dependency detection logic, with reduced false positives.
+
+- `true` — Use the new experimental dependency detection logic.
+- `false` — Use the legacy dependency detection logic.
 
 ## Usage
 
@@ -672,16 +866,17 @@ let user = {
                   fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
+                  sortBy: 'name',
                   partitionByComment: false,
                   partitionByNewLine: false,
+                  partitionByComputedKey: false,
                   newlinesBetween: 'ignore',
-                  objectDeclarations: true,
-                  destructuredObjects: true,
+                  newlinesInside: 'ignore',
                   styledComponents: true,
-                  ignorePattern: [],
                   useConfigurationIf: {},
                   groups: [],
                   customGroups: [],
+                  useExperimentalDependencyDetection: true,
                 },
               ],
             },
@@ -707,16 +902,17 @@ let user = {
                 fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
+                sortBy: 'name',
                 partitionByComment: false,
                 partitionByNewLine: false,
+                partitionByComputedKey: false,
                 newlinesBetween: 'ignore',
-                objectDeclarations: true,
-                destructuredObjects: true,
+                newlinesInside: 'ignore',
                 styledComponents: true,
-                ignorePattern: [],
                 useConfigurationIf: {},
                 groups: [],
                 customGroups: [],
+                useExperimentalDependencyDetection: true,
               },
             ],
           },
@@ -738,4 +934,4 @@ This rule was introduced in [v0.6.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-objects.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-objects.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-objects.test.ts)

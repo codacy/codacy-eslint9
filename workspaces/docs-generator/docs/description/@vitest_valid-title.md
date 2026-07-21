@@ -1,8 +1,8 @@
-# Enforce valid titles (`vitest/valid-title`)
+# vitest/valid-title
 
-💼 This rule is enabled in the ✅ `recommended` config.
+📝 Enforce valid titles.
 
-⚠️ This rule _warns_ in the 🌐 `all` config.
+💼⚠️ This rule is enabled in the ✅ `recommended` config. This rule _warns_ in the 🌐 `all` config.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
@@ -14,18 +14,28 @@ This rule aims to enforce valid titles for `describe`, `it` and `test` titles.
 
 ## Options
 
+<!-- begin auto-generated rule options list -->
+
+| Name                       | Description                                                | Type     |
+| :------------------------- | :--------------------------------------------------------- | :------- |
+| `allowArguments`           | Allow dynamic arguments as titles.                         | Boolean  |
+| `disallowedWords`          | Words that are not allowed in test titles.                 | String[] |
+| `ignoreTypeOfDescribeName` | Skip validating `describe` titles that come from `typeof`. | Boolean  |
+
+<!-- end auto-generated rule options list -->
+
 This rule has an object option:
 
 ```json
 {
   "vitest/valid-title": [
-	"error",
-   {
-    "ignoreTypeOfDescribeName": false,
-    "allowArguments": false,
-    "disallowedWords": ["skip", "only"],
-    "mustNotMatch": ["^\\s+$", "^\\s*\\d+\\s*$"],
-    "mustMatch": ["^\\s*\\w+\\s*$"]
+    "error",
+    {
+      "ignoreTypeOfDescribeName": false,
+      "allowArguments": false,
+      "disallowedWords": ["skip", "only"],
+      "mustNotMatch": ["^\\s+$", "^\\s*\\d+\\s*$"],
+      "mustMatch": ["^\\s*\\w+\\s*$"]
     }
   ]
 }
@@ -40,7 +50,7 @@ Examples of **incorrect** code for this rule with the `{ "ignoreTypeOfDescribeNa
 ```js
 describe(1, () => {
   it('should be a number', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -50,7 +60,7 @@ Examples of **correct** code for this rule with the `{ "ignoreTypeOfDescribeName
 ```js
 describe('1', () => {
   it('should be a number', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -63,9 +73,7 @@ Examples of **correct** code for this rule with the `{ "allowArguments": false }
 
 ```js
 describe('name', () => {
-  it('name', () => {
-
-  })
+  it('name', () => {})
 })
 ```
 
@@ -73,9 +81,7 @@ Examples of **correct** code for this rule with the `{ "allowArguments": true }`
 
 ```js
 describe(foo, () => {
-   it(hoge, () => {
-
-  })
+  it(hoge, () => {})
 })
 ```
 
@@ -88,7 +94,7 @@ Examples of **incorrect** code for this rule with the `{ "disallowedWords": ["sk
 ```js
 describe('foo', () => {
   it.skip('should be skipped', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -98,7 +104,7 @@ Examples of **correct** code for this rule with the `{ "disallowedWords": ["skip
 ```js
 describe('foo', () => {
   it('should be skipped', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -112,7 +118,7 @@ Examples of **incorrect** code for this rule with the `{ "mustNotMatch": ["^\\s+
 ```js
 describe('foo', () => {
   it('  ', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -120,10 +126,9 @@ describe('foo', () => {
 Examples of **correct** code for this rule with the `{ "mustNotMatch": ["^\\s+$", "^\\s*\\d+\\s*$"] }` option:
 
 ```js
-
 describe('foo', () => {
   it('should be a number', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -145,7 +150,7 @@ Examples of **incorrect** code for this rule with the `{ "mustMatch": ["^\\s*\\w
 ```js
 describe('foo', () => {
   it('  ', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -153,10 +158,9 @@ describe('foo', () => {
 Examples of **correct** code for this rule with the `{ "mustMatch": ["^\\s*\\w+\\s*$"] }` option:
 
 ```js
-
 describe('foo', () => {
   it('should be a number', () => {
-	expect(1).toBe(1)
+    expect(1).toBe(1)
   })
 })
 ```
@@ -190,22 +194,22 @@ Note: If you'd like to use a function or class names inside `describe`, `test` o
 To enable typechecking for vitest make sure settings key is added in your configuration
 
 ```js
-import vitest from "eslint-plugin-vitest";
+import vitest from 'eslint-plugin-vitest'
 
 export default [
- {
-  files: ["tests/**"],
-  plugins: {
-     vitest
-  },
-  rules: {
-   ...vitest.configs.recommended.rules
-  },
-  settings: {
+  {
+    files: ['tests/**'],
+    plugins: {
+      vitest,
+    },
+    rules: {
+      ...vitest.configs.recommended.rules,
+    },
+    settings: {
       vitest: {
-        typecheck: true
-    }
-   }
- }
+        typecheck: true,
+      },
+    },
+  },
 ]
 ```

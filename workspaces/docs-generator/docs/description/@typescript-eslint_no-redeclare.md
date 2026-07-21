@@ -8,7 +8,8 @@ description: 'Disallow variable redeclaration.'
 
 <TypeScriptOverlap />
 
-It adds support for TypeScript function overloads, and declaration merging.
+It adds support for TypeScript function overloads and declaration merging.
+Unlike TypeScript, this rule also reports collisions between value declarations (e.g., `const Foo`) and type declarations (e.g., `type Foo` or `interface Foo`).
 
 ## Options
 

@@ -10,7 +10,19 @@ since: v8.4.0
 
 > disallow v-text / v-html on component
 
-- :gear: This rule is included in all of `"plugin:vue/vue2-essential"`, `*.configs["flat/vue2-essential"]`, `"plugin:vue/essential"`, `*.configs["flat/essential"]`, `"plugin:vue/vue2-strongly-recommended"`, `*.configs["flat/vue2-strongly-recommended"]`, `"plugin:vue/strongly-recommended"`, `*.configs["flat/strongly-recommended"]`, `"plugin:vue/vue2-recommended"`, `*.configs["flat/vue2-recommended"]`, `"plugin:vue/recommended"` and `*.configs["flat/recommended"]`.
+- :gear: This rule is included in the following preset configs:
+  - `*.configs["flat/vue2-essential"]`
+  - `*.configs["flat/essential"]`
+  - `*.configs["flat/vue2-strongly-recommended"]`
+  - `*.configs["flat/strongly-recommended"]`
+  - `*.configs["flat/vue2-recommended"]`
+  - `*.configs["flat/recommended"]`
+  - `"plugin:vue/vue2-essential"`
+  - `"plugin:vue/essential"`
+  - `"plugin:vue/vue2-strongly-recommended"`
+  - `"plugin:vue/strongly-recommended"`
+  - `"plugin:vue/vue2-recommended"`
+  - `"plugin:vue/recommended"`
 
 ## :book: Rule Details
 
@@ -84,11 +96,16 @@ If you use v-text / v-html on a component, it will overwrite the component's con
 
 </eslint-code-block>
 
+## :couple: Related Rules
+
+- [vue/no-v-text](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-v-text.md)
+- [vue/no-v-html](https://github.com/vuejs/eslint-plugin-vue/tree/refs/tags/master/docs/rules/no-v-html.md)
+
 ## :rocket: Version
 
 This rule was introduced in eslint-plugin-vue v8.4.0
 
 ## :mag: Implementation
 
-- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/no-v-text-v-html-on-component.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-v-text-v-html-on-component.js)
+- [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/no-v-text-v-html-on-component.ts)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/no-v-text-v-html-on-component.test.ts)

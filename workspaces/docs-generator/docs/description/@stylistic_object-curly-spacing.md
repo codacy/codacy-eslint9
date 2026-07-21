@@ -1,6 +1,4 @@
 ---
-title: object-curly-spacing
-rule_type: layout
 related_rules:
   - array-bracket-spacing
   - comma-spacing
@@ -8,7 +6,7 @@ related_rules:
   - space-in-parens
 ---
 
-# js/object-curly-spacing
+# object-curly-spacing
 
 While formatting preferences are very personal, a number of style guides require
 or disallow spaces between curly braces in the following situations:
@@ -26,6 +24,15 @@ var { x, y } = y;
 // import/export declarations (EcmaScript 6)
 import { foo } from "bar";
 export { foo };
+
+// type literals
+type Foo = { bar: string };
+
+// interface
+interface Foo { bar: string };
+
+// enum
+enum Foo { Bar };
 ```
 
 ## Rule Details
@@ -47,6 +54,21 @@ Object option:
 - `"arraysInObjects": false` disallows spacing inside of braces of objects beginning and/or ending with an array element (applies when the first option is set to `always`)
 - `"objectsInObjects": true` requires spacing inside of braces of objects beginning and/or ending with an object element (applies when the first option is set to `never`)
 - `"objectsInObjects": false` disallows spacing inside of braces of objects beginning and/or ending with an object element (applies when the first option is set to `always`)
+- `"overrides"` allows overriding spacing style for specified nodes:
+  - `ObjectPattern` - object patterns of destructuring assignments
+  - `ObjectExpression` - object literals
+  - `ImportDeclaration` - named imports
+  - `ImportAttributes` - import/export attributes
+  - `ExportNamedDeclaration` - named exports
+  - `ExportAllDeclaration` - re-export declarations
+  - `TSMappedType` - mapped types
+  - `TSTypeLiteral` - type literals
+  - `TSInterfaceBody` - interface declaration bodies
+  - `TSEnumBody` - enum declaration bodies
+- `"emptyObjects"` control spacing within empty objects.
+  - `"ignore"`(default) do not check spacing in empty objects.
+  - `"always"` require a space in empty objects.
+  - `"never"` disallow spaces in empty objects.
 
 ### never
 
@@ -55,7 +77,7 @@ Examples of **incorrect** code for this rule with the default `"never"` option:
 ::: incorrect
 
 ```js
-/*eslint object-curly-spacing: ["error", "never"]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "never"] */
 
 var obj = { 'foo': 'bar' };
 var obj = {'foo': 'bar' };
@@ -63,6 +85,10 @@ var obj = { baz: {'foo': 'qux'}, bar};
 var obj = {baz: { 'foo': 'qux'}, bar};
 var {x } = y;
 import { foo } from 'bar';
+export { foo };
+type Foo = { bar: string };
+interface Foo { bar: string };
+enum Foo { Bar };
 ```
 
 :::
@@ -72,7 +98,7 @@ Examples of **correct** code for this rule with the default `"never"` option:
 ::: correct
 
 ```js
-/*eslint object-curly-spacing: ["error", "never"]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "never"] */
 
 var obj = {'foo': 'bar'};
 var obj = {'foo': {'bar': 'baz'}, 'qux': 'quxx'};
@@ -86,6 +112,10 @@ var obj = {
 var obj = {};
 var {x} = y;
 import {foo} from 'bar';
+export {foo};
+type Foo = {bar: string};
+interface Foo {bar: string};
+enum Foo {Bar};
 ```
 
 :::
@@ -97,7 +127,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 ::: incorrect
 
 ```js
-/*eslint object-curly-spacing: ["error", "always"]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "always"] */
 
 var obj = {'foo': 'bar'};
 var obj = {'foo': 'bar' };
@@ -109,6 +139,10 @@ var obj = {
   'foo':'bar'};
 var {x} = y;
 import {foo } from 'bar';
+export {foo };
+type Foo = {bar: string };
+interface Foo {bar: string };
+enum Foo {Bar };
 ```
 
 :::
@@ -118,7 +152,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 ::: correct
 
 ```js
-/*eslint object-curly-spacing: ["error", "always"]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "always"] */
 
 var obj = {};
 var obj = { 'foo': 'bar' };
@@ -128,6 +162,10 @@ var obj = {
 };
 var { x } = y;
 import { foo } from 'bar';
+export { foo };
+type Foo = { bar: string };
+interface Foo { bar: string };
+enum Foo { Bar };
 ```
 
 :::
@@ -139,7 +177,7 @@ Examples of additional **correct** code for this rule with the `"never", { "arra
 ::: correct
 
 ```js
-/*eslint object-curly-spacing: ["error", "never", { "arraysInObjects": true }]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "never", { "arraysInObjects": true }] */
 
 var obj = {"foo": [ 1, 2 ] };
 var obj = {"foo": [ "baz", "bar" ] };
@@ -152,7 +190,7 @@ Examples of additional **correct** code for this rule with the `"always", { "arr
 ::: correct
 
 ```js
-/*eslint object-curly-spacing: ["error", "always", { "arraysInObjects": false }]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "always", { "arraysInObjects": false }] */
 
 var obj = { "foo": [ 1, 2 ]};
 var obj = { "foo": [ "baz", "bar" ]};
@@ -167,7 +205,7 @@ Examples of additional **correct** code for this rule with the `"never", { "obje
 ::: correct
 
 ```js
-/*eslint object-curly-spacing: ["error", "never", { "objectsInObjects": true }]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "never", { "objectsInObjects": true }] */
 
 var obj = {"foo": {"baz": 1, "bar": 2} };
 ```
@@ -179,9 +217,51 @@ Examples of additional **correct** code for this rule with the `"always", { "obj
 ::: correct
 
 ```js
-/*eslint object-curly-spacing: ["error", "always", { "objectsInObjects": false }]*/
+/* eslint @stylistic/object-curly-spacing: ["error", "always", { "objectsInObjects": false }] */
 
 var obj = { "foo": { "baz": 1, "bar": 2 }};
+```
+
+:::
+
+#### overrides
+
+Examples of additional **correct** code for this rule with the `"always", { "overrides": { ImportAttributes: "never" } }` options:
+
+::: correct
+
+```js
+/* eslint @stylistic/object-curly-spacing: ["error", "always", { "overrides": { ImportAttributes: "never" } }] */
+
+import { name, version } from 'package.json' with {type: 'json'}
+```
+
+:::
+
+#### emptyObjects
+
+Examples of additional **correct** code for this rule with the `"always", { emptyObjects: "never" }` options:
+
+::: incorrect
+
+```js
+/* eslint @stylistic/object-curly-spacing: ["error", "always", { emptyObjects: "never" }] */
+
+var obj = { }
+interface Bar { }
+enum Foo { }
+```
+
+:::
+
+::: correct
+
+```js
+/* eslint @stylistic/object-curly-spacing: ["error", "always", { emptyObjects: "never" }] */
+
+var obj = {}
+interface Bar {}
+enum Foo {}
 ```
 
 :::

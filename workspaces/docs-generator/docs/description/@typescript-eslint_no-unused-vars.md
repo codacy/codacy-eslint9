@@ -10,6 +10,27 @@ It adds support for TypeScript features, such as types.
 
 ## Options
 
+This rule extension provides the following additional options.
+
+### `enableAutofixRemoval`
+
+<!-- insert option description -->
+
+#### `enableAutofixRemoval.imports`
+
+<!-- TODO -- we don't support nested object properties in our option doc generator -->
+Whether to enable automatic removal of unused imports.
+
+When this is set to `false` (the default) the rule will only provide **_suggestion fixers_** for unused imports.
+When this is set to `true` the rule will provide an **_automatic fixer_**.
+
+Note: If all specifiers of an import declaration are unused then the entire import declaration will be removed.
+
+Many codebases assume that all modules are side-effect free -- meaning that removing an import has no effect on runtime behavior.
+In such codebases, it is generally safe to automatically remove unused imports.
+
+If your codebase relies on side-effects caused by importing modules, you should leave this option set to `false`.
+
 ## FAQs
 
 ### What benefits does this rule have over TypeScript?
@@ -110,3 +131,19 @@ export interface Box {
 <!--/tabs-->
 
 If you find yourself writing runtime values only for types, consider refactoring your code to declare types directly.
+
+### Why are variables reported as unused despite being referenced by @link in JSDoc?
+
+JSDoc references are not supported by typescript-eslint.
+You can use a rule such as [`jsdoc/no-undefined-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) to resolve variables as used in JSDoc comments.
+
+```ts
+
+//            ~~~
+//            'Box' is defined but never used.
+
+/**
+ * @see {@link Box}
+ */
+export function getBox() {}
+```

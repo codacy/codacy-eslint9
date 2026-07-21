@@ -1,11 +1,9 @@
 ---
-title: array-bracket-newline
-rule_type: layout
 related_rules:
   - array-bracket-spacing
 ---
 
-# js/array-bracket-newline
+# array-bracket-newline
 
 A number of style guides require or disallow line breaks inside of array brackets.
 
@@ -33,7 +31,7 @@ Examples of **incorrect** code for this rule with the `"always"` option:
 :::incorrect
 
 ```js
-/*eslint array-bracket-newline: ["error", "always"]*/
+/* eslint @stylistic/array-bracket-newline: ["error", "always"] */
 
 var a = [];
 var b = [1];
@@ -52,7 +50,7 @@ Examples of **correct** code for this rule with the `"always"` option:
 :::correct
 
 ```js
-/*eslint array-bracket-newline: ["error", "always"]*/
+/* eslint @stylistic/array-bracket-newline: ["error", "always"] */
 
 var a = [
 ];
@@ -82,7 +80,7 @@ Examples of **incorrect** code for this rule with the `"never"` option:
 :::incorrect
 
 ```js
-/*eslint array-bracket-newline: ["error", "never"]*/
+/* eslint @stylistic/array-bracket-newline: ["error", "never"] */
 
 var a = [
 ];
@@ -110,7 +108,7 @@ Examples of **correct** code for this rule with the `"never"` option:
 :::correct
 
 ```js
-/*eslint array-bracket-newline: ["error", "never"]*/
+/* eslint @stylistic/array-bracket-newline: ["error", "never"] */
 
 var a = [];
 var b = [1];
@@ -131,7 +129,7 @@ Examples of **incorrect** code for this rule with the `"consistent"` option:
 :::incorrect
 
 ```js
-/*eslint array-bracket-newline: ["error", "consistent"]*/
+/* eslint @stylistic/array-bracket-newline: ["error", "consistent"] */
 
 var a = [1
 ];
@@ -154,7 +152,7 @@ Examples of **correct** code for this rule with the `"consistent"` option:
 :::correct
 
 ```js
-/*eslint array-bracket-newline: ["error", "consistent"]*/
+/* eslint @stylistic/array-bracket-newline: ["error", "consistent"] */
 
 var a = [];
 var b = [
@@ -182,7 +180,7 @@ Examples of **incorrect** code for this rule with the default `{ "multiline": tr
 :::incorrect
 
 ```js
-/*eslint array-bracket-newline: ["error", { "multiline": true }]*/
+/* eslint @stylistic/array-bracket-newline: ["error", { "multiline": true }] */
 
 var a = [
 ];
@@ -206,7 +204,7 @@ Examples of **correct** code for this rule with the default `{ "multiline": true
 :::correct
 
 ```js
-/*eslint array-bracket-newline: ["error", { "multiline": true }]*/
+/* eslint @stylistic/array-bracket-newline: ["error", { "multiline": true }] */
 
 var a = [];
 var b = [1];
@@ -231,7 +229,7 @@ Examples of **incorrect** code for this rule with the `{ "minItems": 2 }` option
 :::incorrect
 
 ```js
-/*eslint array-bracket-newline: ["error", { "minItems": 2 }]*/
+/* eslint @stylistic/array-bracket-newline: ["error", { "minItems": 2 }] */
 
 var a = [
 ];
@@ -255,7 +253,7 @@ Examples of **correct** code for this rule with the `{ "minItems": 2 }` option:
 :::correct
 
 ```js
-/*eslint array-bracket-newline: ["error", { "minItems": 2 }]*/
+/* eslint @stylistic/array-bracket-newline: ["error", { "minItems": 2 }] */
 
 var a = [];
 var b = [1];
@@ -280,7 +278,7 @@ Examples of **incorrect** code for this rule with the `{ "multiline": true, "min
 :::incorrect
 
 ```js
-/*eslint array-bracket-newline: ["error", { "multiline": true, "minItems": 2 }]*/
+/* eslint @stylistic/array-bracket-newline: ["error", { "multiline": true, "minItems": 2 }] */
 
 var a = [
 ];
@@ -302,7 +300,7 @@ Examples of **correct** code for this rule with the `{ "multiline": true, "minIt
 :::correct
 
 ```js
-/*eslint array-bracket-newline: ["error", { "multiline": true, "minItems": 2 }]*/
+/* eslint @stylistic/array-bracket-newline: ["error", { "multiline": true, "minItems": 2 }] */
 
 var a = [];
 var b = [1];

@@ -1,4 +1,6 @@
-# Enforce the style of numeric separators by correctly grouping digits
+# numeric-separators-style
+
+📝 Enforce the style of numeric separators by correctly grouping digits.
 
 💼 This rule is enabled in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -24,10 +26,10 @@ const foo = 1_234_444;
 
 ```js
 // ❌
-const foo = 1_234.56789;
+const foo = 1_234.567_89;
 
 // ✅
-const foo = 1_234.567_89;
+const foo = 1234.56789;
 ```
 
 ```js
@@ -82,7 +84,7 @@ Example:
 /* eslint unicorn/numeric-separators-style: ["error", {"onlyIfContainsSeparator": true, "binary": {"onlyIfContainsSeparator": false}] */
 const number = 100000; // Pass, this number does not contain separators
 const binary = 0b101010001; // Fail, `binary` type don't require separators
-const hexadecimal = 0xD_EED_BEE_F; // Fail, it contain separators and it's incorrectly grouped
+const hexadecimal = 0xD_EED_BEE_F; // Fail, it contains separators and it's incorrectly grouped
 ```
 
 **`minimumDigits`**
@@ -101,12 +103,23 @@ The size a group of digits between two numeric separators should be.
 
 The size of the first group can be of any length as long as it is equal to or less than the number specified here. Prefixes and suffixes, such as `+`, `-`, `0x`, `n`, etc, don't count in the group length. Notations like `e` and `.` don't count either.
 
+**`fractionGroupLength`**
+
+Type: `number`\
+Default: `Infinity`
+
+The size a group of digits in the fractional part (after the decimal point) should be. Only applies to the `number` type.
+
+By default, the fractional part is not grouped, since separators there tend to obscure the decimal point. Set this to group it, for example `5` to match the convention used by [Wikipedia](https://en.wikipedia.org/wiki/Decimal_separator#Digit_grouping): `3.14159_26535_89793`.
+
+Example: With `5` as the fraction group length, `0.5522847498` will be reported and fixed to `0.55228_47498`.
+
 ### Details
 
 Numbers are split into 3 distinct parts:
 
 - The integer part (**123**.456). The remaining digits (that do not fit in a group) have to be placed at the beginning: `12_345`.
-- The fractional part (123.**456**). The remaining digits have to be placed at the end of the number: `1.234_56`.
+- The fractional part (123.**456**). By default it is not grouped at all; set `fractionGroupLength` to group it, in which case the remaining digits have to be placed at the end of the number: `1.234_56`.
 - The exponential part (123.456e**789**). It acts exactly as the integer part: groups have to be at the beginning.
 
 ### Examples
@@ -115,42 +128,67 @@ Numbers are split into 3 distinct parts:
 /* eslint unicorn/numeric-separators-style: ["error", {"number": {"minimumDigits": 0, "groupLength": 3}}] */
 
 // ❌
-const foo = 12345;
+const integer = 12345;
+
+// ✅
+const groupedInteger = 12_345;
+
+// ✅ The fractional part is not grouped by default
+const fractional = 0.0000001;
+```
+
+```js
+/* eslint unicorn/numeric-separators-style: ["error", {"number": {"minimumDigits": 0, "groupLength": 3, "fractionGroupLength": 3}}] */
 
 // ❌
-const foo = 0.000_0001;
+const fractional = 0.000_0001;
+
+// ✅
+const groupedFractional = 0.000_000_1;
 
 // ❌
-const foo = 123.1_000_001;
+const longFractional = 123.1_000_001;
+
+// ✅
+const groupedLongFractional = 123.100_000_1;
 ```
 
 ```js
 /* eslint unicorn/numeric-separators-style: ["error", {"binary": {"minimumDigits": 0, "groupLength": 4}}] */
 
 // ❌
-const foo = 0b101010;
+const binary = 0b101010;
+
+// ✅
+const groupedBinary = 0b10_1010;
 
 // ❌
-const foo = 0b1010_10001;
+const longBinary = 0b1010_10001;
+
+// ✅
+const groupedLongBinary = 0b1_0101_0001;
 ```
 
 ```js
 /* eslint unicorn/numeric-separators-style: ["error", {"hexadecimal": {"minimumDigits": 0, "groupLength": 2}}] */
 // ❌
-const foo = 0xA_B_CD_EF;
+const hexadecimal = 0xA_B_CD_EF;
+
+// ✅
+const groupedHexadecimal = 0xAB_CD_EF;
 ```
 
 ```js
 /* eslint unicorn/numeric-separators-style: ["error", {"number": {"minimumDigits": 0, "groupLength": 3}}] */
 
 // ✅
-const foo = 100;
+const smallNumber = 100;
 
 // ✅
-const foo = 1_000;
+const groupedNumber = 1_000;
 
 // ✅
-const foo = 1_000_000;
+const largeGroupedNumber = 1_000_000;
 ```
 
 ```js
@@ -164,13 +202,13 @@ const foo = 1000;
 /* eslint unicorn/numeric-separators-style: ["error", {"octal": {"minimumDigits": 0, "groupLength": 4}}] */
 
 // ✅
-const foo = 0o7777;
+const octal = 0o7777;
 
 // ✅
-const foo = 0o7777;
+const anotherOctal = 0o7777;
 
 // ✅
-const foo = 0o12_7777;
+const groupedOctal = 0o12_7777;
 ```
 
 ### Default
@@ -192,7 +230,8 @@ const foo = 0o12_7777;
 	},
 	number: {
 		minimumDigits: 5,
-		groupLength: 3
+		groupLength: 3,
+		fractionGroupLength: Infinity
 	}
 };
 ```

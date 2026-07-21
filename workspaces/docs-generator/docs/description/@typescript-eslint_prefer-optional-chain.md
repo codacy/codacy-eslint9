@@ -33,12 +33,7 @@ foo && foo.a && foo.a.b && foo.a.b.method && foo.a.b.method();
 !foo || !foo.bar || !foo.bar.baz || !foo.bar.baz();
 
 // this rule also supports converting chained strict nullish checks:
-foo &&
-  foo.a != null &&
-  foo.a.b !== null &&
-  foo.a.b.c != undefined &&
-  foo.a.b.c.d !== undefined &&
-  foo.a.b.c.d.e;
+foo.a !== null && foo.a !== undefined && foo.a.b;
 ```
 
 #### ✅ Correct
@@ -53,6 +48,8 @@ foo?.a?.b?.c?.d?.e;
 !foo?.bar;
 !foo?.[bar];
 !foo?.bar?.baz?.();
+
+foo?.a != null;
 ```
 
 <!--/tabs-->
@@ -74,7 +71,7 @@ In some cases this distinction _may_ matter - which is why these fixers are cons
 declare const foo: { bar: boolean } | null | undefined;
 declare function acceptsBoolean(arg: boolean): void;
 
-// ✅ typechecks succesfully as the expression only returns `boolean`
+// ✅ typechecks successfully as the expression only returns `boolean`
 acceptsBoolean(foo != null && foo.bar);
 
 // ❌ typechecks UNSUCCESSFULLY as the expression returns `boolean | undefined`
@@ -285,7 +282,7 @@ thing2 && thing2.toString();
 ## When Not To Use It
 
 If your project is not accurately typed, such as if it's in the process of being converted to TypeScript or is susceptible to [trade-offs in control flow analysis](https://github.com/Microsoft/TypeScript/issues/9998), it may be difficult to enable this rule for particularly non-type-safe areas of code.
-You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1) for those specific situations instead of completely disabling this rule.
+You might consider using [ESLint disable comments](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments) for those specific situations instead of completely disabling this rule.
 
 ## Further Reading
 

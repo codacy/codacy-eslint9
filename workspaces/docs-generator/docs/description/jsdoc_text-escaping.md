@@ -25,11 +25,14 @@ within it or your documentation.
 <a name="text-escaping-fixer"></a>
 ## Fixer
 
-(TODO)
+Auto-escapes certain HTML or Markdown characters that are input within block and
+tag descriptions.
 
 <a name="user-content-text-escaping-options"></a>
 <a name="text-escaping-options"></a>
 ## Options
+
+A single options object has the following properties.
 
 <a name="user-content-text-escaping-options-escapehtml"></a>
 <a name="text-escaping-options-escapehtml"></a>
@@ -45,6 +48,7 @@ whitespace which are treated as literals by Visual Studio Code). Defaults to
 
 This option escapes the first backtick (`` ` ``) in a paired sequence.
 Defaults to `false`.
+
 
 <a name="user-content-text-escaping-context-and-settings"></a>
 <a name="text-escaping-context-and-settings"></a>

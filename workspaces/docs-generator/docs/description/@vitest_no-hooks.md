@@ -1,4 +1,6 @@
-# Disallow setup and teardown hooks (`vitest/no-hooks`)
+# vitest/no-hooks
+
+📝 Disallow setup and teardown hooks.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -27,36 +29,36 @@ function setupBar(options) {
 }
 
 describe('foo', () => {
-  let foo;
+  let foo
 
   beforeEach(() => {
-    foo = setupFoo();
-  });
+    foo = setupFoo()
+  })
 
   afterEach(() => {
-    foo = null;
-  });
+    foo = null
+  })
 
   it('does something', () => {
-    expect(foo.doesSomething()).toBe(true);
-  });
+    expect(foo.doesSomething()).toBe(true)
+  })
 
   describe('with bar', () => {
-    let bar;
+    let bar
 
     beforeEach(() => {
-      bar = setupBar();
-    });
+      bar = setupBar()
+    })
 
     afterEach(() => {
-      bar = null;
-    });
+      bar = null
+    })
 
     it('does something with bar', () => {
-      expect(foo.doesSomething(bar)).toBe(true);
-    });
-  });
-});
+      expect(foo.doesSomething(bar)).toBe(true)
+    })
+  })
+})
 ```
 
 Examples of **correct** code for this rule:
@@ -74,19 +76,27 @@ function setupBar(options) {
 
 describe('foo', () => {
   it('does something', () => {
-    const foo = setupFoo();
-    expect(foo.doesSomething()).toBe(true);
-  });
+    const foo = setupFoo()
+    expect(foo.doesSomething()).toBe(true)
+  })
 
   it('does something with bar', () => {
-    const foo = setupFoo();
-    const bar = setupBar();
-    expect(foo.doesSomething(bar)).toBe(true);
-  });
-});
+    const foo = setupFoo()
+    const bar = setupBar()
+    expect(foo.doesSomething(bar)).toBe(true)
+  })
+})
 ```
 
 ## Options
+
+<!-- begin auto-generated rule options list -->
+
+| Name    | Description                                                             | Type     |
+| :------ | :---------------------------------------------------------------------- | :------- |
+| `allow` | This array option controls which Vitest hooks are checked by this rule. | String[] |
+
+<!-- end auto-generated rule options list -->
 
 ```json
 {
@@ -121,23 +131,23 @@ function setupFoo(options) {
   /* ... */
 }
 
-let foo;
+let foo
 
 beforeEach(() => {
-  foo = setupFoo();
-});
+  foo = setupFoo()
+})
 
 afterEach(() => {
-  vi.resetModules();
-});
+  vi.resetModules()
+})
 
 test('foo does this', () => {
   // ...
-});
+})
 
 test('foo does that', () => {
   // ...
-});
+})
 ```
 
 Examples of **correct** code for the `{ "allow": ["afterEach"] }` option:
@@ -150,16 +160,16 @@ function setupFoo(options) {
 }
 
 afterEach(() => {
-  vi.resetModules();
-});
+  vi.resetModules()
+})
 
 test('foo does this', () => {
-  const foo = setupFoo();
+  const foo = setupFoo()
   // ...
-});
+})
 
 test('foo does that', () => {
-  const foo = setupFoo();
+  const foo = setupFoo()
   // ...
-});
+})
 ```

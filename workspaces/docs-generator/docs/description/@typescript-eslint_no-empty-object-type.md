@@ -25,7 +25,7 @@ To avoid confusion around the `{}` type allowing any _non-nullish value_, this r
 That includes interfaces and object type aliases with no fields.
 
 :::tip
-If you do have a use case for an API allowing `{}`, you can always configure the [rule's options](#options), use an [ESLint disable comment](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1), or [disable the rule in your ESLint config](https://eslint.org/docs/latest/use/configure/rules#using-configuration-files-1).
+If you do have a use case for an API allowing `{}`, you can always configure the [rule's options](#options), use an [ESLint disable comment](https://eslint.org/docs/latest/use/configure/rules#use-configuration-comments), or [disable the rule in your ESLint config](https://eslint.org/docs/latest/use/configure/rules#using-configuration-files-1).
 :::
 
 Note that this rule does not report on:
@@ -141,5 +141,6 @@ Projects that extensively use type operations such as conditional types and mapp
 
 ## Further Reading
 
-- [Enhancement: [ban-types] Split the {} ban into a separate, better-phrased rule](https://github.com/typescript-eslint/typescript-eslint/issues/8700)
-- [The Empty Object Type in TypeScript](https://www.totaltypescript.com/the-empty-object-type-in-typescript)
+- [Revamping the `ban-types` rule](/blog/revamping-the-ban-types-rule)
+- [Total TypeScript: The Empty Object Type in TypeScript](https://www.totaltypescript.com/the-empty-object-type-in-typescript)
+- [#8700 Enhancement: [ban-types] Split the {} ban into a separate, better-phrased rule](https://github.com/typescript-eslint/typescript-eslint/issues/8700)

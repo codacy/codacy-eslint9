@@ -1,14 +1,20 @@
-# Disallow direct Node access (`testing-library/no-node-access`)
+# testing-library/no-node-access
 
-💼 This rule is enabled in the following configs: `angular`, `dom`, `marko`, `react`, `svelte`, `vue`.
+📝 Disallow direct Node access.
+
+💼 This rule is enabled in the following configs: ![badge-angular](https://img.shields.io/badge/-Angular-black?style=flat-square&logo=angular&logoColor=white&labelColor=DD0031&color=black) `angular`, ![badge-dom](https://img.shields.io/badge/%F0%9F%90%99-DOM-black?style=flat-square) `dom`, ![badge-marko](https://img.shields.io/badge/-Marko-black?style=flat-square&logo=marko&logoColor=white&labelColor=2596BE&color=black) `marko`, ![badge-react](https://img.shields.io/badge/-React-black?style=flat-square&logo=react&logoColor=white&labelColor=61DAFB&color=black) `react`, ![badge-svelte](https://img.shields.io/badge/-Svelte-black?style=flat-square&logo=svelte&logoColor=white&labelColor=FF3E00&color=black) `svelte`, ![badge-vue](https://img.shields.io/badge/-Vue-black?style=flat-square&logo=vue.js&logoColor=white&labelColor=4FC08D&color=black) `vue`.
 
 <!-- end auto-generated rule header -->
 
-The Testing Library already provides methods for querying DOM elements.
+Disallow direct access or manipulation of DOM nodes in favor of Testing Library's user-centric APIs.
 
 ## Rule Details
 
-This rule aims to disallow DOM traversal using native HTML methods and properties, such as `closest`, `lastChild` and all that returns another Node element from an HTML tree.
+This rule aims to disallow direct access and manipulation of DOM nodes using native HTML properties and methods — including traversal (e.g. `closest`, `lastChild`) as well as direct actions (e.g. `click()`, `select()`). Use Testing Library’s queries and userEvent APIs instead.
+
+> [!NOTE]
+> This rule does not report usage of `focus()` or `blur()`, because imperative usage (e.g. `getByText('focus me').focus()` or .`blur()`) is recommended over `fireEvent.focus()` or `fireEvent.blur()`.
+> If an element is not focusable, related assertions will fail, leading to more robust tests. See [Testing Library Events Guide](https://testing-library.com/docs/guide-events/) for more details.
 
 Examples of **incorrect** code for this rule:
 
@@ -16,6 +22,12 @@ Examples of **incorrect** code for this rule:
 import { screen } from '@testing-library/react';
 
 screen.getByText('Submit').closest('button'); // chaining with Testing Library methods
+```
+
+```js
+import { screen } from '@testing-library/react';
+
+screen.getByText('Submit').click();
 ```
 
 ```js
@@ -39,6 +51,12 @@ import { screen } from '@testing-library/react';
 
 const button = screen.getByRole('button');
 expect(button).toHaveTextContent('submit');
+```
+
+```js
+import { screen } from '@testing-library/react';
+
+userEvent.click(screen.getByText('Submit'));
 ```
 
 ```js
@@ -92,3 +110,7 @@ expect(container.firstChild).toMatchSnapshot();
 - [`Document`](https://developer.mozilla.org/en-US/docs/Web/API/Document)
 - [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 - [`Node`](https://developer.mozilla.org/en-US/docs/Web/API/Node)
+
+### Testing Library Guides
+
+- [Testing Library Events Guide](https://testing-library.com/docs/guide-events/)

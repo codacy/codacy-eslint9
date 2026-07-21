@@ -159,17 +159,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -201,7 +208,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -218,24 +225,6 @@ Specifies the sorting locales. Refer To [String.prototype.localeCompare() - loca
 - `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
 - `string[]` — An array of BCP 47 language tags.
 
-### [DEPRECATED] ignorePattern
-
-<sub>
-  type:
-  ```
-  {
-    allNamesMatchPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
-  }
-  ```
-</sub>
-<sub>default: `[]`</sub>
-
-Use the [useConfigurationIf.tagMatchesPattern](#useconfigurationif) option alongside [type: unsorted](#type) instead.
-
-Specifies names or patterns for JSX elements that should be ignored by this rule. This can be useful if you have specific components that you do not want to sort.
-
-You can specify their names or a regexp pattern to ignore, for example: `'^Table.+'` to ignore all JSX elements whose names begin with the word Table.
-
 ### partitionByNewLine
 
 <sub>default: `false`</sub>
@@ -244,17 +233,38 @@ When `true`, the rule will not sort members if there is an empty line between th
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
-See the [`groups`](#newlines-between-groups) option.
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
 
@@ -262,10 +272,19 @@ This option is only applicable when [`partitionByNewLine`](#partitionbynewline) 
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    allNamesMatchPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
-    tagMatchesPattern?: string | string[] | { pattern: string; flags: string } | { pattern: string; flags: string }[]
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    tagMatchesPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
   }
   ```
 </sub>
@@ -284,13 +303,22 @@ Example configuration:
     'error',
     {
       groups: ['r', 'g', 'b'], // Sort tag with colors keys by RGB
-      customGroups: {
-        r: '^r$',
-        g: '^g$',
-        b: '^b$',
-      },
+      customGroups: [
+        {
+          groupName: 'r',
+          elementNamePattern: '^r$',
+        },
+        {
+          groupName: 'g',
+          elementNamePattern: '^g$',
+        },
+        {
+          groupName: 'b',
+          elementNamePattern: '^b$',
+        },
+      ],
       useConfigurationIf: {
-        allNamesMatchPattern: '^r|g|b$',
+        allNamesMatchPattern: '^[rgb]$',
       },
     },
     {
@@ -320,10 +348,45 @@ Example configuration:
 }
 ```
 
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching a `JSXElement` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort JSX objects that are declared as `const` variables.
+```ts
+{
+  'perfectionist/sort-jsx-props': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'VariableDeclaration[kind="const"] JSXElement',
+      },
+      type: 'unsorted'
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>default: `[]`</sub>
 
@@ -339,16 +402,34 @@ All members of the groups in the array will be sorted together as if they were p
 
 Predefined groups are characterized by a single selector and potentially multiple modifiers. You may enter modifiers in any order, but the selector must always come at the end.
 
-##### List of selectors
+#### Selectors
 
-The only selector possible for this rule is `prop`.
+The only selector possible for this rule is `'prop'`.
 
 #### Modifiers
 
-- `multiline` — Matches multiline props.
-- `shorthand` — Matches shorthand props, which are used without a value, typically for boolean props.
+- `'multiline'` — Matches multiline props.
+- `'shorthand'` — Matches shorthand props, which are used without a value, typically for boolean props.
 
 Example: `shorthand-prop`.
+
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'multiline',
+    { group: 'shorthand', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
 
 #### Newlines between groups
 
@@ -360,10 +441,10 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
@@ -404,7 +485,7 @@ Current API:
 </sub>
 <sub>default: `[]`</sub>
 
-Defines custom groups to match specific JSX prop.
+Defines custom groups to match specific JSX props.
 
 A custom group definition may follow one of the two following interfaces:
 
@@ -414,14 +495,14 @@ interface CustomGroupDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc'; sortBy?: 'name' | 'value' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   selector?: string
   modifiers?: string[]
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
   elementValuePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
-
 ```
+
 A JSX prop will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -432,7 +513,7 @@ interface CustomGroupAnyOfDefinition {
   type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc'; sortBy?: 'name' | 'value' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       selector?: string
       modifiers?: string[]
@@ -451,10 +532,10 @@ A JSX prop will match a `CustomGroupAnyOfDefinition` group if it matches all the
 - `modifiers` — Filter on the `modifiers` of the element. (All the modifiers of the element must be present in that list)
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
 - `elementValuePattern` — If entered, will check that the value of the element matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -465,7 +546,7 @@ Custom groups have a higher priority than any predefined group.
 
 #### Example
 
-```js
+```ts
  {
    groups: [
      'multiline-prop',
@@ -505,12 +586,12 @@ Custom groups have a higher priority than any predefined group.
                   fallbackSort: { type: 'unsorted' },
                   ignoreCase: true,
                   specialCharacters: 'keep',
-                  ignorePattern: [],
                   partitionByNewLine: false,
                   newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   useConfigurationIf: {},
                   groups: [],
-                  customGroups: {},
+                  customGroups: [],
                 },
               ],
             },
@@ -536,12 +617,12 @@ Custom groups have a higher priority than any predefined group.
                 fallbackSort: { type: 'unsorted' },
                 ignoreCase: true,
                 specialCharacters: 'keep',
-                ignorePattern: [],
                 partitionByNewLine: false,
                 newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 useConfigurationIf: {},
                 groups: [],
-                customGroups: {},
+                customGroups: [],
               },
             ],
           },
@@ -563,4 +644,4 @@ This rule was introduced in [v0.2.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-jsx-props.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-jsx-props.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-jsx-props.test.ts)

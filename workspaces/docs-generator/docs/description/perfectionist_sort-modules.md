@@ -171,7 +171,7 @@ This rule sorts the following module members:
 The following elements are not sorted by this rule:
 - `imports` (see the `sort-imports` rule).
 - `'from' exports` (see the `sort-exports` rule).
-- any other `expression`, in order to ensure compilation and runtime behavior.
+- Any other `expression`, in order to ensure compilation and runtime behavior.
 
 ## Options
 
@@ -187,6 +187,7 @@ Specifies the sorting method.
 - `'natural'` — Sort items in a [natural](https://github.com/yobacca/natural-orderby) order (e.g., “item2” < “item10”).
 - `'line-length'` — Sort items by code line length (shorter lines first).
 - `'custom'` — Sort items using the alphabet specified in the [`alphabet`](#alphabet) option.
+- `'usage'` — Enforces items referenced by other items within the same [`group`](#groups) to appear before the items that reference them.
 - `'unsorted'` — Do not sort items. [`grouping`](#groups) and [`newlines behavior`](#newlinesbetween) are still enforced.
 
 ### order
@@ -202,17 +203,25 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'usage'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -244,7 +253,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -277,7 +286,7 @@ Enables the use of comments to separate the module members into logical groups. 
 
 <sub>default: `false`</sub>
 
-When `true`, the rule will not sort the members of a class if there is an empty line between them. This helps maintain the defined order of logically separated groups of members.
+When `true`, the rule will not sort the members of a module if there is an empty line between them. This helps maintain the defined order of logically separated groups of members.
 
 ```ts
 // Group 1
@@ -309,28 +318,76 @@ function editLastName(lastName: string) {}
 
 ### newlinesBetween
 
+<sub>
+  type: `number | 'ignore'`
+</sub>
 <sub>default: `'ignore'`</sub>
 
-Specifies how to handle new lines between module member groups.
+Specifies how to handle newlines between groups.
 
-- `ignore` — Do not report errors related to new lines between object type groups.
-- `always` — Enforce one new line between each group, and forbid new lines inside a group.
-- `never` — No new lines are allowed in object types.
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
 
-You can also enforce the newline behavior between two specific groups through the `groups` options.
-
-See the [`groups`](#newlines-between-groups) option.
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
 
 This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesBetweenOverloadSignatures
+
+<sub>
+  type: `number | 'ignore'`
+</sub>
+<sub>default: `0`</sub>
+
+Specifies how to handle newlines between overload signatures and the implementation of the same function.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each overload signature.
 
 ### groups
 
 <sub>
-  type: `Array<string | string[]>`
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'usage' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
 </sub>
 <sub>
   default:
-  ```
+  ```ts
   [
     'declare-enum',
     'export-enum',
@@ -394,7 +451,7 @@ Predefined groups are characterized by a single selector and potentially multipl
 
 ##### The `unknown` group
 
-Members that don’t fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
+Members that don't fit into any group specified in the `groups` option will be placed in the `unknown` group. If the `unknown` group is not specified in the `groups` option,
 the members will remain in their original order.
 
 ##### Behavior when multiple groups match an element
@@ -432,16 +489,17 @@ A custom group definition may follow one of the two following interfaces:
 ```ts
 interface CustomGroupDefinition {
   groupName: string
-  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'usage' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   selector?: string
   modifiers?: string[]
   elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
   decoratorNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
 }
 ```
+
 A module member will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
 
 or:
@@ -449,10 +507,10 @@ or:
 ```ts
 interface CustomGroupAnyOfDefinition {
   groupName: string
-  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'usage' | 'unsorted'
   order?: 'asc' | 'desc'
   fallbackSort?: { type: string; order?: 'asc' | 'desc' }
-  newlinesInside?: 'always' | 'never'
+  newlinesInside?: number | 'ignore'
   anyOf: Array<{
       selector?: string
       modifiers?: string[]
@@ -471,10 +529,10 @@ A module member will match a `CustomGroupAnyOfDefinition` group if it matches al
 - `modifiers` — Filter on the `modifiers` of the element. (All the modifiers of the element must be present in that list)
 - `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
 - `decoratorNamePattern` — If entered, will check that at least one `decorator` matches the pattern entered.
-- `type` — Overrides the [`type`](#type) option for that custom group. `unsorted` will not sort the group.
+- `type` — Overrides the [`type`](#type) option for that custom group.
 - `order` — Overrides the [`order`](#order) option for that custom group.
 - `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
-- `newlinesInside` — Enforces a specific newline behavior between elements of the group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
 
 #### Match importance
 
@@ -485,7 +543,7 @@ Custom groups have a higher priority than any predefined group.
 
 Example:
 
-```js
+```ts
  {
    groups: [
     ['export-interface', 'export-type'],
@@ -502,11 +560,11 @@ Example:
 +       anyOf: [                                  // [!code ++]
 +         {                                       // [!code ++]
 +            selector: 'type',                    // [!code ++]
-+            elementNamePattern: 'Input'.         // [!code ++]
++            elementNamePattern: 'Input',         // [!code ++]
 +         },                                      // [!code ++]
 +         {                                       // [!code ++]
 +            selector: 'interface',               // [!code ++]
-+            elementNamePattern: 'Input'.         // [!code ++]
++            elementNamePattern: 'Input',         // [!code ++]
 +         },                                      // [!code ++]
 +       ]                                         // [!code ++]
 +    },                                           // [!code ++]
@@ -515,11 +573,11 @@ Example:
 +       anyOf: [                                  // [!code ++]
 +         {                                       // [!code ++]
 +            selector: 'type',                    // [!code ++]
-+            elementNamePattern: 'Output'         // [!code ++]
++            elementNamePattern: 'Output',        // [!code ++]
 +         },                                      // [!code ++]
 +         {                                       // [!code ++]
 +            selector: 'interface',               // [!code ++]
-+            elementNamePattern: 'Output'         // [!code ++]
++            elementNamePattern: 'Output',        // [!code ++]
 +         },                                      // [!code ++]
 +       ]                                         // [!code ++]
 +    },                                           // [!code ++]
@@ -532,6 +590,24 @@ Example:
  }
 ```
 
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'class',
+    { group: 'enum', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
+
 #### Newlines between groups
 
 You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
@@ -542,14 +618,23 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
 
 ```ts
 {
-  newlinesBetween: 'always',
+  newlinesBetween: 1,
   groups: [
     'a',
-    { newlinesBetween: 'never' }, // Overrides the global newlinesBetween option
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
     'b',
   ]
 }
 ```
+
+### useExperimentalDependencyDetection
+
+<sub>default: `true`</sub>
+
+Specifies whether to use a new experimental dependency detection logic, with reduced false positives.
+
+- `true` — Use the new experimental dependency detection logic.
+- `false` — Use the legacy dependency detection logic.
 
 ## Usage
 
@@ -577,6 +662,7 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
                   partitionByComment: false,
                   partitionByNewLine: false,
                   newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
                   groups: [
                     'declare-enum',
                     'export-enum',
@@ -592,6 +678,7 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
                     'function'
                   ],
                   customGroups: [],
+                  useExperimentalDependencyDetection: true,
                 },
               ],
             },
@@ -620,6 +707,7 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
                 partitionByComment: false,
                 partitionByNewLine: false,
                 newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
                 groups: [
                   'declare-enum',
                   'export-enum',
@@ -635,6 +723,7 @@ This feature is only applicable when [`partitionByNewLine`](#partitionbynewline)
                   'function'
                 ],
                 customGroups: [],
+                useExperimentalDependencyDetection: true,
               },
             ],
           },
@@ -656,4 +745,4 @@ This rule was introduced in [v4.0.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-modules.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-modules.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-modules.test.ts)

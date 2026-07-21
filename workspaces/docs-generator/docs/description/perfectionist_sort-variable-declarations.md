@@ -88,7 +88,7 @@ Specifies the sorting method.
 - `'natural'` — Sort items in a [natural](https://github.com/yobacca/natural-orderby) order (e.g., “item2” < “item10”).
 - `'line-length'` — Sort items by code line length (shorter lines first).
 - `'custom'` — Sort items using the alphabet specified in the [`alphabet`](#alphabet) option.
-- `'unsorted'` — Do not sort items.
+- `'unsorted'` — Do not sort items. [`grouping`](#groups) and [`newlines behavior`](#newlinesbetween) are still enforced.
 
 ### order
 
@@ -103,17 +103,24 @@ Specifies whether to sort items in ascending or descending order.
 
 <sub>
   type:
-  ```
+  ```ts
   {
-    type: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted'
+    type:
+      | 'alphabetical'
+      | 'natural'
+      | 'line-length'
+      | 'custom'
+      | 'subgroup-order'
+      | 'unsorted'
     order?: 'asc' | 'desc'
   }
   ```
 </sub>
 <sub>default: `{ type: 'unsorted' }`</sub>
 
-Specifies fallback sort options for elements that are equal according to the primary sort
-[`type`](#type).
+Specifies fallback sort options for elements that are equal according to the primary sort [`type`](#type).
+
+You can also sort by subgroup order (nested groups in the [`groups`](#groups) option) using `subgroup-order`.
 
 Example: enforce alphabetical sort between two elements with the same length.
 ```ts
@@ -145,7 +152,7 @@ Specifies whether sorting should be case-sensitive.
 
 ### specialCharacters
 
-<sub>default: `keep`</sub>
+<sub>default: `'keep'`</sub>
 
 Specifies whether to trim, remove, or keep special characters before sorting.
 
@@ -161,6 +168,82 @@ Specifies the sorting locales. Refer To [String.prototype.localeCompare() - loca
 
 - `string` — A BCP 47 language tag (e.g. `'en'`, `'en-US'`, `'zh-CN'`).
 - `string[]` — An array of BCP 47 language tags.
+
+### useConfigurationIf
+
+<sub>
+  type:
+  ```ts
+  {
+    allNamesMatchPattern?:
+      | string
+      | string[]
+      | { pattern: string; flags: string }
+      | { pattern: string; flags: string }[]
+    matchesAstSelector?: string
+  }
+  ```
+</sub>
+<sub>default: `{}`</sub>
+
+Specifies filters to match a particular options configuration for a given variable declaration.
+
+The first matching options configuration will be used. If no configuration matches, the default options configuration will be used.
+
+- `allNamesMatchPattern` — A regexp pattern that all variable declarator names must match.
+
+Example configuration:
+```ts
+{
+  'perfectionist/sort-variable-declarations': [
+    'error',
+    {
+      groups: ['r', 'g', 'b'], // Sort colors by RGB
+      customGroups: [
+        {
+          elementNamePattern: '^r$',
+          groupName: 'r',
+        },
+        {
+          elementNamePattern: '^g$',
+          groupName: 'g',
+        },
+        {
+          elementNamePattern: '^b$',
+          groupName: 'b',
+        },
+      ],
+      useConfigurationIf: {
+        allNamesMatchPattern: '^[rgb]$',
+      },
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
+
+- `matchesAstSelector` — An [AST selector](https://eslint.org/docs/latest/extend/selectors) matching a `VariableDeclaration` node.
+To avoid unexpected behavior, do not use `:exit` or `:enter` pseudo-selectors.
+
+Example configuration: don't sort `let` variable declarations.
+```ts
+{
+  'perfectionist/sort-variable-declarations': [
+    'error',
+    {
+      useConfigurationIf: {
+        matchesAstSelector: 'VariableDeclaration[kind="let"]',
+      },
+      type: 'unsorted'
+    },
+    {
+      type: 'alphabetical' // Fallback configuration
+    }
+  ],
+}
+```
 
 ### partitionByComment
 
@@ -196,6 +279,187 @@ const
 
 Each group of variables (separated by empty lines) is treated independently, and the order within each group is preserved.
 
+### newlinesBetween
+
+<sub>
+  type: `number | 'ignore'`
+</sub>
+<sub>default: `'ignore'`</sub>
+
+Specifies how to handle newlines between groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each group.
+
+You can also enforce the newline behavior between two specific groups through the [`groups`](#newlines-between-groups)
+option.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### newlinesInside
+
+<sub>
+  type: `number | 'ignore' | 'newlinesBetween'`
+</sub>
+<sub>default: `'newlinesBetween'`</sub>
+
+Specifies how to handle newlines inside groups.
+
+- `'ignore'` — Do not report errors related to newlines.
+- `'newlinesBetween'` — [DEPRECATED] If [`newlinesBetween`](#newlinesbetween) is `'ignore'`, then `'ignore'`, otherwise `0`.
+- `0` — No newlines are allowed.
+- Any other number — Enforce this number of newlines between each element of the same group.
+
+You can also enforce the newline behavior inside a given group through the [`groups`](#group-with-overridden-settings)
+or [`customGroups`](#customgroups) options.
+
+This option is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+### groups
+
+<sub>
+  type:
+  ```ts
+    Array<
+      | string
+      | string[]
+      | { newlinesBetween: number | 'ignore' }
+      | {
+          group: string | string[];
+          type?: 'alphabetical' | 'natural' | 'line-length' | 'custom' | 'unsorted';
+          order?: 'asc' | 'desc';
+          fallbackSort?: { type: string; order?: 'asc' | 'desc' };
+          newlinesInside?: number | 'ignore';
+        }
+    >
+  ```
+</sub>
+<sub>default: `[]`</sub>
+
+Specifies a list of groups for sorting. Groups help organize elements into categories.
+
+Each element will be assigned a single group specified in the `groups` option (or the `unknown` group if no match is found).
+The order of items in the `groups` option determines how groups are ordered.
+
+Within a given group, members will be sorted according to the `type`, `order`, `ignoreCase`, etc. options.
+
+Individual groups can be combined together by placing them in an array. The order of groups in that array does not matter.
+All members of the groups in the array will be sorted together as if they were part of a single group.
+
+Predefined groups are characterized by a selector.
+
+##### Selectors
+
+- `'initialized'` — Initialized declarations.
+- `'uninitialized'` — Uninitialized declarations.
+
+#### Group with overridden settings
+
+You may directly override options for a specific group by using an object with the `group` property and other option overrides.
+
+- `type` — Overrides the [`type`](#type) option for that group.
+- `order` — Overrides the [`order`](#order) option for that group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that group.
+
+```ts
+{
+  groups: [
+    'initialized',
+    { group: 'uninitialized', type: 'unsorted' }, // Elements from this group will not be sorted
+  ]
+}
+```
+
+#### Newlines between groups
+
+You may place `newlinesBetween` objects between your groups to enforce the newline behavior between two specific groups.
+
+See the [`newlinesBetween`](#newlinesbetween) option.
+
+This feature is only applicable when [`partitionByNewLine`](#partitionbynewline) is `false`.
+
+```ts
+{
+  newlinesBetween: 1,
+  groups: [
+    'a',
+    { newlinesBetween: 0 }, // Overrides the global newlinesBetween option
+    'b',
+  ]
+}
+```
+
+### customGroups
+
+<sub>
+  type: `Array<CustomGroupDefinition | CustomGroupAnyOfDefinition>`
+</sub>
+<sub>default: `[]`</sub>
+
+Defines custom groups to match specific variable declaration members.
+
+A custom group definition may follow one of the two following interfaces:
+
+```ts
+interface CustomGroupDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  selector?: string
+  elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+}
+```
+
+A declaration will match a `CustomGroupDefinition` group if it matches all the filters of the custom group's definition.
+
+or:
+
+```ts
+interface CustomGroupAnyOfDefinition {
+  groupName: string
+  type?: 'alphabetical' | 'natural' | 'line-length' | 'unsorted'
+  order?: 'asc' | 'desc'
+  fallbackSort?: { type: string; order?: 'asc' | 'desc' }
+  newlinesInside?: number | 'ignore'
+  anyOf: Array<{
+      selector?: string
+      elementNamePattern?: string | string[] | { pattern: string; flags?: string } | { pattern: string; flags?: string }[]
+  }>
+}
+```
+
+A declaration will match a `CustomGroupAnyOfDefinition` group if it matches all the filters of at least one of the `anyOf` items.
+
+#### Attributes
+
+- `groupName` — The group's name, which needs to be put in the [`groups`](#groups) option.
+- `selector` — Filter on the `selector` of the element.
+- `elementNamePattern` — If entered, will check that the name of the element matches the pattern entered.
+- `type` — Overrides the [`type`](#type) option for that custom group.
+- `order` — Overrides the [`order`](#order) option for that custom group.
+- `fallbackSort` — Overrides the [`fallbackSort`](#fallbacksort) option for that custom group.
+- `newlinesInside` — Overrides the [`newlinesInside`](#newlinesinside) option for that custom group.
+
+#### Match importance
+
+The `customGroups` list is ordered:
+The first custom group definition that matches an element will be used.
+
+Custom groups have a higher priority than any predefined group.
+
+### useExperimentalDependencyDetection
+
+<sub>default: `true`</sub>
+
+Specifies whether to use a new experimental dependency detection logic, with reduced false positives.
+
+- `true` — Use the new experimental dependency detection logic.
+- `false` — Use the legacy dependency detection logic.
+
 ## Usage
 
 <CodeTabs
@@ -221,6 +485,11 @@ Each group of variables (separated by empty lines) is treated independently, and
                   specialCharacters: 'keep',
                   partitionByNewLine: false,
                   partitionByComment: false,
+                  newlinesBetween: 'ignore',
+                  newlinesInside: 'ignore',
+                  groups: [],
+                  customGroups: [],
+                  useExperimentalDependencyDetection: true,
                 },
               ],
             },
@@ -248,6 +517,11 @@ Each group of variables (separated by empty lines) is treated independently, and
                 specialCharacters: 'keep',
                 partitionByNewLine: false,
                 partitionByComment: false,
+                newlinesBetween: 'ignore',
+                newlinesInside: 'ignore',
+                groups: [],
+                customGroups: [],
+                useExperimentalDependencyDetection: true,
               },
             ],
           },
@@ -269,5 +543,5 @@ This rule was introduced in [v3.0.0](https://github.com/azat-io/eslint-plugin-pe
 ## Resources
 
 - [Rule source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/rules/sort-variable-declarations.ts)
-- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/sort-variable-declarations.test.ts)
+- [Test source](https://github.com/azat-io/eslint-plugin-perfectionist/blob/main/test/rules/sort-variable-declarations.test.ts)
 

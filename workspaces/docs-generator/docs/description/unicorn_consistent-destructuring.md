@@ -1,4 +1,6 @@
-# Use destructured variables over properties
+# consistent-destructuring
+
+📝 Use destructured variables over properties.
 
 🚫 This rule is _disabled_ in the following [configs](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config): ✅ `recommended`, ☑️ `unopinionated`.
 
@@ -42,6 +44,14 @@ const {
 	a: {b},
 } = foo;
 console.log(foo.a.c);
+```
+
+```js
+// ✅
+const {
+	a: {b, c},
+} = foo;
+console.log(c);
 ```
 
 ```js

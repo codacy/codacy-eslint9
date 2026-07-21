@@ -1,6 +1,9 @@
-# Disallow using `async`/`await` in Cypress `before` methods (`cypress/no-async-before`)
+# cypress/no-async-before
+
+📝 Disallow using `async`/`await` in Cypress `before` methods.
 
 <!-- end auto-generated rule header -->
+
 Cypress commands that return a promise may cause side effects in `before`/`beforeEach` hooks, possibly causing unexpected behavior.
 
 ## Rule Details
@@ -11,7 +14,7 @@ Examples of **incorrect** code for this rule:
 
 ```js
 describe('my feature', () => {
-  before('my test case', async ()  => {
+  before('my test case', async () => {
     await cy.get('.myClass')
     // other operations
   })
@@ -20,10 +23,8 @@ describe('my feature', () => {
 
 ```js
 describe('my feature', () => {
-  before('my test case', async ()  => {
-    cy
-    .get('.myClass')
-    .click()
+  before('my test case', async () => {
+    cy.get('.myClass').click()
 
     await someAsyncFunction()
   })
@@ -34,7 +35,7 @@ Examples of **correct** code for this rule:
 
 ```js
 describe('my feature', () => {
-  before('my test case', ()  => {
+  before('my test case', () => {
     cy.get('.myClass')
     // other operations
   })
@@ -47,5 +48,5 @@ If there are genuine use-cases for using `async/await` in your `before` hooks th
 
 ## Further Reading
 
-- [Mixing Async and Sync code](https://on.cypress.io/guides/core-concepts/introduction-to-cypress#Mixing-Async-and-Sync-code)
-- [Commands Are Asynchronous](https://on.cypress.io/guides/core-concepts/introduction-to-cypress.html#Commands-Are-Asynchronous)
+- [Mixing Async and Sync code](https://on.cypress.io/app/core-concepts/introduction-to-cypress#Mixing-Async-and-Sync-code)
+- [Commands Are Asynchronous](https://on.cypress.io/app/core-concepts/introduction-to-cypress.html#Commands-Are-Asynchronous)

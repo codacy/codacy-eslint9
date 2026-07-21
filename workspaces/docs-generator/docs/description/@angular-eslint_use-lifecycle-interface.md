@@ -15,10 +15,16 @@
 
 # `@angular-eslint/use-lifecycle-interface`
 
-Ensures that classes implement lifecycle interfaces corresponding to the declared lifecycle methods. See more at https://angular.dev/style-guide#style-09-01
+Ensures that classes implement lifecycle interfaces corresponding to the declared lifecycle methods. See more at https://angular.dev/style-guide#use-lifecycle-hook-interfaces
 
 - Type: suggestion
 - 🔧 Supports autofix (`--fix`)
+
+<br>
+
+## Rationale
+
+Implementing lifecycle interfaces (like OnInit, OnDestroy, AfterViewInit) provides TypeScript compile-time checking to ensure you've spelled the lifecycle method names correctly and used the right method signatures. For example, if you typo 'ngOnInit' as 'ngOninit', TypeScript will catch this error if your class implements OnInit. The interfaces also serve as self-documentation, making it immediately clear which lifecycle hooks a component uses. While Angular will still call correctly-named lifecycle methods even without the interface, using the interface leverages TypeScript's type safety to catch errors earlier in development.
 
 <br>
 
@@ -199,6 +205,139 @@ class Test extends Component {
 }
 ```
 
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Directive()
+class FoobarBase implements OnDestroy {
+  ngOnDestroy(): void {
+    /* some base logic here */
+  }
+}
+
+@Component()
+class FoobarComponent extends FoobarBase {
+  ngOnDestroy(): void {
+  ~~~~~~~~~~~
+    super.ngOnDestroy();
+    /* some concrete logic here */
+  }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Service()
+class Test {
+  ngOnDestroy() {
+  ~~~~~~~~~~~
+  }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Component()
+class Test<T> {
+  ngOnInit() {
+  ~~~~~~~~
+  }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ❌ Invalid Code
+
+```ts
+@Injectable()
+class Test<A, B extends C = D> {
+  ngOnInit() {
+  ~~~~~~~~
+  }
+}
+```
+
 </details>
 
 <br>
@@ -354,6 +493,122 @@ class Test extends Component implements ng.OnInit, ng.OnDestroy  {
 
 ```ts
 class Test {}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Directive()
+class FoobarBase implements OnDestroy {
+  ngOnDestroy(): void {
+    /* some base logic here */
+  }
+}
+
+@Component()
+class FoobarComponent extends FoobarBase {
+  override ngOnDestroy(): void {
+    super.ngOnDestroy();
+    /* some concrete logic here */
+  }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+class BaseClass {
+  ngOnInit(): void {
+    /* base initialization */
+  }
+}
+
+@Component()
+class DerivedComponent extends BaseClass {
+  override ngOnInit(): void {
+    super.ngOnInit();
+    /* derived initialization */
+  }
+}
+```
+
+<br>
+
+---
+
+<br>
+
+#### Default Config
+
+```json
+{
+  "rules": {
+    "@angular-eslint/use-lifecycle-interface": [
+      "error"
+    ]
+  }
+}
+```
+
+<br>
+
+#### ✅ Valid Code
+
+```ts
+@Directive()
+class BaseDirective implements OnInit {
+  ngOnInit(): void {
+    /* base initialization */
+  }
+}
+
+@Component()
+class DerivedComponent extends BaseDirective {
+  override ngOnInit(): void {
+    super.ngOnInit();
+    /* derived initialization */
+  }
+}
 ```
 
 </details>

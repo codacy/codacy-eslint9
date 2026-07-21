@@ -1,9 +1,7 @@
 ---
-title: space-infix-ops
-rule_type: layout
 ---
 
-# js/space-infix-ops
+# space-infix-ops
 
 While formatting preferences are very personal, a number of style guides require spaces around operators, such as:
 
@@ -44,8 +42,7 @@ Examples of **incorrect** code for this rule:
 ::: incorrect
 
 ```js
-/*eslint space-infix-ops: "error"*/
-/*eslint-env es6*/
+/* eslint @stylistic/space-infix-ops: "error" */
 
 a+b
 
@@ -69,8 +66,7 @@ Examples of **correct** code for this rule:
 ::: correct
 
 ```js
-/*eslint space-infix-ops: "error"*/
-/*eslint-env es6*/
+/* eslint @stylistic/space-infix-ops: "error" */
 
 a + b
 
@@ -86,6 +82,14 @@ function foo(a = 0) { }
 ```
 
 :::
+
+### `ignoreTypes`
+
+Set the `ignoreTypes` option to `true` (default is `false`) to allow write `string|number` without space.
+
+```ts
+var foo: string|number = bar;
+```
 
 ## When Not To Use It
 

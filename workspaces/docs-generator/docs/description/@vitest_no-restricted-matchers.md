@@ -1,4 +1,6 @@
-# Disallow the use of certain matchers (`vitest/no-restricted-matchers`)
+# vitest/no-restricted-matchers
+
+📝 Disallow the use of certain matchers.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -8,19 +10,17 @@
 
 This rule disallows the use of certain matchers.
 
-
-### Forexample
-
+### For Example
 
 ### Options
 
 ```json
 {
   "vitest/no-restricted-matchers": [
-	"error",
-	{
-	  "not": null,
-	}
+    "error",
+    {
+      "not": null
+    }
   ]
 }
 ```

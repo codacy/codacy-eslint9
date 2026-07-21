@@ -1,4 +1,6 @@
-# Disallow specific `vi.` methods (`vitest/no-restricted-vi-methods`)
+# vitest/no-restricted-vi-methods
+
+📝 Disallow specific `vi.` methods.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
@@ -36,18 +38,18 @@ For example:
 Examples of **incorrect** code for this rule with the above configuration
 
 ```js
-vi.useFakeTimers();
+vi.useFakeTimers()
 it('calls the callback after 1 second via advanceTimersByTime', () => {
   // ...
 
-  vi.advanceTimersByTime(1000);
+  vi.advanceTimersByTime(1000)
 
   // ...
-});
+})
 
 test('plays video', () => {
-  const spy = vi.spyOn(video, 'play');
+  const spy = vi.spyOn(video, 'play')
 
   // ...
-});
+})
 ```

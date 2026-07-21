@@ -1,6 +1,10 @@
-# Disallow `Array#reduce()` and `Array#reduceRight()`
+# no-array-reduce
+
+📝 Disallow `Array#reduce()` and `Array#reduceRight()`.
 
 💼🚫 This rule is enabled in the ✅ `recommended` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config). This rule is _disabled_ in the ☑️ `unopinionated` [config](https://github.com/sindresorhus/eslint-plugin-unicorn#recommended-config).
+
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
 <!-- end auto-generated rule header -->
 <!-- Do not manually modify this header. Run: `npm run fix:eslint-docs` -->
@@ -11,7 +15,7 @@ It's only somewhat useful in the rare case of summing up numbers, which is allow
 
 Use `eslint-disable` comment if you really need to use it or disable the rule entirely if you prefer functional programming.
 
-This rule is not fixable.
+This rule can automatically fix common direct `Array#reduce()` calls on local `const` array bindings used as a single variable initializer. Inline reducer callbacks and local `const` callback identifiers declared before the `reduce` call with simple inline-compatible bodies are fixed. More complex cases, `Array#reduceRight()`, and `Array#reduce.call()`/`Array#reduce.apply()` are reported without a fix.
 
 ## Examples
 
@@ -28,11 +32,14 @@ array.reduce(reducer);
 // ❌
 array.reduce(reducer, initialValue);
 
+// ❌
+[].reduce.apply(array, [reducer, initialValue]);
+
 // ✅
 let result = initialValue;
 
-for (const element of array) {
-	result += element;
+for (const [index, element] of array.entries()) {
+	result = reducer(result, element, index, array);
 }
 ```
 
@@ -48,24 +55,22 @@ array.reduceRight(reducer, initialValue);
 // ✅
 let result = initialValue;
 
-for (const element of array.toReversed()) { // Equivalent to .reduceRight()
-	result += element;
+for (let index = array.length - 1; index >= 0; index--) {
+	const element = array[index];
+	result = reducer(result, element, index, array);
 }
 ```
 
 ```js
 // ❌
 [].reduce.call(array, reducer);
-```
 
-```js
-// ❌
-[].reduce.apply(array, [reducer, initialValue]);
-```
-
-```js
 // ❌
 Array.prototype.reduce.call(array, reducer);
+
+// ✅
+// eslint-disable-next-line unicorn/no-array-reduce
+array.reduce(reducer);
 ```
 
 ## Options
@@ -89,4 +94,11 @@ array.reduce((total, item) => total + item)
 /* eslint unicorn/no-array-reduce: ["error", {"allowSimpleOperations": false}] */
 // ❌
 array.reduce((total, item) => total + item)
+
+// ✅
+let total = 0;
+
+for (const item of array) {
+	total += item;
+}
 ```

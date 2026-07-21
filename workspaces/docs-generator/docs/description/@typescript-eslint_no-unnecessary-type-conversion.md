@@ -1,0 +1,75 @@
+---
+description: 'Disallow conversion idioms when they do not change the type or value of the expression.'
+---
+
+> 🛑 This file is source code, not the primary documentation location! 🛑
+>
+> See **https://typescript-eslint.io/rules/no-unnecessary-type-conversion** for documentation.
+
+JavaScript provides several commonly used idioms to convert values to a specific type:
+
+- Primitive coercion (e.g. `Boolean(value)`, `String(value)`): using a built-in primitive function
+- String concatenation (e.g. `value + ''`): turning a value into a string
+- Unary coercion (e.g. `+value`, `!!value`): using a built-in operator
+- The `.toString()` method defined on many types
+
+These conversions are unnecessary if the value is already of that type.
+
+## Examples
+
+<!--tabs-->
+
+#### ❌ Incorrect
+
+```ts
+String('123');
+'123'.toString();
+'' + '123';
+'123' + '';
+
+Number(123);
++123;
+~~123;
+
+Boolean(true);
+!!true;
+
+BigInt(BigInt(1));
+
+let str = '123';
+str += '';
+```
+
+#### ✅ Correct
+
+```ts
+function foo(bar: string | number) {
+  String(bar);
+  bar.toString();
+  '' + bar;
+  bar + '';
+
+  Number(bar);
+  +bar;
+  ~~bar;
+
+  Boolean(bar);
+  !!bar;
+
+  BigInt(1);
+
+  bar += '';
+}
+```
+
+<!--/tabs-->
+
+## When Not To Use It
+
+If you don't care about having no-op type conversions in your code, then you can turn off this rule.
+If you have types which are not accurate, then this rule might cause you to remove conversions that you actually do need.
+
+## Related To
+
+- [no-unnecessary-type-assertion](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-unnecessary-type-assertion.mdx)
+- [no-useless-template-literals](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-useless-template-literals.mdx)

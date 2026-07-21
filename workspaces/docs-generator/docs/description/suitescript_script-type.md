@@ -46,23 +46,24 @@ Valid tag values are found below.
 
 ## Script Types
 
+- BankConnectivityPlugin
 - BundleInstallationScript
 - ClientScript
+- CustomGLPlugin
+- DatasetBuilderPlugin
+- FiConnectivityPlugin
+- FiParserPlugin
 - MapReduceScript
 - MassUpdateScript
+- PluginTypeImpl
 - Portlet
 - Restlet
 - ScheduledScript
 - SDFInstallationScript
 - Suitelet
 - UserEventScript
+- WorkbookBbuilderPlugin
 - WorkflowActionScript
-- bankConnectivityPlugin
-- datasetbuilderplugin
-- fiConnectivityPlugin
-- fiParserPlugin
-- workbookbuilderplugin
-- plugintypeimpl
 
 ## Version
 

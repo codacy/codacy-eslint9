@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.22
+FROM node:lts-alpine3.24
 
 WORKDIR /app
 
@@ -10,8 +10,9 @@ COPY --chown=docker:docker --chmod=0644 package.json package-lock.json tsconfig.
 COPY --chown=docker:docker --chmod=0555 entrypoint.sh entrypoint.sh
 
 # Install packages to root and workspaces
-RUN npm install --legacy-peer-dep \
-    && npm install --legacy-peer-dep --workspaces
+RUN npm install --ignore-scripts \
+    npm install --ignore-scripts --workspaces
+
 # Generate documentation
 RUN npm start -w docs-generator \
     && mv workspaces/docs-generator/docs /docs \

@@ -1,9 +1,9 @@
 ---
-title: no-whitespace-before-property
-rule_type: layout
+related_rules:
+  - dot-location
 ---
 
-# js/no-whitespace-before-property
+# no-whitespace-before-property
 
 JavaScript allows whitespace between objects and their properties. However, inconsistent spacing can make code harder to read and can lead to errors.
 
@@ -26,8 +26,8 @@ Examples of **incorrect** code for this rule:
 
 ::: incorrect
 
-```js
-/*eslint no-whitespace-before-property: "error"*/
+```ts
+/* eslint @stylistic/no-whitespace-before-property: "error" */
 
 foo [bar]
 
@@ -42,6 +42,12 @@ foo. bar()
 
 foo
   .bar(). baz()
+
+type Foo = Bar .Baz
+
+type Foo = Bar [Baz]
+
+type Foo = import('foo') .Bar
 ```
 
 :::
@@ -50,8 +56,8 @@ Examples of **correct** code for this rule:
 
 ::: correct
 
-```js
-/*eslint no-whitespace-before-property: "error"*/
+```ts
+/* eslint @stylistic/no-whitespace-before-property: "error" */
 
 foo.bar
 
@@ -71,6 +77,12 @@ foo
 foo.
   bar().
   baz()
+
+type Foo = Bar.Baz
+
+type Foo = Bar[Baz]
+
+type Foo = import('foo').Bar
 ```
 
 :::

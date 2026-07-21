@@ -3,15 +3,19 @@
 # <code>no-undefined-types</code>
 
 * [Options](#user-content-no-undefined-types-options)
+    * [`checkUsedTypedefs`](#user-content-no-undefined-types-options-checkusedtypedefs)
+    * [`definedTypes`](#user-content-no-undefined-types-options-definedtypes)
+    * [`disableReporting`](#user-content-no-undefined-types-options-disablereporting)
+    * [`markVariablesAsUsed`](#user-content-no-undefined-types-options-markvariablesasused)
 * [Context and settings](#user-content-no-undefined-types-context-and-settings)
 * [Failing examples](#user-content-no-undefined-types-failing-examples)
 * [Passing examples](#user-content-no-undefined-types-passing-examples)
 
 
-Checks that types in jsdoc comments are defined. This can be used to check
+Checks that types in JSDoc comments are defined. This can be used to check
 unimported types.
 
-When enabling this rule, types in jsdoc comments will resolve as used
+When enabling this rule, types in JSDoc comments will resolve as used
 variables, i.e. will not be marked as unused by `no-unused-vars`.
 
 In addition to considering globals found in code (or in ESLint-indicated
@@ -46,7 +50,7 @@ types for a tag, the function will silently ignore that tag, leaving it to
 the `valid-types` rule to report parsing errors.
 
 If you define your own tags, you can use `settings.jsdoc.structuredTags`
-to indicate that a tag's `name` is "namepath-defining" (and should prevent
+to indicate that a tag's `name` is "name-defining" or "namepath-defining" (and should prevent
 reporting on use of that namepath elsewhere) and/or that a tag's `type` is
 `false` (and should not be checked for types). If the `type` is an array, that
 array's items will be considered as defined for the purposes of that tag.
@@ -55,18 +59,39 @@ array's items will be considered as defined for the purposes of that tag.
 <a name="no-undefined-types-options"></a>
 ## Options
 
-An option object may have the following keys:
+A single options object has the following properties.
 
-- `definedTypes` - This array can be populated to indicate other types which
-  are automatically considered as defined (in addition to globals, etc.).
-  Defaults to an empty array.
-- `markVariablesAsUsed` - Whether to mark variables as used for the purposes
-  of the `no-unused-vars` rule when they are not found to be undefined.
-  Defaults to `true`. May be set to `false` to enforce a practice of not
-  importing types unless used in code.
-- `disableReporting` - Whether to disable reporting of errors. Defaults to
-  `false`. This may be set to `true` in order to take advantage of only
-  marking defined variables as used.
+<a name="user-content-no-undefined-types-options-checkusedtypedefs"></a>
+<a name="no-undefined-types-options-checkusedtypedefs"></a>
+### <code>checkUsedTypedefs</code>
+
+Whether to check typedefs for use within the file
+
+<a name="user-content-no-undefined-types-options-definedtypes"></a>
+<a name="no-undefined-types-options-definedtypes"></a>
+### <code>definedTypes</code>
+
+This array can be populated to indicate other types which
+are automatically considered as defined (in addition to globals, etc.).
+Defaults to an empty array.
+
+<a name="user-content-no-undefined-types-options-disablereporting"></a>
+<a name="no-undefined-types-options-disablereporting"></a>
+### <code>disableReporting</code>
+
+Whether to disable reporting of errors. Defaults to
+`false`. This may be set to `true` in order to take advantage of only
+marking defined variables as used or checking used typedefs.
+
+<a name="user-content-no-undefined-types-options-markvariablesasused"></a>
+<a name="no-undefined-types-options-markvariablesasused"></a>
+### <code>markVariablesAsUsed</code>
+
+Whether to mark variables as used for the purposes
+of the `no-unused-vars` rule when they are not found to be undefined.
+Defaults to `true`. May be set to `false` to enforce a practice of not
+importing types unless used in code.
+
 
 <a name="user-content-no-undefined-types-context-and-settings"></a>
 <a name="no-undefined-types-context-and-settings"></a>
@@ -79,7 +104,7 @@ An option object may have the following keys:
 |Aliases|`constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`|
 |Closure-only|`package`, `private`, `protected`, `public`, `static`|
 |Recommended|true|
-|Options|`definedTypes`, `disableReporting`, `markVariablesAsUsed`|
+|Options|`checkUsedTypedefs`, `definedTypes`, `disableReporting`, `markVariablesAsUsed`|
 |Settings|`preferredTypes`, `mode`, `structuredTags`|
 
 
@@ -337,6 +362,71 @@ const a = new Todo();
  * @type {Another}
  */
 // Message: The type 'BadImportIgnoredByThisRule' is undefined.
+
+class Filler {
+  /**
+   * {@link Filler.methodTwo} non-existent
+   * {@link Filler.nonStaticMethodTwo} non-existent too
+   * {@link Filler.methodThree} existent
+   * @returns {string} A string indicating the method's purpose.
+   */
+  methodOne() {
+    return 'Method Four';
+  }
+
+  methodThree() {}
+}
+// Message: The type 'Filler.methodTwo' is undefined.
+
+/** @typedef {string} SomeType */
+/** @typedef {number} AnotherType */
+
+/** @type {AnotherType} */
+// "jsdoc/no-undefined-types": ["error"|"warn", {"checkUsedTypedefs":true}]
+// Message: This typedef was not used within the file
+
+/** @typedef {'cwd'} */
+let MyOwnType1
+
+/**
+ * @param {`${MyOwnType1}-${string}`} tagName
+ * @param {CustomElementConstructor} component
+ */
+let defineCustomElement = (tagName, component) => {
+  customElements.define(tagName, component)
+}
+
+/** @typedef {string} */
+let MyOwnType2
+
+/**
+ * @param {<T extends unknown>(element: MyOwnType2) => T} callback
+ * @returns {void}
+ */
+let getValue = (callback) => {
+  callback(`hello`)
+}
+// Message: The type 'CustomElementConstructor' is undefined.
+
+class MyClass {
+  static Existent = () =>{}
+}
+/** @type {MyClass.nonExistent} */
+const a = 1;
+// Message: The type 'MyClass.nonExistent' is undefined.
+
+declare namespace MyNamespace {
+  type MyType = string;
+  interface FooBar {
+    foobiz: string;
+  }
+}
+/** @type {MyNamespace.MyType} */
+const a = 's';
+/** @type {MyNamespace.OtherType} */
+const b = 's';
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyNamespace"]}]
+// Message: The type 'MyNamespace.OtherType' is undefined.
 ````
 
 
@@ -865,5 +955,328 @@ quux();
 /**
  * @type {Linters}
  */
+
+class Filler {
+  static methodOne () {
+    return 'Method One';
+  }
+
+  nonStaticMethodTwo (param) {
+    return `Method Two received: ${param}`;
+  }
+
+  /**
+   * {@link methodOne} shouldn't report eslint error
+   * {@link nonStaticMethodTwo} also shouldn't report eslint error
+   * @returns {number} A number representing the answer to everything.
+   */
+  static methodThree () {
+    return 42;
+  }
+
+  /**
+   * {@link Filler.methodOne} doesn't report eslint error
+   * {@link Filler.nonStaticMethodTwo} also doesn't report eslint error
+   * @returns {string} A string indicating the method's purpose.
+   */
+  methodFour() {
+    return 'Method Four';
+  }
+}
+
+class Foo {
+  foo = "foo";
+  /**
+   * Something related to {@link foo}
+   * @returns {string} Something awesome
+   */
+  bar() {
+    return "bar";
+  }
+}
+
+/* globals SomeGlobal, AnotherGlobal */
+import * as Ably from "ably"
+import Testing, { another as Another, stillMore as StillMore } from "testing"
+
+export class Code {
+    /** @type {Ably.Realtime} */
+    static #client
+
+    /** @type {Testing.SomeMethod} */
+    static #test
+
+    /** @type {Another.AnotherMethod} */
+    static #test2
+
+    /** @type {StillMore.AnotherMethod} */
+    static #test3
+
+    /** @type {AnotherGlobal.AnotherMethod} */
+    static #test4
+
+    /** @type {AGlobal.AnotherMethod} */
+    static #test5
+}
+
+import jsdoc from "eslint-plugin-jsdoc";
+
+/**
+ * @import { Linter } from "eslint"
+ */
+
+/**
+ * @type {Linter.Config}
+ */
+export default [
+  {
+    plugins: { jsdoc },
+    rules: {
+      "jsdoc/no-undefined-types": "error"
+    }
+  }
+];
+
+/**
+ * @typedef {object} Abc
+ * @property {string} def Some string
+ */
+
+/**
+ * @type {Abc['def']}
+ */
+export const a = 'someString';
+
+export interface SomeInterface {
+  someProp: unknown;
+}
+
+/**
+ * {@link SomeInterface.someProp}
+ * @returns something
+ */
+
+class SomeClass {
+  someMethod () {}
+}
+
+/**
+ * {@link SomeClass.someMethod}
+ * @returns something
+ */
+
+/**
+ * The internationalized collator object that will be used.
+ * Intl.Collator(null, {numeric: true, sensitivity: 'base'}) is used by default;.
+ *
+ * @member {Intl.Collator}
+ */
+
+const otherFile = require('./other-file');
+
+/**
+ * A function
+ * @param {otherFile.MyType} a
+ */
+function f(a) {}
+
+/**@typedef {import('restify').Request} Request */
+/**@typedef {import('./types').helperError} helperError */
+
+/**
+ * @param {Request} b
+ * @param {helperError} c
+ */
+function a (b, c) {}
+
+/** @typedef {string} SomeType */
+
+/** @type {SomeType} */
+// "jsdoc/no-undefined-types": ["error"|"warn", {"checkUsedTypedefs":true}]
+
+/** @typedef {string} MyOwnType */
+
+/**
+ * @template T
+ * @param {<T extends unknown>(element: MyOwnType) => T} cb
+ * @returns {void}
+ */
+const getValue = () => {};
+
+/** @typedef {string} MyOwnType */
+/** @typedef {new () => void} CustomElementConstructor */
+
+/**
+ * @param {`${MyOwnType}-${string}`} tagName
+ * @param {CustomElementConstructor} component
+ */
+const defineCustomElement = (tagName, component) => {
+};
+
+class Storage {
+  /** @type {globalThis.localStorage} */
+  #storage
+}
+
+/**
+ * La liste des sévérités.
+ *
+ * @type {Object<string, number>}
+ */
+const Severities = {
+    FATAL: 1,
+    ERROR: 2,
+    WARN: 3,
+    INFO: 4,
+};
+
+/**
+ * @typedef {Severities[keyof Severities]} Severity Le type des sévérités.
+ */
+
+export default Severities;
+
+/**
+ * @template {unknown} T
+ * @param {unknown} value
+ * @param {...T} validValues
+ * @returns {value is T}
+ */
+const checkIsOnOf = (value, ...validValues) => {
+  return validValues.includes(value);
+};
+
+declare namespace MyNamespace {
+  type MyType = string;
+  interface FooBar {
+    foobiz: string;
+  }
+}
+/** @type {MyNamespace.MyType} */
+const a = 's';
+/** @type {MyNamespace.FooBar} */
+const c = { foobiz: 's' };
+/**
+ * Function quux.
+ * @param {MyNamespace.FooBar['foobiz']} biz - Parameter 'foobiz' from FooBar.
+ */
+function quux(biz) {}
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyNamespace"]}]
+
+declare namespace MyNamespace {
+  interface I {
+    [key: string]: string;
+    (): void;
+    new (): void;
+  }
+}
+/** @type {MyNamespace.I} */
+const x = null;
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyNamespace"]}]
+
+declare namespace Nested {
+  namespace Namespace {
+    export interface C {}
+  }
+}
+/** @type {Nested.Namespace.C} */
+const x = null;
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["Nested"]}]
+
+declare namespace NamespaceWithInterface {
+  export interface HasIndexSig {
+    [key: string]: string;
+    normalProp: number;
+  }
+}
+/** @type {NamespaceWithInterface.HasIndexSig} */
+const x = { normalProp: 1 };
+/** @type {NamespaceWithInterface.HasIndexSig['normalProp']} */
+const y = 1;
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["NamespaceWithInterface"]}]
+
+declare namespace NsWithLiteralKey {
+  export interface HasLiteralKey {
+    "string-key": string;
+    normalProp: number;
+  }
+}
+/** @type {NsWithLiteralKey.HasLiteralKey} */
+const x = { "string-key": "value", normalProp: 1 };
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["NsWithLiteralKey"]}]
+
+class MyClass {
+}
+MyClass.Existent = () => {};
+/** @type {MyClass.Existent} */
+const a = MyClass.Existent;
+
+class MyClass {
+  static Existent = () => {};
+}
+/** @type {MyClass.Existent} */
+const a = MyClass.Existent;
+
+declare namespace NamespaceWithEnum {
+  export enum Color {
+    Red,
+    Green,
+    Blue
+  }
+  export interface I {}
+}
+/** @type {NamespaceWithEnum.I} */
+const x = {};
+// "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["NamespaceWithEnum"]}]
+
+declare module "my-module" {
+  export interface ModuleType {}
+}
+/** @type {import("my-module").ModuleType} */
+const x = {};
+
+class Test {}
+/**
+ * @template {Test} T
+ * @typedef {T extends Test<infer I> ? I : never} TestType
+ */
+
+/**
+ * @template T
+ */
+class Test {
+  /** @typedef {T} Type */
+  /** @type {Type} */
+  t;
+}
+
+console.log(Test);
+
+declare global {
+  const foo: number;
+}
+
+/**
+ * {@link foo}
+ */
+export const bar = 1;
+
+/** {@link foo} */
+function a(foo: number) {}
+
+/** {@link foo} */
+const b = function (foo: number) {};
+
+/** {@link foo} */
+const b = (foo: number) => {};
+
+/**
+ * @param {...Iterable<any>} its
+ * @returns {IteratorObject<any>}
+ * @see https://developer.mozilla.org/Web/JavaScript/Reference/Global_Objects/Iterator/concat
+ */
+const concatIteratorJSDoc = (...its) => {
+    return Iterator.from(its.flat());
+};
 ````
 

@@ -1,11 +1,12 @@
-# Disallow alias methods (`vitest/no-alias-methods`)
+# vitest/no-alias-methods
+
+📝 Disallow alias methods.
 
 ⚠️ This rule _warns_ in the 🌐 `all` config.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
 <!-- end auto-generated rule header -->
-
 
 ## Rule Details
 
@@ -20,7 +21,6 @@ expect(a).toBeCalled()
 ```js
 expect(a).toBeCalledTimes(1)
 ```
-
 
 Examples of **correct** code for this rule:
 

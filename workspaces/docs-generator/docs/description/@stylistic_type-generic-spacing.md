@@ -1,4 +1,4 @@
-# plus/type-generic-spacing
+# type-generic-spacing
 
 Enforces consistent spacing inside TypeScript type generics.
 
@@ -15,10 +15,9 @@ Examples of **incorrect** code for this rule:
 :::incorrect
 
 ```ts
-/*eslint type-generic-spacing: ["error"]*/
+/* eslint @stylistic/type-generic-spacing: ["error"] */
 
 type Foo<T=true> = T
-type Foo<T,K> = T
 
 interface Log {
   foo <T>(name: T): void
@@ -32,10 +31,9 @@ Examples of **correct** code for this rule:
 :::correct
 
 ```ts
-/*eslint type-generic-spacing: ["error"]*/
+/* eslint @stylistic/type-generic-spacing: ["error"] */
 
 type Foo<T = true> = T
-type Foo<T, K> = T
 
 interface Log {
   foo<T>(name: T): void

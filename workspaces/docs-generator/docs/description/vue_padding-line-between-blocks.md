@@ -14,7 +14,7 @@ since: v6.2.0
 
 ## :book: Rule Details
 
-This rule requires or disallows blank lines between the given 2 blocks. Properly blank lines help developers to understand the code.
+This rule requires or disallows blank lines between blocks. Properly placed blank lines help developers understand the code.
 
 <eslint-code-block fix :rules="{'vue/padding-line-between-blocks': ['error']}">
 
@@ -142,4 +142,4 @@ This rule was introduced in eslint-plugin-vue v6.2.0
 ## :mag: Implementation
 
 - [Rule source](https://github.com/vuejs/eslint-plugin-vue/blob/master/lib/rules/padding-line-between-blocks.js)
-- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/padding-line-between-blocks.js)
+- [Test source](https://github.com/vuejs/eslint-plugin-vue/blob/master/tests/lib/rules/padding-line-between-blocks.test.ts)

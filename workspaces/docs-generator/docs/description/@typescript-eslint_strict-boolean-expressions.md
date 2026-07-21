@@ -177,4 +177,5 @@ If you prefer more succinct checks over more precise boolean logic, this rule mi
 
 ## Related To
 
-- [no-unnecessary-condition](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-unnecessary-condition.mdx) - Similar rule which reports always-truthy and always-falsy values in conditions
+- [`@typescript-eslint/no-unnecessary-condition`](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules/no-unnecessary-condition.mdx): Similar rule which reports always-truthy and always-falsy values in conditions
+- [`@eslint-react/no-leaked-conditional-rendering`](https://www.eslint-react.xyz/docs/rules/no-leaked-conditional-rendering): additionally reports JSX values that "leak" in React's conditional rendering

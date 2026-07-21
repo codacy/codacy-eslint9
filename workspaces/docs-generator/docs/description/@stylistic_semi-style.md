@@ -1,19 +1,19 @@
 ---
-title: semi-style
-rule_type: layout
 related_rules:
   - no-extra-semi
   - semi
   - semi-spacing
 ---
 
-# js/semi-style
+# semi-style
 
 Generally, semicolons are at the end of lines. However, in semicolon-less style, semicolons are at the beginning of lines. This rule enforces that semicolons are at the configured location.
 
 ## Rule Details
 
 This rule reports line terminators around semicolons.
+
+## Options
 
 This rule has an option.
 
@@ -26,12 +26,14 @@ This rule has an option.
 - `"last"` (Default) enforces that semicolons are at the end of statements.
 - `"first"` enforces that semicolons are at the beginning of statements. Semicolons of `for` loop heads (`for(a;b;c){}`) should be at the end of lines even if you use this option.
 
+### last
+
 Examples of **incorrect** code for this rule with `"last"` option:
 
 ::: incorrect
 
 ```js
-/*eslint semi-style: ["error", "last"]*/
+/* eslint @stylistic/semi-style: ["error", "last"] */
 
 foo()
 ;[1, 2, 3].forEach(bar)
@@ -59,7 +61,7 @@ Examples of **correct** code for this rule with `"last"` option:
 ::: correct
 
 ```js
-/*eslint semi-style: ["error", "last"]*/
+/* eslint @stylistic/semi-style: ["error", "last"] */
 
 foo();
 [1, 2, 3].forEach(bar)
@@ -82,12 +84,14 @@ class C {
 
 :::
 
+### first
+
 Examples of **incorrect** code for this rule with `"first"` option:
 
 ::: incorrect
 
 ```js
-/*eslint semi-style: ["error", "first"]*/
+/* eslint @stylistic/semi-style: ["error", "first"] */
 
 foo();
 [1, 2, 3].forEach(bar)
@@ -115,7 +119,7 @@ Examples of **correct** code for this rule with `"first"` option:
 ::: correct
 
 ```js
-/*eslint semi-style: ["error", "first"]*/
+/* eslint @stylistic/semi-style: ["error", "first"] */
 
 foo()
 ;[1, 2, 3].forEach(bar)
