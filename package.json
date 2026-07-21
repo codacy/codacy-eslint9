@@ -32,7 +32,6 @@
     "@dword-design/eslint-plugin-import-alias": "8.1.8",
     "@eslint/compat": "2.1.0",
     "@next/eslint-plugin-next": "16.2.10",
-    "@nx/eslint-plugin": "23.1.0",
     "@rushstack/eslint-patch": "1.16.1",
     "@shopify/eslint-plugin": "50.0.0",
     "@types/eslint": "9.6.1",
