@@ -103,8 +103,7 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
         },
         "typescript": {
           "alwaysTryTypes": true
-        },
-        "webpack": true
+        }
       },
       "jest": {
         "version": 29
