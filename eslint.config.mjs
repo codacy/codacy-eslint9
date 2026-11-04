@@ -26,7 +26,6 @@ export default tseslint.config(
             parser: tseslint.parser,
             globals: globals.node,
             parserOptions: {
-                project: true,
                 projectService: true,
                 sourceType: 'module',
                 programs: null

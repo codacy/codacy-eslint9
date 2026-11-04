@@ -138,6 +138,16 @@ export const baseConfig: TSESLint.FlatConfig.ConfigArray = [
       "no-setter-return": "off",
       "no-this-before-super": "off",
       "no-undef": "off",
+
+      // no-unsafe-* rules flag any value that is untyped (e.g. imports from packages
+      // missing from the analyzed project), which is noise rather than a real defect
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-enum-comparison": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-unary-minus": "off",
       "no-unreachable": "off",
       "no-unsafe-negation": "off"
     }
