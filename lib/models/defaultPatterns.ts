@@ -170,7 +170,6 @@ export const defaultPatternIds: ReadonlySet<string> = new Set([
   "security_detect-buffer-noassert",
   "security_detect-child-process",
   "security_detect-disable-mustache-escape",
-  "security_detect-object-injection",
   "security_detect-new-buffer",
   "security_detect-bidi-characters",
   "security-node_detect-absence-of-name-option-in-exrpress-session",
